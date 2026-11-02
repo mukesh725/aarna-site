@@ -620,15 +620,33 @@
     if (!container || !window.AarnaStore) return;
 
     const content = window.AarnaStore.getContent();
+    const storedMedia = window.AarnaStore.getAllMedia();
+    const customMedia = typeof window.AarnaStore.getCustomMedia === 'function' ? window.AarnaStore.getCustomMedia() : {};
 
     const sections = [
       {
-        title: 'Company & Contact Details',
+        id: 'sec-brand',
+        title: 'Global Brand & Company Contact',
         icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>',
-        desc: 'Updates company branding, phone numbers, and physical address across headers and footers.',
+        desc: 'Brand identity, official contact details, and company information across all website headers, footers, and contact points.',
+        images: [
+          {
+            key: 'logo_main',
+            name: 'Corporate Brand Logo',
+            meta: 'Used across main navbar, mobile menu, and footer on every page.',
+            dims: 'Transparent PNG / SVG • ~280 × 70 px'
+          },
+          {
+            key: 'admin_hero',
+            name: 'Admin Portal Login Poster',
+            meta: 'Full uncropped family portrait on admin.html login screen.',
+            dims: 'High-res vertical photo • ~727 × 1024 px'
+          }
+        ],
         fields: [
-          { key: 'company_name', label: 'Company Name', type: 'input' },
-          { key: 'company_tagline', label: 'Company Tagline', type: 'input' },
+          { key: 'company_name', label: 'Company Legal Name', type: 'input' },
+          { key: 'company_tagline', label: 'Brand Tagline', type: 'input' },
+          { key: 'footer_desc', label: 'Footer Mission Blurb', type: 'textarea', full: true },
           { key: 'contact_phone', label: 'Customer Service Phone', type: 'input' },
           { key: 'contact_email', label: 'Official Inquiries Email', type: 'input' },
           { key: 'contact_address_line1', label: 'Street Address', type: 'input' },
@@ -637,33 +655,190 @@
         ]
       },
       {
-        title: 'Home Page Hero & Banners',
+        id: 'sec-hero',
+        title: 'Home Page - Section 1: Hero Horizon',
         icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
-        desc: 'Primary headlines, mission statements, and catalog callouts on index.html.',
+        desc: 'Primary landing hero section on index.html with headline, description, catalog CTA button, and social proof counter.',
+        images: [
+          {
+            key: 'hero_bg',
+            name: 'Hero Horizon Background Graphic',
+            meta: 'Background photography and graphic inside the framed hero banner.',
+            dims: 'Landscape photo • ~1920 × 1080 px'
+          }
+        ],
         fields: [
           { key: 'hero_home_title', label: 'Hero Main Headline (HTML allowed)', type: 'textarea', full: true },
           { key: 'hero_home_desc', label: 'Hero Body Description', type: 'textarea', full: true },
-          { key: 'hero_subbar_left', label: 'Sub-bar Left Eyebrow', type: 'input' },
-          { key: 'hero_subbar_right', label: 'Sub-bar Right Eyebrow', type: 'input' },
-          { key: 'catalog_cta_title', label: 'Catalog Section Heading', type: 'input' },
-          { key: 'catalog_cta_desc', label: 'Catalog Section Description', type: 'textarea', full: true }
+          { key: 'hero_catalog_btn', label: 'Hero Catalog Button Text', type: 'input' },
+          { key: 'hero_subbar_left', label: 'Left Sub-bar Text', type: 'input' },
+          { key: 'hero_subbar_right', label: 'Right Sub-bar Text', type: 'input' },
+          { key: 'hero_proof_line1', label: 'Social Proof Line 1', type: 'input' },
+          { key: 'hero_proof_line2', label: 'Social Proof Line 2', type: 'input' }
         ]
       },
       {
+        id: 'sec-showcase',
+        title: 'Home Page - Section 2: Product Showcase (3 Divisions)',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>',
+        desc: 'The 3 editorial category cards on index.html (Institutional Products, Retail Products, Medical Supplies) with titles, descriptions, pills, and card imagery.',
+        images: [
+          {
+            key: 'card_institutional',
+            name: 'Card 1: Institutional Products Visual',
+            meta: 'Unit-dose liquid cups packaging visual for Card 1.',
+            dims: 'High-res image • ~600 × 400 px'
+          },
+          {
+            key: 'card_retail',
+            name: 'Card 2: Retail Products Visual',
+            meta: 'Solid dose bottles and OTC packaging visual for Card 2.',
+            dims: 'High-res image • ~600 × 400 px'
+          },
+          {
+            key: 'card_devices',
+            name: 'Card 3: Medical Supplies Visual',
+            meta: 'Clinical equipment, aerosol spacers, and needles visual for Card 3.',
+            dims: 'High-res image • ~600 × 400 px'
+          }
+        ],
+        fields: [
+          { key: 'showcase_heading', label: 'Showcase Section Main Title', type: 'input', full: true },
+          { key: 'card_inst_title', label: 'Card 1 Title (Institutional)', type: 'input' },
+          { key: 'card_inst_desc', label: 'Card 1 Description', type: 'textarea', full: true },
+          { key: 'card_inst_pill1', label: 'Card 1 Pill Tag 1', type: 'input' },
+          { key: 'card_inst_pill2', label: 'Card 1 Pill Tag 2', type: 'input' },
+          { key: 'card_retail_title', label: 'Card 2 Title (Retail)', type: 'input' },
+          { key: 'card_retail_desc', label: 'Card 2 Description', type: 'textarea', full: true },
+          { key: 'card_retail_pill1', label: 'Card 2 Pill Tag 1', type: 'input' },
+          { key: 'card_retail_pill2', label: 'Card 2 Pill Tag 2', type: 'input' },
+          { key: 'card_devices_title', label: 'Card 3 Title (Medical Supplies)', type: 'input' },
+          { key: 'card_devices_desc', label: 'Card 3 Description', type: 'textarea', full: true },
+          { key: 'card_devices_pill1', label: 'Card 3 Pill Tag 1', type: 'input' },
+          { key: 'card_devices_pill2', label: 'Card 3 Pill Tag 2', type: 'input' }
+        ]
+      },
+      {
+        id: 'sec-pl',
+        title: 'Home Page - Section 3: Private Label Solutions',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>',
+        desc: 'Custom formulation packaging and private-label contract manufacturing showcase on index.html.',
+        images: [
+          {
+            key: 'private_label_img',
+            name: 'Private Label Packaging Showcase Graphic',
+            meta: 'Display graphic showing custom branded bottles, cartons, and liquids.',
+            dims: 'High-res image • ~700 × 500 px'
+          }
+        ],
+        fields: [
+          { key: 'pl_eyebrow', label: 'Eyebrow Tag', type: 'input' },
+          { key: 'pl_title', label: 'Main Headline (HTML allowed)', type: 'textarea', full: true },
+          { key: 'pl_desc', label: 'Body Description', type: 'textarea', full: true },
+          { key: 'pl_btn_text', label: 'Action Button Text', type: 'input' },
+          { key: 'pl_footnote', label: 'Target Audience Footnote', type: 'input', full: true }
+        ]
+      },
+      {
+        id: 'sec-serve',
+        title: 'Home Page - Section 4: Who We Serve',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
+        desc: 'Institutional client sectors, healthcare channels, and group purchasing organizations on index.html.',
+        fields: [
+          { key: 'serve_eyebrow', label: 'Eyebrow Tag', type: 'input' },
+          { key: 'serve_title', label: 'Main Headline (HTML allowed)', type: 'textarea', full: true },
+          { key: 'serve_item1_title', label: 'Sector 1 Title (Hospitals)', type: 'input' },
+          { key: 'serve_item1_sub', label: 'Sector 1 Subtitle', type: 'input' },
+          { key: 'serve_item2_title', label: 'Sector 2 Title (Pharmacies)', type: 'input' },
+          { key: 'serve_item3_title', label: 'Sector 3 Title (Retail & Customers)', type: 'input' },
+          { key: 'serve_item4_title', label: 'Sector 4 Title (Private Label)', type: 'input' },
+          { key: 'serve_footnote', label: 'Procurement Channels Footnote', type: 'input', full: true }
+        ]
+      },
+      {
+        id: 'sec-federal',
+        title: 'Home Page - Section 5: Federal Healthcare Opportunities',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
+        desc: 'Government procurement, Veterans Affairs (VA) hospitals, and institutional supply copy on index.html.',
+        fields: [
+          { key: 'federal_title', label: 'Section Title', type: 'input', full: true },
+          { key: 'federal_desc', label: 'Procurement Overview Description', type: 'textarea', full: true },
+          { key: 'federal_btn_text', label: 'Procurement Action Button Text (HTML allowed)', type: 'input' }
+        ]
+      },
+      {
+        id: 'sec-partners',
+        title: 'Home Page - Section 6: Our Partners (Wholesalers & GPOs)',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M16 12l-4-4-4 4"></path><path d="M12 16V8"></path></svg>',
+        desc: 'Authorized national distribution partners and healthcare supply chain logos on index.html.',
+        images: [
+          {
+            key: 'partner_cencora',
+            name: 'Cencora / AmerisourceBergen Logo',
+            meta: 'National distributor badge 1 on index.html.',
+            dims: 'Transparent PNG / SVG logo'
+          },
+          {
+            key: 'partner_cardinal',
+            name: 'Cardinal Health Logo',
+            meta: 'National distributor badge 2 on index.html.',
+            dims: 'Transparent PNG / SVG logo'
+          },
+          {
+            key: 'partner_mckesson',
+            name: 'McKesson Logo',
+            meta: 'National distributor badge 3 on index.html.',
+            dims: 'Transparent PNG / SVG logo'
+          },
+          {
+            key: 'partner_medline',
+            name: 'Medline Logo',
+            meta: 'National distributor badge 4 on index.html.',
+            dims: 'Transparent PNG / SVG logo'
+          }
+        ],
+        fields: [
+          { key: 'partners_badge', label: 'Eyebrow Badge', type: 'input' },
+          { key: 'partners_title', label: 'Section Headline (HTML allowed)', type: 'input', full: true },
+          { key: 'partners_subtitle', label: 'Partners Subtitle Description', type: 'textarea', full: true }
+        ]
+      },
+      {
+        id: 'sec-cta',
+        title: 'Home Page - Section 7: Catalog Callout Banner',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>',
+        desc: 'Callout banner above footer directing visitors to download or view the master catalog.',
+        fields: [
+          { key: 'catalog_cta_title', label: 'Banner Heading', type: 'input' },
+          { key: 'catalog_cta_desc', label: 'Banner Description', type: 'textarea', full: true },
+          { key: 'catalog_cta_btn', label: 'Catalog Button Text', type: 'input' }
+        ]
+      },
+      {
+        id: 'sec-about',
         title: 'About Us Page Content',
         icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>',
-        desc: 'Company origin, institutional focus, and What We Do banner on about.html.',
+        desc: 'Company origin, institutional healthcare mission, and What We Do banner on about.html.',
+        images: [
+          {
+            key: 'about_pharmacy',
+            name: 'About Pharmacy Counter Visual',
+            meta: 'Display visual on about.html showing pharmacy operations and packaging.',
+            dims: 'High-res image • ~920 × 560 px'
+          }
+        ],
         fields: [
-          { key: 'about_hero_title', label: 'About Main Title', type: 'input' },
+          { key: 'about_hero_title', label: 'About Page Main Title', type: 'input' },
           { key: 'about_hero_desc', label: 'About Mission Description', type: 'textarea', full: true },
-          { key: 'about_what_title', label: 'What We Do Title', type: 'input' },
+          { key: 'about_what_title', label: 'What We Do Section Title', type: 'input' },
           { key: 'about_what_desc', label: 'What We Do Description', type: 'textarea', full: true }
         ]
       },
       {
+        id: 'sec-contact',
         title: 'Contact Us Page Content',
         icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>',
-        desc: 'Headings and guidance text displayed on contact.html.',
+        desc: 'Headings, inquiry guidance, and next-steps card on contact.html.',
         fields: [
           { key: 'contact_eyebrow', label: 'Eyebrow Tag', type: 'input' },
           { key: 'contact_hero_title', label: 'Contact Main Headline (HTML allowed)', type: 'textarea', full: true },
@@ -673,12 +848,37 @@
         ]
       },
       {
-        title: 'Federal Healthcare Opportunities',
-        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
-        desc: 'Government procurement, VA hospitals, and institutional supply copy.',
+        id: 'sec-catalog-pages',
+        title: 'Dedicated Catalog Pages (3 Lines)',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
+        desc: 'Hero banners, titles, and descriptions on institutional-products.html, retail-products.html, and medical-devices.html.',
+        images: [
+          {
+            key: 'inst_hero_img',
+            name: 'Institutional Catalog Hero Banner',
+            meta: 'Displayed on institutional-products.html hero card.',
+            dims: 'High-res image • ~600 × 400 px'
+          },
+          {
+            key: 'retail_hero_img',
+            name: 'Retail Catalog Hero Banner',
+            meta: 'Displayed on retail-products.html hero card.',
+            dims: 'High-res image • ~600 × 400 px'
+          },
+          {
+            key: 'devices_hero_img',
+            name: 'Medical Devices Catalog Hero Banner',
+            meta: 'Displayed on medical-devices.html hero card.',
+            dims: 'High-res image • ~600 × 400 px'
+          }
+        ],
         fields: [
-          { key: 'federal_title', label: 'Section Title', type: 'input', full: true },
-          { key: 'federal_desc', label: 'Procurement Overview Description', type: 'textarea', full: true }
+          { key: 'inst_page_title', label: 'Institutional Page Title', type: 'input' },
+          { key: 'inst_page_desc', label: 'Institutional Page Description', type: 'textarea', full: true },
+          { key: 'retail_page_title', label: 'Retail Page Title', type: 'input' },
+          { key: 'retail_page_desc', label: 'Retail Page Description', type: 'textarea', full: true },
+          { key: 'devices_page_title', label: 'Medical Supplies & Devices Page Title', type: 'input' },
+          { key: 'devices_page_desc', label: 'Medical Supplies & Devices Page Description', type: 'textarea', full: true }
         ]
       }
     ];
@@ -686,15 +886,68 @@
     let html = '';
     sections.forEach(sec => {
       html += `
-        <div class="cms-section-card">
+        <div class="cms-section-card" id="${sec.id}">
           <div class="cms-section-title">
             ${sec.icon}
             <span>${sec.title}</span>
           </div>
           <div class="cms-section-desc">${sec.desc}</div>
-          <div class="cms-fields-grid">
       `;
 
+      // Render integrated Section Images if section has images
+      if (sec.images && sec.images.length > 0) {
+        html += `
+          <div class="cms-section-images-wrap">
+            <div class="cms-section-images-header">
+              <span class="cms-section-images-title">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <span>Images in this Section</span>
+              </span>
+              <span class="cms-section-images-badge">${sec.images.length} Image${sec.images.length > 1 ? 's' : ''} Available</span>
+            </div>
+            <div class="cms-section-images-grid">
+        `;
+
+        sec.images.forEach(img => {
+          const currentSrc = storedMedia[img.key] || (window.AarnaStore.getDefaultMedia ? window.AarnaStore.getDefaultMedia(img.key) : '');
+          const isCustom = Boolean(customMedia[img.key]);
+
+          html += `
+            <div class="cms-image-slot-item" data-slot="${img.key}">
+              <div>
+                <div class="cms-image-slot-preview" id="cms-img-preview-${img.key}" style="background-image: url('${currentSrc}');"></div>
+                <div class="cms-image-slot-label">${img.name}</div>
+                <span class="cms-image-slot-key">Slot: ${img.key} ${isCustom ? '<span style="color:#16a34a; font-weight:700;">(Custom Upload)</span>' : '<span style="color:#64748b;">(Default)</span>'}</span>
+                <div class="cms-image-slot-meta">
+                  <div>${img.meta}</div>
+                  <div style="margin-top:0.25rem; font-weight:600; color:#475569;">Recommended: ${img.dims}</div>
+                </div>
+              </div>
+
+              <div class="cms-image-slot-actions">
+                <label class="cms-image-upload-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  <span>Upload / Replace</span>
+                  <input type="file" accept="image/*" class="cms-image-file-input" data-slot="${img.key}" style="display:none;">
+                </label>
+                ${isCustom ? `
+                  <button type="button" class="cms-image-reset-btn" data-reset-slot="${img.key}" title="Reset to original default image">
+                    Reset
+                  </button>
+                ` : ''}
+              </div>
+            </div>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      }
+
+      // Render Text Fields
+      html += `<div class="cms-fields-grid">`;
       sec.fields.forEach(f => {
         const val = content[f.key] || '';
         const fullClass = f.full ? 'full-width' : '';
@@ -721,7 +974,7 @@
 
     container.innerHTML = html;
 
-    // Attach real-time input change listener
+    // Attach real-time input change listeners
     container.querySelectorAll('.cms-input').forEach(el => {
       el.addEventListener('change', () => {
         const key = el.dataset.key;
@@ -730,6 +983,53 @@
           window.AarnaStore.saveContent(key, val);
           if (typeof window.showToast === 'function') {
             window.showToast(`Updated "${key}" live across site!`, 'success');
+          }
+        }
+      });
+    });
+
+    // Attach File Upload Listeners to Section Images
+    container.querySelectorAll('.cms-image-file-input').forEach(input => {
+      input.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        const slotKey = input.dataset.slot;
+        if (!file || !slotKey) return;
+
+        if (file.size > 8 * 1024 * 1024) {
+          alert('Image file is too large. Please select an image under 8 MB.');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          const dataUrl = evt.target.result;
+          if (window.AarnaStore) {
+            window.AarnaStore.saveMedia(slotKey, dataUrl);
+            loadContentForm();
+            if (typeof renderMediaGrid === 'function') {
+              renderMediaGrid();
+            }
+            if (typeof window.showToast === 'function') {
+              window.showToast(`Updated image for "${slotKey}" live across site!`, 'success');
+            }
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    // Attach Reset Listeners to Section Images
+    container.querySelectorAll('.cms-image-reset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const slotKey = btn.dataset.resetSlot;
+        if (slotKey && window.AarnaStore) {
+          window.AarnaStore.deleteMedia(slotKey);
+          loadContentForm();
+          if (typeof renderMediaGrid === 'function') {
+            renderMediaGrid();
+          }
+          if (typeof window.showToast === 'function') {
+            window.showToast(`Reset "${slotKey}" to original default image.`, 'info');
           }
         }
       });
@@ -787,25 +1087,95 @@
       dims: 'High-res vertical image • ~727 × 1024 px'
     },
     {
-      key: 'hero_home_bg',
+      key: 'hero_bg',
       name: 'Home Hero Horizon Banner',
       defaultUrl: 'assets/images/hero-bg.jpg',
       meta: 'Main dynamic hero background on index.html.',
       dims: 'Wide landscape photo • ~1920 × 1080 px'
     },
     {
-      key: 'about_hero_bg',
-      name: 'About Us Healthcare Mission',
-      defaultUrl: 'assets/images/about-hero.jpg',
-      meta: 'Header background photo on about.html.',
-      dims: 'Landscape photo • ~1200 × 800 px'
+      key: 'card_institutional',
+      name: 'Card 1: Institutional Products Visual',
+      defaultUrl: 'assets/images/card-institutional.png',
+      meta: 'Unit-dose liquid cups packaging visual for Card 1 on index.html.',
+      dims: 'High-res image • ~600 × 400 px'
     },
     {
-      key: 'products_hero',
-      name: 'Product Showcase Banner',
-      defaultUrl: 'assets/images/products-hero.jpg',
-      meta: 'Product line visual on index.html & catalog pages.',
-      dims: 'Landscape photo • ~1200 × 700 px'
+      key: 'card_retail',
+      name: 'Card 2: Retail Products Visual',
+      defaultUrl: 'assets/images/card-retail.png',
+      meta: 'Solid dose bottles and OTC packaging visual for Card 2 on index.html.',
+      dims: 'High-res image • ~600 × 400 px'
+    },
+    {
+      key: 'card_devices',
+      name: 'Card 3: Medical Supplies Visual',
+      defaultUrl: 'assets/images/card-medical-devices.png',
+      meta: 'Clinical equipment and supplies visual for Card 3 on index.html.',
+      dims: 'High-res image • ~600 × 400 px'
+    },
+    {
+      key: 'private_label_img',
+      name: 'Private Label Packaging Graphic',
+      defaultUrl: 'assets/images/private-label-blue-card.png',
+      meta: 'Custom packaging showcase visual on index.html.',
+      dims: 'High-res image • ~700 × 500 px'
+    },
+    {
+      key: 'partner_cencora',
+      name: 'Cencora / AmerisourceBergen Logo',
+      defaultUrl: 'assets/logos/logo-cencora-ref.png',
+      meta: 'National distributor badge 1 on index.html.',
+      dims: 'Transparent PNG / SVG logo'
+    },
+    {
+      key: 'partner_cardinal',
+      name: 'Cardinal Health Logo',
+      defaultUrl: 'assets/logos/logo-cardinal-ref.png',
+      meta: 'National distributor badge 2 on index.html.',
+      dims: 'Transparent PNG / SVG logo'
+    },
+    {
+      key: 'partner_mckesson',
+      name: 'McKesson Logo',
+      defaultUrl: 'assets/logos/logo-mckesson-ref.png',
+      meta: 'National distributor badge 3 on index.html.',
+      dims: 'Transparent PNG / SVG logo'
+    },
+    {
+      key: 'partner_medline',
+      name: 'Medline Logo',
+      defaultUrl: 'assets/logos/logo-medline-ref.png',
+      meta: 'National distributor badge 4 on index.html.',
+      dims: 'Transparent PNG / SVG logo'
+    },
+    {
+      key: 'about_pharmacy',
+      name: 'About Pharmacy Counter Visual',
+      defaultUrl: 'assets/images/about-pharmacy-counter.png',
+      meta: 'Healthcare operations visual on about.html.',
+      dims: 'High-res image • ~920 × 560 px'
+    },
+    {
+      key: 'inst_hero_img',
+      name: 'Institutional Catalog Hero Banner',
+      defaultUrl: 'assets/images/cups-liquid-dosage.png',
+      meta: 'Displayed on institutional-products.html hero card.',
+      dims: 'High-res image • ~600 × 400 px'
+    },
+    {
+      key: 'retail_hero_img',
+      name: 'Retail Catalog Hero Banner',
+      defaultUrl: 'assets/images/bottles-solid-dosage.png',
+      meta: 'Displayed on retail-products.html hero card.',
+      dims: 'High-res image • ~600 × 400 px'
+    },
+    {
+      key: 'devices_hero_img',
+      name: 'Medical Devices Catalog Hero Banner',
+      defaultUrl: 'assets/images/card-medical-devices.png',
+      meta: 'Displayed on medical-devices.html hero card.',
+      dims: 'High-res image • ~600 × 400 px'
     }
   ];
 

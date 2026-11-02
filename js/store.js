@@ -16,40 +16,113 @@
     AUTH: 'aarna_admin_session'
   };
 
-  // Default content fallback
+  // Default content fallback covering all sections of the site
   const DEFAULT_CONTENT = {
+    // Global Brand & Contact Info
     company_name: 'AARNA USA Inc.',
-    company_tagline: 'Trusted Healthcare Solutions',
+    company_tagline: 'Quality · Reliability · Care',
+    footer_desc: 'AARNA supplies OTC pharmaceuticals, Unit Dose products and selected medical supplies.',
+    contact_phone: '(866) 906-6239',
+    contact_email: 'info@aarnaus.com',
     contact_address_line1: '2080 Enterprise Dr NE',
     contact_address_line2: 'Leland, NC 28451',
-    contact_email: 'info@aarnaus.com',
-    contact_phone: '(866) 906-6239',
     contact_hours: 'Monday through Friday, 8:00 AM – 5:00 PM EST',
-    
-    // Home Page
+
+    // Home Page - Section 1: Hero Horizon
     hero_home_title: 'Unleash Healthcare<br>Excellence Today.<br>All In One Place.',
     hero_home_desc: 'AARNA USA serves healthcare institutions, pharmacies, and retail customers with OTC medicines, institutional unit-dose products, medical supplies, and healthcare supplies.',
+    hero_catalog_btn: 'Download our catalog',
     hero_subbar_left: 'TRUSTED HEALTHCARE SOLUTIONS',
     hero_subbar_right: 'QUALITY · RELIABILITY · CARE',
+    hero_proof_line1: 'Supplying 500+ Healthcare Institutions.',
+    hero_proof_line2: 'Get the real results.',
+
+    // Home Page - Section 2: Product Showcase (3 Divisions)
     showcase_heading: 'Find the product you need',
-    catalog_cta_title: 'Aarna USA Product Catalog',
-    catalog_cta_desc: 'Download our comprehensive product guide featuring all 71 retail pharmaceuticals, 10 institutional unit-dose cups, and 23 medical supplies.',
+    card_inst_title: 'Institutional Products',
+    card_inst_desc: 'Pre-filled unit-dose oral liquid cups and institutional medications engineered for hospitals and care facilities.',
+    card_inst_pill1: 'Unit-Dose Liquids',
+    card_inst_pill2: 'Hospital Care',
+    card_retail_title: 'Retail Products',
+    card_retail_desc: 'Comprehensive line of 71 high-efficacy OTC pharmaceuticals across pain relief, allergy, digestive, and family care.',
+    card_retail_pill1: '71+ OTC Formulas',
+    card_retail_pill2: 'Retail & Pharmacy',
+    card_devices_title: 'Medical Supplies',
+    card_devices_desc: 'Hospital-grade medical supplies, aerosol spacer chambers, sterile insulin pen needles, and lancets.',
+    card_devices_pill1: 'Sterile Supplies',
+    card_devices_pill2: 'Clinical DME',
+
+    // Home Page - Section 3: Private Label Solutions
+    pl_eyebrow: 'Private label',
+    pl_title: '<span class="pl-title-blue">Your brand.</span><br><span class="pl-title-dark">Our OTC medicines.</span>',
+    pl_desc: 'Oral liquids, tablets, capsules, and topical creams, packaged under your name.',
+    pl_btn_text: 'Start your brand',
+    pl_footnote: 'For pharmacies, retailers, and distributors building their own product line.',
+
+    // Home Page - Section 4: Who We Serve
+    serve_eyebrow: 'WHO WE SERVE',
+    serve_title: 'Here for the people<br>behind everyday care.',
+    serve_item1_title: 'Hospitals & healthcare institutions',
+    serve_item1_sub: 'Including long-term care providers',
+    serve_item2_title: 'Pharmacies',
+    serve_item3_title: 'Retail businesses & customers',
+    serve_item4_title: 'Businesses seeking private-label OTC products',
+    serve_footnote: 'Purchasing channels & partners: distributors and Group Purchasing Organizations (GPOs).',
+
+    // Home Page - Section 5: Federal Healthcare Opportunities
     federal_title: 'Federal Healthcare Opportunities',
     federal_desc: 'AARNA USA is interested in federal healthcare procurement opportunities for OTC unit-dose products, medical supplies, and healthcare supplies. We welcome inquiries from government contractors and procurement teams serving Veterans Affairs (VA) healthcare facilities and Bureau of Prisons healthcare settings.',
-    
+    federal_btn_text: 'Discuss a Federal<br>Procurement Opportunity',
+
+    // Home Page - Section 6: Our Partners
+    partners_badge: 'OUR PARTNERS',
+    partners_title: 'Built on <span class="partners-serif-blue">trusted partnerships.</span>',
+    partners_subtitle: 'Working alongside established healthcare organizations to support quality, reliability, and consistent delivery.',
+
+    // Home Page - Section 7: Catalog Callout Banner
+    catalog_cta_title: 'Need product details?',
+    catalog_cta_desc: 'Explore the AARNA catalog or discuss your requirements.',
+    catalog_cta_btn: 'View Catalog',
+
     // About Us Page
     about_hero_title: 'About AARNA USA',
-    about_hero_subtitle: 'Aarna provides healthcare products for Institutional and retail pharmacy customers',
     about_hero_desc: 'AARNA USA supplies OTC medicines, medical supplies, and healthcare supplies to healthcare institutions, pharmacies, and retail customers. Medicines are available in retail packages and institutional unit-dose formats. AARNA USA also offers private-label OTC products for businesses seeking products under their own brand.',
     about_what_title: 'What We Do',
     about_what_desc: 'AARNA USA supplies AARNA-brand OTC medicines, medical supplies, and healthcare supplies, with a primary focus on healthcare institutions. We also serve pharmacies and retail customers. AARNA USA offers private-label OTC products for businesses seeking products under their own brand.',
-    
+
     // Contact Us Page
     contact_eyebrow: 'CONTACT AARNA USA',
     contact_hero_title: 'Let’s discuss<br>your requirements.',
     contact_hero_desc: 'For product information, availability, pricing, and private-label OTC inquiries.',
     contact_next_title: 'What happens next?',
-    contact_next_desc: 'Our team reviews your requirements and contacts you to discuss the next steps.'
+    contact_next_desc: 'Our team reviews your requirements and contacts you to discuss the next steps.',
+
+    // Dedicated Catalog Pages
+    inst_page_title: 'Institutional Products',
+    inst_page_desc: 'OTC medicines in institutional unit-dose formats for healthcare providers.',
+    retail_page_title: 'Retail Products',
+    retail_page_desc: 'High efficacy OTC pharmaceuticals across pain relief, allergy, digestive, and family care.',
+    devices_page_title: 'Medical Supplies & Devices',
+    devices_page_desc: 'Clinical equipment, aerosol spacers, sterile insulin pen needles, and surgical supplies.'
+  };
+
+  // Default Media Assets Fallback covering all sections
+  const DEFAULT_MEDIA = {
+    logo_main: 'assets/logos/aarna-logo-clean.png',
+    admin_hero: 'assets/images/admin-login-hero.jpg',
+    hero_bg: 'assets/images/hero-bg.jpg',
+    card_institutional: 'assets/images/card-institutional.png',
+    card_retail: 'assets/images/card-retail.png',
+    card_devices: 'assets/images/card-medical-devices.png',
+    private_label_img: 'assets/images/private-label-blue-card.png',
+    partner_cencora: 'assets/logos/logo-cencora-ref.png',
+    partner_cardinal: 'assets/logos/logo-cardinal-ref.png',
+    partner_mckesson: 'assets/logos/logo-mckesson-ref.png',
+    partner_medline: 'assets/logos/logo-medline-ref.png',
+    about_pharmacy: 'assets/images/about-pharmacy-counter.png',
+    inst_hero_img: 'assets/images/cups-liquid-dosage.png',
+    retail_hero_img: 'assets/images/bottles-solid-dosage.png',
+    devices_hero_img: 'assets/images/card-medical-devices.png'
   };
 
   const AarnaStore = {
@@ -178,34 +251,36 @@
     // ------------------------------------------------------------------------
     // MEDIA ASSETS (Base64 / DataURL Storage)
     // ------------------------------------------------------------------------
-    getMedia(slotKey) {
-      try {
-        const stored = localStorage.getItem(STORAGE_KEYS.MEDIA);
-        if (stored) {
-          const map = JSON.parse(stored);
-          return map[slotKey] || null;
-        }
-      } catch (err) {
-        console.warn('Error reading media:', err);
-      }
-      return null;
+    getDefaultMedia(slotKey) {
+      return slotKey ? DEFAULT_MEDIA[slotKey] : DEFAULT_MEDIA;
     },
 
-    getAllMedia() {
+    getCustomMedia() {
       try {
         const stored = localStorage.getItem(STORAGE_KEYS.MEDIA);
         if (stored) return JSON.parse(stored);
       } catch (err) {
-        console.warn('Error reading media:', err);
+        console.warn('Error reading custom media:', err);
       }
       return {};
     },
 
+    getMedia(slotKey) {
+      const custom = this.getCustomMedia();
+      if (custom[slotKey]) return custom[slotKey];
+      return DEFAULT_MEDIA[slotKey] || null;
+    },
+
+    getAllMedia() {
+      const custom = this.getCustomMedia();
+      return { ...DEFAULT_MEDIA, ...custom };
+    },
+
     saveMedia(slotKey, dataUrl) {
       try {
-        const all = this.getAllMedia();
-        all[slotKey] = dataUrl;
-        localStorage.setItem(STORAGE_KEYS.MEDIA, JSON.stringify(all));
+        const custom = this.getCustomMedia();
+        custom[slotKey] = dataUrl;
+        localStorage.setItem(STORAGE_KEYS.MEDIA, JSON.stringify(custom));
         this.notifyChange('media', { slotKey });
         this.applyMediaToPage();
         return true;
@@ -217,9 +292,9 @@
 
     deleteMedia(slotKey) {
       try {
-        const all = this.getAllMedia();
-        delete all[slotKey];
-        localStorage.setItem(STORAGE_KEYS.MEDIA, JSON.stringify(all));
+        const custom = this.getCustomMedia();
+        delete custom[slotKey];
+        localStorage.setItem(STORAGE_KEYS.MEDIA, JSON.stringify(custom));
         this.notifyChange('media', { slotKey });
         this.applyMediaToPage();
         return true;
