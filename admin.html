@@ -664,6 +664,7 @@
 
   </div>
 
+  <script src="js/firebase-config.js"></script>
   <script>
     (function() {
       'use strict';
@@ -701,7 +702,7 @@
       });
 
       // Handle Form Submit
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = emailInput.value.trim().toLowerCase();
         const pwd = passwordInput.value.trim();
@@ -711,11 +712,17 @@
           return;
         }
 
-        // Validate credentials (accepts admin@aarnaus.com or admin with aarna2026)
-        if ((email === 'admin@aarnaus.com' || email === 'admin') && pwd === 'aarna2026') {
-          authenticateAndRedirect(email);
-        } else {
-          showAlert('Invalid email or password. Please use authorized credentials.');
+        try {
+          if (window.AarnaFirebase && typeof window.AarnaFirebase.login === 'function') {
+            await window.AarnaFirebase.login(email, pwd);
+            authenticateAndRedirect(email);
+          } else if ((email === 'admin@aarnaus.com' || email === 'admin') && pwd === 'aarna2026') {
+            authenticateAndRedirect(email);
+          } else {
+            showAlert('Invalid email or password. Please use authorized credentials.');
+          }
+        } catch (err) {
+          showAlert(err.message || 'Invalid email or password.');
         }
       });
 

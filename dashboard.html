@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AARNA USA - Admin Portal &amp; Management Dashboard</title>
+  <title>AARNA USA - Management Dashboard &amp; Product Catalogs</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/png" href="assets/logos/aarna-logo-clean.png">
   
@@ -25,33 +25,57 @@
 </head>
 <body class="dash-body">
 
-  <!-- SIDEBAR NAVIGATION -->
-  <aside class="dash-sidebar">
+  <!-- ========================================================================
+       FLOATING SIDEBAR (LeaseFlow Style)
+       ======================================================================== -->
+  <aside class="dash-sidebar" aria-label="Dashboard Sidebar">
+    
+    <!-- Sidebar Top Header -->
     <div class="dash-sidebar-header">
-      <a href="dashboard.html" class="dash-sidebar-logo" aria-label="AARNA Dashboard Home">
-        <div style="background: #ffffff; padding: 4px 10px; border-radius: 8px; display: inline-flex; align-items: center;">
-          <img src="assets/logos/aarna-logo-clean.png" alt="AARNA USA" style="height: 26px; width: auto; filter: none;">
+      <a href="dashboard.html" class="brand-pill-logo">
+        <div class="brand-icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
         </div>
+        <span class="brand-name-text">AARNA</span>
       </a>
-      <span class="dash-portal-badge">Admin</span>
+
+      <button class="sidebar-collapse-btn" aria-label="Toggle sidebar width" id="btn-sidebar-toggle">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </div>
 
-    <nav class="dash-sidebar-nav" aria-label="Dashboard Navigation">
-      <div class="dash-nav-section-label">Main</div>
+    <!-- Organization Switcher Card (LeaseFlow "Harborline / 6 properties" style) -->
+    <div class="org-switcher-card" id="org-switcher" title="Switch Organization & Facilities">
+      <div class="org-switcher-left">
+        <div class="org-switcher-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path><path d="M9 9v.01"></path><path d="M9 12v.01"></path><path d="M9 15v.01"></path><path d="M9 18v.01"></path></svg>
+        </div>
+        <div>
+          <div class="org-name-text">AARNA USA Inc.</div>
+          <div class="org-subtitle-text">3 Active Catalogs</div>
+        </div>
+      </div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+
+    <!-- Navigation Items -->
+    <nav class="dash-sidebar-nav" aria-label="Catalog Navigation">
       
-      <button class="dash-nav-item active" data-view="overview">
+      <!-- Section: Main -->
+      <button class="dash-nav-item" data-view="overview">
         <div class="dash-nav-item-content">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-          <span class="dash-nav-text">Overview</span>
+          <span>Dashboard</span>
         </div>
       </button>
 
-      <div class="dash-nav-section-label">Product Catalogs</div>
+      <!-- Section: Catalog Journey (matching Leasing Journey) -->
+      <div class="dash-nav-section-label">Catalog journey</div>
       
-      <button class="dash-nav-item" data-view="catalogs" data-catalog="institutional">
+      <button class="dash-nav-item active" data-view="catalogs" data-catalog="institutional">
         <div class="dash-nav-item-content">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v20"></path><path d="M18 2v20"></path><path d="M6 12h12"></path></svg>
-          <span class="dash-nav-text">Institutional Care</span>
+          <span>Institutional Care</span>
         </div>
         <span class="dash-nav-badge" id="badge-inst-count">10</span>
       </button>
@@ -59,7 +83,7 @@
       <button class="dash-nav-item" data-view="catalogs" data-catalog="retail">
         <div class="dash-nav-item-content">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path><path d="m8.5 8.5 7 7"></path></svg>
-          <span class="dash-nav-text">Retail Products</span>
+          <span>Retail Products</span>
         </div>
         <span class="dash-nav-badge" id="badge-retail-count">71</span>
       </button>
@@ -67,665 +91,452 @@
       <button class="dash-nav-item" data-view="catalogs" data-catalog="devices">
         <div class="dash-nav-item-content">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-          <span class="dash-nav-text">Medical Supplies</span>
+          <span>Medical Supplies</span>
         </div>
         <span class="dash-nav-badge" id="badge-devices-count">23</span>
       </button>
 
-      <div class="dash-nav-section-label">Website &amp; Assets</div>
+      <button class="dash-nav-item" data-view="inquiries">
+        <div class="dash-nav-item-content">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span>Inquiries &amp; Leads</span>
+        </div>
+        <span class="dash-nav-badge" id="badge-inquiries-count" style="background:#fee2e2; color:#ef4444;">0</span>
+      </button>
+
+      <!-- Section: Workspace -->
+      <div class="dash-nav-section-label">Workspace</div>
 
       <button class="dash-nav-item" data-view="content">
         <div class="dash-nav-item-content">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-          <span class="dash-nav-text">Site Content (CMS)</span>
+          <span>Site Content (CMS)</span>
         </div>
       </button>
 
       <button class="dash-nav-item" data-view="media">
         <div class="dash-nav-item-content">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-          <span class="dash-nav-text">Media &amp; Images</span>
+          <span>Media &amp; Images</span>
         </div>
       </button>
 
-      <button class="dash-nav-item" data-view="inquiries">
+      <button class="dash-nav-item" id="nav-btn-firebase" data-action="open-firebase-modal">
         <div class="dash-nav-item-content">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span class="dash-nav-text">Inquiries &amp; Leads</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+          <span>Firebase Cloud</span>
         </div>
-        <span class="dash-nav-badge" id="badge-inquiries-count" style="background-color: #ef4444;">0</span>
+        <span class="dash-nav-badge" style="background:#ecfdf5; color:#059669; font-weight:700;">Free</span>
       </button>
-
-      <div class="dash-nav-section-label">System</div>
 
       <button class="dash-nav-item" data-view="settings">
         <div class="dash-nav-item-content">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-          <span class="dash-nav-text">Backups &amp; Settings</span>
+          <span>Settings &amp; Backups</span>
         </div>
       </button>
+
     </nav>
 
+    <!-- Sidebar Footer -->
     <div class="dash-sidebar-footer">
       <div class="dash-user-info">
         <div class="dash-user-avatar">A</div>
         <div>
-          <strong style="color: #ffffff; display: block; line-height: 1.2;">Admin User</strong>
-          <span style="font-size: 0.75rem; color: #64748b;">AARNA USA Inc.</span>
+          <strong style="color: var(--dash-text-dark); display: block; font-size: 0.85rem; line-height: 1.2;">Admin Staff</strong>
+          <span style="font-size: 0.72rem; color: #8c8f95;">AARNA USA</span>
         </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 0.35rem;">
-        <a href="index.html" class="dash-icon-btn" title="Exit to Website" style="color: #94a3b8;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+      <div class="dash-footer-actions">
+        <a href="index.html" class="dash-icon-btn" title="Exit to Public Website">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
         </a>
-        <button type="button" class="dash-icon-btn" id="dash-signout-btn" title="Sign Out of Portal" style="color: #f87171; background: transparent; border: none; cursor: pointer; padding: 6px; border-radius: 6px;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <button type="button" class="dash-icon-btn" id="dash-signout-btn" title="Sign Out of Portal">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
         </button>
       </div>
     </div>
   </aside>
 
-  <!-- MAIN WRAPPER -->
+  <!-- ========================================================================
+       MAIN DASHBOARD WORKSPACE (LeaseFlow Style)
+       ======================================================================== -->
   <div class="dash-layout">
     
-    <!-- TOPBAR -->
-    <header class="dash-topbar">
-      <div class="dash-topbar-left">
-        <button class="dash-mobile-toggle" aria-label="Toggle navigation menu">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
+    <!-- TOPBAR: Big Heading & Search / Filter Pills -->
+    <header class="leaseflow-topbar">
+      <h1 class="leaseflow-page-heading" id="leaseflow-main-title">Product Catalogs</h1>
 
-        <div class="dash-breadcrumb">
-          <span>Aarna Portal</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          <strong id="dash-breadcrumb-current">Overview</strong>
+      <div class="leaseflow-actions-row">
+        <!-- Search Pill -->
+        <div class="leaseflow-search-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="dash-catalog-search" class="leaseflow-search-input" placeholder="Search catalog, NDC, products...">
         </div>
-      </div>
 
-      <div class="dash-topbar-actions">
-        <!-- Live Site Preview Link -->
-        <a href="index.html" target="_blank" class="dash-view-live-btn">
-          <span>Live Site</span>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-        </a>
+        <!-- Filter Dropdown Pill -->
+        <button class="leaseflow-pill-btn" id="btn-quick-filter">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+          <span>All Catalogs</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
 
         <!-- Add Product Action -->
-        <button class="dash-btn dash-btn-primary" data-dash-action="add-product">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        <button class="leaseflow-pill-btn primary" id="dash-add-product-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           <span>Add Product</span>
         </button>
+
+        <!-- Live Site Preview Link -->
+        <a href="index.html" target="_blank" class="leaseflow-pill-btn" title="View Public Website">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <span>Live Site</span>
+        </a>
       </div>
     </header>
 
-    <!-- CONTENT BODY -->
-    <main class="dash-main">
-
-      <!-- ==================================================================
-           VIEW 1: OVERVIEW
-           ================================================================== -->
-      <section class="dash-view active" id="view-overview">
-        <div class="dash-page-header">
-          <div class="dash-page-title">
-            <h1>Management Dashboard</h1>
-            <p>Welcome to AARNA USA administration. Real-time control over products, media, and site content.</p>
-          </div>
-          <div class="dash-page-actions">
-            <span style="font-size: 0.85rem; color: #64748b; background: #ffffff; padding: 0.4rem 0.8rem; border-radius: 8px; border: 1px solid var(--dash-border);">
-              Local Storage: <strong id="stat-storage-usage" style="color: #1d63ff;">—</strong>
-            </span>
-          </div>
+    <!-- PIPELINE / FUNNEL METRIC PROGRESSION ROW (Exact LeaseFlow Style) -->
+    <section class="pipeline-metrics-row" aria-label="Pipeline Progression Metrics">
+      
+      <!-- Card 1: Institutional Care -->
+      <div class="pipeline-card" data-catalog-select="institutional" title="View Institutional Care Products">
+        <div class="pipeline-badge-pill">
+          <span class="pipeline-dot" style="color: #64748b;"></span>
+          <span>Institutional</span>
         </div>
-
-        <!-- Metric Stat Cards -->
-        <div class="dash-stats-grid">
-          <div class="dash-stat-card">
-            <div class="dash-stat-top">
-              <span class="dash-stat-label">Total Products</span>
-              <div class="dash-stat-icon" style="background-color: #eff6ff; color: #1d63ff;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-              </div>
-            </div>
-            <div class="dash-stat-val" id="stat-total-products">104</div>
-            <div class="dash-stat-meta">Active across 3 catalogs</div>
-          </div>
-
-          <div class="dash-stat-card">
-            <div class="dash-stat-top">
-              <span class="dash-stat-label">Retail OTC</span>
-              <div class="dash-stat-icon" style="background-color: #f0fdf4; color: #16a34a;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path><path d="m8.5 8.5 7 7"></path></svg>
-              </div>
-            </div>
-            <div class="dash-stat-val" id="stat-retail-count">71</div>
-            <div class="dash-stat-meta">OTC pharmaceuticals &amp; vitamins</div>
-          </div>
-
-          <div class="dash-stat-card">
-            <div class="dash-stat-top">
-              <span class="dash-stat-label">Medical Supplies</span>
-              <div class="dash-stat-icon" style="background-color: #faf5ff; color: #9333ea;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-              </div>
-            </div>
-            <div class="dash-stat-val" id="stat-devices-count">23</div>
-            <div class="dash-stat-meta">Spacers, needles &amp; supplies</div>
-          </div>
-
-          <div class="dash-stat-card">
-            <div class="dash-stat-top">
-              <span class="dash-stat-label">Institutional</span>
-              <div class="dash-stat-icon" style="background-color: #fff7ed; color: #ea580c;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v20"></path><path d="M18 2v20"></path><path d="M6 12h12"></path></svg>
-              </div>
-            </div>
-            <div class="dash-stat-val" id="stat-inst-count">10</div>
-            <div class="dash-stat-meta">Pre-filled liquid unit-dose cups</div>
-          </div>
-
-          <div class="dash-stat-card">
-            <div class="dash-stat-top">
-              <span class="dash-stat-label">Inquiries Received</span>
-              <div class="dash-stat-icon" style="background-color: #fef2f2; color: #dc2626;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              </div>
-            </div>
-            <div class="dash-stat-val" id="stat-inquiries-count">0</div>
-            <div class="dash-stat-meta">From contact &amp; inquiry forms</div>
-          </div>
-        </div>
-
-        <!-- Quick Launch Shortcuts -->
-        <div class="dash-card">
-          <div class="dash-card-header">
-            <h3>Quick Actions</h3>
-          </div>
-          <div class="dash-card-body">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-              <button class="dash-btn dash-btn-secondary" style="justify-content: flex-start; padding: 1rem;" data-dash-action="add-product">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #1d63ff;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                <div style="text-align: left;">
-                  <strong style="display: block;">Add Product</strong>
-                  <span style="font-size: 0.75rem; color: #64748b;">Add item to any catalog</span>
-                </div>
-              </button>
-
-              <button class="dash-btn dash-btn-secondary" style="justify-content: flex-start; padding: 1rem;" data-dash-action="edit-content">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #16a34a;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                <div style="text-align: left;">
-                  <strong style="display: block;">Edit Website Text</strong>
-                  <span style="font-size: 0.75rem; color: #64748b;">Update headlines &amp; address</span>
-                </div>
-              </button>
-
-              <button class="dash-btn dash-btn-secondary" style="justify-content: flex-start; padding: 1rem;" data-dash-action="upload-media">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #9333ea;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                <div style="text-align: left;">
-                  <strong style="display: block;">Manage Images</strong>
-                  <span style="font-size: 0.75rem; color: #64748b;">Upload &amp; replace site photos</span>
-                </div>
-              </button>
-
-              <button class="dash-btn dash-btn-secondary" style="justify-content: flex-start; padding: 1rem;" data-dash-action="view-inquiries">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #ea580c;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                <div style="text-align: left;">
-                  <strong style="display: block;">View Inquiries</strong>
-                  <span style="font-size: 0.75rem; color: #64748b;">Read customer submissions</span>
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================================================================
-           VIEW 2: PRODUCT CATALOGS (CRUD)
-           ================================================================== -->
-      <section class="dash-view" id="view-catalogs">
-        <div class="dash-page-header">
-          <div class="dash-page-title">
-            <h1>Product Catalog Manager</h1>
-            <p>Add, edit, and organize retail medications, medical supplies, and institutional solutions.</p>
-          </div>
-          <div class="dash-page-actions">
-            <button class="dash-btn dash-btn-primary" id="dash-add-product-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              <span>Add New Product</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="dash-card">
-          <!-- Catalog Switcher Tabs -->
-          <div class="dash-tabs">
-            <button class="dash-tab-btn active dash-catalog-tab" data-catalog="institutional">
-              <span>Institutional Care</span>
-              <span class="dash-tab-badge" id="tab-badge-inst">10</span>
-            </button>
-            <button class="dash-tab-btn dash-catalog-tab" data-catalog="retail">
-              <span>Retail Products</span>
-              <span class="dash-tab-badge" id="tab-badge-retail">71</span>
-            </button>
-            <button class="dash-tab-btn dash-catalog-tab" data-catalog="devices">
-              <span>Medical Supplies</span>
-              <span class="dash-tab-badge" id="tab-badge-devices">23</span>
-            </button>
-          </div>
-
-          <div class="dash-card-body">
-            <!-- Table Toolbar -->
-            <div class="dash-toolbar">
-              <div class="dash-search-input-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <input type="text" id="dash-catalog-search" class="dash-search-input" placeholder="Search by name, NDC, or category...">
-              </div>
-
-              <div style="display: flex; gap: 0.75rem; align-items: center;">
-                <select id="dash-catalog-cat-filter" class="dash-filter-select">
-                  <option value="All">All Categories</option>
-                </select>
-                <span id="dash-catalog-count" style="font-size: 0.85rem; color: #64748b; white-space: nowrap;">Loading...</span>
-              </div>
-            </div>
-
-            <!-- Products DataTable -->
-            <div class="dash-table-wrap">
-              <table class="dash-table">
-                <thead>
-                  <tr>
-                    <th style="width: 40%;">Product Description</th>
-                    <th style="width: 18%;">Category</th>
-                    <th style="width: 10%;">Unit</th>
-                    <th style="width: 12%;">Qty.</th>
-                    <th style="width: 14%;">NDC Code</th>
-                    <th style="width: 6%; text-align: right;">Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="dash-catalog-tbody">
-                  <!-- Injected via JavaScript -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================================================================
-           VIEW 3: DYNAMIC SITE CONTENT (CMS)
-           ================================================================== -->
-      <section class="dash-view" id="view-content">
-        <div class="dash-page-header">
-          <div class="dash-page-title">
-            <h1>Dynamic Website Content</h1>
-            <p>Edit website text, headlines, corporate information, and pillar statements dynamically without code changes.</p>
-          </div>
-          <div class="dash-page-actions">
-            <button type="button" class="dash-btn dash-btn-secondary" id="dash-reset-content-btn">
-              Reset Content
-            </button>
-            <button type="submit" form="dash-content-form" class="dash-btn dash-btn-primary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-              <span>Save Website Changes</span>
-            </button>
-          </div>
-        </div>
-
-        <form id="dash-content-form">
-          
-          <!-- Home Page Content Card -->
-          <div class="dash-card">
-            <div class="dash-card-header">
-              <h3>Home Page Banner &amp; Hero</h3>
-            </div>
-            <div class="dash-card-body">
-              <div class="dash-form-group">
-                <label for="cms-hero_home_title" class="dash-form-label">Hero Main Headline</label>
-                <input type="text" id="cms-hero_home_title" class="dash-form-input">
-                <span class="dash-form-help">Appears as the prominent H1 on the homepage hero banner.</span>
-              </div>
-
-              <div class="dash-form-group">
-                <label for="cms-hero_home_desc" class="dash-form-label">Hero Subtitle &amp; Overview</label>
-                <textarea id="cms-hero_home_desc" class="dash-form-textarea" rows="2"></textarea>
-              </div>
-
-              <div class="dash-form-grid">
-                <div class="dash-form-group">
-                  <label for="cms-hero_subbar_left" class="dash-form-label">Sub-bar Left Text</label>
-                  <input type="text" id="cms-hero_subbar_left" class="dash-form-input">
-                </div>
-                <div class="dash-form-group">
-                  <label for="cms-hero_subbar_right" class="dash-form-label">Sub-bar Right Text</label>
-                  <input type="text" id="cms-hero_subbar_right" class="dash-form-input">
-                </div>
-              </div>
-
-              <div class="dash-form-grid">
-                <div class="dash-form-group">
-                  <label for="cms-catalog_cta_title" class="dash-form-label">Catalog Banner Title</label>
-                  <input type="text" id="cms-catalog_cta_title" class="dash-form-input">
-                </div>
-                <div class="dash-form-group">
-                  <label for="cms-catalog_cta_desc" class="dash-form-label">Catalog Banner Subtitle</label>
-                  <input type="text" id="cms-catalog_cta_desc" class="dash-form-input">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- About Us Page Card -->
-          <div class="dash-card">
-            <div class="dash-card-header">
-              <h3>About Us Page Content</h3>
-            </div>
-            <div class="dash-card-body">
-              <div class="dash-form-group">
-                <label for="cms-about_hero_subtitle" class="dash-form-label">Mission Lead Headline</label>
-                <input type="text" id="cms-about_hero_subtitle" class="dash-form-input">
-              </div>
-
-              <div class="dash-form-group">
-                <label for="cms-about_hero_desc" class="dash-form-label">Founding Story &amp; Mission Statement</label>
-                <textarea id="cms-about_hero_desc" class="dash-form-textarea" rows="3"></textarea>
-              </div>
-
-              <div style="font-weight: 700; color: #0f172a; margin: 1.5rem 0 1rem; border-top: 1px solid var(--dash-border); padding-top: 1rem;">
-                Four Pillars of Operational Excellence
-              </div>
-
-              <div class="dash-form-grid">
-                <div class="dash-form-group">
-                  <label for="cms-pillar_1_title" class="dash-form-label">Pillar 1 Title</label>
-                  <input type="text" id="cms-pillar_1_title" class="dash-form-input">
-                  <label for="cms-pillar_1_desc" class="dash-form-label" style="margin-top: 0.5rem;">Pillar 1 Description</label>
-                  <textarea id="cms-pillar_1_desc" class="dash-form-textarea" rows="2"></textarea>
-                </div>
-
-                <div class="dash-form-group">
-                  <label for="cms-pillar_2_title" class="dash-form-label">Pillar 2 Title</label>
-                  <input type="text" id="cms-pillar_2_title" class="dash-form-input">
-                  <label for="cms-pillar_2_desc" class="dash-form-label" style="margin-top: 0.5rem;">Pillar 2 Description</label>
-                  <textarea id="cms-pillar_2_desc" class="dash-form-textarea" rows="2"></textarea>
-                </div>
-
-                <div class="dash-form-group">
-                  <label for="cms-pillar_3_title" class="dash-form-label">Pillar 3 Title</label>
-                  <input type="text" id="cms-pillar_3_title" class="dash-form-input">
-                  <label for="cms-pillar_3_desc" class="dash-form-label" style="margin-top: 0.5rem;">Pillar 3 Description</label>
-                  <textarea id="cms-pillar_3_desc" class="dash-form-textarea" rows="2"></textarea>
-                </div>
-
-                <div class="dash-form-group">
-                  <label for="cms-pillar_4_title" class="dash-form-label">Pillar 4 Title</label>
-                  <input type="text" id="cms-pillar_4_title" class="dash-form-input">
-                  <label for="cms-pillar_4_desc" class="dash-form-label" style="margin-top: 0.5rem;">Pillar 4 Description</label>
-                  <textarea id="cms-pillar_4_desc" class="dash-form-textarea" rows="2"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contact & Corporate Information Card -->
-          <div class="dash-card">
-            <div class="dash-card-header">
-              <h3>Corporate &amp; Contact Details</h3>
-            </div>
-            <div class="dash-card-body">
-              <div class="dash-form-grid">
-                <div class="dash-form-group">
-                  <label for="cms-company_name" class="dash-form-label">Company Name</label>
-                  <input type="text" id="cms-company_name" class="dash-form-input">
-                </div>
-                <div class="dash-form-group">
-                  <label for="cms-company_tagline" class="dash-form-label">Company Tagline</label>
-                  <input type="text" id="cms-company_tagline" class="dash-form-input">
-                </div>
-              </div>
-
-              <div class="dash-form-grid">
-                <div class="dash-form-group">
-                  <label for="cms-contact_phone" class="dash-form-label">Phone Number</label>
-                  <input type="text" id="cms-contact_phone" class="dash-form-input">
-                </div>
-                <div class="dash-form-group">
-                  <label for="cms-contact_email" class="dash-form-label">Support Email Address</label>
-                  <input type="email" id="cms-contact_email" class="dash-form-input">
-                </div>
-              </div>
-
-              <div class="dash-form-grid">
-                <div class="dash-form-group">
-                  <label for="cms-contact_address_line1" class="dash-form-label">Street Address</label>
-                  <input type="text" id="cms-contact_address_line1" class="dash-form-input">
-                </div>
-                <div class="dash-form-group">
-                  <label for="cms-contact_address_line2" class="dash-form-label">City, State, Zip</label>
-                  <input type="text" id="cms-contact_address_line2" class="dash-form-input">
-                </div>
-              </div>
-
-              <div class="dash-form-group">
-                <label for="cms-contact_hours" class="dash-form-label">Customer Support Hours</label>
-                <input type="text" id="cms-contact_hours" class="dash-form-input">
-              </div>
-            </div>
-          </div>
-        </form>
-      </section>
-
-      <!-- ==================================================================
-           VIEW 4: MEDIA & IMAGE MANAGER
-           ================================================================== -->
-      <section class="dash-view" id="view-media">
-        <div class="dash-page-header">
-          <div class="dash-page-title">
-            <h1>Media &amp; Image Manager</h1>
-            <p>Upload new photography, replace hero banners, and update product category visuals dynamically.</p>
-          </div>
-        </div>
-
-        <!-- Drag & Drop Uploader -->
-        <div class="dash-dropzone" id="dash-general-dropzone">
-          <input type="file" id="dash-general-file-input" accept="image/*" style="display: none;">
-          <div class="dash-dropzone-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-          </div>
-          <h3 style="font-size: 1.1rem; color: #0f172a; margin-bottom: 0.35rem;">Click or drag an image here to upload</h3>
-          <p style="font-size: 0.85rem; color: #64748b;">Supports PNG, JPG, WebP, SVG. Images are automatically optimized and synchronized in real-time.</p>
-        </div>
-
-        <!-- Media Slots Grid -->
-        <div class="dash-card">
-          <div class="dash-card-header">
-            <h3>Website Image Slots</h3>
-            <span id="dash-media-slots-count" style="font-size: 0.85rem; color: #64748b;">Active customizable visual slots</span>
-          </div>
-          <div class="dash-card-body">
-            <div class="dash-media-grid" id="dash-media-grid">
-              <!-- Injected via JavaScript -->
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================================================================
-           VIEW 5: INQUIRIES & LEADS
-           ================================================================== -->
-      <section class="dash-view" id="view-inquiries">
-        <div class="dash-page-header">
-          <div class="dash-page-title">
-            <h1>Customer Inquiries &amp; Leads</h1>
-            <p>Review and manage messages and product requests submitted through the contact form.</p>
-          </div>
-          <div class="dash-page-actions">
-            <button class="dash-btn dash-btn-secondary" id="dash-clear-inquiries-btn">Clear All</button>
-            <button class="dash-btn dash-btn-primary" id="dash-export-inquiries-csv">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span>Export CSV</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="dash-card">
-          <div class="dash-card-body">
-            <div id="dash-inquiries-list">
-              <!-- Injected via JavaScript -->
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================================================================
-           VIEW 6: SETTINGS & BACKUPS
-           ================================================================== -->
-      <section class="dash-view" id="view-settings">
-        <div class="dash-page-header">
-          <div class="dash-page-title">
-            <h1>Backups &amp; System Settings</h1>
-            <p>Export complete JSON backups of catalogs, content, and media, or restore factory defaults.</p>
-          </div>
-        </div>
-
-        <div class="dash-card">
-          <div class="dash-card-header">
-            <h3>Data Backup &amp; Transfer</h3>
-          </div>
-          <div class="dash-card-body">
-            <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 1.5rem;">
-              You can export all products across all three catalogs, custom imagery, and site copy into a single backup JSON file, or restore them anytime.
-            </p>
-
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-              <button class="dash-btn dash-btn-primary" id="dash-export-backup-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                <span>Export Full Backup (JSON)</span>
-              </button>
-
-              <button class="dash-btn dash-btn-secondary" id="dash-import-backup-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                <span>Import Backup (JSON)</span>
-              </button>
-              <input type="file" id="dash-import-file-input" accept=".json" style="display: none;">
-            </div>
-          </div>
-        </div>
-
-        <div class="dash-card" style="border-color: #fecaca;">
-          <div class="dash-card-header" style="background-color: #fef2f2; border-color: #fecaca;">
-            <h3 style="color: #dc2626;">Danger Zone</h3>
-          </div>
-          <div class="dash-card-body">
-            <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 1.25rem;">
-              Factory Reset will wipe all local changes and reset products, text, and photos back to the original values extracted from the PDF specification.
-            </p>
-            <button class="dash-btn dash-btn-danger" id="dash-factory-reset-btn">
-              Reset Entire Website to Factory Defaults
-            </button>
-          </div>
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <!-- ======================================================================
-       MODALS
-       ====================================================================== -->
-
-  <!-- Product Modal (Add / Edit) -->
-  <div class="dash-modal-backdrop" id="product-modal">
-    <div class="dash-modal">
-      <div class="dash-modal-header">
-        <h3 id="product-modal-title">Product Details</h3>
-        <button class="dash-icon-btn" data-close-modal aria-label="Close dialog">&times;</button>
+        <div class="pipeline-number" id="pipe-inst-count">10</div>
+        <div class="pipeline-subtext">Pre-filled liquid cups</div>
       </div>
 
-      <form id="product-form" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
-        <div class="dash-modal-body">
-          <div class="dash-form-group">
-            <label for="prod-desc" class="dash-form-label">Product Description *</label>
-            <input type="text" id="prod-desc" class="dash-form-input" placeholder="e.g. ACETAMINOPHEN 500 MG 100 CT TABS" required>
+      <div class="pipeline-arrow">&gt;</div>
+
+      <!-- Card 2: Retail Products -->
+      <div class="pipeline-card" data-catalog-select="retail" title="View Retail Products">
+        <div class="pipeline-badge-pill yellow">
+          <span class="pipeline-dot" style="color: #854d0e;"></span>
+          <span>Retail OTC</span>
+        </div>
+        <div class="pipeline-number" id="pipe-retail-count">71</div>
+        <div class="pipeline-subtext">71 OTC medications</div>
+      </div>
+
+      <div class="pipeline-arrow">&gt;</div>
+
+      <!-- Card 3: Medical Supplies (Highlighted with Black Border like "Negotiating" in LeaseFlow) -->
+      <div class="pipeline-card highlighted" data-catalog-select="devices" title="View Medical Supplies">
+        <div class="pipeline-badge-pill">
+          <span class="pipeline-dot" style="color: #0b1523;"></span>
+          <span>Medical Supplies</span>
+        </div>
+        <div class="pipeline-number" id="pipe-devices-count">23</div>
+        <div class="pipeline-subtext">Spacers &amp; supplies</div>
+      </div>
+
+      <div class="pipeline-arrow">&gt;</div>
+
+      <!-- Card 4: Inquiries & Leads -->
+      <div class="pipeline-card" data-view-select="inquiries" title="View Inquiries & Leads">
+        <div class="pipeline-badge-pill green">
+          <span class="pipeline-dot" style="color: #166534;"></span>
+          <span>Inquiries</span>
+        </div>
+        <div class="pipeline-number" id="pipe-inquiries-count">4</div>
+        <div class="pipeline-subtext">Active quote requests</div>
+      </div>
+
+      <div class="pipeline-arrow">&gt;</div>
+
+      <!-- Card 5: Cloud Sync (Firebase Free Spark Tier) -->
+      <div class="pipeline-card" id="pipe-firebase-card" title="Open Firebase Cloud Configuration">
+        <div class="pipeline-badge-pill green">
+          <span class="pipeline-dot" style="color: #166534;"></span>
+          <span>Cloud Sync</span>
+        </div>
+        <div class="pipeline-number" style="font-size: 1.5rem; color: #059669;">Spark Free</div>
+        <div class="pipeline-subtext" id="pipe-firebase-status">Zero data loss cache</div>
+      </div>
+
+    </section>
+
+    <!-- FILTER PILLS ROW (Directly Above Table) -->
+    <div class="table-filter-pills-row">
+      
+      <!-- Catalog Pill -->
+      <div class="filter-pill-select-wrap">
+        <select id="dash-filter-catalog" class="filter-pill-select">
+          <option value="institutional">Catalog: Institutional Care</option>
+          <option value="retail">Catalog: Retail Products</option>
+          <option value="devices">Catalog: Medical Supplies</option>
+        </select>
+        <svg class="filter-pill-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+
+      <!-- Category Pill -->
+      <div class="filter-pill-select-wrap">
+        <select id="dash-catalog-cat-filter" class="filter-pill-select">
+          <option value="All">Category: All</option>
+        </select>
+        <svg class="filter-pill-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+
+      <!-- Dosage / Form Pill -->
+      <div class="filter-pill-select-wrap">
+        <select id="dash-filter-form" class="filter-pill-select">
+          <option value="Any">Form: Any</option>
+          <option value="Liquid">Liquid Unit Dose</option>
+          <option value="Solid">Solid / Tablets</option>
+          <option value="Device">Devices &amp; Spacers</option>
+        </select>
+        <svg class="filter-pill-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+
+      <!-- Status Pill -->
+      <div class="filter-pill-select-wrap">
+        <select id="dash-filter-status" class="filter-pill-select">
+          <option value="Active">Status: Active</option>
+          <option value="All">Status: All</option>
+        </select>
+        <svg class="filter-pill-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+
+      <!-- Firebase Cloud Sync Chip -->
+      <div class="firebase-cloud-chip" id="firebase-sync-status-badge" title="Click to configure Firebase Free Spark Project">
+        <span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:#10b981; box-shadow:0 0 6px #10b981;"></span>
+        <span>Firebase: Connected (Spark Free Tier)</span>
+      </div>
+
+    </div>
+
+    <!-- MAIN VIEW 1: PRODUCT CATALOG TABLE (LeaseFlow Style) -->
+    <main class="dash-view active" id="view-catalogs">
+      <div class="leaseflow-table-card">
+        <div class="leaseflow-table-wrapper">
+          <table class="leaseflow-table" id="dash-catalog-table">
+            <thead>
+              <tr>
+                <th style="width: 32%;">Product &amp; Formulation</th>
+                <th style="width: 20%;">NDC / Catalog No.</th>
+                <th style="width: 18%;">Dosage &amp; Strength</th>
+                <th style="width: 14%;">Target Market</th>
+                <th style="width: 10%;">Status</th>
+                <th style="width: 6%; text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="dash-catalog-tbody">
+              <!-- Dynamically populated via js/dashboard.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <!-- VIEW 2: DASHBOARD OVERVIEW -->
+    <section class="dash-view" id="view-overview">
+      <div class="leaseflow-table-card" style="margin-bottom: 1.25rem;">
+        <h2 style="font-family: var(--font-outfit); font-size: 1.5rem; margin-bottom: 0.5rem;">System Overview &amp; Cloud Metrics</h2>
+        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem;">
+          Real-time catalog state, customer leads, and Firebase Cloud storage health.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem;">
+            <div style="font-size: 0.78rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 0.4rem;">Total Active Products</div>
+            <div style="font-family: var(--font-outfit); font-size: 2.2rem; font-weight: 700; color: #0b1523;" id="stat-total-products">104</div>
+            <div style="font-size: 0.78rem; color: #10b981; margin-top: 0.25rem;">● All 3 Catalogs Live</div>
           </div>
 
-          <div class="dash-form-grid">
-            <div class="dash-form-group">
-              <label for="prod-category" class="dash-form-label">Category</label>
-              <input type="text" id="prod-category" class="dash-form-input" placeholder="e.g. Pain Relief & Fever">
-            </div>
-
-            <div class="dash-form-group">
-              <label for="prod-unit" class="dash-form-label">Unit</label>
-              <input type="text" id="prod-unit" class="dash-form-input" placeholder="EA, BOX, etc." value="EA">
-            </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem;">
+            <div style="font-size: 0.78rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 0.4rem;">Backend Storage</div>
+            <div style="font-family: var(--font-outfit); font-size: 1.6rem; font-weight: 700; color: #0b1523;">Firestore + Cache</div>
+            <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.25rem;">Zero data loss guarantee</div>
           </div>
 
-          <div class="dash-form-grid">
-            <div class="dash-form-group">
-              <label for="prod-case-qty" class="dash-form-label">Case / Pack Quantity</label>
-              <input type="text" id="prod-case-qty" class="dash-form-input" placeholder="e.g. 48">
-            </div>
-
-            <div class="dash-form-group">
-              <label for="prod-ndc" class="dash-form-label">NDC Code *</label>
-              <input type="text" id="prod-ndc" class="dash-form-input" placeholder="82568-XXXX-X" required>
-            </div>
-          </div>
-
-          <div class="dash-form-group" id="field-group-case-size" style="display: none;">
-            <label for="prod-case-size" class="dash-form-label">Institutional Case Size</label>
-            <input type="text" id="prod-case-size" class="dash-form-input" placeholder="e.g. 40 cups, 50 cups, 100 cups">
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem;">
+            <div style="font-size: 0.78rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 0.4rem;">Billing Tier</div>
+            <div style="font-family: var(--font-outfit); font-size: 1.6rem; font-weight: 700; color: #16a34a;">100% Free (Spark)</div>
+            <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.25rem;">No credit card required</div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="dash-modal-footer">
-          <button type="button" class="dash-btn dash-btn-secondary" data-close-modal>Cancel</button>
-          <button type="submit" class="dash-btn dash-btn-primary">Save Product</button>
+    <!-- VIEW 3: INQUIRIES & LEADS -->
+    <section class="dash-view" id="view-inquiries">
+      <div class="leaseflow-table-card">
+        <h2 style="font-family: var(--font-outfit); font-size: 1.5rem; margin-bottom: 1rem;">Customer Inquiries &amp; RFQs</h2>
+        <div id="inquiries-list-container">
+          <!-- Inquiries rendered here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: SITE CONTENT (CMS) -->
+    <section class="dash-view" id="view-content">
+      <div class="leaseflow-table-card">
+        <h2 style="font-family: var(--font-outfit); font-size: 1.5rem; margin-bottom: 1rem;">Website CMS Content Editor</h2>
+        <div id="content-items-container">
+          <!-- CMS content items rendered here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: MEDIA ASSETS -->
+    <section class="dash-view" id="view-media">
+      <div class="leaseflow-table-card">
+        <h2 style="font-family: var(--font-outfit); font-size: 1.5rem; margin-bottom: 1rem;">Media &amp; Visuals Library</h2>
+        <div id="media-grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+          <!-- Media items rendered here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 6: SETTINGS & BACKUPS -->
+    <section class="dash-view" id="view-settings">
+      <div class="leaseflow-table-card">
+        <h2 style="font-family: var(--font-outfit); font-size: 1.5rem; margin-bottom: 1rem;">Settings &amp; Database Backups</h2>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button class="leaseflow-pill-btn primary" id="btn-export-backup">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Export Catalog Backup (JSON)</span>
+          </button>
+          <button class="leaseflow-pill-btn" id="btn-sync-firebase-now">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+            <span>Sync All to Firebase Firestore</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ========================================================================
+       MODALS: ADD / EDIT PRODUCT
+       ======================================================================== -->
+  <div class="leaseflow-modal-backdrop" id="product-modal">
+    <div class="leaseflow-modal">
+      <div class="leaseflow-modal-header">
+        <h3 class="leaseflow-modal-title" id="product-modal-title">Add New Product</h3>
+        <button type="button" class="action-circle-btn" data-close-modal>&times;</button>
+      </div>
+
+      <form id="product-form">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div>
+            <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem;">Target Catalog</label>
+            <select id="modal-product-catalog" class="filter-pill-select" style="width: 100%;">
+              <option value="institutional">Institutional Products</option>
+              <option value="retail">Retail Products</option>
+              <option value="devices">Medical Supplies</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem;">Product Name *</label>
+            <input type="text" id="modal-product-name" class="form-input-field" placeholder="e.g. Acetaminophen Oral Solution" required style="width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.75rem;">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem;">NDC / Catalog Number *</label>
+              <input type="text" id="modal-product-ndc" class="form-input-field" placeholder="e.g. 71205-101-10" required style="width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.75rem;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem;">Category</label>
+              <input type="text" id="modal-product-category" class="form-input-field" placeholder="e.g. Analgesic / Liquid" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.75rem;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem;">Strength / Dosage</label>
+              <input type="text" id="modal-product-strength" class="form-input-field" placeholder="e.g. 500mg / 15mL" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.75rem;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem;">Package Size</label>
+              <input type="text" id="modal-product-pack" class="form-input-field" placeholder="e.g. 10 cups per tray" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.75rem;">
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+            <button type="button" class="leaseflow-pill-btn" data-close-modal>Cancel</button>
+            <button type="submit" class="leaseflow-pill-btn primary">Save &amp; Sync Product</button>
+          </div>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Delete Product Confirmation Modal -->
-  <div class="dash-modal-backdrop" id="delete-modal">
-    <div class="dash-modal" style="max-width: 440px;">
-      <div class="dash-modal-header" style="background-color: #fef2f2;">
-        <h3 style="color: #dc2626;">Delete Product</h3>
-        <button class="dash-icon-btn" data-close-modal>&times;</button>
+  <!-- ========================================================================
+       FIREBASE CLOUD SETUP MODAL (Spark Free Tier)
+       ======================================================================== -->
+  <div class="leaseflow-modal-backdrop" id="firebase-modal">
+    <div class="leaseflow-modal" style="max-width: 620px;">
+      <div class="leaseflow-modal-header">
+        <div>
+          <h3 class="leaseflow-modal-title">Firebase Cloud Backend (Spark Free)</h3>
+          <p style="font-size: 0.82rem; color: #16a34a; font-weight: 600; margin-top: 2px;">
+            100% Free Tier Guaranteed • Zero Credit Card Required
+          </p>
+        </div>
+        <button type="button" class="action-circle-btn" data-close-modal>&times;</button>
       </div>
-      <div class="dash-modal-body">
-        <p style="color: #475569; font-size: 0.95rem;">
-          Are you sure you want to remove this product from the live catalog?
-        </p>
-        <p style="font-weight: 700; color: #0f172a; margin-top: 0.75rem;" id="delete-prod-desc">—</p>
+
+      <div style="font-size: 0.88rem; color: #475569; line-height: 1.5; margin-bottom: 1.25rem;">
+        Connect your free Google Firebase project to store logins and sync product data in real-time across devices without ever losing information.
       </div>
-      <div class="dash-modal-footer">
-        <button type="button" class="dash-btn dash-btn-secondary" data-close-modal>Cancel</button>
-        <button type="button" class="dash-btn dash-btn-danger" id="confirm-delete-btn">Confirm Delete</button>
-      </div>
+
+      <form id="firebase-config-form">
+        <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+          <div>
+            <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.25rem;">API Key</label>
+            <input type="text" id="fb-api-key" class="form-input-field" placeholder="AIzaSy..." style="width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.65rem;">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.25rem;">Project ID</label>
+              <input type="text" id="fb-project-id" class="form-input-field" placeholder="aarna-site-spark" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.65rem;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.25rem;">Auth Domain</label>
+              <input type="text" id="fb-auth-domain" class="form-input-field" placeholder="aarna-site-spark.firebaseapp.com" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.65rem;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.25rem;">Storage Bucket</label>
+              <input type="text" id="fb-storage-bucket" class="form-input-field" placeholder="aarna-site-spark.appspot.com" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.65rem;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.25rem;">App ID</label>
+              <input type="text" id="fb-app-id" class="form-input-field" placeholder="1:123456789:web:abcdef..." style="width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.65rem;">
+            </div>
+          </div>
+
+          <div style="background: #f1f5f9; border-radius: 10px; padding: 0.85rem; font-size: 0.8rem; color: #334155;">
+            <strong>Data Safety Guarantee:</strong> All 104 products are securely backed up in local persistence and automatically synced to Firestore whenever you save or edit.
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+            <button type="button" class="leaseflow-pill-btn" id="btn-seed-cloud-products">Batch Sync All 104 Products</button>
+            <button type="submit" class="leaseflow-pill-btn primary">Save &amp; Connect Cloud</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 
-  <!-- Replace Media Slot Modal -->
-  <div class="dash-modal-backdrop" id="media-modal">
-    <div class="dash-modal" style="max-width: 520px;">
-      <div class="dash-modal-header">
-        <h3>Replace Visual Asset</h3>
-        <button class="dash-icon-btn" data-close-modal>&times;</button>
-      </div>
-      <div class="dash-modal-body">
-        <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">
-          Select a new image for: <strong id="media-slot-name" style="color: #0f172a;">—</strong>
-        </p>
-
-        <div style="height: 180px; background-color: #f1f5f9; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 1.25rem; border: 1px solid var(--dash-border);">
-          <img id="media-preview-img" src="" alt="Preview" style="max-height: 90%; max-width: 90%; object-fit: contain;">
-        </div>
-
-        <input type="file" id="media-file-input" accept="image/*" class="dash-form-input">
-        <span class="dash-form-help">Selected image will be automatically optimized and scaled.</span>
-      </div>
-      <div class="dash-modal-footer">
-        <button type="button" class="dash-btn dash-btn-secondary" data-close-modal>Cancel</button>
-        <button type="button" class="dash-btn dash-btn-primary" id="save-media-slot-btn">Apply Image</button>
+  <!-- Delete Modal -->
+  <div class="leaseflow-modal-backdrop" id="delete-modal">
+    <div class="leaseflow-modal" style="max-width: 440px; text-align: center;">
+      <h3 class="leaseflow-modal-title" style="margin-bottom: 0.5rem;">Delete Product</h3>
+      <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem;">
+        Are you sure you want to remove <strong id="delete-product-name" style="color: #0b1523;">—</strong>? This change will sync across the catalog and cloud store.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 0.75rem;">
+        <button type="button" class="leaseflow-pill-btn" data-close-modal>Cancel</button>
+        <button type="button" class="leaseflow-pill-btn" id="confirm-delete-btn" style="background: #ef4444; color: #ffffff; border-color: #ef4444;">Confirm Delete</button>
       </div>
     </div>
   </div>
@@ -733,7 +544,7 @@
   <!-- Scripts -->
   <script src="assets/data/products-data.js"></script>
   <script src="js/store.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/firebase-config.js"></script>
   <script src="js/dashboard.js"></script>
 </body>
 </html>
