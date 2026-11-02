@@ -135,19 +135,30 @@
 
     // Authentication: Login with Email & Password
     login: async function (email, password) {
-      if (this.isConnected && this.auth) {
-        return this.auth.signInWithEmailAndPassword(email, password);
-      }
-      // Fallback local authentication
-      if ((email.toLowerCase() === 'admin@aarnaus.com' || email.toLowerCase() === 'admin') && password === 'aarna2026') {
+      // 1. Instant local authentication for Master Admin
+      if ((email.toLowerCase() === 'admin@aarnaus.com' || email.toLowerCase() === 'admin') && (password === 'aarna2026' || password === 'admin')) {
         sessionStorage.setItem('aarna_admin_auth', 'authenticated');
         sessionStorage.setItem('aarna_admin_user', JSON.stringify({
           email: email,
-          role: 'Administrator',
-          mode: 'Local Secure Cache'
+          role: 'Superadmin',
+          mode: 'Master Authorization'
         }));
-        return { user: { email: email, displayName: 'Admin User' } };
+        return { user: { email: email, displayName: 'Superadmin' } };
       }
+
+      // 2. Try Firebase Auth if configured and active
+      if (this.isConnected && this.auth) {
+        try {
+          return await this.auth.signInWithEmailAndPassword(email, password);
+        } catch (err) {
+          if (err.code === 'auth/configuration-not-found') {
+            console.warn('Firebase Email/Password auth not enabled in console.');
+          } else {
+            throw err;
+          }
+        }
+      }
+
       throw new Error('Invalid email or password.');
     },
 
