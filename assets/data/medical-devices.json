@@ -1,0 +1,186 @@
+[
+  {
+    "id": "dev-1",
+    "description": "ANTI-STATIC SPACE CHAMBERS ADULT 1CT",
+    "category": "Spacer Chambers",
+    "unit": "BOX",
+    "packQty": "1",
+    "ndc": "82568-0129-1"
+  },
+  {
+    "id": "dev-2",
+    "description": "ANTI-STATIC SPACE CHAMBERS CHILD 1CT",
+    "category": "Spacer Chambers",
+    "unit": "BOX",
+    "packQty": "1",
+    "ndc": "82568-0130-1"
+  },
+  {
+    "id": "dev-3",
+    "description": "ALCOHOL PREP PADS 100 CT",
+    "category": "Alcohol Prep Pads",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0116-1"
+  },
+  {
+    "id": "dev-4",
+    "description": "INSULIN PEN NEEDLES 31 G - 4MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0111-4"
+  },
+  {
+    "id": "dev-5",
+    "description": "INSULIN PEN NEEDLES 31 G - 5MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0111-5"
+  },
+  {
+    "id": "dev-6",
+    "description": "INSULIN PEN NEEDLES 31 G - 6MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0111-6"
+  },
+  {
+    "id": "dev-7",
+    "description": "INSULIN PEN NEEDLES 31 G - 8MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0111-8"
+  },
+  {
+    "id": "dev-8",
+    "description": "INSULIN PEN NEEDLES 32 G - 4MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0112-4"
+  },
+  {
+    "id": "dev-9",
+    "description": "INSULIN PEN NEEDLES 32 G - 5MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0112-5"
+  },
+  {
+    "id": "dev-10",
+    "description": "INSULIN PEN NEEDLES 32 G - 6MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0112-6"
+  },
+  {
+    "id": "dev-11",
+    "description": "INSULIN PEN NEEDLES 32 G - 8MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0112-8"
+  },
+  {
+    "id": "dev-12",
+    "description": "INSULIN PEN NEEDLES 33 G - 4MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0113-4"
+  },
+  {
+    "id": "dev-13",
+    "description": "INSULIN PEN NEEDLES 33 G - 5MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0113-5"
+  },
+  {
+    "id": "dev-14",
+    "description": "INSULIN PEN NEEDLES 33 G - 6MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0113-6"
+  },
+  {
+    "id": "dev-15",
+    "description": "INSULIN PEN NEEDLES 33 G - 8MM 100 CT",
+    "category": "Insulin Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0113-8"
+  },
+  {
+    "id": "dev-16",
+    "description": "TWIST LANCETS 31G 100 CT",
+    "category": "Lancets",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0117-1"
+  },
+  {
+    "id": "dev-17",
+    "description": "SAFETY LANCETS 28G 100 CT",
+    "category": "Lancets",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0118-1"
+  },
+  {
+    "id": "dev-18",
+    "description": "SAFETY LANCETS 30G 100 CT",
+    "category": "Lancets",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0119-1"
+  },
+  {
+    "id": "dev-19",
+    "description": "INSULIN SAFETY PEN NEEDLES 31 G - 4 MM",
+    "category": "Safety Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0114-4"
+  },
+  {
+    "id": "dev-20",
+    "description": "INSULIN SAFETY PEN NEEDLES 31 G - 5 MM",
+    "category": "Safety Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0114-5"
+  },
+  {
+    "id": "dev-21",
+    "description": "INSULIN SAFETY PEN NEEDLES 32 G - 4 MM",
+    "category": "Safety Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0115-4"
+  },
+  {
+    "id": "dev-22",
+    "description": "INSULIN SAFETY PEN NEEDLES 32 G - 5 MM",
+    "category": "Safety Pen Needles",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0115-5"
+  },
+  {
+    "id": "dev-23",
+    "description": "ADULT UNDERPADS 4X 25 PACK (100 PACK)",
+    "category": "Underpads",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0125-1"
+  }
+]

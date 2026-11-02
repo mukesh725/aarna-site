@@ -1,0 +1,92 @@
+[
+  {
+    "id": "inst-1",
+    "description": "TUSSIN DM SF (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG SYR 40X5ML UD PACK",
+    "category": "Cough & Chest Congestion",
+    "unit": "EA",
+    "packQty": "1",
+    "ndc": "82568-0015-1",
+    "caseSize": "40 cups"
+  },
+  {
+    "id": "inst-2",
+    "description": "TUSSIN DM SF (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG SYR 100X5ML UD PACK",
+    "category": "Cough & Chest Congestion",
+    "unit": "EA",
+    "packQty": "1",
+    "ndc": "82568-0015-2",
+    "caseSize": "100 cups"
+  },
+  {
+    "id": "inst-3",
+    "description": "TUSSIN SF (GUAIFENESIN) 100MG/5ML ORAL SOL 40X5ML UD PACK",
+    "category": "Cough & Chest Congestion",
+    "unit": "EA",
+    "packQty": "1",
+    "ndc": "82568-0012-1",
+    "caseSize": "40 cups"
+  },
+  {
+    "id": "inst-4",
+    "description": "TUSSIN SF (GUAIFENESIN) 100MG/5ML ORAL SOL 100X5ML UD PACK",
+    "category": "Cough & Chest Congestion",
+    "unit": "EA",
+    "packQty": "1",
+    "ndc": "82568-0012-2",
+    "caseSize": "100 cups"
+  },
+  {
+    "id": "inst-5",
+    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-50X5ML UD PACK",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "packQty": "1",
+    "ndc": "82568-0011-5",
+    "caseSize": "50 cups"
+  },
+  {
+    "id": "inst-6",
+    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-100X5ML UD PACK",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "packQty": "1",
+    "ndc": "82568-0011-1",
+    "caseSize": "100 cups"
+  },
+  {
+    "id": "inst-7",
+    "description": "DIPHENHYDRAMINE HCL 12.5MG/5ML ORAL SOLUTION 40X5 ML UD",
+    "category": "Allergy Relief",
+    "unit": "EA",
+    "packQty": "1",
+    "ndc": "82568-0016-1",
+    "caseSize": "40 cups"
+  },
+  {
+    "id": "inst-8",
+    "description": "DIPHENHYDRAMINE HCL 12.5MG/5ML ORAL SOLUTION 100X5 ML UD",
+    "category": "Allergy Relief",
+    "unit": "EA",
+    "packQty": "1",
+    "ndc": "82568-0016-2",
+    "caseSize": "100 cups"
+  },
+  {
+    "id": "inst-9",
+    "description": "SENNA NATURAL LAXATIVE 8.8 MG SYR 40X5 ML UD PACK",
+    "category": "Digestive Health",
+    "unit": "EA",
+    "packQty": "1",
+    "ndc": "82568-0024-1",
+    "caseSize": "40 cups"
+  },
+  {
+    "id": "inst-10",
+    "description": "MULTIVITAMIN/MULTIMINERAL ORAL LIQ 100X15ML UD",
+    "category": "Vitamins & Supplements",
+    "unit": "EA",
+    "packQty": "1",
+    "ndc": "82568-0146-2",
+    "caseSize": "72 cups"
+  }
+]

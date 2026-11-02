@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Supplies Catalog | AARNA USA</title>
+  <meta name="description" content="Explore AARNA USA's medical supplies catalog: anti-static spacer chambers, insulin pen needles, safety pen needles, lancets, alcohol prep pads, and underpads.">
+  <link rel="icon" type="image/png" href="assets/logos/aarna-logo-clean.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="AARNA USA Homepage">
+        <img src="assets/logos/aarna-logo-clean.png" alt="AARNA USA Logo" width="120" height="44">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <div class="nav-pill-group">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          
+          <div class="nav-dropdown-item">
+            <button class="nav-link nav-dropdown-trigger active" aria-haspopup="true" aria-expanded="false">
+              Products
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a href="retail-products.html" class="dropdown-link" role="menuitem">
+                <span class="dropdown-title">Retail Products</span>
+                <span class="dropdown-desc">71 OTC medications & treatments</span>
+              </a>
+              <a href="institutional-products.html" class="dropdown-link" role="menuitem">
+                <span class="dropdown-title">Institutional Products</span>
+                <span class="dropdown-desc">Pre-filled unit-dose liquid cups</span>
+              </a>
+              <a href="medical-devices.html" class="dropdown-link active" role="menuitem">
+                <span class="dropdown-title">Medical Supplies</span>
+                <span class="dropdown-desc">Spacers, needles, lancets & supplies</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+      </nav>
+
+      <!-- Header Action CTA Pill -->
+      <div class="header-action-group">
+        <a href="contact.html" class="btn-header-pill">
+          Inquire Now
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-content">
+      <a href="index.html" class="mobile-drawer-link">Home</a>
+      <a href="about.html" class="mobile-drawer-link">About</a>
+      
+      <div>
+        <span class="mobile-drawer-link" style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">Products Catalog</span>
+        <div class="mobile-submenu">
+          <a href="retail-products.html" class="mobile-drawer-link">Retail Products (71)</a>
+          <a href="institutional-products.html" class="mobile-drawer-link">Institutional Products (10)</a>
+          <a href="medical-devices.html" class="mobile-drawer-link active">Medical Supplies (23)</a>
+        </div>
+      </div>
+
+      <a href="contact.html" class="mobile-drawer-link">Contact</a>
+
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+        <button class="btn btn-primary trigger-catalog-download" style="width: 100%;">
+          Download Our Catalog
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero" aria-labelledby="devices-page-heading">
+      <div class="container page-hero-content">
+        <div class="badge-tag">Medical Supplies</div>
+        <h1 id="devices-page-heading">Practical Healthcare Solutions for Everyday Care</h1>
+        <p>Explore Aarna's range of medical supplies and healthcare supplies, including spacer chambers, insulin pen needles, lancets, preparation pads, and protective underpads.</p>
+
+        <!-- 3 Highlight Badges -->
+        <div class="page-highlights">
+          <div class="highlight-item">
+            <div class="highlight-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="highlight-text">
+              <h4>Quality Focused</h4>
+              <p>Healthcare products for everyday needs</p>
+            </div>
+          </div>
+
+          <div class="highlight-item">
+            <div class="highlight-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            </div>
+            <div class="highlight-text">
+              <h4>Practical Product Range</h4>
+              <p>Convenient packaging and product options</p>
+            </div>
+          </div>
+
+          <div class="highlight-item">
+            <div class="highlight-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </div>
+            <div class="highlight-text">
+              <h4>Customer Support</h4>
+              <p>Assistance with product inquiries</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOG CONTENT & TABLE -->
+    <section class="section-padding" style="padding-top: 3rem;" aria-labelledby="catalog-subheading">
+      <div class="container">
+        
+        <!-- Search and Filter Bar -->
+        <div class="catalog-toolbar-section">
+          <div style="margin-bottom: 1.25rem;">
+            <div class="badge-tag" style="margin-bottom: 0.35rem;">Medical Supplies Catalog</div>
+            <h2 id="catalog-subheading" style="font-size: 1.75rem; margin-bottom: 0.35rem;">Medical Supplies</h2>
+            <p style="font-size: 0.95rem; color: var(--color-text-muted);">
+              Browse our medical supplies and healthcare supplies by category, or search directly by product name, needle gauge, size, or NDC number.
+            </p>
+          </div>
+
+          <!-- Instant Search Box -->
+          <div class="catalog-search-wrapper">
+            <svg class="catalog-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" class="catalog-search-input" placeholder="Search products or NDC numbers..." aria-label="Search medical supplies">
+            <button class="catalog-search-clear" aria-label="Clear search query">&times;</button>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div class="filter-pills-list" role="tablist" aria-label="Filter medical supplies by category">
+            <button class="filter-pill active" data-category="All" role="tab" aria-selected="true">All Products</button>
+            <button class="filter-pill" data-category="Spacer Chambers" role="tab" aria-selected="false">Spacer Chambers</button>
+            <button class="filter-pill" data-category="Alcohol Prep Pads" role="tab" aria-selected="false">Alcohol Prep Pads</button>
+            <button class="filter-pill" data-category="Insulin Pen Needles" role="tab" aria-selected="false">Insulin Pen Needles</button>
+            <button class="filter-pill" data-category="Lancets" role="tab" aria-selected="false">Lancets</button>
+            <button class="filter-pill" data-category="Safety Pen Needles" role="tab" aria-selected="false">Safety Pen Needles</button>
+            <button class="filter-pill" data-category="Underpads" role="tab" aria-selected="false">Underpads</button>
+          </div>
+        </div>
+
+        <!-- Table Title & Meta -->
+        <div class="table-meta-bar">
+          <div>
+            <h3>All Medical Supplies</h3>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted);">Browse the complete product range</p>
+          </div>
+          <div class="table-results-count">Showing 23 of 23 products</div>
+        </div>
+
+        <!-- Accessible Responsive Table -->
+        <div class="table-wrapper" tabindex="0" role="region" aria-label="Medical Supplies Catalog Table">
+          <table class="product-table" data-catalog="devices">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50%;">Product Description</th>
+                <th scope="col" style="width: 14%;">Unit</th>
+                <th scope="col" style="width: 16%;">Pack Qty.</th>
+                <th scope="col" style="width: 20%;">NDC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Injected by js/app.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bottom Assistance CTA -->
+        <div class="cta-banner">
+          <div class="cta-banner-content">
+            <div class="cta-banner-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </div>
+            <div class="cta-banner-text">
+              <h3>Need more information?</h3>
+              <p>Contact our team for product availability, specifications, and ordering inquiries.</p>
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-dark">
+            Contact Our Team
+            <span class="btn-icon-circle" style="background-color: rgba(255, 255, 255, 0.15);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="assets/logos/aarna-logo-clean.png" alt="AARNA USA Logo" width="130" height="48">
+          </a>
+          <span class="footer-tagline">Quality · Reliability · Care</span>
+          <p class="footer-desc">AARNA supplies OTC pharmaceuticals, Unit Dose products and selected medical supplies.</p>
+        </div>
+
+        <!-- Col 2: Company Links -->
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+            <li><a href="dashboard.html" class="footer-link" style="color: var(--color-accent-blue); font-weight: 600;">Admin Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Products Links -->
+        <div class="footer-column">
+          <h4>Products</h4>
+          <ul class="footer-links-list">
+            <li><a href="retail-products.html" class="footer-link">Retail Products</a></li>
+            <li><a href="institutional-products.html" class="footer-link">Institutional Products</a></li>
+            <li><a href="medical-devices.html" class="footer-link">Medical Supplies</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Get in Touch -->
+        <div class="footer-column">
+          <h4>Get in Touch</h4>
+          <div class="footer-contact-info">
+            <p data-cms-key="contact_address_line1">2080 Enterprise Dr NE<br>Leland, NC 28451</p>
+            <p><a href="tel:8669066239" data-cms-key="contact_phone">(866) 906-6239</a></p>
+            <p><a href="mailto:info@aarnaus.com" data-cms-key="contact_email">info@aarnaus.com</a></p>
+          </div>
+          <button class="footer-catalog-btn trigger-catalog-download">
+            <span>Download our catalog</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 Aarna. All rights reserved.</span>
+        <span class="footer-bottom-right">Quality · Reliability · Care</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/data/products-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
