@@ -10,23 +10,23 @@
 </head>
 <body class="contact-page-body">
 
-  <!-- SITE HEADER -->
-  <header class="site-header contact-nav-header" id="site-header">
+  <!-- SITE HEADER / NAVIGATION -->
+  <header class="site-header" id="site-header">
     <div class="container header-container">
       <a href="index.html" class="brand-logo" aria-label="AARNA USA Homepage">
-        <img src="assets/logos/aarna-logo-clean.png" alt="AARNA USA Logo" width="130" height="48">
+        <img src="assets/logos/aarna-logo-clean.png" alt="AARNA USA Logo" width="120" height="44">
       </a>
 
       <!-- Desktop Navigation -->
       <nav class="main-nav" aria-label="Main Navigation">
-        <div class="nav-links-list">
-          <a href="index.html" class="nav-simple-link">Home</a>
-          <a href="about.html" class="nav-simple-link">About Us</a>
+        <div class="nav-pill-group">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
           
           <div class="nav-dropdown-item">
-            <button class="nav-simple-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            <button class="nav-link nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
               Products
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="nav-dropdown-menu" role="menu">
               <a href="institutional-products.html" class="dropdown-link" role="menuitem">
@@ -44,14 +44,15 @@
             </div>
           </div>
 
-          <a href="index.html#private-label-section" class="nav-simple-link">Private Label</a>
+          <a href="contact.html" class="nav-link active">Contact</a>
         </div>
       </nav>
 
-      <!-- Header Contact Pill Button -->
+      <!-- Header Action CTA Pill -->
       <div class="header-action-group">
-        <a href="contact.html" class="btn-nav-contact-pill">
-          Contact Us
+        <a href="contact.html" class="btn-header-pill">
+          Inquire Now
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
       </div>
 
@@ -68,7 +69,7 @@
   <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
     <div class="mobile-drawer-content">
       <a href="index.html" class="mobile-drawer-link">Home</a>
-      <a href="about.html" class="mobile-drawer-link">About Us</a>
+      <a href="about.html" class="mobile-drawer-link">About</a>
       
       <div>
         <span class="mobile-drawer-link" style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">Products Catalog</span>
@@ -79,8 +80,7 @@
         </div>
       </div>
 
-      <a href="index.html#private-label-section" class="mobile-drawer-link">Private Label</a>
-      <a href="contact.html" class="mobile-drawer-link active">Contact Us</a>
+      <a href="contact.html" class="mobile-drawer-link active">Contact</a>
 
       <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--color-border);">
         <button class="btn btn-primary trigger-catalog-download" style="width: 100%;">
