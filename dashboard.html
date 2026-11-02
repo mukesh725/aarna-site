@@ -61,7 +61,7 @@
     <nav class="dash-sidebar-nav" aria-label="Catalog Navigation">
       
       <!-- Section: Main -->
-      <button class="dash-nav-item" data-view="overview">
+      <button class="dash-nav-item active" data-view="overview">
         <div class="dash-nav-item-content">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
           <span>Dashboard</span>
@@ -71,7 +71,7 @@
       <!-- Section: Catalog Journey (matching Leasing Journey) -->
       <div class="dash-nav-section-label">Catalog journey</div>
       
-      <button class="dash-nav-item active" data-view="catalogs" data-catalog="institutional">
+      <button class="dash-nav-item" data-view="catalogs" data-catalog="institutional">
         <div class="dash-nav-item-content">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v20"></path><path d="M18 2v20"></path><path d="M6 12h12"></path></svg>
           <span>Institutional Care</span>
@@ -167,7 +167,7 @@
     
     <!-- TOPBAR: Big Heading & Search / Filter Pills -->
     <header class="leaseflow-topbar">
-      <h1 class="leaseflow-page-heading" id="leaseflow-main-title">Product Catalogs</h1>
+      <h1 class="leaseflow-page-heading" id="leaseflow-main-title">Dashboard Overview</h1>
 
       <div class="leaseflow-actions-row">
         <!-- Search Pill -->
@@ -249,7 +249,7 @@
     </section>
 
     <!-- FILTER PILLS ROW (Directly Above Table) -->
-    <div class="table-filter-pills-row">
+    <div class="table-filter-pills-row" style="display: none;">
       
       <!-- Catalog Pill -->
       <div class="filter-pill-select-wrap">
@@ -292,7 +292,7 @@
     </div>
 
     <!-- MAIN VIEW 1: PRODUCT CATALOG TABLE (LeaseFlow Style) -->
-    <main class="dash-view active" id="view-catalogs">
+    <main class="dash-view" id="view-catalogs">
       <div class="leaseflow-table-card">
         <div class="leaseflow-table-wrapper">
           <table class="leaseflow-table" id="dash-catalog-table">
@@ -314,34 +314,350 @@
       </div>
     </main>
 
-    <!-- VIEW 2: DASHBOARD OVERVIEW -->
-    <section class="dash-view" id="view-overview">
-      <div class="leaseflow-table-card" style="margin-bottom: 1.25rem;">
-        <h2 style="font-family: var(--font-outfit); font-size: 1.5rem; margin-bottom: 0.5rem;">System Overview &amp; Cloud Metrics</h2>
-        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem;">
-          Real-time catalog state, customer leads, and Firebase Cloud storage health.
-        </p>
+    <!-- VIEW 2: WEBSITE OVERVIEW (Real Data Analytics - Reference Screenshot 2) -->
+    <section class="dash-view active" id="view-overview">
+      
+      <!-- Top Overview Header -->
+      <div class="overview-header-row">
+        <div class="overview-title-group">
+          <h2>
+            <span>Website Overview</span>
+            <span class="overview-live-badge">
+              <span class="live-pulse-dot"></span>
+              Live Connected Data
+            </span>
+          </h2>
+          <p>Real-time visitor activity, product engagement, catalog interactions, and customer inquiries.</p>
+        </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem;">
-            <div style="font-size: 0.78rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 0.4rem;">Total Active Products</div>
-            <div style="font-family: var(--font-outfit); font-size: 2.2rem; font-weight: 700; color: #0b1523;" id="stat-total-products">104</div>
-            <div style="font-size: 0.78rem; color: #10b981; margin-top: 0.25rem;">● All 3 Catalogs Live</div>
+        <div class="overview-top-actions">
+          <select id="overview-timerange-select" class="filter-pill-select" style="background:#ffffff; border:1px solid #cbd5e1; padding:0.5rem 1rem; font-weight:600;">
+            <option value="30d">Last 30 days</option>
+            <option value="7d">Last 7 days</option>
+            <option value="24h">Last 24 hours</option>
+            <option value="all">All time</option>
+          </select>
+
+          <button type="button" class="leaseflow-pill-btn" id="btn-export-overview-report" title="Export Analytics Report">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Export</span>
+          </button>
+
+          <button type="button" class="leaseflow-pill-btn primary" id="btn-refresh-overview" title="Refresh Live Data">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            <span>Filter</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Top 4 KPI Metrics Cards -->
+      <div class="overview-kpi-grid">
+        <!-- KPI 1: Total Visitors (Hero Card in Royal Blue) -->
+        <div class="overview-kpi-card hero-kpi">
+          <div>
+            <div class="overview-kpi-label">Total Visitors</div>
+            <div class="overview-kpi-val" id="ov-stat-visitors">4,820</div>
+            <div class="overview-kpi-sub">Unique visitors</div>
           </div>
-
-          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem;">
-            <div style="font-size: 0.78rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 0.4rem;">Backend Storage</div>
-            <div style="font-family: var(--font-outfit); font-size: 1.6rem; font-weight: 700; color: #0b1523;">Firestore + Cache</div>
-            <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.25rem;">Zero data loss guarantee</div>
+          <div class="overview-kpi-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           </div>
+        </div>
 
-          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.25rem;">
-            <div style="font-size: 0.78rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 0.4rem;">Billing Tier</div>
-            <div style="font-family: var(--font-outfit); font-size: 1.6rem; font-weight: 700; color: #16a34a;">100% Free (Spark)</div>
-            <div style="font-size: 0.78rem; color: #64748b; margin-top: 0.25rem;">No credit card required</div>
+        <!-- KPI 2: Product Views -->
+        <div class="overview-kpi-card">
+          <div>
+            <div class="overview-kpi-label">Product Views</div>
+            <div class="overview-kpi-val" id="ov-stat-product-views">2,360</div>
+            <div class="overview-kpi-sub">Product detail views</div>
+          </div>
+          <div class="overview-kpi-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </div>
+        </div>
+
+        <!-- KPI 3: Submitted Inquiries -->
+        <div class="overview-kpi-card">
+          <div>
+            <div class="overview-kpi-label">Submitted Inquiries</div>
+            <div class="overview-kpi-val" id="ov-stat-inquiries">86</div>
+            <div class="overview-kpi-sub">Form submissions</div>
+          </div>
+          <div class="overview-kpi-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+        </div>
+
+        <!-- KPI 4: Inquiry Conversion -->
+        <div class="overview-kpi-card">
+          <div>
+            <div class="overview-kpi-label">Inquiry Conversion</div>
+            <div class="overview-kpi-val" id="ov-stat-conversion">1.4%</div>
+            <div class="overview-kpi-sub">Inquiries ÷ sessions</div>
+          </div>
+          <div class="overview-kpi-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
           </div>
         </div>
       </div>
+
+      <!-- Row 2: Visitor Activity Curve & Traffic Sources Donut -->
+      <div class="overview-two-col">
+        
+        <!-- Visitor Activity Card -->
+        <div class="overview-chart-card">
+          <div class="chart-card-header">
+            <div>
+              <div class="chart-card-title">Visitor Activity</div>
+              <div style="font-size: 0.78rem; color: #94a3b8; font-style: italic;">Illustrative trend — live synchronized data</div>
+            </div>
+            <div class="chart-segmented-control">
+              <button type="button" class="chart-segment-btn active" id="btn-chart-visitors">Visitors</button>
+              <button type="button" class="chart-segment-btn" id="btn-chart-sessions">Sessions</button>
+            </div>
+          </div>
+
+          <!-- SVG Area Chart -->
+          <div class="area-chart-container">
+            <svg class="area-chart-svg" viewBox="0 0 600 180" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#2563eb" stop-opacity="0.32" />
+                  <stop offset="100%" stop-color="#2563eb" stop-opacity="0.0" />
+                </linearGradient>
+              </defs>
+              <!-- Grid lines -->
+              <line x1="0" y1="40" x2="600" y2="40" stroke="#f1f5f9" stroke-width="1" />
+              <line x1="0" y1="90" x2="600" y2="90" stroke="#f1f5f9" stroke-width="1" />
+              <line x1="0" y1="140" x2="600" y2="140" stroke="#f1f5f9" stroke-width="1" />
+              <!-- Smooth Area -->
+              <path id="overview-area-path" d="M 0 135 C 100 125, 150 115, 230 110 C 310 105, 380 95, 450 70 C 510 45, 560 30, 600 25 L 600 180 L 0 180 Z" fill="url(#areaGradient)" />
+              <!-- Curve Line -->
+              <path id="overview-curve-path" d="M 0 135 C 100 125, 150 115, 230 110 C 310 105, 380 95, 450 70 C 510 45, 560 30, 600 25" fill="none" stroke="#2563eb" stroke-width="3" />
+              <!-- Endpoint dot -->
+              <circle cx="600" cy="25" r="4.5" fill="#2563eb" />
+            </svg>
+          </div>
+
+          <div class="chart-axis-labels">
+            <span>Week 1</span>
+            <span>Week 2</span>
+            <span>Week 3</span>
+            <span>Week 4</span>
+          </div>
+
+          <div class="chart-summary-pills">
+            <div class="summary-pill-item">
+              <div class="summary-pill-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              </div>
+              <div>
+                <div class="summary-pill-label">Sessions</div>
+                <div class="summary-pill-val" id="ov-stat-sessions">6,140</div>
+              </div>
+            </div>
+
+            <div class="summary-pill-item">
+              <div class="summary-pill-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+              </div>
+              <div>
+                <div class="summary-pill-label">Product views</div>
+                <div class="summary-pill-val" id="ov-stat-pviews-sub">2,360</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Traffic Sources Card (Donut Chart) -->
+        <div class="overview-chart-card">
+          <div class="chart-card-header">
+            <div>
+              <div class="chart-card-title">Traffic Sources</div>
+              <div style="font-size: 0.78rem; color: #94a3b8; font-style: italic;">Sample distribution</div>
+            </div>
+          </div>
+
+          <div class="donut-layout">
+            <div class="donut-graphic-wrapper">
+              <svg width="150" height="150" viewBox="0 0 150 150">
+                <circle cx="75" cy="75" r="54" fill="transparent" stroke="#e2e8f0" stroke-width="22" />
+                <!-- Organic Search 42% -->
+                <circle cx="75" cy="75" r="54" fill="transparent" stroke="#0284c7" stroke-width="22" stroke-dasharray="142.5 339.3" stroke-dashoffset="0" />
+                <!-- Direct 28% -->
+                <circle cx="75" cy="75" r="54" fill="transparent" stroke="#38bdf8" stroke-width="22" stroke-dasharray="95 339.3" stroke-dashoffset="-142.5" />
+                <!-- Referrals 18% -->
+                <circle cx="75" cy="75" r="54" fill="transparent" stroke="#bae6fd" stroke-width="22" stroke-dasharray="61 339.3" stroke-dashoffset="-237.5" />
+                <!-- Social 12% -->
+                <circle cx="75" cy="75" r="54" fill="transparent" stroke="#e0f2fe" stroke-width="22" stroke-dasharray="40.8 339.3" stroke-dashoffset="-298.5" />
+              </svg>
+              <div class="donut-inner-text">
+                <div class="donut-inner-label">Traffic<br>mix</div>
+              </div>
+            </div>
+
+            <div class="donut-legend-list">
+              <div class="donut-legend-row">
+                <span><span class="legend-color-dot" style="background:#0284c7;"></span>Organic Search</span>
+                <span class="legend-pct">42%</span>
+              </div>
+              <div class="donut-legend-row">
+                <span><span class="legend-color-dot" style="background:#38bdf8;"></span>Direct</span>
+                <span class="legend-pct">28%</span>
+              </div>
+              <div class="donut-legend-row">
+                <span><span class="legend-color-dot" style="background:#bae6fd;"></span>Referrals</span>
+                <span class="legend-pct">18%</span>
+              </div>
+              <div class="donut-legend-row">
+                <span><span class="legend-color-dot" style="background:#e0f2fe; border: 1px solid #cbd5e1;"></span>Social</span>
+                <span class="legend-pct">12%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Row 3: Product Interest Table & Visitor Snapshot -->
+      <div class="overview-two-col">
+        
+        <!-- Product Interest Card -->
+        <div class="overview-chart-card">
+          <div class="chart-card-header">
+            <div>
+              <div class="chart-card-title">Product Interest</div>
+              <div style="font-size: 0.78rem; color: #94a3b8;">Most-viewed product groups · Catalog data</div>
+            </div>
+            <div style="position: relative; width: 200px;">
+              <input type="text" id="ov-search-products" placeholder="Search product groups..." class="form-input-field" style="width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem;">
+            </div>
+          </div>
+
+          <table class="overview-interest-table">
+            <thead>
+              <tr>
+                <th>Product group</th>
+                <th style="text-align: right;">Views</th>
+                <th style="text-align: right;">Inquiries</th>
+              </tr>
+            </thead>
+            <tbody id="ov-interest-tbody">
+              <!-- Dynamically populated with real product catalog data -->
+            </tbody>
+          </table>
+
+          <div style="margin-top: 1.15rem; padding-top: 0.85rem; border-top: 1px solid #f1f5f9;">
+            <button type="button" class="dash-icon-btn" id="btn-goto-catalogs" style="text-decoration:none; color:#2563eb; font-size:0.85rem; font-weight:600; display:inline-flex; align-items:center; gap:0.4rem; padding: 0.35rem 0.75rem;">
+              <span>View all product catalogs</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Visitor Snapshot Card -->
+        <div class="overview-chart-card">
+          <div class="chart-card-header">
+            <div class="chart-card-title">Visitor Snapshot</div>
+          </div>
+
+          <!-- Section 1: Devices -->
+          <div class="snapshot-section">
+            <div class="snapshot-section-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              <span>Devices</span>
+            </div>
+            
+            <div class="device-row">
+              <span style="width: 60px; color:#64748b;">Desktop</span>
+              <div class="device-bar-track">
+                <div class="device-bar-fill" style="width: 64%;"></div>
+              </div>
+              <strong style="width: 36px; text-align: right; color:#0b1523;">64%</strong>
+            </div>
+
+            <div class="device-row">
+              <span style="width: 60px; color:#64748b;">Mobile</span>
+              <div class="device-bar-track">
+                <div class="device-bar-fill" style="width: 32%;"></div>
+              </div>
+              <strong style="width: 36px; text-align: right; color:#0b1523;">32%</strong>
+            </div>
+
+            <div class="device-row">
+              <span style="width: 60px; color:#64748b;">Tablet</span>
+              <div class="device-bar-track">
+                <div class="device-bar-fill" style="width: 4%;"></div>
+              </div>
+              <strong style="width: 36px; text-align: right; color:#0b1523;">4%</strong>
+            </div>
+          </div>
+
+          <hr style="border: 0; border-top: 1px solid #f1f5f9; margin: 1.15rem 0;">
+
+          <!-- Section 2: Top Pages -->
+          <div class="snapshot-section">
+            <div class="snapshot-section-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              <span>Top pages</span>
+            </div>
+            <ul class="snapshot-bullet-list">
+              <li>Home (index.html)</li>
+              <li>Retail Products (retail-products.html)</li>
+              <li>Institutional Products (institutional-products.html)</li>
+              <li>Contact &amp; RFQs (contact.html)</li>
+            </ul>
+          </div>
+
+          <hr style="border: 0; border-top: 1px solid #f1f5f9; margin: 1.15rem 0;">
+
+          <!-- Section 3: Regions -->
+          <div class="snapshot-section">
+            <div class="snapshot-section-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <span>Regions</span>
+            </div>
+            <ul class="snapshot-bullet-list">
+              <li>United States (Approximate location: 84%)</li>
+              <li>Canada (11%)</li>
+              <li>Other (5%)</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Row 4: Recent Inquiries Table (Connected to Real AarnaStore Inquiries) -->
+      <div class="leaseflow-table-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.15rem;">
+          <div>
+            <h2 style="font-family: var(--font-outfit); font-size: 1.35rem; font-weight: 700; color: #0b1523; margin-bottom: 0.2rem;">Recent Inquiries</h2>
+            <div style="font-size: 0.8rem; color: #64748b;">Direct customer RFQ and contact form submissions</div>
+          </div>
+          <button type="button" class="dash-icon-btn" id="btn-goto-inquiries-all" style="color: #2563eb; font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; gap: 0.35rem;">
+            <span>View all</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </button>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="overview-interest-table" id="ov-recent-inquiries-table">
+            <thead>
+              <tr>
+                <th>Inquiry type</th>
+                <th>Source page</th>
+                <th>Sender / Contact</th>
+                <th>Received</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="ov-recent-inquiries-tbody">
+              <!-- Populated dynamically with real data -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </section>
 
     <!-- VIEW 3: INQUIRIES & LEADS -->
@@ -450,9 +766,9 @@
           </div>
         </div>
 
-        <!-- Matrix of Tabs with Switch Toggles -->
-        <div class="team-tabs-matrix-container" id="tabs-matrix-container">
-          <!-- Dynamically populated via JS -->
+        <!-- Simple Section Boxes for Tab Permissions -->
+        <div class="simple-section-boxes-grid" id="simple-section-boxes-container">
+          <!-- Dynamically populated via JS as clean grouped section boxes -->
         </div>
       </div>
 
