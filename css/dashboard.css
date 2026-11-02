@@ -33,16 +33,24 @@
   padding: 0;
 }
 
+html, body.dash-body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
 body.dash-body {
   background-color: var(--dash-bg);
   color: var(--dash-text-dark);
   font-family: var(--font-inter);
   min-height: 100vh;
-  display: flex;
-  padding: 16px;
-  gap: 18px;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start;
   overflow-x: hidden;
   position: relative;
+  gap: 0;
 }
 
 /* ==========================================================================
@@ -51,18 +59,22 @@ body.dash-body {
 .dash-sidebar {
   width: var(--dash-sidebar-w);
   min-width: var(--dash-sidebar-w);
+  max-width: var(--dash-sidebar-w);
+  flex-shrink: 0;
   background-color: var(--dash-sidebar-bg);
   border-radius: var(--dash-radius-sidebar);
   height: calc(100vh - 32px);
   position: sticky;
   top: 16px;
+  margin: 16px 14px 16px 16px;
   display: flex;
   flex-direction: column;
   padding: 22px 16px;
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.025);
   border: 1px solid var(--dash-border);
-  z-index: 100;
+  z-index: 50;
   transition: transform 0.25s ease;
+  box-sizing: border-box;
 }
 
 /* Sidebar Top Brand Header */
@@ -325,12 +337,14 @@ body.dash-body {
    MAIN CONTENT AREA (LeaseFlow Style)
    ========================================================================== */
 .dash-layout {
-  flex: 1;
+  flex: 1 1 0%;
+  min-width: 0;
+  padding: 16px 20px 32px 6px;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  min-width: 0;
-  padding-bottom: 2rem;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* TOPBAR: Big Title & Search / Action Pills */
@@ -340,16 +354,17 @@ body.dash-body {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  padding: 0.5rem 0.25rem;
+  padding: 0.25rem 0;
 }
 
 .leaseflow-page-heading {
   font-family: var(--font-outfit);
-  font-size: 2.35rem;
+  font-size: 2.15rem;
   font-weight: 700;
   color: var(--dash-text-dark);
   letter-spacing: -0.03em;
   line-height: 1.1;
+  margin: 0;
 }
 
 .leaseflow-actions-row {
@@ -600,15 +615,19 @@ body.dash-body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   border: 1px solid var(--dash-border);
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .leaseflow-table-wrapper {
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .leaseflow-table {
   width: 100%;
+  min-width: 860px;
   border-collapse: collapse;
   text-align: left;
 }
@@ -813,19 +832,68 @@ body.dash-body {
 /* Responsive Media Queries */
 @media (max-width: 1024px) {
   body.dash-body {
-    flex-direction: column;
+    flex-direction: column !important;
     padding: 12px;
   }
 
   .dash-sidebar {
     width: 100%;
+    min-width: 100%;
+    max-width: 100%;
     height: auto;
     position: static;
+    margin: 0 0 1rem 0;
     border-radius: 20px;
-    margin-bottom: 1rem;
+  }
+
+  .dash-layout {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
   }
 
   .dash-mobile-toggle {
     display: inline-flex;
   }
 }
+
+/* Toast Notifications */
+.toast-stack {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  pointer-events: none;
+}
+
+.toast-item {
+  pointer-events: auto;
+  background-color: #0b1523;
+  color: #ffffff;
+  padding: 0.85rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  animation: toastFadeIn 0.25s ease-out;
+}
+
+.toast-item.success {
+  border-left: 4px solid #10b981;
+}
+
+.toast-item.error {
+  border-left: 4px solid #ef4444;
+}
+
+@keyframes toastFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
