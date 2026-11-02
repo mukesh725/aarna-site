@@ -1621,38 +1621,144 @@
   }
 
   function initInquiriesManager() {
+    // Populate target email input
+    const targetEmailInput = document.getElementById('dash-inquiry-target-email');
+    const saveTargetBtn = document.getElementById('btn-save-inquiry-target');
+
+    if (targetEmailInput) {
+      let currentTarget = 'info@aarnaus.com';
+      try {
+        if (window.AarnaStore && typeof window.AarnaStore.getContent === 'function') {
+          const c = window.AarnaStore.getContent();
+          if (c && c.contact_email) currentTarget = c.contact_email;
+        }
+        const custom = localStorage.getItem('aarna_inquiry_recipient');
+        if (custom && custom.includes('@')) currentTarget = custom.trim();
+      } catch (e) {}
+
+      targetEmailInput.value = currentTarget;
+
+      if (saveTargetBtn) {
+        saveTargetBtn.addEventListener('click', () => {
+          const newTarget = targetEmailInput.value.trim();
+          if (!newTarget || !newTarget.includes('@')) {
+            alert('Please enter a valid notification email address.');
+            return;
+          }
+          localStorage.setItem('aarna_inquiry_recipient', newTarget);
+          if (window.AarnaStore && typeof window.AarnaStore.saveContent === 'function') {
+            window.AarnaStore.saveContent('contact_email', newTarget);
+          }
+          if (typeof window.showToast === 'function') {
+            window.showToast(`Inquiries will now be forwarded to ${newTarget}`, 'success');
+          } else {
+            alert(`Inquiries will now be forwarded to ${newTarget}`);
+          }
+        });
+      }
+    }
+
     renderInquiries();
   }
 
   function renderInquiries() {
     const container = document.getElementById('inquiries-list-container');
     if (!container) return;
-    const inquiries = window.AarnaStore ? window.AarnaStore.getInquiries() : [];
+    const inquiries = getLiveInquiries();
 
     if (!inquiries.length) {
       container.innerHTML = `
-        <div style="text-align: center; padding: 2rem; color: #8c8f95;">
-          <p>No customer quote submissions yet. Customer inquiries from the website will appear here in real time.</p>
+        <div style="text-align: center; padding: 3rem 1.5rem; color: #8c8f95;">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="1.5" style="margin-bottom: 0.85rem;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <h4 style="color: #0b1523; font-size: 1.1rem; margin-bottom: 0.35rem;">No Inquiries Yet</h4>
+          <p style="font-size: 0.88rem; max-width: 420px; margin: 0 auto;">Customer submissions from the contact form or product RFQs will automatically appear here and trigger email notifications.</p>
         </div>
       `;
       return;
     }
 
-    let html = '<div style="display:flex; flex-direction:column; gap:0.75rem;">';
+    function getInquiryStatusBadge(status = 'New') {
+      const s = (status || '').toLowerCase();
+      if (s === 'new' || s === 'unread') {
+        return `<span style="display:inline-flex; align-items:center; padding:0.25rem 0.75rem; border-radius:100px; font-size:0.75rem; font-weight:700; background:#dcfce7; color:#15803d;">New</span>`;
+      } else if (s.includes('review') || s === 'pending') {
+        return `<span style="display:inline-flex; align-items:center; padding:0.25rem 0.75rem; border-radius:100px; font-size:0.75rem; font-weight:700; background:#eff6ff; color:#2563eb;">In review</span>`;
+      } else if (s === 'contacted') {
+        return `<span style="display:inline-flex; align-items:center; padding:0.25rem 0.75rem; border-radius:100px; font-size:0.75rem; font-weight:700; background:#fef3c7; color:#92400e;">Contacted</span>`;
+      } else {
+        return `<span style="display:inline-flex; align-items:center; padding:0.25rem 0.75rem; border-radius:100px; font-size:0.75rem; font-weight:700; background:#f1f5f9; color:#475569;">${status}</span>`;
+      }
+    }
+
+    let html = '<div style="display: flex; flex-direction: column; gap: 1rem;">';
     inquiries.forEach(inq => {
       html += `
-        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:1rem; display:flex; justify-content:space-between; align-items:center;">
-          <div>
-            <strong style="color:#0b1523; display:block;">${inq.name || 'Inquiry'} (${inq.email || '—'})</strong>
-            <span style="font-size:0.8rem; color:#64748b;">Phone: ${inq.phone || '—'} • Type: ${inq.type || 'General'}</span>
-            <p style="font-size:0.85rem; margin-top:0.35rem; color:#334155;">"${inq.message || inq.notes || '—'}"</p>
+        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: all 0.2s ease;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.85rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.25rem;">
+                <strong style="font-size: 1.05rem; color: #0b1523;">${inq.name || 'Anonymous Partner'}</strong>
+                ${inq.organization && inq.organization !== 'N/A' ? `<span style="font-size: 0.8rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.5rem; border-radius: 6px;">${inq.organization}</span>` : ''}
+                ${getInquiryStatusBadge(inq.status)}
+              </div>
+              <div style="display: flex; align-items: center; gap: 1rem; font-size: 0.82rem; color: #64748b; flex-wrap: wrap;">
+                <span>Type: <strong style="color: #1e293b;">${inq.type || 'Product inquiry'}</strong></span>
+                <span>•</span>
+                <span>Email: <a href="mailto:${inq.email}" style="color: #2563eb; font-weight: 600; text-decoration: underline;">${inq.email || '—'}</a></span>
+                ${inq.phone && inq.phone !== 'N/A' ? `<span>•</span><span>Phone: <a href="tel:${inq.phone.replace(/[^0-9]/g, '')}" style="color: #334155; font-weight: 600;">${inq.phone}</a></span>` : ''}
+                <span>•</span>
+                <span>Received: ${inq.date || 'Recently'}</span>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <a href="mailto:${inq.email}?subject=Re:%20Aarna%20USA%20Inquiry%20-%20${encodeURIComponent(inq.type || 'Product Inquiry')}" class="leaseflow-pill-btn" style="text-decoration: none; padding: 0.4rem 0.85rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.35rem;" title="Reply directly via email">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>Reply Email</span>
+              </a>
+
+              <button type="button" class="dash-icon-btn btn-delete-inquiry" data-inq-id="${inq.id}" title="Remove Inquiry" style="color: #ef4444; padding: 0.4rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </button>
+            </div>
           </div>
-          <span class="status-pill-badge completed">Received</span>
+
+          <!-- Product info banner if inquiry was on a specific NDC/product -->
+          ${inq.product ? `
+            <div style="background: #f0f7ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 0.45rem 0.75rem; margin-bottom: 0.75rem; font-size: 0.82rem; color: #1e3a8a; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path></svg>
+              <span>Catalog Reference: <strong>${inq.product}</strong> ${inq.ndc ? `(NDC: ${inq.ndc})` : ''}</span>
+            </div>
+          ` : ''}
+
+          <!-- Message Body -->
+          <div style="background: #fafafa; border-left: 3px solid #253b7f; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #1f2937; line-height: 1.5;">
+            "${inq.message || inq.notes || 'No message provided.'}"
+          </div>
         </div>
       `;
     });
     html += '</div>';
     container.innerHTML = html;
+
+    // Attach delete listeners
+    container.querySelectorAll('.btn-delete-inquiry').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.inqId;
+        if (confirm('Delete this inquiry record from the portal?')) {
+          if (window.AarnaStore && typeof window.AarnaStore.deleteInquiry === 'function') {
+            window.AarnaStore.deleteInquiry(id);
+          } else {
+            const list = getLiveInquiries().filter(it => it.id !== id);
+            localStorage.setItem('aarna_contact_inquiries', JSON.stringify(list));
+          }
+          renderInquiries();
+          renderDashboardOverview();
+          initStats();
+        }
+      });
+    });
   }
 
   function initBackupManager() {

@@ -663,7 +663,29 @@
     <!-- VIEW 3: INQUIRIES & LEADS -->
     <section class="dash-view" id="view-inquiries">
       <div class="leaseflow-table-card">
-        <h2 style="font-family: var(--font-outfit); font-size: 1.5rem; margin-bottom: 1rem;">Customer Inquiries &amp; RFQs</h2>
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid #f1f5f9;">
+          <div>
+            <h2 style="font-family: var(--font-outfit); font-size: 1.6rem; font-weight: 700; color: #0b1523; margin-bottom: 0.25rem;">
+              Customer Inquiries &amp; RFQs
+            </h2>
+            <p style="font-size: 0.85rem; color: #64748b; margin: 0;">
+              Real-time customer inquiries from website forms, product quotation requests, and federal procurement leads.
+            </p>
+          </div>
+
+          <!-- Notification Email Configuration -->
+          <div style="display: flex; align-items: center; gap: 0.65rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.5rem 0.85rem; border-radius: 12px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#253b7f" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <div style="display: flex; flex-direction: column;">
+              <span style="font-size: 0.72rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Forward Inquiries To Email:</span>
+              <div style="display: flex; gap: 0.4rem; align-items: center; margin-top: 2px;">
+                <input type="email" id="dash-inquiry-target-email" value="info@aarnaus.com" style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 0.25rem 0.6rem; font-size: 0.82rem; font-weight: 600; color: #0b1523; width: 190px;">
+                <button type="button" class="leaseflow-pill-btn primary" id="btn-save-inquiry-target" style="padding: 0.25rem 0.65rem; font-size: 0.76rem;">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div id="inquiries-list-container">
           <!-- Inquiries rendered here -->
         </div>

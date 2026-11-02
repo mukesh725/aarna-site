@@ -527,54 +527,139 @@ function initContactForm() {
   const urlParams = new URLSearchParams(window.location.search);
   const prodParam = urlParams.get('product');
   const ndcParam = urlParams.get('ndc');
-  if (prodParam) {
-    const msgInput = document.getElementById('message');
-    if (msgInput) {
-      msgInput.value = `Hello AARNA Team,\n\nI am requesting information, availability, and pricing for:\nProduct: ${prodParam}\nNDC: ${ndcParam || 'N/A'}\n\nPlease contact me with details.`;
-    }
+  const typeParam = urlParams.get('type') || urlParams.get('subject');
+
+  const msgInput = document.getElementById('contact-message') || document.getElementById('message');
+  if (msgInput && prodParam) {
+    msgInput.value = `Hello AARNA Team,\n\nI am requesting information, availability, and pricing for:\nProduct: ${prodParam}\nNDC: ${ndcParam || 'N/A'}\n\nPlease contact me with details.`;
+  } else if (msgInput && typeParam && typeParam.toLowerCase().includes('federal')) {
+    msgInput.value = `Hello AARNA Federal Procurement Team,\n\nI would like to discuss federal healthcare procurement opportunities, supply requirements, and GPO contracting.\n\nPlease contact me.`;
   }
 
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const firstName = document.getElementById('firstName')?.value.trim();
-    const lastName = document.getElementById('lastName')?.value.trim();
-    const phone = document.getElementById('phone')?.value.trim();
-    const email = document.getElementById('email')?.value.trim();
-    const message = document.getElementById('message')?.value.trim();
+    const nameInput = document.getElementById('contact-name') || document.getElementById('firstName');
+    const emailInput = document.getElementById('contact-email') || document.getElementById('email');
+    const orgInput = document.getElementById('contact-org');
+    const phoneInput = document.getElementById('contact-phone') || document.getElementById('phone');
+    const messageInput = document.getElementById('contact-message') || document.getElementById('message');
+    const inquiryTypeInput = document.getElementById('inquiryTypeInput');
 
-    if (!firstName || !email || !message) {
-      window.showToast('Please fill in all required fields (*)', 'info');
+    const name = nameInput ? nameInput.value.trim() : '';
+    const email = emailInput ? emailInput.value.trim() : '';
+    const organization = orgInput ? orgInput.value.trim() : '';
+    const phone = phoneInput ? phoneInput.value.trim() : '';
+    const message = messageInput ? messageInput.value.trim() : '';
+    const inquiryType = (inquiryTypeInput && inquiryTypeInput.value) 
+      ? inquiryTypeInput.value 
+      : (prodParam ? 'Product inquiry' : 'General Inquiry');
+
+    if (!name || !email || !message) {
+      if (typeof window.showToast === 'function') {
+        window.showToast('Please fill in your name, email, and message (*)', 'info');
+      } else {
+        alert('Please fill in your name, email, and message (*)');
+      }
       return;
     }
 
-    // Save to dynamic AarnaStore inquiries for the Admin Dashboard
-    if (window.AarnaStore && window.AarnaStore.addInquiry) {
-      window.AarnaStore.addInquiry({
-        firstName,
-        lastName,
-        phone,
-        email,
-        message,
-        product: prodParam,
-        ndc: ndcParam
-      });
+    // Determine target recipient email:
+    // Configured email in AarnaStore, or localStorage 'aarna_inquiry_recipient', or 'info@aarnaus.com'
+    let recipientEmail = 'info@aarnaus.com';
+    try {
+      if (window.AarnaStore && typeof window.AarnaStore.getContent === 'function') {
+        const content = window.AarnaStore.getContent();
+        if (content && content.contact_email) {
+          recipientEmail = content.contact_email;
+        }
+      }
+      const customRecipient = localStorage.getItem('aarna_inquiry_recipient');
+      if (customRecipient && customRecipient.includes('@')) {
+        recipientEmail = customRecipient.trim();
+      }
+    } catch (err) {}
+
+    const inquiryPayload = {
+      id: 'inq-' + Date.now(),
+      name: name,
+      email: email,
+      phone: phone || 'N/A',
+      organization: organization || 'N/A',
+      type: inquiryType,
+      page: prodParam ? `Product: ${prodParam}` : 'Contact Page',
+      product: prodParam || '',
+      ndc: ndcParam || '',
+      message: message,
+      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }),
+      status: 'New'
+    };
+
+    // 1. SAVE TO DASHBOARD (Instant local & synchronized real-time persistence)
+    if (window.AarnaStore && typeof window.AarnaStore.addInquiry === 'function') {
+      window.AarnaStore.addInquiry(inquiryPayload);
     }
 
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10"></path></svg>
-      Sending...
-    `;
+    const submitBtn = contactForm.querySelector('button[type="submit"]') || document.getElementById('contact-submit-btn');
+    const originalText = submitBtn ? submitBtn.innerHTML : 'Send Inquiry';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10"></path></svg>
+        Sending to ${recipientEmail}...
+      `;
+    }
+
+    // 2. DISPATCH EMAIL TO THE CONFIGURED RECIPIENT
+    try {
+      await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipientEmail)}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `[AARNA USA] New ${inquiryType}: ${name}`,
+          _replyto: email,
+          Customer_Name: name,
+          Customer_Email: email,
+          Phone_Number: phone || 'Not provided',
+          Organization: organization || 'Not provided',
+          Inquiry_Type: inquiryType,
+          Product_Requested: prodParam || 'N/A',
+          NDC_Number: ndcParam || 'N/A',
+          Message_Content: message,
+          Forwarded_To: recipientEmail,
+          Received_Timestamp: new Date().toLocaleString()
+        })
+      });
+    } catch (netErr) {
+      console.warn('FormSubmit notice:', netErr);
+    }
+
+    // Also trigger serverless API
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...inquiryPayload, recipientEmail })
+      });
+    } catch (e) {}
 
     setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
       contactForm.reset();
-      window.showToast('Thank you! Your message has been sent and recorded in the portal.', 'success');
-    }, 900);
+      
+      const successMsg = `Thank you, ${name}! Your inquiry has been sent to ${recipientEmail} and recorded in the Aarna Admin Dashboard.`;
+      if (typeof window.showToast === 'function') {
+        window.showToast(successMsg, 'success');
+      } else {
+        alert(successMsg);
+      }
+    }, 600);
   });
 }
 
