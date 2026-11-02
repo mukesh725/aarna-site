@@ -1089,7 +1089,7 @@
     {
       key: 'hero_bg',
       name: 'Home Hero Horizon Banner',
-      defaultUrl: 'assets/images/hero-bg.jpg',
+      defaultUrl: 'assets/images/hero-tablets-bg.jpg',
       meta: 'Main dynamic hero background on index.html.',
       dims: 'Wide landscape photo • ~1920 × 1080 px'
     },

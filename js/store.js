@@ -110,7 +110,7 @@
   const DEFAULT_MEDIA = {
     logo_main: 'assets/logos/aarna-logo-clean.png',
     admin_hero: 'assets/images/admin-login-hero.jpg',
-    hero_bg: 'assets/images/hero-bg.jpg',
+    hero_bg: 'assets/images/hero-tablets-bg.jpg',
     card_institutional: 'assets/images/card-institutional.png',
     card_retail: 'assets/images/card-retail.png',
     card_devices: 'assets/images/card-medical-devices.png',
