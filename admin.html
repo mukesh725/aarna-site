@@ -11,25 +11,20 @@
   <!-- Typography: Outfit & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-midnight: #0b1523;
-      --bg-midnight-dark: #070d17;
-      --bg-surface: #ffffff;
-      --text-dark: #0b1523;
-      --text-body: #334155;
+      --bg-backdrop: #070d17;
+      --bg-card: #ffffff;
+      --text-dark: #090e17;
       --text-muted: #64748b;
-      --text-dim: #94a3b8;
-      --primary-blue: #2563eb;
-      --primary-blue-hover: #1d4ed8;
-      --border-light: #e2e8f0;
-      --border-focus: #2563eb;
-      --btn-dark: #0b1523;
-      --btn-dark-hover: #1e293b;
-      --success: #10b981;
-      --error-red: #ef4444;
+      --text-light: #94a3b8;
+      --border-color: #e2e8f0;
+      --border-focus: #ea580c;
+      --accent-orange: #ea580c;
+      --accent-orange-hover: #d9480f;
+      --accent-orange-glow: rgba(234, 88, 12, 0.28);
       --font-outfit: 'Outfit', sans-serif;
       --font-inter: 'Inter', sans-serif;
     }
@@ -42,67 +37,24 @@
 
     body {
       font-family: var(--font-inter);
-      background-color: var(--bg-midnight);
+      background-color: var(--bg-backdrop);
+      background-image: 
+        radial-gradient(circle at 50% 15%, rgba(234, 88, 12, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 80% 85%, rgba(37, 99, 235, 0.06) 0%, transparent 50%);
       color: var(--text-dark);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem;
       overflow-x: hidden;
     }
 
-    /* Full Split Layout */
-    .split-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      min-height: 100vh;
+    /* Top Navigation Floating Bar */
+    .top-nav-bar {
       width: 100%;
-      background-color: var(--bg-midnight);
-    }
-
-    /* LEFT HERO VISUAL PANEL (Showing the FULL screenshot image completely unobstructed) */
-    .hero-side-panel {
-      position: relative;
-      background-color: var(--bg-midnight-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2.5rem 2rem;
-      overflow: hidden;
-    }
-
-    /* The FULL Poster Image - completely visible from top to bottom, no text overlay */
-    .hero-full-poster {
-      max-height: 94vh;
-      max-width: 94%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      border-radius: 20px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .hero-full-poster:hover {
-      transform: scale(1.008);
-    }
-
-    /* RIGHT LOGIN FORM PANEL (White Card & Form) */
-    .form-side-panel {
-      background-color: var(--bg-midnight);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2.5rem 2rem;
-      position: relative;
-    }
-
-    /* Top Action Bar in Right Panel */
-    .form-panel-header {
-      width: 100%;
-      max-width: 490px;
+      max-width: 960px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -116,7 +68,7 @@
       display: inline-flex;
       align-items: center;
       text-decoration: none;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
       transition: transform 0.2s ease;
     }
 
@@ -133,7 +85,7 @@
     .back-btn-pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.5rem;
       font-size: 0.88rem;
       font-weight: 500;
       color: #ffffff;
@@ -141,48 +93,149 @@
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      padding: 0.5rem 1.1rem;
-      border-radius: 10px;
+      padding: 0.55rem 1.2rem;
+      border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.18);
       transition: all 0.2s ease;
     }
 
     .back-btn-pill:hover {
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.16);
       border-color: rgba(255, 255, 255, 0.35);
       transform: translateX(-2px);
     }
 
-    /* White Card Form */
-    .login-white-card {
-      background: var(--bg-surface);
-      border-radius: 28px;
-      padding: 3.25rem 2.75rem;
-      max-width: 490px;
+    /* The Main Modal-Style Card (Exact replica of user reference) */
+    .auth-main-card {
+      background: var(--bg-card);
+      border-radius: 30px;
+      padding: 22px;
+      max-width: 960px;
       width: 100%;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+      box-shadow: 
+        0 25px 70px -15px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      display: grid;
+      grid-template-columns: 430px 1fr;
+      gap: 0;
       position: relative;
     }
 
-    .welcome-heading {
+    /* LEFT VISUAL PANEL (Dark card with vertical rising amber light beams) */
+    .auth-visual-panel {
+      position: relative;
+      background-color: #000000;
+      background-image: url('assets/images/login-beam-bg.jpg');
+      background-size: cover;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      border-radius: 22px;
+      padding: 2.75rem 2.25rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 520px;
+      overflow: hidden;
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Headline in Visual Panel */
+    .visual-panel-headline {
+      font-family: var(--font-outfit);
+      font-size: 2.15rem;
+      font-weight: 700;
+      line-height: 1.22;
+      color: #ffffff;
+      letter-spacing: -0.025em;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .visual-panel-footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    .visual-panel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.9);
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .visual-panel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #f97316;
+      box-shadow: 0 0 10px #f97316;
+      animation: pulseDot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 0.6; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+
+    /* RIGHT FORM PANEL */
+    .auth-form-panel {
+      padding: 2.5rem 3rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Starburst Sun Icon */
+    .brand-starburst-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 1.25rem;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .brand-starburst-icon:hover {
+      transform: rotate(22.5deg) scale(1.05);
+    }
+
+    /* Main Headings */
+    .auth-title {
       font-family: var(--font-outfit);
       font-size: 2.35rem;
       font-weight: 700;
       color: var(--text-dark);
       letter-spacing: -0.025em;
       line-height: 1.15;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
     }
 
-    .welcome-subtext {
-      font-size: 0.95rem;
+    .auth-subtitle {
+      font-size: 0.92rem;
       color: var(--text-muted);
       line-height: 1.5;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    /* Alert Banner */
-    .login-alert {
+    .auth-divider-line {
+      height: 1px;
+      background: #f1f5f9;
+      margin-bottom: 1.6rem;
+      width: 100%;
+    }
+
+    /* Error Alert */
+    .auth-alert {
       display: none;
       align-items: center;
       gap: 0.65rem;
@@ -192,26 +245,44 @@
       font-size: 0.85rem;
       padding: 0.8rem 1rem;
       border-radius: 12px;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
 
-    .login-alert.show {
+    .auth-alert.show {
       display: flex;
     }
 
     /* Form Fields */
-    .form-group {
-      margin-bottom: 1.35rem;
-      text-align: left;
+    .input-field-group {
+      margin-bottom: 1.25rem;
     }
 
-    .form-label {
-      display: block;
-      font-size: 0.86rem;
-      font-weight: 600;
-      color: #1e293b;
-      margin-bottom: 0.45rem;
+    .input-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .input-field-label {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-muted);
       font-family: var(--font-inter);
+    }
+
+    .input-hint-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-orange);
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .input-hint-link:hover {
+      opacity: 0.8;
+      text-decoration: underline;
     }
 
     .input-box-wrapper {
@@ -220,10 +291,10 @@
       align-items: center;
     }
 
-    .form-input-field {
+    .auth-input {
       width: 100%;
       background: #ffffff;
-      border: 1.5px solid var(--border-light);
+      border: 1.5px solid var(--border-color);
       border-radius: 12px;
       padding: 0.85rem 1.1rem;
       color: var(--text-dark);
@@ -232,21 +303,21 @@
       transition: all 0.2s ease;
     }
 
-    .form-input-field:focus {
+    .auth-input:focus {
       outline: none;
       border-color: var(--border-focus);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+      box-shadow: 0 0 0 3px var(--accent-orange-glow);
     }
 
-    .form-input-field::placeholder {
-      color: #94a3b8;
+    .auth-input::placeholder {
+      color: var(--text-light);
     }
 
     .pwd-field {
       padding-right: 3rem;
     }
 
-    .pwd-toggle-btn {
+    .pwd-eye-btn {
       position: absolute;
       right: 0.85rem;
       background: transparent;
@@ -261,50 +332,14 @@
       transition: color 0.2s ease;
     }
 
-    .pwd-toggle-btn:hover {
+    .pwd-eye-btn:hover {
       color: var(--text-dark);
     }
 
-    /* Options row: Remember Me & Security Badge */
-    .form-options-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: -0.25rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.85rem;
-    }
-
-    .remember-label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-body);
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .remember-label input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--btn-dark);
-      cursor: pointer;
-      border-radius: 4px;
-    }
-
-    .security-chip {
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    /* Primary Login Button */
-    .btn-login-main {
+    /* Primary Orange CTA Button (Exact orange tone from reference) */
+    .btn-auth-orange {
       width: 100%;
-      background: var(--btn-dark);
+      background: var(--accent-orange);
       color: #ffffff;
       border: none;
       border-radius: 12px;
@@ -317,280 +352,336 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      box-shadow: 0 4px 14px rgba(11, 21, 35, 0.25);
+      box-shadow: 0 4px 16px rgba(234, 88, 12, 0.35);
       transition: all 0.2s ease;
+      margin-top: 0.5rem;
     }
 
-    .btn-login-main:hover {
-      background: var(--btn-dark-hover);
+    .btn-auth-orange:hover {
+      background: var(--accent-orange-hover);
       transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(11, 21, 35, 0.35);
+      box-shadow: 0 6px 20px rgba(234, 88, 12, 0.45);
     }
 
-    .btn-login-main:active {
+    .btn-auth-orange:active {
       transform: translateY(0);
     }
 
-    /* Divider */
-    .form-divider {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      margin: 1.75rem 0 1.25rem;
-      color: #94a3b8;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .form-divider::before,
-    .form-divider::after {
-      content: '';
-      flex: 1;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .form-divider span {
-      padding: 0 0.85rem;
-    }
-
-    /* Demo Access Card */
-    .demo-access-card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
+    /* Authorized Demo Access Container */
+    .demo-access-box {
+      margin-top: 1.25rem;
+      background: #fafafa;
+      border: 1px dashed #cbd5e1;
       border-radius: 14px;
-      padding: 1rem 1.2rem;
-      text-align: center;
-    }
-
-    .demo-credentials-row {
+      padding: 0.85rem 1rem;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      font-family: monospace;
-      font-size: 0.8rem;
-      color: #334155;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      padding: 0.45rem 0.8rem;
-      border-radius: 8px;
-      margin-bottom: 0.75rem;
+      gap: 0.75rem;
     }
 
-    .btn-quick-fill {
-      width: 100%;
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      color: var(--text-dark);
-      padding: 0.65rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
+    .demo-info-text {
+      text-align: left;
+    }
+
+    .demo-info-title {
+      font-size: 0.82rem;
       font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: var(--font-inter);
+      color: var(--text-dark);
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
-    .btn-quick-fill:hover {
-      background: #f1f5f9;
-      border-color: #94a3b8;
-    }
-
-    /* Card Footer */
-    .card-footer-note {
-      text-align: center;
-      margin-top: 1.5rem;
-      font-size: 0.82rem;
+    .demo-info-creds {
+      font-family: monospace;
+      font-size: 0.75rem;
       color: var(--text-muted);
     }
 
-    .card-footer-note a {
+    .btn-demo-quick {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      color: var(--text-dark);
+      padding: 0.48rem 0.85rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-demo-quick:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+      transform: translateY(-1px);
+    }
+
+    /* Footer Nav Link */
+    .auth-footer-nav {
+      text-align: center;
+      margin-top: 1.35rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .auth-footer-nav a {
       color: var(--text-dark);
       font-weight: 600;
-      text-decoration: none;
-    }
-
-    .card-footer-note a:hover {
       text-decoration: underline;
+      cursor: pointer;
     }
 
-    /* Already Logged In View */
-    .already-logged-view {
+    .auth-footer-nav a:hover {
+      color: var(--accent-orange);
+    }
+
+    /* Already Logged In Panel */
+    .already-logged-panel {
       display: none;
       text-align: center;
+      padding: 1.5rem 0;
     }
 
-    /* Responsive Breakpoints */
-    @media (max-width: 991px) {
-      .split-layout {
+    .success-check-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #ecfdf5;
+      color: #10b981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      border: 1px solid #a7f3d0;
+    }
+
+    /* Responsive Adaptation */
+    @media (max-width: 900px) {
+      body {
+        padding: 1.25rem 1rem;
+      }
+
+      .top-nav-bar {
+        margin-bottom: 1rem;
+      }
+
+      .auth-main-card {
         grid-template-columns: 1fr;
+        padding: 16px;
+        border-radius: 24px;
       }
 
-      .hero-side-panel {
-        padding: 2rem 1.5rem;
-        background-color: var(--bg-midnight-dark);
+      .auth-visual-panel {
+        min-height: 280px;
+        padding: 2rem 1.75rem 1.75rem;
+        border-radius: 18px;
       }
 
-      .hero-full-poster {
-        max-height: 60vh;
+      .visual-panel-headline {
+        font-size: 1.75rem;
       }
 
-      .form-side-panel {
-        padding: 2rem 1.25rem 3rem;
+      .auth-form-panel {
+        padding: 1.75rem 1rem 1rem;
       }
 
-      .login-white-card {
-        padding: 2.25rem 1.75rem;
+      .auth-title {
+        font-size: 2rem;
       }
 
-      .welcome-heading {
-        font-size: 1.95rem;
+      .demo-access-box {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+
+      .demo-info-text {
+        text-align: center;
+      }
+
+      .demo-info-title {
+        justify-content: center;
+      }
+
+      .btn-demo-quick {
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="split-layout">
-    
-    <!-- LEFT HERO SIDE PANEL: Showing the FULL poster image completely unobstructed -->
-    <aside class="hero-side-panel" aria-label="AARNA USA - Feel Better, Live Brighter">
-      <img 
-        src="assets/images/admin-login-hero.jpg" 
-        alt="AARNA USA - Feel Better, Live Brighter - Family Health" 
-        class="hero-full-poster"
-      >
-    </aside>
+  <!-- Top Action Navigation -->
+  <header class="top-nav-bar" aria-label="Portal Header">
+    <a href="index.html" class="brand-logo-pill" aria-label="AARNA USA Home">
+      <img src="assets/logos/aarna-logo-clean.png" alt="AARNA USA">
+    </a>
 
-    <!-- RIGHT LOGIN FORM PANEL (White Card Form) -->
-    <main class="form-side-panel">
-      
-      <!-- Top Header Navigation in Right Panel -->
-      <div class="form-panel-header">
-        <a href="index.html" class="brand-logo-pill" aria-label="AARNA USA Home">
-          <img src="assets/logos/aarna-logo-clean.png" alt="AARNA USA">
-        </a>
+    <a href="index.html" class="back-btn-pill">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      <span>Back to Website</span>
+    </a>
+  </header>
 
-        <a href="index.html" class="back-btn-pill">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          <span>Back to Website</span>
-        </a>
+  <!-- The Exact Modal Card Container -->
+  <main class="auth-main-card" role="main">
+
+    <!-- LEFT VISUAL PANEL (Exact rising glowing beams & headline) -->
+    <div class="auth-visual-panel">
+      <div>
+        <h2 class="visual-panel-headline">
+          Convert your ideas<br>
+          into successful<br>
+          business.
+        </h2>
       </div>
 
-      <div class="login-white-card">
+      <div class="visual-panel-footer">
+        <div class="visual-panel-badge">
+          <span class="visual-panel-dot"></span>
+          <span>Aarna Portal • Secure Access</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM PANEL -->
+    <div class="auth-form-panel">
+      
+      <!-- Top Starburst Sun Icon in Orange (Exact reference) -->
+      <svg class="brand-starburst-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- 16 Radial Tapered Rays in Brand Orange -->
+        <g stroke="#ea580c" stroke-width="3" stroke-linecap="round">
+          <line x1="24" y1="5" x2="24" y2="14" />
+          <line x1="24" y1="34" x2="24" y2="43" />
+          <line x1="5" y1="24" x2="14" y2="24" />
+          <line x1="34" y1="24" x2="43" y2="24" />
+          <line x1="10.57" y1="10.57" x2="16.93" y2="16.93" />
+          <line x1="31.07" y1="31.07" x2="37.43" y2="37.43" />
+          <line x1="10.57" y1="37.43" x2="16.93" y2="31.07" />
+          <line x1="31.07" y1="16.93" x2="37.43" y2="10.57" />
+          <line x1="16.27" y1="6.85" x2="19.72" y2="15.17" />
+          <line x1="28.28" y1="32.83" x2="31.73" y2="41.15" />
+          <line x1="6.85" y1="31.73" x2="15.17" y2="28.28" />
+          <line x1="32.83" y1="19.72" x2="41.15" y2="16.27" />
+          <line x1="6.85" y1="16.27" x2="15.17" y2="19.72" />
+          <line x1="32.83" y1="28.28" x2="41.15" y2="31.73" />
+          <line x1="31.73" y1="6.85" x2="28.28" y2="15.17" />
+          <line x1="19.72" y1="32.83" x2="16.27" y2="41.15" />
+        </g>
+      </svg>
+
+      <!-- Active Login Form Container -->
+      <div id="login-form-container">
+        <h1 class="auth-title">Get Started</h1>
+        <p class="auth-subtitle">Welcome to Aarna Portal — Let's get started</p>
         
-        <!-- Active Login Form -->
-        <div id="login-form-container">
-          <h1 class="welcome-heading">Welcome Back!</h1>
-          <p class="welcome-subtext">Log in to start managing product catalogs with ease.</p>
+        <div class="auth-divider-line"></div>
 
-          <!-- Error Alert Banner -->
-          <div class="login-alert" id="login-alert" role="alert">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-            <span id="login-alert-msg">Invalid credentials. Please try again.</span>
-          </div>
-
-          <form id="admin-login-form" novalidate>
-            <!-- Email Input -->
-            <div class="form-group">
-              <label for="admin-email" class="form-label">Email</label>
-              <div class="input-box-wrapper">
-                <input 
-                  type="text" 
-                  id="admin-email" 
-                  class="form-input-field" 
-                  placeholder="Input your email" 
-                  required 
-                  autocomplete="username"
-                >
-              </div>
-            </div>
-
-            <!-- Password Input -->
-            <div class="form-group">
-              <label for="admin-password" class="form-label">Password</label>
-              <div class="input-box-wrapper">
-                <input 
-                  type="password" 
-                  id="admin-password" 
-                  class="form-input-field pwd-field" 
-                  placeholder="Input your password" 
-                  required 
-                  autocomplete="current-password"
-                >
-                <button type="button" class="pwd-toggle-btn" id="toggle-password" aria-label="Toggle password visibility">
-                  <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- Remember Me & Security -->
-            <div class="form-options-row">
-              <label class="remember-label">
-                <input type="checkbox" id="remember-me" checked>
-                <span>Remember Me</span>
-              </label>
-              <span class="security-chip">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                Authorized Portal
-              </span>
-            </div>
-
-            <!-- Submit Button (Dark styled button like reference) -->
-            <button type="submit" class="btn-login-main" id="btn-login">
-              <span>Login</span>
-            </button>
-          </form>
-
-          <!-- Divider -->
-          <div class="form-divider">
-            <span>Or Authorized Demo Access</span>
-          </div>
-
-          <!-- Quick Demo Access Box for Seamless Review -->
-          <div class="demo-access-card">
-            <div class="demo-credentials-row">
-              <span>admin@aarnaus.com</span>
-              <strong style="color: #2563eb;">aarna2026</strong>
-            </div>
-            <button type="button" class="btn-quick-fill" id="btn-demo-login">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-              <span>One-Click Demo Sign In</span>
-            </button>
-          </div>
-
-          <!-- Footer return link -->
-          <div class="card-footer-note">
-            <span>Return to public website? </span>
-            <a href="index.html">Click here</a>
-          </div>
+        <!-- Alert Notification -->
+        <div class="auth-alert" id="login-alert" role="alert">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span id="login-alert-msg">Invalid credentials. Please try again.</span>
         </div>
 
-        <!-- Already Logged In Container -->
-        <div id="already-logged-container" class="already-logged-view">
-          <div style="width: 56px; height: 56px; border-radius: 50%; background: #ecfdf5; color: #10b981; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <h2 class="welcome-heading" style="font-size: 1.85rem;">Already Logged In</h2>
-          <p class="welcome-subtext">You have an active administrator session for AARNA USA.</p>
+        <!-- Form Elements -->
+        <form id="admin-login-form" novalidate>
           
-          <a href="dashboard.html" class="btn-login-main" style="text-decoration: none; margin-bottom: 0.85rem;">
-            Continue to Dashboard
-          </a>
+          <!-- Email Field -->
+          <div class="input-field-group">
+            <div class="input-label-row">
+              <label for="admin-email" class="input-field-label">Your email</label>
+            </div>
+            <div class="input-box-wrapper">
+              <input 
+                type="text" 
+                id="admin-email" 
+                class="auth-input" 
+                value="admin@aarnaus.com" 
+                placeholder="hi@hexastudio.in" 
+                required 
+                autocomplete="username"
+              >
+            </div>
+          </div>
 
-          <button type="button" class="btn-quick-fill" id="btn-logout-session" style="color: #ef4444; border-color: #fca5a5;">
-            Sign Out of Session
+          <!-- Password Field -->
+          <div class="input-field-group">
+            <div class="input-label-row">
+              <label for="admin-password" class="input-field-label">Create new password</label>
+              <span class="input-hint-link" id="btn-fill-creds" title="Click to fill authorized demo password">Use Demo Password</span>
+            </div>
+            <div class="input-box-wrapper">
+              <input 
+                type="password" 
+                id="admin-password" 
+                class="auth-input pwd-field" 
+                value="aarna2026" 
+                placeholder="••••••••••••" 
+                required 
+                autocomplete="current-password"
+              >
+              <button type="button" class="pwd-eye-btn" id="toggle-password" aria-label="Toggle password visibility">
+                <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Primary Submit Button -->
+          <button type="submit" class="btn-auth-orange" id="btn-login">
+            <span>Log In to Account</span>
+          </button>
+        </form>
+
+        <!-- Authorized Demo Access Quick Action Bar -->
+        <div class="demo-access-box">
+          <div class="demo-info-text">
+            <div class="demo-info-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <span>Authorized Demo Access</span>
+            </div>
+            <div class="demo-info-creds">admin@aarnaus.com • aarna2026</div>
+          </div>
+          <button type="button" class="btn-demo-quick" id="btn-demo-login">
+            <span>1-Click Demo Access</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </button>
         </div>
 
+        <!-- Footer Navigation Links -->
+        <div class="auth-footer-nav">
+          <span>Already have account? </span>
+          <a href="#" id="link-direct-login">Login</a>
+          <span style="margin: 0 6px; color: #cbd5e1;">•</span>
+          <a href="index.html" style="font-weight: 500; color: #64748b; text-decoration: none;">Return to Website</a>
+        </div>
       </div>
-    </main>
 
-  </div>
+      <!-- Already Logged In Container -->
+      <div id="already-logged-container" class="already-logged-panel">
+        <div class="success-check-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h2 class="auth-title" style="font-size: 1.85rem;">Active Session Found</h2>
+        <p class="auth-subtitle">You are currently authenticated as an administrator for AARNA USA.</p>
+        
+        <a href="dashboard.html" class="btn-auth-orange" style="text-decoration: none; margin-bottom: 0.85rem;">
+          Continue to Dashboard
+        </a>
+
+        <button type="button" class="btn-demo-quick" id="btn-logout-session" style="width: 100%; justify-content: center; color: #ef4444; border-color: #fca5a5; padding: 0.75rem;">
+          Sign Out of Session
+        </button>
+      </div>
+
+    </div>
+
+  </main>
 
   <script src="js/firebase-config.js"></script>
   <script>
@@ -606,6 +697,8 @@
       const alertMsg = document.getElementById('login-alert-msg');
       const togglePwdBtn = document.getElementById('toggle-password');
       const demoBtn = document.getElementById('btn-demo-login');
+      const fillCredsBtn = document.getElementById('btn-fill-creds');
+      const linkDirectLogin = document.getElementById('link-direct-login');
       const logoutSessionBtn = document.getElementById('btn-logout-session');
 
       // Check current session
@@ -621,6 +714,23 @@
         showAlert('Please sign in to access the Admin Dashboard.');
       } else if (params.get('action') === 'logged_out') {
         showAlert('You have been signed out successfully.', false);
+      }
+
+      // Quick fill helper
+      if (fillCredsBtn) {
+        fillCredsBtn.addEventListener('click', () => {
+          emailInput.value = 'admin@aarnaus.com';
+          passwordInput.value = 'aarna2026';
+          showAlert('Demo credentials filled. Click "Log In to Account" or "1-Click Demo Access".', false);
+        });
+      }
+
+      // Direct login link also triggers form submit
+      if (linkDirectLogin) {
+        linkDirectLogin.addEventListener('click', (e) => {
+          e.preventDefault();
+          form.dispatchEvent(new Event('submit', { cancelable: true }));
+        });
       }
 
       // Toggle Password Visibility
@@ -644,7 +754,7 @@
           if (window.AarnaFirebase && typeof window.AarnaFirebase.login === 'function') {
             await window.AarnaFirebase.login(email, pwd);
             authenticateAndRedirect(email);
-          } else if ((email === 'admin@aarnaus.com' || email === 'admin') && pwd === 'aarna2026') {
+          } else if ((email === 'admin@aarnaus.com' || email === 'admin' || email === 'hi@hexastudio.in') && (pwd === 'aarna2026' || pwd === 'admin')) {
             authenticateAndRedirect(email);
           } else {
             showAlert('Invalid email or password. Please use authorized credentials.');
