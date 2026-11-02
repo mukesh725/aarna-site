@@ -11,7 +11,17 @@
   const STORAGE_KEY_FIREBASE_CONFIG = 'aarna_firebase_config';
   const STORAGE_KEY_CLOUD_SYNC_STATUS = 'aarna_firebase_sync_status';
 
-  // Default configuration (can be updated via Dashboard settings or env)
+  // Default configuration for aarna-489af project
+  const defaultFirebaseConfig = {
+    apiKey: "AIzaSyBXVUtxItDnk_6BaiRu85MrWSlFXcNlf9E",
+    authDomain: "aarna-489af.firebaseapp.com",
+    projectId: "aarna-489af",
+    storageBucket: "aarna-489af.firebasestorage.app",
+    messagingSenderId: "888395161772",
+    appId: "1:888395161772:web:8f112b7950c8bb1f6bbf09",
+    measurementId: "G-458B44XLC6"
+  };
+
   let activeConfig = null;
 
   try {
@@ -23,16 +33,9 @@
     console.warn('Could not read saved Firebase config:', e);
   }
 
-  // Pre-configured fallback or custom project
-  if (!activeConfig) {
-    activeConfig = {
-      apiKey: "AIzaSyDemoAarnaPlaceholderKeyForSparkTier",
-      authDomain: "aarna-pharmaceuticals.firebaseapp.com",
-      projectId: "aarna-pharmaceuticals",
-      storageBucket: "aarna-pharmaceuticals.appspot.com",
-      messagingSenderId: "109876543210",
-      appId: "1:109876543210:web:aarna987654321demo"
-    };
+  // Fallback to the live project credentials
+  if (!activeConfig || !activeConfig.apiKey || activeConfig.apiKey.includes('Placeholder')) {
+    activeConfig = defaultFirebaseConfig;
   }
 
   const AarnaFirebase = {
@@ -45,7 +48,7 @@
 
     // Initialize Firebase
     init: async function () {
-      if (this.isInitialized) return this;
+      if (this.isInitialized && this.isConnected) return this;
 
       try {
         // Load Firebase SDK if not already present
@@ -209,7 +212,8 @@
       const catalogs = ['institutional', 'retail', 'devices'];
       for (const cat of catalogs) {
         try {
-          const products = window.AarnaStore ? window.AarnaStore.getCatalog(cat) : [];
+          const products = window.AarnaStore ? 
+            (typeof window.AarnaStore.getProducts === 'function' ? window.AarnaStore.getProducts(cat) : window.AarnaStore.getCatalog(cat)) : [];
           if (!products || !products.length) continue;
 
           const batch = this.db.batch();
@@ -228,6 +232,21 @@
         } catch (e) {
           console.warn(`Sync failed for ${cat}:`, e.message);
         }
+      }
+    },
+
+    // Hydrate local products from Firestore (bi-directional sync)
+    loadProductsFromCloud: async function (catalogKey) {
+      if (!this.isConnected || !this.db) return null;
+      try {
+        const snap = await this.db.collection(`products_${catalogKey}`).get();
+        if (snap.empty) return null;
+        const cloudProducts = [];
+        snap.forEach(doc => cloudProducts.push(doc.data()));
+        return cloudProducts;
+      } catch (err) {
+        console.warn(`Could not load ${catalogKey} from Firestore:`, err.message);
+        return null;
       }
     },
 
