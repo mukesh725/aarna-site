@@ -31,6 +31,7 @@
     hero_home_desc: 'AARNA USA serves healthcare institutions, pharmacies, and retail customers with OTC medicines, institutional unit-dose products, medical supplies, and healthcare supplies.',
     hero_subbar_left: 'TRUSTED HEALTHCARE SOLUTIONS',
     hero_subbar_right: 'QUALITY · RELIABILITY · CARE',
+    showcase_heading: 'Find the product you need',
     catalog_cta_title: 'Aarna USA Product Catalog',
     catalog_cta_desc: 'Download our comprehensive product guide featuring all 71 retail pharmaceuticals, 10 institutional unit-dose cups, and 23 medical supplies.',
     federal_title: 'Federal Healthcare Opportunities',

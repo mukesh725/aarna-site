@@ -939,10 +939,12 @@ h1, h2, h3, h4, h5, h6 {
 .product-showcase-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2.25rem;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 2.5rem;
   flex-wrap: wrap;
   gap: 1.25rem;
+  width: 100%;
 }
 
 .product-showcase-title {
@@ -951,8 +953,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   color: #111827;
   letter-spacing: -0.035em;
-  margin: 0;
+  margin: 0 auto;
   line-height: 1.15;
+  text-align: center;
 }
 
 .product-showcase-tabs {
@@ -3824,7 +3827,8 @@ h1, h2, h3, h4, h5, h6 {
   
   .product-showcase-header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
   }
 
   .hero-home {
