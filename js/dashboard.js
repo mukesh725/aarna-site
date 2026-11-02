@@ -47,6 +47,7 @@
     initMediaManager();
     initInquiriesManager();
     initBackupManager();
+    initTeamAndPermissionsManager();
     initMobileSidebar();
 
     // Default to Institutional Care
@@ -160,6 +161,8 @@
         mainTitleEl.textContent = 'Media & Images Library';
       } else if (viewName === 'settings') {
         mainTitleEl.textContent = 'Settings & Backups';
+      } else if (viewName === 'team') {
+        mainTitleEl.textContent = 'Team & Superadmin Settings';
       }
     }
 
@@ -167,6 +170,7 @@
     if (viewName === 'content') loadContentForm();
     if (viewName === 'media') renderMediaGrid();
     if (viewName === 'inquiries') renderInquiries();
+    if (viewName === 'team') renderTeamManagementView();
   }
 
   function switchCatalog(catalogType) {
@@ -1313,9 +1317,399 @@
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = `aarna-products-backup-${new Date().toISOString().slice(0, 10)}.json`;
-      a.click();
+  }
+
+  // --------------------------------------------------------------------------
+  // TEAM ROLES & SUPERADMIN TAB VISIBILITY SETTINGS
+  // --------------------------------------------------------------------------
+  const ALL_DASHBOARD_TABS = [
+    { id: 'overview', name: 'Dashboard Overview', desc: 'Overall pipeline stats, lead metrics, catalog tallies', icon: '📊', selector: '.dash-nav-item[data-view="overview"]' },
+    { id: 'catalog_institutional', name: 'Institutional Care', desc: 'Unit-dose cups, oral solutions, liquid pharmaceuticals', icon: '🏥', selector: '.dash-nav-item[data-view="catalogs"][data-catalog="institutional"]' },
+    { id: 'catalog_retail', name: 'Retail Products', desc: 'OTC tablets, pain relief, allergy, gastrointestinal', icon: '💊', selector: '.dash-nav-item[data-view="catalogs"][data-catalog="retail"]' },
+    { id: 'catalog_devices', name: 'Medical Supplies', desc: 'Surgical tapes, wound care, syringes, clinical disposables', icon: '🩺', selector: '.dash-nav-item[data-view="catalogs"][data-catalog="devices"]' },
+    { id: 'inquiries', name: 'Inquiries & Leads', desc: 'Customer inquiries, RFQ submissions, order requests', icon: '📬', selector: '.dash-nav-item[data-view="inquiries"]' },
+    { id: 'content', name: 'Site Content (CMS)', desc: 'Live homepage text, badges, headers, hero updates', icon: '📝', selector: '.dash-nav-item[data-view="content"]' },
+    { id: 'media', name: 'Media & Images', desc: 'Image replacement, product photography, banners', icon: '🖼️', selector: '.dash-nav-item[data-view="media"]' },
+    { id: 'settings', name: 'Settings & Backups', desc: 'JSON catalog export, Firebase synchronization', icon: '⚙️', selector: '.dash-nav-item[data-view="settings"]' },
+    { id: 'team', name: 'Team & Roles', desc: 'Superadmin governance, role tab visibility matrix', icon: '👑', selector: '.dash-nav-item[data-view="team"]' }
+  ];
+
+  const DEFAULT_ROLE_PERMS = {
+    superadmin: ['overview', 'catalog_institutional', 'catalog_retail', 'catalog_devices', 'inquiries', 'content', 'media', 'settings', 'team'],
+    catalog_manager: ['catalog_institutional', 'catalog_retail', 'catalog_devices', 'media'],
+    content_editor: ['content', 'media'],
+    sales_support: ['inquiries', 'overview']
+  };
+
+  const DEFAULT_TEAM_MEMBERS = [
+    { id: 'usr-1', name: 'Aarna Super Admin', email: 'admin@aarnaus.com', role: 'superadmin', customTabs: [], status: 'Active' },
+    { id: 'usr-2', name: 'Rachel Stevens', email: 'catalog.manager@aarnaus.com', role: 'catalog_manager', customTabs: [], status: 'Active' },
+    { id: 'usr-3', name: 'David Miller', email: 'editor@aarnaus.com', role: 'content_editor', customTabs: [], status: 'Active' },
+    { id: 'usr-4', name: 'Emily Zhang', email: 'sales@aarnaus.com', role: 'sales_support', customTabs: [], status: 'Active' }
+  ];
+
+  let activeEditingMemberId = null;
+
+  function getStoredRolePermissions() {
+    try {
+      const stored = localStorage.getItem('aarna_role_permissions');
+      if (stored) return JSON.parse(stored);
+    } catch (e) {}
+    return JSON.parse(JSON.stringify(DEFAULT_ROLE_PERMS));
+  }
+
+  function saveStoredRolePermissions(perms) {
+    localStorage.setItem('aarna_role_permissions', JSON.stringify(perms));
+  }
+
+  function getStoredTeamMembers() {
+    try {
+      const stored = localStorage.getItem('aarna_team_members');
+      if (stored) return JSON.parse(stored);
+    } catch (e) {}
+    return JSON.parse(JSON.stringify(DEFAULT_TEAM_MEMBERS));
+  }
+
+  function saveStoredTeamMembers(members) {
+    localStorage.setItem('aarna_team_members', JSON.stringify(members));
+  }
+
+  function getRoleDisplayName(roleKey) {
+    switch (roleKey) {
+      case 'superadmin': return 'Superadmin';
+      case 'catalog_manager': return 'Catalog Manager';
+      case 'content_editor': return 'Content Specialist';
+      case 'sales_support': return 'Sales Representative';
+      case 'custom': return 'Custom Permissions';
+      default: return capitalize(roleKey);
+    }
+  }
+
+  function initTeamAndPermissionsManager() {
+    // Determine active role from session or simulator
+    let activeRole = 'superadmin';
+    try {
+      const user = JSON.parse(sessionStorage.getItem('aarna_admin_user') || '{}');
+      if (user.role) {
+        const r = user.role.toLowerCase().replace(/[^a-z]/g, '_');
+        if (DEFAULT_ROLE_PERMS[r]) activeRole = r;
+      }
+    } catch (e) {}
+
+    const savedSimRole = localStorage.getItem('aarna_simulated_role');
+    if (savedSimRole && DEFAULT_ROLE_PERMS[savedSimRole]) {
+      activeRole = savedSimRole;
+    }
+
+    // Apply permissions to sidebar immediately on boot
+    applyRolePermissions(activeRole);
+
+    // Setup Simulator Dropdown Listener
+    const simSelect = document.getElementById('role-simulator-select');
+    if (simSelect) {
+      simSelect.value = activeRole;
+      simSelect.addEventListener('change', (e) => {
+        const newRole = e.target.value;
+        localStorage.setItem('aarna_simulated_role', newRole);
+        applyRolePermissions(newRole);
+        renderTeamManagementView();
+      });
+    }
+
+    // Save Permissions Button
+    document.getElementById('btn-save-role-perms')?.addEventListener('click', () => {
+      const simSelect = document.getElementById('role-simulator-select');
+      const targetRole = simSelect ? simSelect.value : 'superadmin';
+      const perms = getStoredRolePermissions();
+      
+      const checkedTabs = [];
+      document.querySelectorAll('#tabs-matrix-container input[data-tab-id]:checked').forEach(input => {
+        checkedTabs.push(input.dataset.tabId);
+      });
+
+      perms[targetRole] = checkedTabs;
+      saveStoredRolePermissions(perms);
+      applyRolePermissions(targetRole);
+
+      alert(`Permissions updated successfully for "${getRoleDisplayName(targetRole)}"! Sidebar tabs updated in real time.`);
     });
+
+    // Reset Defaults Button
+    document.getElementById('btn-reset-role-perms')?.addEventListener('click', () => {
+      const simSelect = document.getElementById('role-simulator-select');
+      const targetRole = simSelect ? simSelect.value : 'superadmin';
+      if (confirm(`Reset permissions for "${getRoleDisplayName(targetRole)}" back to recommended system defaults?`)) {
+        const perms = getStoredRolePermissions();
+        perms[targetRole] = DEFAULT_ROLE_PERMS[targetRole] ? [...DEFAULT_ROLE_PERMS[targetRole]] : [...DEFAULT_ROLE_PERMS.superadmin];
+        saveStoredRolePermissions(perms);
+        applyRolePermissions(targetRole);
+        renderTeamManagementView();
+      }
+    });
+
+    // Add Member Button & Modal Setup
+    const addMemberBtn = document.getElementById('btn-add-team-member');
+    const memberModal = document.getElementById('team-member-modal');
+    const memberForm = document.getElementById('team-member-form');
+    const memberRoleSelect = document.getElementById('member-role');
+
+    if (addMemberBtn && memberModal) {
+      addMemberBtn.addEventListener('click', () => {
+        activeEditingMemberId = null;
+        document.getElementById('team-modal-title').textContent = 'Add Team Member';
+        memberForm.reset();
+        populateModalTabsChecklist('superadmin');
+        memberModal.classList.add('open');
+      });
+    }
+
+    if (memberRoleSelect) {
+      memberRoleSelect.addEventListener('change', (e) => {
+        populateModalTabsChecklist(e.target.value);
+      });
+    }
+
+    if (memberForm) {
+      memberForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('member-name').value.trim();
+        const email = document.getElementById('member-email').value.trim();
+        const password = document.getElementById('member-password').value.trim() || 'aarna2026';
+        const role = document.getElementById('member-role').value;
+
+        const customTabs = [];
+        document.querySelectorAll('#modal-tabs-checklist input[data-modal-tab]:checked').forEach(cb => {
+          customTabs.push(cb.dataset.modalTab);
+        });
+
+        const members = getStoredTeamMembers();
+        if (activeEditingMemberId) {
+          const idx = members.findIndex(m => m.id === activeEditingMemberId);
+          if (idx > -1) {
+            members[idx].name = name;
+            members[idx].email = email;
+            members[idx].password = password;
+            members[idx].role = role;
+            members[idx].customTabs = customTabs;
+          }
+        } else {
+          members.push({
+            id: 'usr-' + Date.now(),
+            name,
+            email,
+            password,
+            role,
+            customTabs,
+            status: 'Active'
+          });
+        }
+
+        saveStoredTeamMembers(members);
+        closeAllModals();
+        renderTeamMembersTable();
+        alert('Team member saved successfully!');
+      });
+    }
+
+    // Initial render if in team view
+    if (currentView === 'team') {
+      renderTeamManagementView();
+    }
+  }
+
+  function applyRolePermissions(roleName, customTabsList = null) {
+    const rolePerms = getStoredRolePermissions();
+    const allowedTabs = customTabsList || rolePerms[roleName] || rolePerms['superadmin'] || [];
+
+    // Update active role badge & title in UI
+    const roleText = document.getElementById('current-active-role-text');
+    if (roleText) {
+      roleText.textContent = getRoleDisplayName(roleName);
+    }
+    const userInfoRole = document.querySelector('.dash-user-info span');
+    if (userInfoRole) {
+      userInfoRole.textContent = getRoleDisplayName(roleName);
+    }
+
+    // Toggle individual sidebar navigation tabs
+    ALL_DASHBOARD_TABS.forEach(tab => {
+      const btn = document.querySelector(tab.selector);
+      if (btn) {
+        const isAllowed = allowedTabs.includes(tab.id);
+        btn.style.display = isAllowed ? 'flex' : 'none';
+      }
+    });
+
+    // Toggle Sidebar Group Headers if child tabs are hidden
+    const hasCatalogs = allowedTabs.some(t => t.startsWith('catalog_'));
+    const sectionLabels = document.querySelectorAll('.dash-nav-section-label');
+    if (sectionLabels[0]) sectionLabels[0].style.display = hasCatalogs ? 'block' : 'none';
+
+    const hasWorkspace = allowedTabs.some(t => ['content', 'media', 'settings'].includes(t));
+    if (sectionLabels[1]) sectionLabels[1].style.display = hasWorkspace ? 'block' : 'none';
+
+    const hasGov = allowedTabs.includes('team');
+    const govLabel = document.getElementById('section-admin-label');
+    if (govLabel) govLabel.style.display = hasGov ? 'block' : 'none';
+
+    // Auto-redirect if user is currently on an unpermitted tab
+    const curTabId = getCurrentActiveTabId();
+    if (!allowedTabs.includes(curTabId)) {
+      const fallbackTab = ALL_DASHBOARD_TABS.find(t => allowedTabs.includes(t.id));
+      if (fallbackTab) {
+        if (fallbackTab.id.startsWith('catalog_')) {
+          switchView('catalogs');
+          switchCatalog(fallbackTab.id.replace('catalog_', ''));
+        } else {
+          switchView(fallbackTab.id);
+        }
+      }
+    }
+  }
+
+  function getCurrentActiveTabId() {
+    if (currentView === 'catalogs') {
+      return `catalog_${currentCatalog}`;
+    }
+    return currentView;
+  }
+
+  function renderTeamManagementView() {
+    const simSelect = document.getElementById('role-simulator-select');
+    const targetRole = simSelect ? simSelect.value : 'superadmin';
+    const perms = getStoredRolePermissions();
+    const activeAllowed = perms[targetRole] || perms.superadmin;
+
+    // Render Matrix of Tab Switch Cards
+    const container = document.getElementById('tabs-matrix-container');
+    if (container) {
+      container.innerHTML = ALL_DASHBOARD_TABS.map(tab => {
+        const isChecked = activeAllowed.includes(tab.id);
+        return `
+          <div class="tab-permission-card ${isChecked ? 'active-perm' : ''}">
+            <div class="tab-card-left">
+              <div class="tab-icon-box">${tab.icon}</div>
+              <div>
+                <div class="tab-info-title">${tab.name}</div>
+                <div class="tab-info-desc">${tab.desc}</div>
+              </div>
+            </div>
+            <label class="switch-toggle-label">
+              <input type="checkbox" data-tab-id="${tab.id}" ${isChecked ? 'checked' : ''} onchange="this.closest('.tab-permission-card').classList.toggle('active-perm', this.checked)">
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+        `;
+      }).join('');
+    }
+
+    renderTeamMembersTable();
+  }
+
+  function renderTeamMembersTable() {
+    const tbody = document.getElementById('team-members-tbody');
+    if (!tbody) return;
+
+    const members = getStoredTeamMembers();
+    const perms = getStoredRolePermissions();
+
+    tbody.innerHTML = members.map(m => {
+      const allowed = m.role === 'custom' ? (m.customTabs || []) : (perms[m.role] || []);
+      const roleClass = `role-${m.role.replace('_', '')}`;
+      const initials = m.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+
+      const tabPills = allowed.map(tabId => {
+        const tabObj = ALL_DASHBOARD_TABS.find(t => t.id === tabId);
+        return `<span class="tab-chip-pill">${tabObj ? tabObj.name : tabId}</span>`;
+      }).join('');
+
+      return `
+        <tr>
+          <td>
+            <div class="team-member-cell">
+              <div class="team-member-avatar">${initials}</div>
+              <div>
+                <strong style="color:#0b1523; display:block;">${m.name}</strong>
+                <span style="color:#64748b; font-size:0.8rem;">${m.email}</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <span class="team-role-pill ${roleClass}">${getRoleDisplayName(m.role)}</span>
+          </td>
+          <td>
+            <div class="tab-badge-list">
+              ${tabPills || '<span style="color:#94a3b8; font-size:0.75rem;">No tabs assigned</span>'}
+            </div>
+          </td>
+          <td>
+            <span style="display:inline-flex; align-items:center; gap:0.35rem; color:#16a34a; font-weight:600; font-size:0.82rem;">
+              <span style="width:6px; height:6px; border-radius:50%; background:#16a34a;"></span>
+              ${m.status || 'Active'}
+            </span>
+          </td>
+          <td style="text-align: right;">
+            <button type="button" class="dash-icon-btn btn-edit-member" data-member-id="${m.id}" title="Edit Team Member" style="margin-right: 4px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            </button>
+            ${m.email !== 'admin@aarnaus.com' ? `
+              <button type="button" class="dash-icon-btn btn-delete-member" data-member-id="${m.id}" title="Remove Member" style="color: #ef4444;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </button>
+            ` : ''}
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    // Wire up edit buttons
+    tbody.querySelectorAll('.btn-edit-member').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const memberId = btn.dataset.memberId;
+        const member = members.find(m => m.id === memberId);
+        if (member) {
+          activeEditingMemberId = memberId;
+          document.getElementById('team-modal-title').textContent = 'Edit Team Member & Permissions';
+          document.getElementById('member-name').value = member.name;
+          document.getElementById('member-email').value = member.email;
+          document.getElementById('member-password').value = member.password || 'aarna2026';
+          document.getElementById('member-role').value = member.role;
+          populateModalTabsChecklist(member.role, member.customTabs);
+          document.getElementById('team-member-modal').classList.add('open');
+        }
+      });
+    });
+
+    // Wire up delete buttons
+    tbody.querySelectorAll('.btn-delete-member').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const memberId = btn.dataset.memberId;
+        const member = members.find(m => m.id === memberId);
+        if (member && confirm(`Remove team member "${member.name}" (${member.email})?`)) {
+          const updated = members.filter(m => m.id !== memberId);
+          saveStoredTeamMembers(updated);
+          renderTeamMembersTable();
+        }
+      });
+    });
+  }
+
+  function populateModalTabsChecklist(selectedRole, customList = null) {
+    const container = document.getElementById('modal-tabs-checklist');
+    if (!container) return;
+
+    const perms = getStoredRolePermissions();
+    const activeList = customList || perms[selectedRole] || perms.superadmin || [];
+
+    container.innerHTML = ALL_DASHBOARD_TABS.map(tab => {
+      const isChecked = activeList.includes(tab.id);
+      return `
+        <label style="display:flex; align-items:center; gap:0.45rem; font-size:0.82rem; cursor:pointer; color:#1e293b;">
+          <input type="checkbox" data-modal-tab="${tab.id}" ${isChecked ? 'checked' : ''} style="accent-color:#2563eb; width:15px; height:15px;">
+          <span>${tab.icon} ${tab.name}</span>
+        </label>
+      `;
+    }).join('');
   }
 
   function initMobileSidebar() {

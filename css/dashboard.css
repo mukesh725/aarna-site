@@ -1247,4 +1247,246 @@ body.dash-body {
   color: #ef4444;
 }
 
+/* ==========================================================================
+   TEAM ROLES & SUPERADMIN TAB VISIBILITY SETTINGS
+   ========================================================================== */
+.team-simulator-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+  border: 1px solid #bfdbfe;
+  border-radius: var(--dash-radius-card);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.simulator-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid #fde68a;
+  margin-bottom: 0.35rem;
+}
+
+.simulator-info h4 {
+  font-family: var(--font-outfit);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0b1523;
+  margin-bottom: 0.25rem;
+}
+
+.simulator-info p {
+  font-size: 0.86rem;
+  color: #475569;
+  margin: 0;
+}
+
+.simulator-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.team-tabs-matrix-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.tab-permission-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: all 0.2s ease;
+}
+
+.tab-permission-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.tab-permission-card.active-perm {
+  border-color: #93c5fd;
+  background: #f0f7ff;
+}
+
+.tab-card-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.tab-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #0b1523;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tab-permission-card.active-perm .tab-icon-box {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.tab-info-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0b1523;
+  margin-bottom: 0.2rem;
+}
+
+.tab-info-desc {
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.35;
+}
+
+/* Custom iOS / Toggle Switch */
+.switch-toggle-label {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.switch-toggle-label input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  transition: .3s;
+  border-radius: 24px;
+}
+
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.switch-toggle-label input:checked + .switch-slider {
+  background-color: #10b981;
+}
+
+.switch-toggle-label input:checked + .switch-slider:before {
+  transform: translateX(20px);
+}
+
+/* Team Member Table Styling */
+.team-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.team-table th {
+  text-align: left;
+  padding: 0.85rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.team-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.88rem;
+  color: #1e293b;
+  vertical-align: middle;
+}
+
+.team-member-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.team-member-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #0b1523;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-role-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.role-superadmin { background: #fef3c7; color: #92400e; }
+.role-catalog { background: #e0e7ff; color: #3730a3; }
+.role-content { background: #f3e8ff; color: #6b21a8; }
+.role-sales { background: #dcfce7; color: #166534; }
+.role-custom { background: #f1f5f9; color: #334155; }
+
+.tab-badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  max-width: 360px;
+}
+
+.tab-chip-pill {
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+
 
