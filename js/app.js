@@ -484,25 +484,152 @@ function initProductModal() {
 }
 
 /* ==========================================================================
-   CATALOG DOWNLOAD LOGIC
+   CATALOG VIEWER & DOWNLOAD LOGIC (Interactive PDF Preview & Download)
    ========================================================================== */
 function initCatalogDownload() {
-  const downloadBtns = document.querySelectorAll('.trigger-catalog-download');
-  downloadBtns.forEach(btn => {
+  const pdfUrl = 'assets/downloads/Aarna_USA_Product_Catalog.pdf';
+  const pdfFilename = 'Aarna_USA_Product_Catalog.pdf';
+
+  // Global direct download trigger
+  window.downloadCatalogPDF = function() {
+    const tempLink = document.createElement('a');
+    tempLink.href = pdfUrl;
+    tempLink.download = pdfFilename;
+    tempLink.target = '_blank';
+    document.body.appendChild(tempLink);
+    tempLink.click();
+    tempLink.remove();
+    if (typeof window.showToast === 'function') {
+      window.showToast('Catalog PDF download started!', 'success');
+    }
+  };
+
+  // Create or retrieve the PDF Preview Modal
+  let catalogOverlay = document.getElementById('catalog-viewer-modal');
+  if (!catalogOverlay) {
+    catalogOverlay = document.createElement('div');
+    catalogOverlay.id = 'catalog-viewer-modal';
+    catalogOverlay.className = 'catalog-viewer-overlay';
+    catalogOverlay.setAttribute('role', 'dialog');
+    catalogOverlay.setAttribute('aria-modal', 'true');
+    catalogOverlay.setAttribute('aria-label', 'AARNA USA Full Product Catalog Preview');
+
+    catalogOverlay.innerHTML = `
+      <div class="catalog-viewer-dialog">
+        <div class="catalog-viewer-header">
+          <div class="catalog-viewer-info">
+            <div class="catalog-viewer-title-row">
+              <svg class="catalog-pdf-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <h2 class="catalog-viewer-title">AARNA USA — Full Product Catalog</h2>
+              <span class="catalog-viewer-badge">Official 2026 Catalog • PDF</span>
+            </div>
+            <p class="catalog-viewer-subtitle">Scroll through all pages below or click download for an offline copy.</p>
+          </div>
+
+          <div class="catalog-viewer-actions">
+            <button class="btn-catalog-action btn-catalog-download" id="modal-catalog-dl-action" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download PDF</span>
+            </button>
+            <a href="${pdfUrl}" target="_blank" rel="noopener noreferrer" class="btn-catalog-action btn-catalog-tab" title="Open full screen in a new tab">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span>Open in New Tab</span>
+            </a>
+            <button class="catalog-viewer-close-btn" id="modal-catalog-close-action" aria-label="Close catalog preview">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="catalog-viewer-body">
+          <iframe 
+            id="catalog-pdf-frame" 
+            src="" 
+            title="AARNA USA Full Product Catalog PDF"
+            class="catalog-pdf-iframe"
+          ></iframe>
+          <div class="catalog-pdf-fallback" id="catalog-pdf-fallback-box">
+            <p>Your browser could not preview the PDF inline.</p>
+            <div style="display: flex; gap: 0.75rem; margin-top: 1rem; justify-content: center;">
+              <button class="btn btn-primary" onclick="window.downloadCatalogPDF()">Download Catalog PDF</button>
+              <a href="${pdfUrl}" target="_blank" class="btn btn-secondary">Open in New Tab</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(catalogOverlay);
+
+    // Event: Download action button inside modal
+    const dlBtn = catalogOverlay.querySelector('#modal-catalog-dl-action');
+    if (dlBtn) {
+      dlBtn.addEventListener('click', () => window.downloadCatalogPDF());
+    }
+
+    // Event: Close modal button
+    const closeBtn = catalogOverlay.querySelector('#modal-catalog-close-action');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeCatalogViewer);
+    }
+
+    // Event: Click backdrop to close
+    catalogOverlay.addEventListener('click', (e) => {
+      if (e.target === catalogOverlay) {
+        closeCatalogViewer();
+      }
+    });
+
+    // Event: Escape key to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && catalogOverlay.classList.contains('open')) {
+        closeCatalogViewer();
+      }
+    });
+  }
+
+  function closeCatalogViewer() {
+    if (!catalogOverlay) return;
+    catalogOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  window.closeCatalogViewer = closeCatalogViewer;
+
+  window.openCatalogViewer = function() {
+    if (!catalogOverlay) return;
+    const iframe = catalogOverlay.querySelector('#catalog-pdf-frame');
+    if (iframe && (!iframe.src || iframe.src === '' || iframe.src === window.location.href)) {
+      // Lazy-load the PDF src only when opened
+      iframe.src = `${pdfUrl}#toolbar=1&navpanes=1&view=FitH`;
+    }
+    catalogOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Attach to all catalog buttons and links across the site
+  const catalogTriggers = document.querySelectorAll('.trigger-catalog-download, .view-catalog-link, [data-action="open-catalog"]');
+  catalogTriggers.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const pdfUrl = 'assets/downloads/Aarna_USA_Product_Catalog.pdf';
-      
-      // Create temporary download link
-      const tempLink = document.createElement('a');
-      tempLink.href = pdfUrl;
-      tempLink.download = 'Aarna_USA_Product_Catalog.pdf';
-      tempLink.target = '_blank';
-      document.body.appendChild(tempLink);
-      tempLink.click();
-      tempLink.remove();
-
-      window.showToast('Catalog download initiated!', 'success');
+      window.openCatalogViewer();
     });
   });
 }
