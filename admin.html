@@ -151,17 +151,18 @@
       max-width: 440px;
     }
 
-    /* Starburst Sun Icon */
-    .brand-starburst-icon {
-      width: 46px;
-      height: 46px;
-      margin-bottom: 1.5rem;
-      display: block;
-      transition: transform 0.3s ease;
+    /* Brand Logo */
+    .auth-brand-logo-wrap {
+      margin-bottom: 1.75rem;
+      display: inline-block;
     }
 
-    .brand-starburst-icon:hover {
-      transform: rotate(22.5deg) scale(1.05);
+    .auth-brand-logo {
+      height: 48px;
+      width: auto;
+      max-width: 200px;
+      object-fit: contain;
+      display: block;
     }
 
     /* Main Headings */
@@ -396,13 +397,12 @@
   <!-- Full-Screen Split View Layout -->
   <div class="fullscreen-auth-container">
 
-    <!-- LEFT VISUAL PANEL (Exact glowing amber vertical beams & headline) -->
+    <!-- LEFT VISUAL PANEL (Glowing amber vertical beams with Feel better, live brighter) -->
     <div class="auth-visual-panel">
       <div class="visual-panel-content">
         <h1 class="visual-panel-headline">
-          Convert your ideas<br>
-          into successful<br>
-          business.
+          Feel better,<br>
+          live brighter.
         </h1>
       </div>
 
@@ -418,27 +418,10 @@
     <div class="auth-form-panel">
       <div class="auth-form-inner">
         
-        <!-- Top Starburst Sun Icon in Orange (Exact reference) -->
-        <svg class="brand-starburst-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <g stroke="#ea580c" stroke-width="3" stroke-linecap="round">
-            <line x1="24" y1="5" x2="24" y2="14" />
-            <line x1="24" y1="34" x2="24" y2="43" />
-            <line x1="5" y1="24" x2="14" y2="24" />
-            <line x1="34" y1="24" x2="43" y2="24" />
-            <line x1="10.57" y1="10.57" x2="16.93" y2="16.93" />
-            <line x1="31.07" y1="31.07" x2="37.43" y2="37.43" />
-            <line x1="10.57" y1="37.43" x2="16.93" y2="31.07" />
-            <line x1="31.07" y1="16.93" x2="37.43" y2="10.57" />
-            <line x1="16.27" y1="6.85" x2="19.72" y2="15.17" />
-            <line x1="28.28" y1="32.83" x2="31.73" y2="41.15" />
-            <line x1="6.85" y1="31.73" x2="15.17" y2="28.28" />
-            <line x1="32.83" y1="19.72" x2="41.15" y2="16.27" />
-            <line x1="6.85" y1="16.27" x2="15.17" y2="19.72" />
-            <line x1="32.83" y1="28.28" x2="41.15" y2="31.73" />
-            <line x1="31.73" y1="6.85" x2="28.28" y2="15.17" />
-            <line x1="19.72" y1="32.83" x2="16.27" y2="41.15" />
-          </g>
-        </svg>
+        <!-- Aarna Brand Logo (Exact reference) -->
+        <div class="auth-brand-logo-wrap">
+          <img src="assets/logos/aarna-logo-primary.png" alt="AARNA USA" class="auth-brand-logo">
+        </div>
 
         <!-- Active Login Form Container -->
         <div id="login-form-container">
