@@ -37,17 +37,18 @@
     federal_desc: 'AARNA USA is interested in federal healthcare procurement opportunities for OTC unit-dose products, medical supplies, and healthcare supplies. We welcome inquiries from government contractors and procurement teams serving Veterans Affairs (VA) healthcare facilities and Bureau of Prisons healthcare settings.',
     
     // About Us Page
-    about_hero_title: 'About Aarna',
+    about_hero_title: 'About AARNA USA',
     about_hero_subtitle: 'Aarna provides healthcare products for Institutional and retail pharmacy customers',
-    about_hero_desc: 'Aarna was founded to provide safe, reliable, and accessible healthcare solutions tailored to institutional facilities and retail pharmacies across the United States. We bridge supply chain gaps by offering high-demand over-the-counter medications and clinical supplies at the highest standards of quality and regulatory compliance.',
-    pillar_1_title: 'Product Identification',
-    pillar_1_desc: 'All items are clearly labeled with NDC and barcodes for smooth inventory management.',
-    pillar_2_title: 'Packaging',
-    pillar_2_desc: 'Supplied in standard bulk bottles, unit-dose cups, and blister packaging for easy dispensing.',
-    pillar_3_title: 'Quality Testing',
-    pillar_3_desc: 'Batch-tested to meet strict pharmaceutical standards and CGMP compliance.',
-    pillar_4_title: 'Reliable Delivery',
-    pillar_4_desc: 'Consistent supply timelines to keep institutional pharmacy shelves and dispensaries stocked.'
+    about_hero_desc: 'AARNA USA supplies OTC medicines, medical supplies, and healthcare supplies to healthcare institutions, pharmacies, and retail customers. Medicines are available in retail packages and institutional unit-dose formats. AARNA USA also offers private-label OTC products for businesses seeking products under their own brand.',
+    about_what_title: 'What We Do',
+    about_what_desc: 'AARNA USA supplies AARNA-brand OTC medicines, medical supplies, and healthcare supplies, with a primary focus on healthcare institutions. We also serve pharmacies and retail customers. AARNA USA offers private-label OTC products for businesses seeking products under their own brand.',
+    
+    // Contact Us Page
+    contact_eyebrow: 'CONTACT AARNA USA',
+    contact_hero_title: 'Let’s discuss<br>your requirements.',
+    contact_hero_desc: 'For product information, availability, pricing, and private-label OTC inquiries.',
+    contact_next_title: 'What happens next?',
+    contact_next_desc: 'Our team reviews your requirements and contacts you to discuss the next steps.'
   };
 
   const AarnaStore = {
@@ -136,18 +137,35 @@
       return { ...DEFAULT_CONTENT };
     },
 
-    saveContent(contentObj) {
+    saveContent(keyOrObj, maybeValue) {
       try {
         const current = this.getContent();
-        const updated = { ...current, ...contentObj };
+        let updated = {};
+        if (typeof keyOrObj === 'string') {
+          updated = { ...current, [keyOrObj]: maybeValue };
+        } else if (typeof keyOrObj === 'object' && keyOrObj !== null) {
+          updated = { ...current, ...keyOrObj };
+        } else {
+          updated = { ...current };
+        }
         localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(updated));
         this.notifyChange('content', updated);
         this.applyContentToPage();
+
+        // Background sync to Firebase if available
+        if (window.AarnaFirebase && typeof window.AarnaFirebase.saveCmsContent === 'function') {
+          window.AarnaFirebase.saveCmsContent(updated);
+        }
+
         return true;
       } catch (err) {
         console.error('Error saving content:', err);
         return false;
       }
+    },
+
+    saveAllContent(contentObj) {
+      return this.saveContent(contentObj);
     },
 
     resetContent() {
@@ -281,6 +299,14 @@
             el.value = content[key];
           } else {
             el.innerHTML = content[key];
+            if (el.tagName === 'A') {
+              if (key === 'contact_email') {
+                el.setAttribute('href', `mailto:${content[key]}`);
+              } else if (key === 'contact_phone') {
+                const cleaned = String(content[key]).replace(/[^0-9]/g, '');
+                el.setAttribute('href', `tel:${cleaned}`);
+              }
+            }
           }
         }
       });
@@ -380,5 +406,14 @@
     AarnaStore.applyContentToPage();
     AarnaStore.applyMediaToPage();
   }
+
+  // Cross-tab synchronization (updates live site instantly when saved in admin)
+  window.addEventListener('storage', (e) => {
+    if (e.key === STORAGE_KEYS.CONTENT) {
+      AarnaStore.applyContentToPage();
+    } else if (e.key === STORAGE_KEYS.MEDIA) {
+      AarnaStore.applyMediaToPage();
+    }
+  });
 
 })(window);

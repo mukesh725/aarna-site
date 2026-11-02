@@ -650,21 +650,26 @@
         ]
       },
       {
-        title: 'About Us Page & Core Pillars',
+        title: 'About Us Page Content',
         icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>',
-        desc: 'Company origin, institutional focus, and quality pillars displayed on about.html.',
+        desc: 'Company origin, institutional focus, and What We Do banner on about.html.',
         fields: [
-          { key: 'about_hero_title', label: 'About Page Title', type: 'input' },
-          { key: 'about_hero_subtitle', label: 'About Page Subtitle', type: 'input' },
-          { key: 'about_hero_desc', label: 'About Mission Paragraph', type: 'textarea', full: true },
-          { key: 'pillar_1_title', label: 'Pillar 1 Title', type: 'input' },
-          { key: 'pillar_1_desc', label: 'Pillar 1 Description', type: 'textarea' },
-          { key: 'pillar_2_title', label: 'Pillar 2 Title', type: 'input' },
-          { key: 'pillar_2_desc', label: 'Pillar 2 Description', type: 'textarea' },
-          { key: 'pillar_3_title', label: 'Pillar 3 Title', type: 'input' },
-          { key: 'pillar_3_desc', label: 'Pillar 3 Description', type: 'textarea' },
-          { key: 'pillar_4_title', label: 'Pillar 4 Title', type: 'input' },
-          { key: 'pillar_4_desc', label: 'Pillar 4 Description', type: 'textarea' }
+          { key: 'about_hero_title', label: 'About Main Title', type: 'input' },
+          { key: 'about_hero_desc', label: 'About Mission Description', type: 'textarea', full: true },
+          { key: 'about_what_title', label: 'What We Do Title', type: 'input' },
+          { key: 'about_what_desc', label: 'What We Do Description', type: 'textarea', full: true }
+        ]
+      },
+      {
+        title: 'Contact Us Page Content',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>',
+        desc: 'Headings and guidance text displayed on contact.html.',
+        fields: [
+          { key: 'contact_eyebrow', label: 'Eyebrow Tag', type: 'input' },
+          { key: 'contact_hero_title', label: 'Contact Main Headline (HTML allowed)', type: 'textarea', full: true },
+          { key: 'contact_hero_desc', label: 'Contact Subtitle Description', type: 'textarea', full: true },
+          { key: 'contact_next_title', label: 'What Happens Next Box Title', type: 'input' },
+          { key: 'contact_next_desc', label: 'What Happens Next Description', type: 'textarea', full: true }
         ]
       },
       {
@@ -742,11 +747,24 @@
       }
     });
 
-    window.AarnaStore.saveAllContent(updateObj);
-    if (typeof window.showToast === 'function') {
-      window.showToast('All CMS changes saved & published live!', 'success');
+    const success = window.AarnaStore.saveContent(updateObj);
+    if (success) {
+      const saveBtn = document.getElementById('btn-cms-save-all');
+      if (saveBtn) {
+        const originalHtml = saveBtn.innerHTML;
+        saveBtn.innerHTML = `
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Saved &amp; Published Live!</span>
+        `;
+        saveBtn.style.background = '#059669';
+        setTimeout(() => {
+          saveBtn.innerHTML = originalHtml;
+          saveBtn.style.background = '';
+        }, 3000);
+      }
+      alert('Content successfully saved and published live to website! Changes are visible immediately across all pages.');
     } else {
-      alert('Content saved and published!');
+      alert('Error saving content. Please try again.');
     }
   }
 
