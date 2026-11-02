@@ -589,10 +589,295 @@
   // --------------------------------------------------------------------------
   // WORKSPACE MANAGERS (CMS, Media, Inquiries, Backup)
   // --------------------------------------------------------------------------
-  function initContentManager() {}
-  function loadContentForm() {}
-  function initMediaManager() {}
-  function renderMediaGrid() {}
+  function initContentManager() {
+    loadContentForm();
+
+    const saveAllBtn = document.getElementById('btn-cms-save-all');
+    if (saveAllBtn) {
+      saveAllBtn.addEventListener('click', saveAllCmsFields);
+    }
+
+    const resetBtn = document.getElementById('btn-cms-reset-defaults');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (confirm('Reset all website content back to original defaults?')) {
+          if (window.AarnaStore) {
+            window.AarnaStore.resetContent();
+            loadContentForm();
+            if (typeof window.showToast === 'function') {
+              window.showToast('All website content restored to defaults.', 'info');
+            } else {
+              alert('Content reset to defaults.');
+            }
+          }
+        }
+      });
+    }
+  }
+
+  function loadContentForm() {
+    const container = document.getElementById('content-items-container');
+    if (!container || !window.AarnaStore) return;
+
+    const content = window.AarnaStore.getContent();
+
+    const sections = [
+      {
+        title: 'Company & Contact Details',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>',
+        desc: 'Updates company branding, phone numbers, and physical address across headers and footers.',
+        fields: [
+          { key: 'company_name', label: 'Company Name', type: 'input' },
+          { key: 'company_tagline', label: 'Company Tagline', type: 'input' },
+          { key: 'contact_phone', label: 'Customer Service Phone', type: 'input' },
+          { key: 'contact_email', label: 'Official Inquiries Email', type: 'input' },
+          { key: 'contact_address_line1', label: 'Street Address', type: 'input' },
+          { key: 'contact_address_line2', label: 'City, State, Zip', type: 'input' },
+          { key: 'contact_hours', label: 'Operating Business Hours', type: 'input', full: true }
+        ]
+      },
+      {
+        title: 'Home Page Hero & Banners',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
+        desc: 'Primary headlines, mission statements, and catalog callouts on index.html.',
+        fields: [
+          { key: 'hero_home_title', label: 'Hero Main Headline (HTML allowed)', type: 'textarea', full: true },
+          { key: 'hero_home_desc', label: 'Hero Body Description', type: 'textarea', full: true },
+          { key: 'hero_subbar_left', label: 'Sub-bar Left Eyebrow', type: 'input' },
+          { key: 'hero_subbar_right', label: 'Sub-bar Right Eyebrow', type: 'input' },
+          { key: 'catalog_cta_title', label: 'Catalog Section Heading', type: 'input' },
+          { key: 'catalog_cta_desc', label: 'Catalog Section Description', type: 'textarea', full: true }
+        ]
+      },
+      {
+        title: 'About Us Page & Core Pillars',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>',
+        desc: 'Company origin, institutional focus, and quality pillars displayed on about.html.',
+        fields: [
+          { key: 'about_hero_title', label: 'About Page Title', type: 'input' },
+          { key: 'about_hero_subtitle', label: 'About Page Subtitle', type: 'input' },
+          { key: 'about_hero_desc', label: 'About Mission Paragraph', type: 'textarea', full: true },
+          { key: 'pillar_1_title', label: 'Pillar 1 Title', type: 'input' },
+          { key: 'pillar_1_desc', label: 'Pillar 1 Description', type: 'textarea' },
+          { key: 'pillar_2_title', label: 'Pillar 2 Title', type: 'input' },
+          { key: 'pillar_2_desc', label: 'Pillar 2 Description', type: 'textarea' },
+          { key: 'pillar_3_title', label: 'Pillar 3 Title', type: 'input' },
+          { key: 'pillar_3_desc', label: 'Pillar 3 Description', type: 'textarea' },
+          { key: 'pillar_4_title', label: 'Pillar 4 Title', type: 'input' },
+          { key: 'pillar_4_desc', label: 'Pillar 4 Description', type: 'textarea' }
+        ]
+      },
+      {
+        title: 'Federal Healthcare Opportunities',
+        icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
+        desc: 'Government procurement, VA hospitals, and institutional supply copy.',
+        fields: [
+          { key: 'federal_title', label: 'Section Title', type: 'input', full: true },
+          { key: 'federal_desc', label: 'Procurement Overview Description', type: 'textarea', full: true }
+        ]
+      }
+    ];
+
+    let html = '';
+    sections.forEach(sec => {
+      html += `
+        <div class="cms-section-card">
+          <div class="cms-section-title">
+            ${sec.icon}
+            <span>${sec.title}</span>
+          </div>
+          <div class="cms-section-desc">${sec.desc}</div>
+          <div class="cms-fields-grid">
+      `;
+
+      sec.fields.forEach(f => {
+        const val = content[f.key] || '';
+        const fullClass = f.full ? 'full-width' : '';
+        html += `
+          <div class="cms-field-group ${fullClass}">
+            <label class="cms-label" for="cms-field-${f.key}">
+              <span>${f.label}</span>
+              <span class="cms-key-badge">${f.key}</span>
+            </label>
+        `;
+        if (f.type === 'textarea') {
+          html += `<textarea id="cms-field-${f.key}" data-key="${f.key}" class="cms-input cms-textarea">${val}</textarea>`;
+        } else {
+          html += `<input type="text" id="cms-field-${f.key}" data-key="${f.key}" class="cms-input" value="${val.replace(/"/g, '&quot;')}">`;
+        }
+        html += `</div>`;
+      });
+
+      html += `
+          </div>
+        </div>
+      `;
+    });
+
+    container.innerHTML = html;
+
+    // Attach real-time input change listener
+    container.querySelectorAll('.cms-input').forEach(el => {
+      el.addEventListener('change', () => {
+        const key = el.dataset.key;
+        const val = el.value;
+        if (window.AarnaStore && key) {
+          window.AarnaStore.saveContent(key, val);
+          if (typeof window.showToast === 'function') {
+            window.showToast(`Updated "${key}" live across site!`, 'success');
+          }
+        }
+      });
+    });
+  }
+
+  function saveAllCmsFields() {
+    const container = document.getElementById('content-items-container');
+    if (!container || !window.AarnaStore) return;
+    const inputs = container.querySelectorAll('.cms-input');
+    const updateObj = {};
+    inputs.forEach(el => {
+      if (el.dataset.key) {
+        updateObj[el.dataset.key] = el.value;
+      }
+    });
+
+    window.AarnaStore.saveAllContent(updateObj);
+    if (typeof window.showToast === 'function') {
+      window.showToast('All CMS changes saved & published live!', 'success');
+    } else {
+      alert('Content saved and published!');
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // MEDIA MANAGEMENT
+  // --------------------------------------------------------------------------
+  const MEDIA_SLOTS = [
+    {
+      key: 'logo_main',
+      name: 'Corporate Brand Logo',
+      defaultUrl: 'assets/logos/aarna-logo-clean.png',
+      meta: 'Used across main navbar, mobile drawer, footer, and admin portals.',
+      dims: 'Transparent PNG / SVG • ~280 × 70 px'
+    },
+    {
+      key: 'admin_hero',
+      name: 'Admin Portal Login Poster',
+      defaultUrl: 'assets/images/admin-login-hero.jpg',
+      meta: 'Full uncropped family poster on admin.html.',
+      dims: 'High-res vertical image • ~727 × 1024 px'
+    },
+    {
+      key: 'hero_home_bg',
+      name: 'Home Hero Horizon Banner',
+      defaultUrl: 'assets/images/hero-bg.jpg',
+      meta: 'Main dynamic hero background on index.html.',
+      dims: 'Wide landscape photo • ~1920 × 1080 px'
+    },
+    {
+      key: 'about_hero_bg',
+      name: 'About Us Healthcare Mission',
+      defaultUrl: 'assets/images/about-hero.jpg',
+      meta: 'Header background photo on about.html.',
+      dims: 'Landscape photo • ~1200 × 800 px'
+    },
+    {
+      key: 'products_hero',
+      name: 'Product Showcase Banner',
+      defaultUrl: 'assets/images/products-hero.jpg',
+      meta: 'Product line visual on index.html & catalog pages.',
+      dims: 'Landscape photo • ~1200 × 700 px'
+    }
+  ];
+
+  function initMediaManager() {
+    renderMediaGrid();
+  }
+
+  function renderMediaGrid() {
+    const container = document.getElementById('media-grid-container');
+    if (!container || !window.AarnaStore) return;
+
+    const storedMedia = window.AarnaStore.getAllMedia();
+
+    let html = '<div class="media-slots-grid">';
+    MEDIA_SLOTS.forEach(slot => {
+      const currentSrc = storedMedia[slot.key] || slot.defaultUrl;
+      const isCustom = Boolean(storedMedia[slot.key]);
+
+      html += `
+        <div class="media-slot-card" data-slot="${slot.key}">
+          <div>
+            <div class="media-thumb-preview" style="background-image: url('${currentSrc}');" id="preview-${slot.key}"></div>
+            <div class="media-slot-name">${slot.name}</div>
+            <span class="media-slot-key">Slot: ${slot.key} ${isCustom ? '<span style="color:#16a34a; font-weight:700;">(Custom Upload)</span>' : '<span style="color:#64748b;">(Default)</span>'}</span>
+            <div class="media-slot-meta">
+              <div>${slot.meta}</div>
+              <div style="margin-top:0.25rem; font-weight:600; color:#475569;">Recommended: ${slot.dims}</div>
+            </div>
+          </div>
+
+          <div class="media-slot-actions">
+            <label class="media-upload-btn-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <span>Upload New</span>
+              <input type="file" accept="image/*" class="media-file-input" data-slot="${slot.key}" style="display:none;">
+            </label>
+            ${isCustom ? `
+              <button type="button" class="media-reset-btn" data-reset-slot="${slot.key}" title="Reset to original default">
+                Reset
+              </button>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    });
+    html += '</div>';
+
+    container.innerHTML = html;
+
+    // Attach File Upload Listeners
+    container.querySelectorAll('.media-file-input').forEach(input => {
+      input.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        const slotKey = input.dataset.slot;
+        if (!file || !slotKey) return;
+
+        if (file.size > 8 * 1024 * 1024) {
+          alert('Image file is too large. Please select an image under 8 MB.');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          const dataUrl = evt.target.result;
+          if (window.AarnaStore) {
+            window.AarnaStore.saveMedia(slotKey, dataUrl);
+            renderMediaGrid();
+            if (typeof window.showToast === 'function') {
+              window.showToast(`Updated image for ${slotKey}!`, 'success');
+            }
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    // Attach Reset Listeners
+    container.querySelectorAll('[data-reset-slot]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const slotKey = btn.dataset.resetSlot;
+        if (slotKey && window.AarnaStore) {
+          window.AarnaStore.deleteMedia(slotKey);
+          renderMediaGrid();
+          if (typeof window.showToast === 'function') {
+            window.showToast(`Reset ${slotKey} to original default.`, 'info');
+          }
+        }
+      });
+    });
+  }
 
   function initInquiriesManager() {
     renderInquiries();
