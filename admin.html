@@ -16,6 +16,7 @@
   <style>
     :root {
       --bg-midnight: #0b1523;
+      --bg-midnight-dark: #070d17;
       --bg-surface: #ffffff;
       --text-dark: #0b1523;
       --text-body: #334155;
@@ -52,49 +53,60 @@
     /* Full Split Layout */
     .split-layout {
       display: grid;
-      grid-template-columns: 1.15fr 1fr;
+      grid-template-columns: 1.1fr 1fr;
       min-height: 100vh;
       width: 100%;
+      background-color: var(--bg-midnight);
     }
 
-    /* LEFT HERO VISUAL PANEL (Using the AARNA Family Poster Image) */
+    /* LEFT HERO VISUAL PANEL (Showing the FULL screenshot image completely unobstructed) */
     .hero-side-panel {
       position: relative;
-      background: #0b1523 url('assets/images/admin-login-hero.jpg') center center / cover no-repeat;
+      background-color: var(--bg-midnight-dark);
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 3rem;
-      color: #ffffff;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 2rem;
       overflow: hidden;
     }
 
-    /* Sophisticated dark cinematic overlay */
-    .hero-side-panel::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(11, 21, 35, 0.72) 0%,
-        rgba(11, 21, 35, 0.25) 40%,
-        rgba(11, 21, 35, 0.45) 60%,
-        rgba(11, 21, 35, 0.88) 100%
-      );
-      z-index: 1;
+    /* The FULL Poster Image - completely visible from top to bottom, no text overlay */
+    .hero-full-poster {
+      max-height: 94vh;
+      max-width: 94%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: block;
+      transition: transform 0.3s ease;
     }
 
-    .hero-top-bar,
-    .hero-bottom-content {
+    .hero-full-poster:hover {
+      transform: scale(1.008);
+    }
+
+    /* RIGHT LOGIN FORM PANEL (White Card & Form) */
+    .form-side-panel {
+      background-color: var(--bg-midnight);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 2rem;
       position: relative;
-      z-index: 2;
     }
 
-    .hero-top-bar {
+    /* Top Action Bar in Right Panel */
+    .form-panel-header {
+      width: 100%;
+      max-width: 490px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .brand-logo-pill {
@@ -113,7 +125,7 @@
     }
 
     .brand-logo-pill img {
-      height: 28px;
+      height: 26px;
       width: auto;
       display: block;
     }
@@ -126,95 +138,22 @@
       font-weight: 500;
       color: #ffffff;
       text-decoration: none;
-      background: rgba(11, 21, 35, 0.55);
+      background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       padding: 0.5rem 1.1rem;
       border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       transition: all 0.2s ease;
     }
 
     .back-btn-pill:hover {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.35);
       transform: translateX(-2px);
     }
 
-    .hero-bottom-content {
-      max-width: 580px;
-    }
-
-    .hero-tagline-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #38bdf8;
-      margin-bottom: 0.85rem;
-    }
-
-    .hero-tagline-eyebrow::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #38bdf8;
-      box-shadow: 0 0 10px #38bdf8;
-    }
-
-    .hero-main-title {
-      font-family: var(--font-outfit);
-      font-size: clamp(2rem, 3.2vw, 3.1rem);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: #ffffff;
-      margin-bottom: 1rem;
-    }
-
-    .hero-main-desc {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #cbd5e1;
-      margin-bottom: 2rem;
-    }
-
-    .carousel-dots-row {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-
-    .carousel-dot {
-      height: 4px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.4);
-      transition: all 0.3s ease;
-    }
-
-    .carousel-dot.active {
-      width: 28px;
-      background: #ffffff;
-    }
-
-    .carousel-dot:not(.active) {
-      width: 8px;
-    }
-
-    /* RIGHT FORM PANEL (White Card & Form) */
-    .form-side-panel {
-      background-color: var(--bg-midnight);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2.5rem 2rem;
-      position: relative;
-    }
-
+    /* White Card Form */
     .login-white-card {
       background: var(--bg-surface);
       border-radius: 28px;
@@ -492,12 +431,12 @@
       }
 
       .hero-side-panel {
-        min-height: 440px;
         padding: 2rem 1.5rem;
+        background-color: var(--bg-midnight-dark);
       }
 
-      .hero-main-title {
-        font-size: 1.85rem;
+      .hero-full-poster {
+        max-height: 60vh;
       }
 
       .form-side-panel {
@@ -518,11 +457,20 @@
 
   <div class="split-layout">
     
-    <!-- LEFT HERO SIDE IMAGE PANEL (With 3rd Uploaded Image) -->
-    <aside class="hero-side-panel" aria-label="AARNA USA Brand Vision">
+    <!-- LEFT HERO SIDE PANEL: Showing the FULL poster image completely unobstructed -->
+    <aside class="hero-side-panel" aria-label="AARNA USA - Feel Better, Live Brighter">
+      <img 
+        src="assets/images/admin-login-hero.jpg" 
+        alt="AARNA USA - Feel Better, Live Brighter - Family Health" 
+        class="hero-full-poster"
+      >
+    </aside>
+
+    <!-- RIGHT LOGIN FORM PANEL (White Card Form) -->
+    <main class="form-side-panel">
       
-      <!-- Top Bar: Logo & Back to Website Link -->
-      <div class="hero-top-bar">
+      <!-- Top Header Navigation in Right Panel -->
+      <div class="form-panel-header">
         <a href="index.html" class="brand-logo-pill" aria-label="AARNA USA Home">
           <img src="assets/logos/aarna-logo-clean.png" alt="AARNA USA">
         </a>
@@ -533,26 +481,6 @@
         </a>
       </div>
 
-      <!-- Bottom Overlay Text: Brand Mission & Tagline -->
-      <div class="hero-bottom-content">
-        <div class="hero-tagline-eyebrow">Feel Better, Live Brighter</div>
-        <h2 class="hero-main-title">Edit Smarter.<br>Deliver Faster.<br>Lead Anywhere.</h2>
-        <p class="hero-main-desc">
-          High-precision OTC pharmaceuticals, unit-dose medications, and medical devices manufactured for hospitals, retail pharmacies, and federal institutions.
-        </p>
-        
-        <!-- Pagination Dots like reference image -->
-        <div class="carousel-dots-row">
-          <span class="carousel-dot active"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-        </div>
-      </div>
-
-    </aside>
-
-    <!-- RIGHT LOGIN FORM PANEL (White Card Form) -->
-    <main class="form-side-panel">
       <div class="login-white-card">
         
         <!-- Active Login Form -->
