@@ -203,7 +203,12 @@ function initCatalogTable() {
       if (datasetType === 'retail') {
         html += `
           <tr class="product-row" data-id="${item.id}" data-catalog="retail">
-            <td class="cell-desc" data-label="Product Description">${item.description}</td>
+            <td class="cell-desc" data-label="Product">
+              <div class="product-cell-main">
+                <span class="product-title-text">${item.description}</span>
+                <span class="product-category-sub">${item.category || 'Retail OTC'}</span>
+              </div>
+            </td>
             <td data-label="Unit">${item.unit || 'EA'}</td>
             <td data-label="Case Qty.">${item.caseQty || '—'}</td>
             <td data-label="NDC">
@@ -217,7 +222,12 @@ function initCatalogTable() {
       } else if (datasetType === 'devices') {
         html += `
           <tr class="product-row" data-id="${item.id}" data-catalog="devices">
-            <td class="cell-desc" data-label="Product Description">${item.description}</td>
+            <td class="cell-desc" data-label="Product">
+              <div class="product-cell-main">
+                <span class="product-title-text">${item.description}</span>
+                <span class="product-category-sub">${item.category || 'Medical Supplies'}</span>
+              </div>
+            </td>
             <td data-label="Unit">${item.unit || 'BOX'}</td>
             <td data-label="Pack Qty.">${item.packQty || '100'}</td>
             <td data-label="NDC">
@@ -231,7 +241,12 @@ function initCatalogTable() {
       } else if (datasetType === 'institutional') {
         html += `
           <tr class="product-row" data-id="${item.id}" data-catalog="institutional">
-            <td class="cell-desc" data-label="Product Description">${item.description}</td>
+            <td class="cell-desc" data-label="Product">
+              <div class="product-cell-main">
+                <span class="product-title-text">${item.description}</span>
+                <span class="product-category-sub">${item.category || 'Institutional unit-dose format'}</span>
+              </div>
+            </td>
             <td data-label="Unit">${item.unit || 'EA'}</td>
             <td data-label="Pack Qty.">${item.packQty || '1'}</td>
             <td data-label="NDC">

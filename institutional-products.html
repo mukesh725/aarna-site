@@ -21,7 +21,7 @@
       <nav class="main-nav" aria-label="Main Navigation">
         <div class="nav-pill-group">
           <a href="index.html" class="nav-link">Home</a>
-          <a href="about.html" class="nav-link">About</a>
+          <a href="about.html" class="nav-link">About Us</a>
           
           <div class="nav-dropdown-item">
             <button class="nav-link nav-dropdown-trigger active" aria-haspopup="true" aria-expanded="false">
@@ -29,13 +29,13 @@
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="nav-dropdown-menu" role="menu">
-              <a href="retail-products.html" class="dropdown-link" role="menuitem">
-                <span class="dropdown-title">Retail Products</span>
-                <span class="dropdown-desc">71 OTC medications & treatments</span>
-              </a>
               <a href="institutional-products.html" class="dropdown-link active" role="menuitem">
                 <span class="dropdown-title">Institutional Products</span>
                 <span class="dropdown-desc">Pre-filled unit-dose liquid cups</span>
+              </a>
+              <a href="retail-products.html" class="dropdown-link" role="menuitem">
+                <span class="dropdown-title">Retail Products</span>
+                <span class="dropdown-desc">71 OTC medications & treatments</span>
               </a>
               <a href="medical-devices.html" class="dropdown-link" role="menuitem">
                 <span class="dropdown-title">Medical Supplies</span>
@@ -44,6 +44,7 @@
             </div>
           </div>
 
+          <a href="index.html#private-label-section" class="nav-link">Private Label</a>
           <a href="contact.html" class="nav-link">Contact</a>
         </div>
       </nav>
@@ -51,7 +52,7 @@
       <!-- Header Action CTA Pill -->
       <div class="header-action-group">
         <a href="contact.html" class="btn-header-pill">
-          Inquire Now
+          Contact Us
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
       </div>
@@ -74,8 +75,8 @@
       <div>
         <span class="mobile-drawer-link" style="color: var(--color-text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">Products Catalog</span>
         <div class="mobile-submenu">
-          <a href="retail-products.html" class="mobile-drawer-link">Retail Products (71)</a>
           <a href="institutional-products.html" class="mobile-drawer-link active">Institutional Products (10)</a>
+          <a href="retail-products.html" class="mobile-drawer-link">Retail Products (71)</a>
           <a href="medical-devices.html" class="mobile-drawer-link">Medical Supplies (23)</a>
         </div>
       </div>
@@ -92,125 +93,156 @@
   </div>
 
   <main>
-    <!-- PAGE HERO -->
-    <section class="page-hero" aria-labelledby="inst-page-heading">
-      <div class="container page-hero-content">
-        <div class="badge-tag">Institutional Products</div>
-        <h1 id="inst-page-heading">Healthcare Solutions for Institutional Care</h1>
-        <p>Explore Aarna's pre-filled unit-dose liquid medications, packaged for institutional healthcare settings with a focus on consistency, convenience, and reliable supply.</p>
+    <!-- BREADCRUMB -->
+    <nav class="products-breadcrumb" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li><a href="index.html">Home</a></li>
+          <li class="breadcrumb-sep">/</li>
+          <li><span>Products</span></li>
+          <li class="breadcrumb-sep">/</li>
+          <li class="breadcrumb-current" aria-current="page">Institutional Products</li>
+        </ol>
+      </div>
+    </nav>
 
-        <!-- 3 Highlight Badges -->
-        <div class="page-highlights">
-          <div class="highlight-item">
-            <div class="highlight-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <div class="highlight-text">
-              <h4>Quality Focused</h4>
-              <p>Products for institutional needs</p>
+    <!-- PAGE HERO BANNER -->
+    <section class="products-hero-section" aria-labelledby="inst-page-heading">
+      <div class="container">
+        <div class="products-hero-card">
+          <div class="products-hero-text">
+            <h1 id="inst-page-heading" class="products-hero-title">Institutional Products</h1>
+            <p class="products-hero-desc">OTC medicines in institutional unit-dose formats for healthcare providers.</p>
+            <div class="products-hero-bullets">
+              <span class="hero-bullet">Pre-filled unit-dose cups</span>
+              <span class="bullet-dot">•</span>
+              <span class="hero-bullet">Institutional inquiries</span>
             </div>
           </div>
-
-          <div class="highlight-item">
-            <div class="highlight-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-            </div>
-            <div class="highlight-text">
-              <h4>Unit-Dose Packaging</h4>
-              <p>Convenient pre-filled cups</p>
-            </div>
-          </div>
-
-          <div class="highlight-item">
-            <div class="highlight-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-            </div>
-            <div class="highlight-text">
-              <h4>Institutional Support</h4>
-              <p>Solutions for care providers</p>
-            </div>
+          <div class="products-hero-media">
+            <img src="assets/images/cups-liquid-dosage.png" alt="Institutional unit-dose oral liquid cups" class="products-hero-img">
           </div>
         </div>
       </div>
     </section>
 
     <!-- CATALOG CONTENT & TABLE -->
-    <section class="section-padding" style="padding-top: 3rem;" aria-labelledby="inst-catalog-heading">
+    <section class="products-catalog-section" aria-labelledby="inst-catalog-heading">
       <div class="container">
         
-        <!-- Search and Filter Bar -->
-        <div class="catalog-toolbar-section">
-          <div style="margin-bottom: 1.25rem;">
-            <div class="badge-tag" style="margin-bottom: 0.35rem;">Institutional Product Catalog</div>
-            <h2 id="inst-catalog-heading" style="font-size: 1.75rem; margin-bottom: 0.35rem;">Pre-Filled Unit-Dose Cups</h2>
-            <p style="font-size: 0.95rem; color: var(--color-text-muted);">
-              Browse our institutional unit-dose products by category or search for a specific product, ingredient, strength, or NDC number.
-            </p>
-          </div>
-
-          <!-- Instant Search Box -->
-          <div class="catalog-search-wrapper">
-            <svg class="catalog-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" class="catalog-search-input" placeholder="Search products or NDC numbers..." aria-label="Search institutional products">
-            <button class="catalog-search-clear" aria-label="Clear search query">&times;</button>
-          </div>
-
-          <!-- Category Filter Pills -->
-          <div class="filter-pills-list" role="tablist" aria-label="Filter institutional products by category">
-            <button class="filter-pill active" data-category="All" role="tab" aria-selected="true">All Products</button>
-            <button class="filter-pill" data-category="Cough & Chest Congestion" role="tab" aria-selected="false">Cough &amp; Chest Congestion</button>
-            <button class="filter-pill" data-category="Pain Relief & Fever" role="tab" aria-selected="false">Pain Relief &amp; Fever</button>
-            <button class="filter-pill" data-category="Allergy Relief" role="tab" aria-selected="false">Allergy Relief</button>
-            <button class="filter-pill" data-category="Digestive Health" role="tab" aria-selected="false">Digestive Health</button>
-            <button class="filter-pill" data-category="Vitamins & Supplements" role="tab" aria-selected="false">Vitamins &amp; Supplements</button>
-          </div>
+        <!-- Header -->
+        <div class="catalog-section-header">
+          <h2 id="inst-catalog-heading" class="catalog-main-title">Find your unit-dose products</h2>
+          <p class="catalog-main-desc">Search by product name, ingredient, strength, or NDC.</p>
         </div>
 
-        <!-- Table Title & Meta -->
-        <div class="table-meta-bar">
-          <div>
-            <h3>All Institutional Products</h3>
-            <p style="font-size: 0.85rem; color: var(--color-text-muted);">Pre-filled liquid unit-dose cup packaging</p>
+        <!-- Search Input & View Catalog -->
+        <div class="catalog-search-row">
+          <div class="catalog-search-input-wrap">
+            <svg class="search-glass-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" class="catalog-search-input" placeholder="Search institutional products" aria-label="Search institutional products">
+            <button class="catalog-search-clear" aria-label="Clear search" style="display: none;">&times;</button>
           </div>
-          <div class="table-results-count">Showing 10 of 10 products</div>
-        </div>
-
-        <!-- Accessible Responsive Table -->
-        <div class="table-wrapper" tabindex="0" role="region" aria-label="Institutional Products Catalog Table">
-          <table class="product-table" data-catalog="institutional">
-            <thead>
-              <tr>
-                <th scope="col" style="width: 44%;">Product Description</th>
-                <th scope="col" style="width: 10%;">Unit</th>
-                <th scope="col" style="width: 12%;">Pack Qty.</th>
-                <th scope="col" style="width: 18%;">NDC</th>
-                <th scope="col" style="width: 16%;">Case Size</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Injected by js/app.js -->
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Bottom Assistance CTA -->
-        <div class="cta-banner">
-          <div class="cta-banner-content">
-            <div class="cta-banner-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </div>
-            <div class="cta-banner-text">
-              <h3>Need more information?</h3>
-              <p>Contact our team for institutional product availability and inquiries.</p>
-            </div>
-          </div>
-          <a href="contact.html" class="btn btn-dark">
-            Contact Our Team
-            <span class="btn-icon-circle" style="background-color: rgba(255, 255, 255, 0.15);">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </span>
+          <a href="assets/downloads/Aarna_USA_Product_Catalog.pdf" target="_blank" rel="noopener noreferrer" class="view-catalog-link">
+            View Catalog
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
           </a>
         </div>
+
+        <!-- Category Filter Pills -->
+        <div class="category-pills-row" role="tablist" aria-label="Filter institutional products by category">
+          <button class="filter-pill active" data-category="All" role="tab" aria-selected="true">All Products</button>
+          <button class="filter-pill" data-category="Cough & Chest Congestion" role="tab" aria-selected="false">Cough &amp; Congestion</button>
+          <button class="filter-pill" data-category="Pain Relief & Fever" role="tab" aria-selected="false">Pain &amp; Fever</button>
+          <button class="filter-pill" data-category="Allergy Relief" role="tab" aria-selected="false">Allergy Relief</button>
+          <button class="filter-pill" data-category="Digestive Health" role="tab" aria-selected="false">Digestive Health</button>
+          <button class="filter-pill" data-category="Vitamins & Supplements" role="tab" aria-selected="false">Vitamins &amp; Supplements</button>
+        </div>
+
+        <!-- Table Meta Bar -->
+        <div class="table-top-meta">
+          <h3 class="table-catalog-title">Institutional product catalog</h3>
+          <span class="table-preview-note table-results-count">Showing 10 of 10 products</span>
+        </div>
+
+        <!-- Accessible Responsive Table (No Inquire Column) -->
+        <div class="modern-table-card">
+          <div class="table-wrapper" tabindex="0" role="region" aria-label="Institutional Products Catalog Table">
+            <table class="product-table" data-catalog="institutional">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 44%;">Product</th>
+                  <th scope="col" style="width: 12%;">Unit</th>
+                  <th scope="col" style="width: 14%;">Pack Qty.</th>
+                  <th scope="col" style="width: 16%;">NDC</th>
+                  <th scope="col" style="width: 14%;">Case Size</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Injected dynamically by js/app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p class="table-disclaimer-note">Product details and availability confirmed with our team.</p>
+
+        <!-- FEDERAL HEALTHCARE OPPORTUNITIES -->
+        <div class="products-federal-card">
+          <div class="products-federal-col-title">
+            <h2>Federal Healthcare<br>Opportunities</h2>
+          </div>
+          <div class="products-federal-col-content">
+            <p>AARNA USA is interested in federal healthcare procurement opportunities for OTC unit-dose products, medical devices, and healthcare supplies. We welcome inquiries from government contractors and procurement teams serving Veterans Affairs (VA) healthcare facilities and Bureau of Prisons healthcare settings.</p>
+            <a href="contact.html?type=federal" class="btn-federal-action">Discuss a Federal Procurement Opportunity</a>
+          </div>
+        </div>
+
+        <!-- HOW TO ORDER SECTION -->
+        <section class="how-to-order-section" aria-labelledby="order-heading">
+          <h2 id="order-heading" class="how-to-order-title">How to Order</h2>
+          
+          <div class="how-to-order-grid">
+            <div class="order-step-card">
+              <div class="step-num-badge">01</div>
+              <div class="step-card-text">
+                <h4>Identify your products</h4>
+                <p>Note the product names or NDCs.</p>
+              </div>
+            </div>
+
+            <div class="order-step-card">
+              <div class="step-num-badge">02</div>
+              <div class="step-card-text">
+                <h4>Share your requirements</h4>
+                <p>Tell us your quantities and delivery needs.</p>
+              </div>
+            </div>
+
+            <div class="order-step-card">
+              <div class="step-num-badge">03</div>
+              <div class="step-card-text">
+                <h4>Confirm the details</h4>
+                <p>Discuss availability, pricing, and order requirements.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="how-to-order-action">
+            <a href="contact.html" class="btn-order-contact">
+              Contact Our Team
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </div>
+        </section>
 
       </div>
     </section>
@@ -234,9 +266,8 @@
           <h4>Company</h4>
           <ul class="footer-links-list">
             <li><a href="index.html" class="footer-link">Home</a></li>
-            <li><a href="about.html" class="footer-link">About</a></li>
+            <li><a href="about.html" class="footer-link">About Us</a></li>
             <li><a href="contact.html" class="footer-link">Contact</a></li>
-            <li><a href="dashboard.html" class="footer-link" style="color: var(--color-accent-blue); font-weight: 600;">Admin Dashboard</a></li>
           </ul>
         </div>
 
@@ -244,8 +275,8 @@
         <div class="footer-column">
           <h4>Products</h4>
           <ul class="footer-links-list">
-            <li><a href="retail-products.html" class="footer-link">Retail Products</a></li>
             <li><a href="institutional-products.html" class="footer-link">Institutional Products</a></li>
+            <li><a href="retail-products.html" class="footer-link">Retail Products</a></li>
             <li><a href="medical-devices.html" class="footer-link">Medical Supplies</a></li>
           </ul>
         </div>
@@ -267,7 +298,13 @@
 
       <div class="footer-bottom-bar">
         <span>© 2026 Aarna. All rights reserved.</span>
-        <span class="footer-bottom-right">Quality · Reliability · Care</span>
+        <div class="footer-bottom-right">
+          <span>Quality · Reliability · Care</span>
+          <a href="admin.html" class="footer-staff-access" aria-label="Staff Portal Access" title="Staff Portal Access">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            Staff Login
+          </a>
+        </div>
       </div>
     </div>
   </footer>

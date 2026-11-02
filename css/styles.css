@@ -2398,6 +2398,513 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
+   PRODUCTS PAGES UNIFIED LAYOUT (Hero, Search, Catalog, Federal, How to Order)
+   ========================================================================== */
+
+/* Breadcrumb */
+.products-breadcrumb {
+  padding: 1.5rem 0 1.25rem 0;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+.breadcrumb-list a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb-list a:hover {
+  color: #0b1523;
+}
+
+.breadcrumb-sep {
+  color: #cbd5e1;
+  font-size: 0.85rem;
+}
+
+.breadcrumb-current {
+  color: #0284c7;
+  font-weight: 600;
+}
+
+/* Products Page Hero Card */
+.products-hero-section {
+  padding-bottom: 2.75rem;
+}
+
+.products-hero-card {
+  background: linear-gradient(135deg, #eaf2fb 0%, #f4f8fe 100%);
+  border: 1px solid rgba(11, 21, 35, 0.06);
+  border-radius: 20px;
+  padding: clamp(2rem, 3.5vw, 3rem) clamp(2rem, 4vw, 3.5rem);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.products-hero-text {
+  max-width: 620px;
+}
+
+.products-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.8vw, 3.25rem);
+  font-weight: 800;
+  color: #0b1523;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  margin: 0 0 0.85rem 0;
+}
+
+.products-hero-desc {
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  color: #334155;
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+}
+
+.products-hero-bullets {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.bullet-dot {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.products-hero-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 440px;
+}
+
+.products-hero-img {
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 28px rgba(11, 21, 35, 0.08));
+  border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+  .products-hero-card {
+    grid-template-columns: 1fr;
+    text-align: left;
+    padding: 2rem 1.75rem;
+  }
+  .products-hero-media {
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+
+/* Catalog Search and Toolbar */
+.products-catalog-section {
+  padding-bottom: 5rem;
+}
+
+.catalog-section-header {
+  margin-bottom: 1.5rem;
+}
+
+.catalog-main-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  color: #0b1523;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.4rem 0;
+  line-height: 1.2;
+}
+
+.catalog-main-desc {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.catalog-search-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.catalog-search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+}
+
+.search-glass-icon {
+  position: absolute;
+  top: 50%;
+  left: 1.15rem;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+}
+
+.catalog-search-input-wrap .catalog-search-input {
+  width: 100%;
+  padding: 0.9rem 1.25rem 0.9rem 3.1rem;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #0b1523;
+  transition: all var(--transition-fast);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.catalog-search-input-wrap .catalog-search-input:focus {
+  outline: none;
+  border-color: #0b1523;
+  box-shadow: 0 0 0 3px rgba(11, 21, 35, 0.12);
+}
+
+.view-catalog-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #0284c7;
+  text-decoration: none;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
+}
+
+.view-catalog-link:hover {
+  color: #0369a1;
+  text-decoration: underline;
+}
+
+.view-catalog-link svg {
+  transition: transform 0.2s ease;
+}
+
+.view-catalog-link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* Category Filter Pills */
+.category-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 2rem;
+}
+
+.category-pills-row .filter-pill {
+  padding: 0.5rem 1.15rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.category-pills-row .filter-pill:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0b1523;
+}
+
+.category-pills-row .filter-pill.active {
+  background-color: #0b1523;
+  border-color: #0b1523;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(11, 21, 35, 0.25);
+}
+
+/* Table Header Meta */
+.table-top-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.table-catalog-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0b1523;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.table-preview-note {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Modern Products Table */
+.modern-table-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+.modern-table-card .product-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.modern-table-card .product-table th {
+  background-color: #0b1523;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  padding: 1.05rem 1.35rem;
+  border: none;
+}
+
+.modern-table-card .product-table td {
+  padding: 1rem 1.35rem;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.92rem;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.modern-table-card .product-table tbody tr {
+  transition: background-color var(--transition-fast);
+}
+
+.modern-table-card .product-table tbody tr:hover {
+  background-color: #f8fafc;
+  cursor: pointer;
+}
+
+.product-cell-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.product-title-text {
+  font-weight: 700;
+  color: #0b1523;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.product-category-sub {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.table-disclaimer-note {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+/* Federal Healthcare Opportunities Card */
+.products-federal-card {
+  background-color: #f1f6fc;
+  border: 1px solid rgba(2, 132, 199, 0.16);
+  border-radius: 20px;
+  padding: clamp(2.25rem, 3.5vw, 3rem) clamp(2rem, 4vw, 3.5rem);
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1.65fr;
+  align-items: center;
+  gap: clamp(2rem, 3.5vw, 3.5rem);
+}
+
+.products-federal-col-title h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 2.7vw, 2.45rem);
+  font-weight: 800;
+  color: #0b1523;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.products-federal-col-content p {
+  font-size: 0.98rem;
+  color: #334155;
+  line-height: 1.7;
+  margin: 0 0 1.5rem 0;
+}
+
+.btn-federal-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0b1523;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.65rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(11, 21, 35, 0.25);
+  transition: all var(--transition-base);
+}
+
+.btn-federal-action:hover {
+  background-color: #050b14;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11, 21, 35, 0.35);
+  color: #ffffff;
+}
+
+@media (max-width: 860px) {
+  .products-federal-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem 1.75rem;
+  }
+}
+
+/* How to Order Section */
+.how-to-order-section {
+  margin-top: 4.5rem;
+  padding-top: 1rem;
+}
+
+.how-to-order-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 2.65rem);
+  font-weight: 800;
+  color: #0b1523;
+  letter-spacing: -0.03em;
+  margin: 0 0 2rem 0;
+}
+
+.how-to-order-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.order-step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+}
+
+.step-num-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #e0f2fe;
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.step-card-text h4 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0b1523;
+  margin: 0 0 0.35rem 0;
+  line-height: 1.3;
+}
+
+.step-card-text p {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.how-to-order-action {
+  display: flex;
+  align-items: center;
+}
+
+.btn-order-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: #0b1523;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.65rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(11, 21, 35, 0.25);
+  transition: all var(--transition-base);
+}
+
+.btn-order-contact:hover {
+  background-color: #050b14;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11, 21, 35, 0.35);
+  color: #ffffff;
+}
+
+.btn-order-contact svg {
+  transition: transform 0.25s ease;
+}
+
+.btn-order-contact:hover svg {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 860px) {
+  .how-to-order-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ==========================================================================
    CONTACT US PAGE (REDESIGN MATCHING EXACT REFERENCE)
    ========================================================================== */
 .contact-page-body {
@@ -3012,6 +3519,29 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   color: var(--color-primary);
   font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.footer-staff-access {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+  transition: all 0.2s ease;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.footer-staff-access:hover {
+  color: var(--color-primary);
+  background-color: rgba(11, 21, 35, 0.05);
 }
 
 /* ==========================================================================

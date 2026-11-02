@@ -8,7 +8,7 @@
 
   // State
   let currentView = 'overview';
-  let currentCatalog = 'retail';
+  let currentCatalog = 'institutional';
   let catalogSearchQuery = '';
   let catalogCategoryFilter = 'All';
   let activeEditProductId = null;
@@ -37,6 +37,7 @@
 
   // Initialize
   document.addEventListener('DOMContentLoaded', () => {
+    initAuthManager();
     initNavigation();
     initStats();
     initCatalogManager();
@@ -54,6 +55,20 @@
       if (currentView === 'media') renderMediaGrid();
     });
   });
+
+  function initAuthManager() {
+    const signoutBtn = document.getElementById('dash-signout-btn');
+    if (signoutBtn) {
+      signoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (confirm('Are you sure you want to sign out of the Admin Portal?')) {
+          sessionStorage.removeItem('aarna_admin_auth');
+          sessionStorage.removeItem('aarna_admin_user');
+          window.location.href = 'admin.html?action=logged_out';
+        }
+      });
+    }
+  }
 
   // --------------------------------------------------------------------------
   // NAVIGATION & VIEW SWITCHING
