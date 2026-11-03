@@ -67,7 +67,7 @@
     serve_item2_title: 'Pharmacies',
     serve_item3_title: 'Retail businesses & customers',
     serve_item4_title: 'Businesses seeking private-label OTC products',
-    serve_footnote: 'Purchasing channels & partners: distributors and Group Purchasing Organizations (GPOs).',
+    serve_item5_title: 'Distributors and Group Purchasing Organizations (GPOs)',
 
     // Home Page - Section 5: Federal Healthcare Opportunities
     federal_title: 'Federal Healthcare Opportunities',

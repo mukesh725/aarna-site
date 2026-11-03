@@ -1105,7 +1105,7 @@
           { key: 'serve_item2_title', label: 'Sector 2 Title (Pharmacies)', type: 'input' },
           { key: 'serve_item3_title', label: 'Sector 3 Title (Retail & Customers)', type: 'input' },
           { key: 'serve_item4_title', label: 'Sector 4 Title (Private Label)', type: 'input' },
-          { key: 'serve_footnote', label: 'Procurement Channels Footnote', type: 'input', full: true }
+          { key: 'serve_item5_title', label: 'Sector 5 Title (Distributors & GPOs)', type: 'input' }
         ]
       },
       {

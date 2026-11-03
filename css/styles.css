@@ -1526,21 +1526,28 @@ h1, h2, h3, h4, h5, h6 {
 .serve-item {
   display: flex;
   align-items: flex-start;
-  gap: 1.75rem;
-  padding: 1.2rem 0;
-  border-top: 1px solid #e1e7f0;
+  gap: clamp(1.25rem, 2.5vw, 1.85rem);
+  padding: clamp(1.15rem, 1.8vw, 1.4rem) 0;
+  border-top: 1px solid #e2e8f0;
 }
 
 .serve-item:last-child {
-  border-bottom: 1px solid #e1e7f0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.serve-num {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #223771;
-  min-width: 32px;
-  line-height: 1.4;
+.serve-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #061e47;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.serve-check svg {
+  display: block;
 }
 
 .serve-content {
@@ -1549,25 +1556,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .serve-item-title {
   display: block;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #223771;
-  line-height: 1.4;
+  font-family: var(--font-heading);
+  font-size: clamp(1.08rem, 1.35vw, 1.22rem);
+  font-weight: 700;
+  color: #061e47;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
 }
 
 .serve-item-sub {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #94a3b8;
-  margin-top: 0.25rem;
-  line-height: 1.4;
-}
-
-.serve-footnote {
-  font-size: 0.86rem;
-  color: #8392a5;
-  margin-top: 1.25rem;
-  line-height: 1.5;
+  margin-top: 0.35rem;
+  line-height: 1.45;
+  font-weight: 400;
 }
 
 @media (max-width: 960px) {
