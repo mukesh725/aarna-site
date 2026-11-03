@@ -24,13 +24,22 @@ function initNavigation() {
   const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
   const dropdownMenu = document.querySelector('.nav-dropdown-menu');
 
-  // Sticky header scroll behavior
+  // Sticky header scroll behavior (high-refresh-rate 60/120fps with rAF throttling)
   if (header) {
+    let isScrolled = false;
+    let ticking = false;
+
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const shouldScroll = window.scrollY > 20;
+          if (shouldScroll !== isScrolled) {
+            isScrolled = shouldScroll;
+            header.classList.toggle('scrolled', isScrolled);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     }, { passive: true });
   }
