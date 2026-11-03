@@ -33,11 +33,14 @@ Aarna Pharmaceuticals is a premier healthcare manufacturer and institutional sup
 │   ├── architecture.md         # Full technical system architecture
 │   ├── security-standards.md   # Secure development & delivery standards
 │   └── airo-skills-reference.txt # Agentic UI/UX skills reference directory
-├── js/                         # Client-side JavaScript modules
+├── scripts/                    # Application JavaScript modules & automation scripts
 │   ├── app.js                  # Navigation, mobile menus, sticky header
 │   ├── store.js                # Search, filtering, NDC matching, and pagination
-│   └── dashboard.js            # Internal catalog viewer & admin utilities
-├── scripts/                    # Automation & data helpers
+│   ├── dashboard.js            # Internal catalog viewer & admin utilities
+│   ├── firebase-config.js      # Firebase authentication & Firestore sync
+│   ├── products-data.js        # Offline product dataset fallback
+│   ├── admin.js                # Staff portal login handler
+│   ├── contact.js              # Inquiry type switcher
 │   └── make_json_data.py       # JSON catalog generator & validator
 ├── RESOURCES/                  # High-resolution design & project assets
 │   ├── AARNA_Website_All_Pages.pdf

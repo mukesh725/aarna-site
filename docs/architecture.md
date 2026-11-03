@@ -12,11 +12,14 @@ The Aarna Pharmaceuticals web platform is a responsive multi-page web applicatio
 - **`css/`**: Design tokens and styles.
   - `styles.css`: Global CSS custom properties, navigation, responsive grids, product cards, footer.
   - `dashboard.css`: Internal catalog viewer and table styling.
-- **`js/`**: Application modules.
+- **`scripts/`**: Unified application modules & automation scripts.
   - `app.js`: Header behaviors, mobile navigation drawer, smooth scroll triggers.
   - `store.js`: Product search engine, category pills filtering, pagination, and NDC quick copy.
   - `dashboard.js`: Interactive product table, live category filters, search debounce.
-- **`scripts/`**: Automation scripts.
+  - `firebase-config.js`: Cloud Firestore & Firebase Auth configuration.
+  - `products-data.js`: Offline fallback dataset.
+  - `admin.js`: Staff portal login handler & authentication redirection.
+  - `contact.js`: Interactive inquiry type selection.
   - `make_json_data.py`: Central data script generating structured JSON catalogs with NDC verification.
 - **`docs/`**: Engineering, architecture, and security documentation contracts.
 
