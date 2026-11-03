@@ -610,41 +610,16 @@ function initContactForm() {
       `;
     }
 
-    // 2. DISPATCH EMAIL TO THE CONFIGURED RECIPIENT
-    try {
-      await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipientEmail)}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          _subject: `[AARNA USA] New ${inquiryType}: ${name}`,
-          _replyto: email,
-          Customer_Name: name,
-          Customer_Email: email,
-          Phone_Number: phone || 'Not provided',
-          Organization: organization || 'Not provided',
-          Inquiry_Type: inquiryType,
-          Product_Requested: prodParam || 'N/A',
-          NDC_Number: ndcParam || 'N/A',
-          Message_Content: message,
-          Forwarded_To: recipientEmail,
-          Received_Timestamp: new Date().toLocaleString()
-        })
-      });
-    } catch (netErr) {
-      console.warn('FormSubmit notice:', netErr);
-    }
-
-    // Also trigger serverless API
+    // 2. DISPATCH IN-HOUSE VIA INTERNAL API (/api/contact)
     try {
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...inquiryPayload, recipientEmail })
       });
-    } catch (e) {}
+    } catch (e) {
+      console.warn('In-house API notice:', e);
+    }
 
     setTimeout(() => {
       if (submitBtn) {
