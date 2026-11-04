@@ -1762,6 +1762,42 @@
   }
 
   function initBackupManager() {
+    function handleVercelReplication(buttonEl) {
+      if (!buttonEl) return;
+      const originalText = buttonEl.innerHTML;
+      buttonEl.innerHTML = '<span>Replicating...</span>';
+      buttonEl.disabled = true;
+
+      if (window.AarnaStore && typeof window.AarnaStore.triggerCrossDomainSync === 'function') {
+        window.AarnaStore.triggerCrossDomainSync((res) => {
+          buttonEl.disabled = false;
+          buttonEl.innerHTML = originalText;
+          if (res && res.updated) {
+            alert('Success! All CMS content, Media assets, and Catalogs from aarna-site.vercel.app were synced to this domain. Reloading to apply...');
+            window.location.reload();
+          } else if (res && res.timeout) {
+            alert('Replication request dispatched to sync bridge. If changes exist on aarna-site.vercel.app in this browser, they will sync in the background.');
+          } else {
+            alert('Replication check complete. The dashboard is in sync with latest available data.');
+            if (typeof loadContentForm === 'function') loadContentForm();
+            if (typeof renderMediaGrid === 'function') renderMediaGrid();
+          }
+        });
+      } else {
+        buttonEl.disabled = false;
+        buttonEl.innerHTML = originalText;
+      }
+    }
+
+    // Attach to all replication buttons
+    ['btn-sync-vercel-origin', 'btn-cms-sync-vercel', 'btn-media-sync-vercel', 'btn-settings-sync-vercel'].forEach(btnId => {
+      const btn = document.getElementById(btnId);
+      if (btn) {
+        btn.addEventListener('click', () => handleVercelReplication(btn));
+      }
+    });
+
+    // Export Catalog Only Backup
     document.getElementById('btn-export-backup')?.addEventListener('click', () => {
       const data = {
         exportedAt: new Date().toISOString(),
@@ -1774,6 +1810,42 @@
       a.href = URL.createObjectURL(blob);
       a.download = `aarna-products-backup-${new Date().toISOString().slice(0, 10)}.json`;
       a.click();
+    });
+
+    // Export Full Site Backup (CMS + Media + Catalogs)
+    document.getElementById('btn-export-full-backup')?.addEventListener('click', () => {
+      if (window.AarnaStore && typeof window.AarnaStore.exportFullBackup === 'function') {
+        const fullBackupStr = window.AarnaStore.exportFullBackup();
+        const blob = new Blob([fullBackupStr], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `aarna-full-site-backup-${new Date().toISOString().slice(0, 10)}.json`;
+        a.click();
+      }
+    });
+
+    // Restore Full Site Backup (JSON File Input)
+    document.getElementById('input-import-full-backup')?.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        try {
+          const jsonStr = evt.target.result;
+          if (window.AarnaStore && typeof window.AarnaStore.importFullBackup === 'function') {
+            const res = window.AarnaStore.importFullBackup(jsonStr);
+            if (res.success) {
+              alert('Full backup successfully restored! CMS, Media, and products updated. The dashboard will now refresh.');
+              window.location.reload();
+            } else {
+              alert('Could not restore backup: ' + res.error);
+            }
+          }
+        } catch (err) {
+          alert('Invalid JSON file format: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
     });
   }
 

@@ -189,6 +189,12 @@
           <span>Add Product</span>
         </button>
 
+        <!-- Replicate from Vercel App Action -->
+        <button type="button" class="leaseflow-pill-btn" id="btn-sync-vercel-origin" title="Replicate CMS, Media, and Catalogs from aarna-site.vercel.app" style="background: #f0fdf4; color: #166534; border-color: #bbf7d0;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          <span>Replicate from Vercel App</span>
+        </button>
+
         <!-- Live Site Preview Link -->
         <a href="index.html" target="_blank" class="leaseflow-pill-btn" title="View Public Website">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -701,6 +707,10 @@
             <p style="font-size: 0.85rem; color: #64748b;">Edit all live website text, headlines, contact numbers, and corporate copy in real time.</p>
           </div>
           <div style="display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap;">
+            <button type="button" class="leaseflow-pill-btn" id="btn-cms-sync-vercel" title="Pull CMS content saved on aarna-site.vercel.app" style="background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              <span>Sync from Vercel App</span>
+            </button>
             <button type="button" class="leaseflow-pill-btn" id="btn-cms-reset-defaults">Reset to Defaults</button>
             <button type="button" class="leaseflow-pill-btn primary" id="btn-cms-save-all">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
@@ -722,10 +732,16 @@
             <h2 style="font-family: var(--font-outfit); font-size: 1.6rem; font-weight: 700; color: #0b1523; margin-bottom: 0.25rem;">Media &amp; Visuals Library</h2>
             <p style="font-size: 0.85rem; color: #64748b;">Upload and replace core website visual assets, brand logos, banners, and hero posters.</p>
           </div>
-          <a href="index.html" target="_blank" class="leaseflow-pill-btn" title="View live changes on the public website">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            <span>Preview on Live Site</span>
-          </a>
+          <div style="display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap;">
+            <button type="button" class="leaseflow-pill-btn" id="btn-media-sync-vercel" title="Pull Media assets saved on aarna-site.vercel.app" style="background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              <span>Sync from Vercel App</span>
+            </button>
+            <a href="index.html" target="_blank" class="leaseflow-pill-btn" title="View live changes on the public website">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <span>Preview on Live Site</span>
+            </a>
+          </div>
         </div>
         <div id="media-grid-container">
           <!-- Media items rendered here dynamically -->
@@ -738,11 +754,20 @@
       <div class="leaseflow-table-card">
         <h2 style="font-family: var(--font-outfit); font-size: 1.5rem; margin-bottom: 0.5rem;">Settings &amp; Database Backups</h2>
         <p style="color: #64748b; font-size: 0.88rem; margin-bottom: 1.5rem;">Export full JSON backups of your 104 products and site configuration for local record-keeping.</p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <button class="leaseflow-pill-btn primary" id="btn-export-backup">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            <span>Export Catalog Backup (JSON)</span>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="leaseflow-pill-btn" id="btn-settings-sync-vercel" style="background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <span>Replicate Everything from aarna-site.vercel.app</span>
           </button>
+          <button class="leaseflow-pill-btn primary" id="btn-export-full-backup">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Export Full Backup (CMS + Media + Catalogs JSON)</span>
+          </button>
+          <label class="leaseflow-pill-btn" style="cursor: pointer;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <span>Restore / Import JSON Backup</span>
+            <input type="file" id="input-import-full-backup" accept=".json" style="display:none;">
+          </label>
         </div>
       </div>
     </section>
