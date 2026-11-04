@@ -573,21 +573,32 @@ function initContactForm() {
       return;
     }
 
-    // Determine target recipient email:
-    // Configured email in AarnaStore, or localStorage 'aarna_inquiry_recipient', or 'info@aarnaus.com'
+    // Determine target recipient emails:
+    // 1. Main company email (info@aarnaus.com or configured)
+    // 2. Handling person email (configured in Admin Dashboard)
     let recipientEmail = 'info@aarnaus.com';
+    let ccEmail = '';
     try {
       if (window.AarnaStore && typeof window.AarnaStore.getContent === 'function') {
         const content = window.AarnaStore.getContent();
         if (content && content.contact_email) {
           recipientEmail = content.contact_email;
         }
+        if (content && content.contact_email_cc) {
+          ccEmail = content.contact_email_cc;
+        }
       }
       const customRecipient = localStorage.getItem('aarna_inquiry_recipient');
       if (customRecipient && customRecipient.includes('@')) {
         recipientEmail = customRecipient.trim();
       }
+      const customCc = localStorage.getItem('aarna_inquiry_cc_recipient');
+      if (customCc && customCc.includes('@')) {
+        ccEmail = customCc.trim();
+      }
     } catch (err) {}
+
+    const targetSummary = ccEmail ? `${recipientEmail} & ${ccEmail}` : recipientEmail;
 
     const inquiryPayload = {
       id: 'inq-' + Date.now(),
@@ -601,7 +612,8 @@ function initContactForm() {
       ndc: ndcParam || '',
       message: message,
       date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }),
-      status: 'New'
+      status: 'New',
+      routedTo: targetSummary
     };
 
     // 1. SAVE TO DASHBOARD (Instant local & synchronized real-time persistence)
@@ -615,7 +627,7 @@ function initContactForm() {
       submitBtn.disabled = true;
       submitBtn.innerHTML = `
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10"></path></svg>
-        Sending to ${recipientEmail}...
+        Sending inquiry...
       `;
     }
 
@@ -624,7 +636,12 @@ function initContactForm() {
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...inquiryPayload, recipientEmail })
+        body: JSON.stringify({
+          ...inquiryPayload,
+          recipientEmail,
+          ccEmail,
+          recipients: ccEmail ? [recipientEmail, ccEmail] : [recipientEmail]
+        })
       });
     } catch (e) {
       console.warn('In-house API notice:', e);
@@ -637,7 +654,7 @@ function initContactForm() {
       }
       contactForm.reset();
       
-      const successMsg = `Thank you, ${name}! Your inquiry has been sent to ${recipientEmail} and recorded in the Aarna Admin Dashboard.`;
+      const successMsg = `Thank you, ${name}! Your inquiry has been forwarded to ${targetSummary} and logged in the AARNA Admin Dashboard.`;
       if (typeof window.showToast === 'function') {
         window.showToast(successMsg, 'success');
       } else {

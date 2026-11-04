@@ -1623,36 +1623,59 @@
   function initInquiriesManager() {
     // Populate target email input
     const targetEmailInput = document.getElementById('dash-inquiry-target-email');
+    const ccEmailInput = document.getElementById('dash-inquiry-cc-email');
     const saveTargetBtn = document.getElementById('btn-save-inquiry-target');
 
-    if (targetEmailInput) {
+    if (targetEmailInput || ccEmailInput) {
       let currentTarget = 'info@aarnaus.com';
+      let currentCc = '';
       try {
         if (window.AarnaStore && typeof window.AarnaStore.getContent === 'function') {
           const c = window.AarnaStore.getContent();
           if (c && c.contact_email) currentTarget = c.contact_email;
+          if (c && c.contact_email_cc) currentCc = c.contact_email_cc;
         }
         const custom = localStorage.getItem('aarna_inquiry_recipient');
         if (custom && custom.includes('@')) currentTarget = custom.trim();
+        const customCc = localStorage.getItem('aarna_inquiry_cc_recipient');
+        if (customCc && customCc.includes('@')) currentCc = customCc.trim();
       } catch (e) {}
 
-      targetEmailInput.value = currentTarget;
+      if (targetEmailInput) targetEmailInput.value = currentTarget;
+      if (ccEmailInput) ccEmailInput.value = currentCc;
 
       if (saveTargetBtn) {
         saveTargetBtn.addEventListener('click', () => {
-          const newTarget = targetEmailInput.value.trim();
+          const newTarget = targetEmailInput ? targetEmailInput.value.trim() : '';
+          const newCc = ccEmailInput ? ccEmailInput.value.trim() : '';
+
           if (!newTarget || !newTarget.includes('@')) {
-            alert('Please enter a valid notification email address.');
+            alert('Please enter a valid primary company email address.');
             return;
           }
+
           localStorage.setItem('aarna_inquiry_recipient', newTarget);
-          if (window.AarnaStore && typeof window.AarnaStore.saveContent === 'function') {
-            window.AarnaStore.saveContent('contact_email', newTarget);
-          }
-          if (typeof window.showToast === 'function') {
-            window.showToast(`Inquiries will now be forwarded to ${newTarget}`, 'success');
+          if (newCc) {
+            localStorage.setItem('aarna_inquiry_cc_recipient', newCc);
           } else {
-            alert(`Inquiries will now be forwarded to ${newTarget}`);
+            localStorage.removeItem('aarna_inquiry_cc_recipient');
+          }
+
+          if (window.AarnaStore && typeof window.AarnaStore.saveContent === 'function') {
+            window.AarnaStore.saveContent({
+              contact_email: newTarget,
+              contact_email_cc: newCc
+            });
+          }
+
+          const msg = newCc 
+            ? `Inquiries will now be forwarded to both ${newTarget} and ${newCc}`
+            : `Inquiries will now be forwarded to ${newTarget}`;
+
+          if (typeof window.showToast === 'function') {
+            window.showToast(msg, 'success');
+          } else {
+            alert(msg);
           }
         });
       }
