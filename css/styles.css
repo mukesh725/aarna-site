@@ -1182,6 +1182,10 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.01em;
 }
 
+.pill-chip:empty {
+  display: none !important;
+}
+
 @media (max-width: 960px) {
   .product-showcase-grid {
     grid-template-columns: 1fr;

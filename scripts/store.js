@@ -26,7 +26,7 @@
   const DEFAULT_CONTENT = {
     // Global Brand & Contact Info
     company_name: 'AARNA USA Inc.',
-    company_tagline: 'Quality · Reliability · Care',
+    company_tagline: 'Reliable products for better care',
     footer_desc: 'AARNA supplies OTC pharmaceuticals, Unit Dose products and selected medical supplies.',
     contact_phone: '(866) 906-6239',
     contact_email: 'info@aarnaus.com',
@@ -35,8 +35,8 @@
     contact_hours: 'Monday through Friday, 8:00 AM – 5:00 PM EST',
 
     // Home Page - Section 1: Hero Horizon
-    hero_home_title: 'Unleash Healthcare<br>Excellence Today.<br>All In One Place.',
-    hero_home_desc: 'AARNA USA serves healthcare institutions, pharmacies, and retail customers with OTC medicines, institutional unit-dose products, medical supplies, and healthcare supplies.',
+    hero_home_title: 'Healthcare Essentials<br>Wherever Care<br>Happens',
+    hero_home_desc: 'AARNA USA serves healthcare institutions, pharmacies, and retail customers with OTC medicines, institutional unit-dose products, and medical supplies',
     hero_catalog_btn: 'Download our catalog',
     hero_subbar_left: 'TRUSTED HEALTHCARE SOLUTIONS',
     hero_subbar_right: 'QUALITY · RELIABILITY · CARE',
@@ -46,12 +46,12 @@
     // Home Page - Section 2: Product Showcase (3 Divisions)
     showcase_heading: 'Find the product you need',
     card_inst_title: 'Institutional Products',
-    card_inst_desc: 'Pre-filled unit-dose oral liquid cups and institutional medications engineered for hospitals and care facilities.',
+    card_inst_desc: 'Pre-filled unit-dose oral liquid cups and institutional medications packed for hospitals and care facilities.',
     card_inst_pill1: 'Unit-Dose Liquids',
     card_inst_pill2: 'Hospital Care',
     card_retail_title: 'Retail Products',
     card_retail_desc: 'Comprehensive line of high-efficacy OTC pharmaceuticals across pain relief, allergy, digestive, and family care.',
-    card_retail_pill1: 'OTC Formulas',
+    card_retail_pill1: '',
     card_retail_pill2: 'Retail & Pharmacy',
     card_devices_title: 'Medical Supplies',
     card_devices_desc: 'Hospital-grade medical supplies, aerosol spacer chambers, sterile insulin pen needles, and lancets.',
@@ -114,18 +114,18 @@
 
   // Default Media Assets Fallback covering all sections
   const DEFAULT_MEDIA = {
-    logo_main: 'assets/logos/aarna-logo-clean.png',
+    logo_main: 'assets/logos/aarna-logo-custom.png',
     admin_hero: 'assets/images/admin-login-hero.jpg',
     hero_bg: 'assets/images/hero-tablets-bg.jpg',
     card_institutional: 'assets/images/card-institutional.png',
-    card_retail: 'assets/images/card-retail.png',
+    card_retail: 'assets/images/card-retail-custom.png',
     card_devices: 'assets/images/card-medical-devices.png',
     private_label_img: 'assets/images/private-label-blue-card.png',
     partner_cencora: 'assets/logos/logo-cencora-ref.png',
     partner_cardinal: 'assets/logos/logo-cardinal-ref.png',
     partner_mckesson: 'assets/logos/logo-mckesson-ref.png',
     partner_medline: 'assets/logos/logo-medline-ref.png',
-    about_pharmacy: 'assets/images/about-pharmacy-counter.png',
+    about_pharmacy: 'assets/images/about-pharmacy-custom.png',
     inst_hero_img: 'assets/images/cups-liquid-dosage.png',
     retail_hero_img: 'assets/images/bottles-solid-dosage.png',
     devices_hero_img: 'assets/images/card-medical-devices.png'

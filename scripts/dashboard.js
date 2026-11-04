@@ -1428,7 +1428,7 @@
     {
       key: 'logo_main',
       name: 'Corporate Brand Logo',
-      defaultUrl: 'assets/logos/aarna-logo-clean.png',
+      defaultUrl: 'assets/logos/aarna-logo-custom.png',
       meta: 'Used across main navbar, mobile drawer, footer, and admin portals.',
       dims: 'Transparent PNG / SVG • ~280 × 70 px'
     },
@@ -1456,7 +1456,7 @@
     {
       key: 'card_retail',
       name: 'Card 2: Retail Products Visual',
-      defaultUrl: 'assets/images/card-retail.png',
+      defaultUrl: 'assets/images/card-retail-custom.png',
       meta: 'Solid dose bottles and OTC packaging visual for Card 2 on index.html.',
       dims: 'High-res image • ~600 × 400 px'
     },
@@ -1505,7 +1505,7 @@
     {
       key: 'about_pharmacy',
       name: 'About Pharmacy Counter Visual',
-      defaultUrl: 'assets/images/about-pharmacy-counter.png',
+      defaultUrl: 'assets/images/about-pharmacy-custom.png',
       meta: 'Healthcare operations visual on about.html.',
       dims: 'High-res image • ~920 × 560 px'
     },
