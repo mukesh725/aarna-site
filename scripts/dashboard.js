@@ -1785,41 +1785,6 @@
   }
 
   function initBackupManager() {
-    function handleVercelReplication(buttonEl) {
-      if (!buttonEl) return;
-      const originalText = buttonEl.innerHTML;
-      buttonEl.innerHTML = '<span>Replicating...</span>';
-      buttonEl.disabled = true;
-
-      if (window.AarnaStore && typeof window.AarnaStore.triggerCrossDomainSync === 'function') {
-        window.AarnaStore.triggerCrossDomainSync((res) => {
-          buttonEl.disabled = false;
-          buttonEl.innerHTML = originalText;
-          if (res && res.updated) {
-            alert('Success! All CMS content, Media assets, and Catalogs from aarna-site.vercel.app were synced to this domain. Reloading to apply...');
-            window.location.reload();
-          } else if (res && res.timeout) {
-            alert('Replication request dispatched to sync bridge. If changes exist on aarna-site.vercel.app in this browser, they will sync in the background.');
-          } else {
-            alert('Replication check complete. The dashboard is in sync with latest available data.');
-            if (typeof loadContentForm === 'function') loadContentForm();
-            if (typeof renderMediaGrid === 'function') renderMediaGrid();
-          }
-        });
-      } else {
-        buttonEl.disabled = false;
-        buttonEl.innerHTML = originalText;
-      }
-    }
-
-    // Attach to all replication buttons
-    ['btn-sync-vercel-origin', 'btn-cms-sync-vercel', 'btn-media-sync-vercel', 'btn-settings-sync-vercel'].forEach(btnId => {
-      const btn = document.getElementById(btnId);
-      if (btn) {
-        btn.addEventListener('click', () => handleVercelReplication(btn));
-      }
-    });
-
     // Export Catalog Only Backup
     document.getElementById('btn-export-backup')?.addEventListener('click', () => {
       const data = {

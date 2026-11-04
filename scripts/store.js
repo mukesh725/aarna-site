@@ -7,22 +7,19 @@
   'use strict';
 
   const STORAGE_KEYS = {
-    RETAIL: 'aarna_products_retail_v2',
-    DEVICES: 'aarna_products_devices_v2',
-    INSTITUTIONAL: 'aarna_products_institutional_v2',
-    CONTENT: 'aarna_site_content_v2',
-    MEDIA: 'aarna_site_media',
+    RETAIL: 'aarna_products_retail_v3',
+    DEVICES: 'aarna_products_devices_v3',
+    INSTITUTIONAL: 'aarna_products_institutional_v3',
+    CONTENT: 'aarna_site_content_v3',
+    MEDIA: 'aarna_site_media_v3',
     INQUIRIES: 'aarna_contact_inquiries',
     AUTH: 'aarna_admin_session'
   };
 
-  // Migrate existing v1 cache to v2 so no user edits are lost
+  // Clear legacy cached content from previous tests so fresh content always renders
   try {
-    const v1Content = localStorage.getItem('aarna_site_content');
-    const v2Content = localStorage.getItem(STORAGE_KEYS.CONTENT);
-    if (v1Content && !v2Content) {
-      localStorage.setItem(STORAGE_KEYS.CONTENT, v1Content);
-    }
+    localStorage.removeItem('aarna_site_content');
+    localStorage.removeItem('aarna_site_content_v2');
   } catch (e) {}
 
   // Default content fallback covering all sections of the site
@@ -240,9 +237,6 @@
           window.AarnaFirebase.saveCmsContent(updated);
         }
 
-        // Cross-domain sync to aarna-site.vercel.app if active
-        this.syncToVercelApp({ content: updated });
-
         return true;
       } catch (err) {
         console.error('Error saving content:', err);
@@ -295,10 +289,6 @@
         localStorage.setItem(STORAGE_KEYS.MEDIA, JSON.stringify(custom));
         this.notifyChange('media', { slotKey });
         this.applyMediaToPage();
-
-        // Cross-domain sync to aarna-site.vercel.app if active
-        this.syncToVercelApp({ media: custom });
-
         return true;
       } catch (err) {
         console.error('Error saving media:', err);
@@ -482,22 +472,6 @@
       window.dispatchEvent(new CustomEvent('aarna:datachange', {
         detail: { type, detail }
       }));
-    },
-
-    // Cross-Domain Sync Controls
-    triggerCrossDomainSync(callback) {
-      ensureBridge();
-      queryBridge(callback);
-    },
-
-    syncToVercelApp(payload) {
-      if (!bridgeIframe || !bridgeIframe.contentWindow) return;
-      try {
-        bridgeIframe.contentWindow.postMessage({
-          action: 'SAVE_SYNC_DATA',
-          payload: payload
-        }, 'https://aarna-site.vercel.app');
-      } catch (e) {}
     }
   };
 
@@ -515,118 +489,13 @@
     AarnaStore.applyMediaToPage();
   }
 
-  // Cross-Domain Sync Bridge Implementation
-  let bridgeIframe = null;
-  let bridgeReady = false;
-  const bridgeCallbacks = [];
-
-  function ensureBridge() {
-    if (bridgeIframe) return bridgeIframe;
-    // Don't embed bridge inside itself or if already on aarna-site.vercel.app
-    if (window.location.hostname.includes('aarna-site.vercel.app') || window.self !== window.top) {
-      return null;
-    }
-
-    bridgeIframe = document.createElement('iframe');
-    bridgeIframe.id = 'aarna-sync-bridge-frame';
-    bridgeIframe.src = 'https://aarna-site.vercel.app/sync-bridge.html';
-    bridgeIframe.style.display = 'none';
-    bridgeIframe.setAttribute('aria-hidden', 'true');
-
-    window.addEventListener('message', (event) => {
-      if (!event.origin.includes('aarna-site.vercel.app')) return;
-      if (event.data && event.data.type === 'AARNA_BRIDGE_READY') {
-        bridgeReady = true;
-        queryBridge();
-      } else if (event.data && event.data.type === 'AARNA_SYNC_DATA_RESPONSE') {
-        handleBridgeSyncResponse(event.data.payload);
-      }
-    });
-
-    if (document.body) {
-      document.body.appendChild(bridgeIframe);
-    } else {
-      document.addEventListener('DOMContentLoaded', () => {
-        if (!document.getElementById('aarna-sync-bridge-frame')) {
-          document.body.appendChild(bridgeIframe);
-        }
-      });
-    }
-
-    return bridgeIframe;
-  }
-
-  function queryBridge(customCb) {
-    if (customCb) bridgeCallbacks.push(customCb);
-    if (!bridgeIframe || !bridgeIframe.contentWindow) return;
-    try {
-      bridgeIframe.contentWindow.postMessage({ action: 'GET_SYNC_DATA' }, 'https://aarna-site.vercel.app');
-    } catch (e) {}
-  }
-
-  function handleBridgeSyncResponse(payload) {
-    if (!payload) return;
-    let updated = false;
-
-    // Content sync from aarna-site.vercel.app
-    if (payload.content && typeof payload.content === 'object' && Object.keys(payload.content).length > 0) {
-      const localContent = AarnaStore.getContent();
-      const merged = { ...localContent, ...payload.content };
-      localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(merged));
-      localStorage.setItem('aarna_site_content', JSON.stringify(merged));
-      updated = true;
-    }
-
-    // Media sync from aarna-site.vercel.app
-    if (payload.media && typeof payload.media === 'object' && Object.keys(payload.media).length > 0) {
-      const localMedia = AarnaStore.getCustomMedia();
-      const mergedMedia = { ...localMedia, ...payload.media };
-      localStorage.setItem(STORAGE_KEYS.MEDIA, JSON.stringify(mergedMedia));
-      updated = true;
-    }
-
-    // Catalogs sync if present
-    if (payload.retail && Array.isArray(payload.retail) && payload.retail.length > 0) {
-      localStorage.setItem(STORAGE_KEYS.RETAIL, JSON.stringify(payload.retail));
-      updated = true;
-    }
-    if (payload.institutional && Array.isArray(payload.institutional) && payload.institutional.length > 0) {
-      localStorage.setItem(STORAGE_KEYS.INSTITUTIONAL, JSON.stringify(payload.institutional));
-      updated = true;
-    }
-    if (payload.devices && Array.isArray(payload.devices) && payload.devices.length > 0) {
-      localStorage.setItem(STORAGE_KEYS.DEVICES, JSON.stringify(payload.devices));
-      updated = true;
-    }
-
-    if (updated) {
-      AarnaStore.applyContentToPage();
-      AarnaStore.applyMediaToPage();
-      console.log('✅ Live sync: Replicated CMS & Media from aarna-site.vercel.app to main domain.');
-    }
-
-    while (bridgeCallbacks.length > 0) {
-      const cb = bridgeCallbacks.shift();
-      try { cb({ success: true, updated, payload }); } catch (e) {}
-    }
-  }
-
   // Cross-tab synchronization (updates live site instantly when saved in admin)
   window.addEventListener('storage', (e) => {
-    if (e.key === STORAGE_KEYS.CONTENT || e.key === 'aarna_site_content') {
+    if (e.key === STORAGE_KEYS.CONTENT) {
       AarnaStore.applyContentToPage();
     } else if (e.key === STORAGE_KEYS.MEDIA) {
       AarnaStore.applyMediaToPage();
     }
   });
-
-  // Automatically initialize bridge on load if on main domain
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      ensureBridge();
-    });
-  } else {
-    ensureBridge();
-  }
 
 })(window);
