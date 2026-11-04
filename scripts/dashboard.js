@@ -1100,12 +1100,12 @@
         fields: [
           { key: 'serve_eyebrow', label: 'Eyebrow Tag', type: 'input' },
           { key: 'serve_title', label: 'Main Headline (HTML allowed)', type: 'textarea', full: true },
-          { key: 'serve_item1_title', label: 'Sector 1 Title (Hospitals)', type: 'input' },
+          { key: 'serve_item1_title', label: 'Sector 1 Title (Hospitals & Institutions)', type: 'input' },
           { key: 'serve_item1_sub', label: 'Sector 1 Subtitle', type: 'input' },
           { key: 'serve_item2_title', label: 'Sector 2 Title (Pharmacies)', type: 'input' },
-          { key: 'serve_item3_title', label: 'Sector 3 Title (Retail & Customers)', type: 'input' },
+          { key: 'serve_item3_title', label: 'Sector 3 Title (Retailers)', type: 'input' },
           { key: 'serve_item4_title', label: 'Sector 4 Title (Private Label)', type: 'input' },
-          { key: 'serve_item5_title', label: 'Sector 5 Title (Distributors & GPOs)', type: 'input' }
+          { key: 'serve_item5_title', label: 'Sector 5 Title (GPOs)', type: 'input' }
         ]
       },
       {
@@ -1121,7 +1121,7 @@
       },
       {
         id: 'sec-partners',
-        title: 'Home Page - Section 6: Our Partners (Wholesalers & GPOs)',
+        title: 'Home Page - Section 6: Purchasing Channels and Partners',
         icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M16 12l-4-4-4 4"></path><path d="M12 16V8"></path></svg>',
         desc: 'Authorized national distribution partners and healthcare supply chain logos on index.html.',
         images: [
@@ -1220,7 +1220,7 @@
           },
           {
             key: 'devices_hero_img',
-            name: 'Medical Devices Catalog Hero Banner',
+            name: 'Medical Supplies Catalog Hero Banner',
             meta: 'Displayed on medical-devices.html hero card.',
             dims: 'High-res image • ~600 × 400 px'
           }
@@ -1230,8 +1230,8 @@
           { key: 'inst_page_desc', label: 'Institutional Page Description', type: 'textarea', full: true },
           { key: 'retail_page_title', label: 'Retail Page Title', type: 'input' },
           { key: 'retail_page_desc', label: 'Retail Page Description', type: 'textarea', full: true },
-          { key: 'devices_page_title', label: 'Medical Supplies & Devices Page Title', type: 'input' },
-          { key: 'devices_page_desc', label: 'Medical Supplies & Devices Page Description', type: 'textarea', full: true }
+          { key: 'devices_page_title', label: 'Medical Supplies Page Title', type: 'input' },
+          { key: 'devices_page_desc', label: 'Medical Supplies Page Description', type: 'textarea', full: true }
         ]
       }
     ];
@@ -2098,7 +2098,7 @@
       tabs: [
         { id: 'catalog_institutional', name: 'Institutional Care', desc: 'Pre-filled oral liquid cups & hospital care' },
         { id: 'catalog_retail', name: 'Retail Products', desc: 'Comprehensive 71+ OTC medications line' },
-        { id: 'catalog_devices', name: 'Medical Supplies', desc: 'Hospital-grade supplies, spacers, pen needles' }
+        { id: 'catalog_devices', name: 'Medical Supplies', desc: 'Medical supplies, spacers, pen needles' }
       ]
     },
     {

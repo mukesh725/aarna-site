@@ -1554,6 +1554,21 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
+.serve-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0284c7;
+  letter-spacing: -0.02em;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
 .serve-content {
   flex: 1;
 }

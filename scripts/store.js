@@ -10,16 +10,17 @@
     RETAIL: 'aarna_products_retail_v3',
     DEVICES: 'aarna_products_devices_v3',
     INSTITUTIONAL: 'aarna_products_institutional_v3',
-    CONTENT: 'aarna_site_content_v3',
+    CONTENT: 'aarna_site_content_v4',
     MEDIA: 'aarna_site_media_v3',
     INQUIRIES: 'aarna_contact_inquiries',
     AUTH: 'aarna_admin_session'
   };
 
-  // Clear legacy cached content from previous tests so fresh content always renders
+  // Clear legacy cached content from previous versions so fresh content always renders
   try {
     localStorage.removeItem('aarna_site_content');
     localStorage.removeItem('aarna_site_content_v2');
+    localStorage.removeItem('aarna_site_content_v3');
   } catch (e) {}
 
   // Default content fallback covering all sections of the site
@@ -27,14 +28,14 @@
     // Global Brand & Contact Info
     company_name: 'AARNA USA Inc.',
     company_tagline: 'Reliable products for better care',
-    footer_desc: 'AARNA supplies OTC pharmaceuticals, Unit Dose products and selected medical supplies.',
+    footer_desc: 'AARNA USA supplies OTC medicines and medical supplies to healthcare institutions, pharmacies and retailers. Institutional unit-dose formats are available for selected OTC medicines.',
     contact_phone: '(866) 906-6239',
     contact_email: 'info@aarnaus.com',
     contact_address_line1: '2080 Enterprise Dr NE',
     contact_address_line2: 'Leland, NC 28451',
     contact_hours: 'Monday through Friday, 8:00 AM – 5:00 PM EST',
 
-    // Home Page - Section 1: Hero Horizon
+    // Home Page - Section 1: Hero Horizon (Do not alter headline/supporting copy per strict constraint)
     hero_home_title: 'Healthcare Essentials<br>Wherever Care<br>Happens',
     hero_home_desc: 'AARNA USA serves healthcare institutions, pharmacies, and retail customers with OTC medicines, institutional unit-dose products, and medical supplies',
     hero_catalog_btn: 'Download our catalog',
@@ -48,42 +49,42 @@
     card_inst_title: 'Institutional Products',
     card_inst_desc: 'AARNA OTC medicines in pre-filled oral-liquid and unit-dose tablet, capsule and topical formats for healthcare institutions.',
     card_inst_pill1: 'Unit-Dose Liquids',
-    card_inst_pill2: 'Hospital Care',
+    card_inst_pill2: 'Healthcare Institutions',
     card_retail_title: 'Retail Products',
     card_retail_desc: 'AARNA OTC medicines in retail package formats across pain and fever, allergy, cough and congestion, digestive health, pediatric care and topicals.',
-    card_retail_pill1: '',
-    card_retail_pill2: 'Retail & Pharmacy',
+    card_retail_pill1: 'Retail Formats',
+    card_retail_pill2: 'Pharmacies & Retailers',
     card_devices_title: 'Medical Supplies',
     card_devices_desc: 'AARNA medical supplies for healthcare institutions, pharmacies and retailers.',
-    card_devices_pill1: 'Sterile Supplies',
-    card_devices_pill2: 'Clinical DME',
+    card_devices_pill1: 'Medical Supplies',
+    card_devices_pill2: 'Healthcare Institutions',
 
     // Home Page - Section 3: Private Label Solutions
     pl_eyebrow: 'Private label',
     pl_title: '<span class="pl-title-blue">Your brand.</span><br><span class="pl-title-dark">Our OTC medicines.</span>',
-    pl_desc: 'Oral liquids, tablets, capsules, and topical creams, packaged under your brand.',
+    pl_desc: 'Oral liquids, tablets, capsules and topicals, packaged under your brand.',
     pl_btn_text: 'Start your brand',
     pl_footnote: 'For pharmacies, retailers, and distributors building their own product line.',
 
     // Home Page - Section 4: Who We Serve
     serve_eyebrow: 'WHO WE SERVE',
     serve_title: 'Here for the people<br>behind everyday care.',
-    serve_item1_title: 'Hospitals & healthcare institutions',
-    serve_item1_sub: 'Including long-term care providers',
+    serve_item1_title: 'Hospitals and healthcare institutions',
+    serve_item1_sub: 'Long-term care and other healthcare providers',
     serve_item2_title: 'Pharmacies',
-    serve_item3_title: 'Retail businesses & customers',
+    serve_item3_title: 'Retailers',
     serve_item4_title: 'Businesses seeking private-label OTC products',
-    serve_item5_title: 'Distributors and Group Purchasing Organizations (GPOs)',
+    serve_item5_title: 'GPOs',
 
     // Home Page - Section 5: Federal Healthcare Opportunities
     federal_title: 'Federal Healthcare Opportunities',
-    federal_desc: 'AARNA USA is interested in federal healthcare procurement opportunities for OTC unit-dose products, medical supplies, and healthcare supplies. We welcome inquiries from government contractors and procurement teams serving Veterans Affairs (VA) healthcare facilities and Bureau of Prisons healthcare settings.',
+    federal_desc: 'AARNA USA is interested in federal healthcare procurement opportunities for OTC unit-dose medicines and medical supplies. We welcome inquiries from government contractors and procurement teams serving Veterans Affairs (VA) healthcare facilities and Bureau of Prisons healthcare settings.',
     federal_btn_text: 'Discuss a Federal<br>Procurement Opportunity',
 
-    // Home Page - Section 6: Our Partners
-    partners_badge: 'OUR PARTNERS',
-    partners_title: 'Built on <span class="partners-serif-blue">trusted partnerships.</span>',
-    partners_subtitle: 'Working alongside established healthcare organizations to support quality, reliability, and consistent delivery.',
+    // Home Page - Section 6: Purchasing Channels and Partners
+    partners_badge: 'PURCHASING CHANNELS & PARTNERS',
+    partners_title: 'Purchasing Channels and Partners',
+    partners_subtitle: 'AARNA USA works with distributors, Group Purchasing Organizations and other purchasing channels to help healthcare customers locate and order products.',
 
     // Home Page - Section 7: Catalog Callout Banner
     catalog_cta_title: 'Need product details?',
@@ -106,10 +107,10 @@
     // Dedicated Catalog Pages
     inst_page_title: 'Institutional Unit-Dose OTC Products',
     inst_page_desc: 'AARNA USA supplies OTC medicines for healthcare institutions in pre-filled oral-liquid and unit-dose tablet, capsule and topical formats. Find products by name, strength or size, package format or NDC.',
-    retail_page_title: 'Retail Products',
-    retail_page_desc: 'High efficacy OTC pharmaceuticals across pain relief, allergy, digestive, and family care.',
-    devices_page_title: 'Medical Supplies & Devices',
-    devices_page_desc: 'Clinical equipment, aerosol spacers, sterile insulin pen needles, and surgical supplies.'
+    retail_page_title: 'Retail OTC Products',
+    retail_page_desc: 'AARNA USA offers OTC medicines in retail package formats. Find products by name or NDC.',
+    devices_page_title: 'Medical Supplies',
+    devices_page_desc: 'Explore AARNA medical supplies. Find products by type, size, package format or product number.'
   };
 
   // Default Media Assets Fallback covering all sections
