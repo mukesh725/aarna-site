@@ -61,7 +61,7 @@
     // Home Page - Section 3: Private Label Solutions
     pl_eyebrow: 'Private label',
     pl_title: '<span class="pl-title-blue">Your brand.</span><br><span class="pl-title-dark">Our OTC medicines.</span>',
-    pl_desc: 'Oral liquids, tablets, capsules, and topical creams, packaged under your name.',
+    pl_desc: 'Oral liquids, tablets, capsules, and topical creams, packaged under your brand.',
     pl_btn_text: 'Start your brand',
     pl_footnote: 'For pharmacies, retailers, and distributors building their own product line.',
 
