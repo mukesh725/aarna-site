@@ -568,7 +568,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: url('../assets/images/hero-tablets-bg.jpg');
+  background-image: url('../assets/images/hero-tablets-bg.webp');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

@@ -46,15 +46,15 @@
     // Home Page - Section 2: Product Showcase (3 Divisions)
     showcase_heading: 'Find the product you need',
     card_inst_title: 'Institutional Products',
-    card_inst_desc: 'Pre-filled unit-dose oral liquid cups and institutional medications packed for hospitals and care facilities.',
+    card_inst_desc: 'AARNA OTC medicines in pre-filled oral-liquid and unit-dose tablet, capsule and topical formats for healthcare institutions.',
     card_inst_pill1: 'Unit-Dose Liquids',
     card_inst_pill2: 'Hospital Care',
     card_retail_title: 'Retail Products',
-    card_retail_desc: 'Comprehensive line of high-efficacy OTC pharmaceuticals across pain relief, allergy, digestive, and family care.',
+    card_retail_desc: 'AARNA OTC medicines in retail package formats across pain and fever, allergy, cough and congestion, digestive health, pediatric care and topicals.',
     card_retail_pill1: '',
     card_retail_pill2: 'Retail & Pharmacy',
     card_devices_title: 'Medical Supplies',
-    card_devices_desc: 'Hospital-grade medical supplies, aerosol spacer chambers, sterile insulin pen needles, and lancets.',
+    card_devices_desc: 'AARNA medical supplies for healthcare institutions, pharmacies and retailers.',
     card_devices_pill1: 'Sterile Supplies',
     card_devices_pill2: 'Clinical DME',
 
@@ -92,9 +92,9 @@
 
     // About Us Page
     about_hero_title: 'About AARNA USA',
-    about_hero_desc: 'AARNA USA supplies OTC medicines, medical supplies, and healthcare supplies to healthcare institutions, pharmacies, and retail customers. Medicines are available in retail packages and institutional unit-dose formats. AARNA USA also offers private-label OTC products for businesses seeking products under their own brand.',
+    about_hero_desc: 'AARNA USA supplies OTC medicines and medical supplies to healthcare institutions, pharmacies and retailers. Our OTC medicines are available in retail packages and institutional unit-dose formats. We also offer private-label OTC products for businesses seeking products under their own brand.',
     about_what_title: 'What We Do',
-    about_what_desc: 'AARNA USA supplies AARNA-brand OTC medicines, medical supplies, and healthcare supplies, with a primary focus on healthcare institutions. We also serve pharmacies and retail customers. AARNA USA offers private-label OTC products for businesses seeking products under their own brand.',
+    about_what_desc: 'AARNA USA supplies AARNA-brand OTC medicines and medical supplies, with a primary focus on healthcare institutions. We also serve pharmacies and retailers and offer private-label OTC products for businesses seeking products under their own brand.',
 
     // Contact Us Page
     contact_eyebrow: 'CONTACT AARNA USA',
@@ -104,8 +104,8 @@
     contact_next_desc: 'Our team reviews your requirements and contacts you to discuss the next steps.',
 
     // Dedicated Catalog Pages
-    inst_page_title: 'Institutional Products',
-    inst_page_desc: 'OTC medicines in institutional unit-dose formats for healthcare providers.',
+    inst_page_title: 'Institutional Unit-Dose OTC Products',
+    inst_page_desc: 'AARNA USA supplies OTC medicines for healthcare institutions in pre-filled oral-liquid and unit-dose tablet, capsule and topical formats. Find products by name, strength or size, package format or NDC.',
     retail_page_title: 'Retail Products',
     retail_page_desc: 'High efficacy OTC pharmaceuticals across pain relief, allergy, digestive, and family care.',
     devices_page_title: 'Medical Supplies & Devices',
@@ -114,21 +114,21 @@
 
   // Default Media Assets Fallback covering all sections
   const DEFAULT_MEDIA = {
-    logo_main: 'assets/logos/aarna-logo-custom.png',
-    admin_hero: 'assets/images/admin-login-hero.jpg',
-    hero_bg: 'assets/images/hero-tablets-bg.jpg',
-    card_institutional: 'assets/images/card-institutional.png',
-    card_retail: 'assets/images/card-retail-custom.png',
-    card_devices: 'assets/images/card-medical-devices.png',
-    private_label_img: 'assets/images/private-label-blue-card.png',
+    logo_main: 'assets/logos/aarna-logo-custom.webp',
+    admin_hero: 'assets/images/admin-login-hero.webp',
+    hero_bg: 'assets/images/hero-tablets-bg.webp',
+    card_institutional: 'assets/images/card-institutional.webp',
+    card_retail: 'assets/images/card-retail-custom.webp',
+    card_devices: 'assets/images/card-medical-devices.webp',
+    private_label_img: 'assets/images/private-label-blue-card.webp',
     partner_cencora: 'assets/logos/logo-cencora-ref.png',
     partner_cardinal: 'assets/logos/logo-cardinal-ref.png',
     partner_mckesson: 'assets/logos/logo-mckesson-ref.png',
     partner_medline: 'assets/logos/logo-medline-ref.png',
-    about_pharmacy: 'assets/images/about-pharmacy-custom.png',
-    inst_hero_img: 'assets/images/cups-liquid-dosage.png',
-    retail_hero_img: 'assets/images/bottles-solid-dosage.png',
-    devices_hero_img: 'assets/images/card-medical-devices.png'
+    about_pharmacy: 'assets/images/about-pharmacy-custom.webp',
+    inst_hero_img: 'assets/images/cups-liquid-dosage.webp',
+    retail_hero_img: 'assets/images/bottles-solid-dosage.webp',
+    devices_hero_img: 'assets/images/card-medical-devices.webp'
   };
 
   const AarnaStore = {
