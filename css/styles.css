@@ -2190,6 +2190,13 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 20px 42px -10px rgba(6, 30, 71, 0.12), 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
+.leader-profile-card-textonly {
+  display: block;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 3.75rem);
+}
+
 .leader-photo-wrap {
   width: 100%;
   aspect-ratio: 1 / 1.05;
