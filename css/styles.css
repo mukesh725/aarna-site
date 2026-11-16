@@ -2079,7 +2079,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about-mosaic-bottom .about-mosaic-item {
-  aspect-ratio: 16 / 6.2;
+  aspect-ratio: 16 / 7;
+  background-color: #ffffff;
 }
 
 .about-mosaic-item img {
