@@ -102,20 +102,17 @@
       </div>
     </section>
 
-    <!-- SECTION 2: OUR MISSION (Image 1 Left Text + Right 3-Image Mosaic Collage) -->
-    <section class="about-mission-section" aria-labelledby="mission-heading">
+    <!-- SECTION 2: WHAT WE DO (Left Text + Right 3-Image Mosaic Collage) -->
+    <section class="about-mission-section" aria-labelledby="what-we-do-heading">
       <div class="container">
         <div class="about-mission-grid">
           
-          <!-- Left: Mission Content -->
+          <!-- Left: What We Do Content -->
           <div class="about-mission-content">
-            <h2 id="mission-heading" class="about-mission-title" data-cms-key="mission_title">Our Mission</h2>
+            <h2 id="what-we-do-heading" class="about-mission-title" data-cms-key="about_what_title">What We Do</h2>
             <div class="about-mission-desc">
-              <p>
-                AARNA USA is dedicated to delivering reliable, accessible, and high-standard healthcare solutions. We supply AARNA-brand OTC medicines and medical supplies with a primary focus on healthcare institutions, hospital networks, pharmacies, and retail distributors nationwide.
-              </p>
-              <p>
-                Our OTC medicines are available in institutional unit-dose formats and shelf-ready retail packages. In addition, we partner with healthcare organizations and retail partners seeking private-label OTC products under their own brands, guaranteeing strict quality compliance, batch traceability, and steady supply chain execution.
+              <p data-cms-key="about_what_desc">
+                AARNA USA supplies AARNA-brand OTC medicines and medical supplies, with a primary focus on healthcare institutions. We also serve pharmacies and retailers and offer private-label OTC products for businesses seeking products under their own brand.
               </p>
             </div>
           </div>
@@ -141,31 +138,36 @@
       </div>
     </section>
 
-    <!-- SECTION 3: MEET OUR LEADERS (Image 1 Section + Image 2 Profile Layout) -->
-    <section class="about-leaders-section" id="meet-our-leaders" aria-labelledby="leaders-heading">
+    <!-- SECTION 3: OUR TEAM (Exact Layout from Mockup) -->
+    <section class="about-team-section about-leaders-section" id="our-team" aria-labelledby="team-heading">
       <div class="container">
         
-        <!-- Centered Section Header (Image 1 Wireframe) -->
-        <div class="leaders-section-header">
-          <h2 id="leaders-heading" class="leaders-section-title" data-cms-key="leaders_section_title">Meet Our Leaders</h2>
-          <p class="leaders-section-subtitle" data-cms-key="leaders_section_subtitle">
-            Our leadership brings together industry experience, product knowledge, and a commitment to building lasting relationships with our customers and partners.
-          </p>
+        <!-- Header Bar: Title on Left + Vertical Divider + Description on Right -->
+        <div class="team-header-bar">
+          <div class="team-header-left">
+            <h2 id="team-heading" class="team-header-title" data-cms-key="team_section_title">Our Team</h2>
+            <div class="team-header-underline" aria-hidden="true"></div>
+          </div>
+          <div class="team-header-divider" aria-hidden="true"></div>
+          <div class="team-header-right">
+            <p class="team-header-desc" data-cms-key="team_section_desc">
+              Our team brings together industry experience, product knowledge and a commitment to building lasting relationships with our customers and partners.
+            </p>
+          </div>
         </div>
 
-        <!-- Leader Profile Card (Exact Layout from Image 2) -->
-        <div class="leaders-cards-wrap">
+        <!-- Leader Profile Card (Exact 2nd Image Layout) -->
+        <div class="leaders-cards-wrap team-card-wrap">
           <article class="leader-profile-card">
             <!-- Left: Rounded Photo -->
             <div class="leader-photo-wrap">
-              <img src="assets/images/team-seth-abramson.jpg" alt="Seth Abramson - Business Development" width="360" height="380" loading="lazy">
+              <img src="assets/images/team-seth-abramson.jpg" alt="Seth Abramson - Business Development" width="380" height="400" loading="lazy">
             </div>
 
             <!-- Right: Content -->
             <div class="leader-content-wrap">
               <div class="leader-eyebrow-row">
-                <span class="leader-diamond" aria-hidden="true">&#10022;</span>
-                <span class="leader-eyebrow-text">OUR TEAM</span>
+                <span class="leader-eyebrow-text">ABOUT THE TEAM</span>
                 <span class="leader-eyebrow-divider" aria-hidden="true"></span>
               </div>
               <h3 class="leader-name">Seth Abramson</h3>
@@ -180,14 +182,6 @@
               </div>
             </div>
           </article>
-        </div>
-
-        <!-- Bottom CTA from Image 1 ("View the team" / "Connect with Our Team") -->
-        <div class="leaders-cta-wrap">
-          <a href="contact.html" class="leaders-cta-btn">
-            Connect with Our Team
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </a>
         </div>
 
       </div>
