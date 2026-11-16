@@ -2100,7 +2100,46 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
-/* Team Header Bar: Left Title + Teal Underline | Divider | Right Description */
+/* Centered Team Section Header: Title on Top + Underline + Centered Paragraph */
+.team-header-center {
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto clamp(2.5rem, 4vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-header-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 3.8vw, 3.4rem);
+  font-weight: 800;
+  color: #061e47;
+  letter-spacing: -0.035em;
+  margin: 0;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.team-header-underline {
+  width: 48px;
+  height: 3px;
+  background-color: #0d9488;
+  border-radius: 2px;
+  margin: 0.65rem auto 1.25rem auto;
+}
+
+.team-header-desc {
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+  color: #475569;
+  line-height: 1.7;
+  margin: 0 auto;
+  font-weight: 400;
+  text-align: center;
+  max-width: 780px;
+}
+
+/* Backward Compatibility for Bar Layout */
 .team-header-bar {
   display: flex;
   align-items: center;
@@ -2113,24 +2152,6 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
 }
 
-.team-header-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 3.8vw, 3.4rem);
-  font-weight: 800;
-  color: #061e47;
-  letter-spacing: -0.035em;
-  margin: 0;
-  line-height: 1.15;
-}
-
-.team-header-underline {
-  width: 48px;
-  height: 3px;
-  background-color: #0d9488;
-  border-radius: 2px;
-  margin-top: 0.45rem;
-}
-
 .team-header-divider {
   width: 1.5px;
   height: 52px;
@@ -2141,14 +2162,6 @@ h1, h2, h3, h4, h5, h6 {
 .team-header-right {
   flex: 1;
   max-width: 760px;
-}
-
-.team-header-desc {
-  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
-  color: #374151;
-  line-height: 1.65;
-  margin: 0;
-  font-weight: 400;
 }
 
 .leaders-cards-wrap,
