@@ -1961,6 +1961,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about-hero-section .container,
+.about-leaders-section .container,
 .about-team-section .container {
   max-width: 1600px;
   margin-left: auto;
@@ -2065,112 +2066,76 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   OUR TEAM SECTION (ABOUT PAGE)
+   MEET OUR LEADERS SECTION (ABOUT PAGE - IMAGE 1 & IMAGE 2 COMPOSITE LAYOUT)
    ========================================================================== */
-.about-team-section {
+.about-leaders-section {
   padding: clamp(3.5rem, 5.5vw, 6rem) 0 clamp(4rem, 6.5vw, 7rem);
-  background-color: #ffffff;
-  border-top: 1px solid var(--color-border-subtle);
+  background-color: #f8fafc;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
-/* Team Header Grid: Title + Accent Bar + Divider + Mission Statement */
-.team-header-grid {
-  display: flex;
-  align-items: center;
-  gap: clamp(2rem, 3.5vw, 3.5rem);
-  margin-bottom: clamp(3rem, 4.5vw, 4.25rem);
-  padding-bottom: clamp(1.75rem, 2.5vw, 2.5rem);
-  border-bottom: 1px solid var(--color-border);
+/* Centered Section Header (From Image 1 Wireframe) */
+.leaders-section-header {
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto clamp(2.5rem, 4vw, 4rem);
 }
 
-.team-header-title-col {
-  flex-shrink: 0;
-}
-
-.team-header-title {
+.leaders-section-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+  font-size: clamp(2.4rem, 3.8vw, 3.6rem);
   font-weight: 800;
   color: #061e47;
   letter-spacing: -0.035em;
-  margin: 0;
-  line-height: 1.12;
+  margin: 0 0 1rem 0;
+  line-height: 1.15;
 }
 
-.team-accent-bar {
-  width: 52px;
-  height: 4px;
-  background-color: #0d9488;
-  border-radius: 4px;
-  margin-top: 0.65rem;
-}
-
-.team-header-divider {
-  width: 1px;
-  height: 54px;
-  background-color: #cbd5e1;
-  flex-shrink: 0;
-}
-
-.team-header-intro-col {
-  flex: 1;
-}
-
-.team-header-intro-text {
-  font-size: clamp(1.12rem, 1.35vw, 1.3rem);
+.leaders-section-subtitle {
+  font-size: clamp(1.1rem, 1.35vw, 1.25rem);
   color: #475569;
   line-height: 1.65;
   margin: 0;
   font-weight: 400;
-  max-width: 820px;
 }
 
-/* Team Member Card / Profile */
-.team-members-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  max-width: 1600px;
+/* Leader Cards Wrapper */
+.leaders-cards-wrap {
   width: 100%;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
-.team-member-card {
-  background: #ffffff;
+/* Leader Profile Card (Exact Layout from Image 2) */
+.leader-profile-card {
+  background-color: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 24px;
+  border-radius: 26px;
   padding: clamp(2.25rem, 4vw, 3.5rem);
-  box-shadow: 0 10px 30px -10px rgba(6, 30, 71, 0.07), 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 14px 34px -10px rgba(6, 30, 71, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: start;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.team-member-card:hover {
-  box-shadow: 0 16px 36px -8px rgba(6, 30, 71, 0.1), 0 4px 12px rgba(0, 0, 0, 0.04);
-}
-
-/* When a photo is included */
-.team-member-card.has-photo {
-  grid-template-columns: minmax(280px, 340px) 1fr;
+  grid-template-columns: minmax(290px, 360px) 1fr;
+  gap: clamp(2.5rem, 4.5vw, 4.25rem);
   align-items: center;
-  gap: clamp(2rem, 4vw, 3.5rem);
+  box-sizing: border-box;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.team-member-photo-wrap {
+.leader-profile-card:hover {
+  box-shadow: 0 20px 42px -10px rgba(6, 30, 71, 0.12), 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.leader-photo-wrap {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1.05;
   border-radius: 20px;
   overflow: hidden;
   background-color: #f1f5f9;
   box-shadow: 0 16px 36px -10px rgba(6, 30, 71, 0.16), 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.team-member-photo-wrap img {
+.leader-photo-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2178,48 +2143,54 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
-.team-member-content {
+.leader-content-wrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 1100px;
 }
 
-.team-eyebrow-wrap {
+/* Eyebrow: ✦ OUR TEAM ————— (From Image 2) */
+.leader-eyebrow-row {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 1.1rem;
+  gap: 0.65rem;
+  margin-bottom: 0.9rem;
 }
 
-.team-eyebrow {
+.leader-diamond {
+  font-size: 0.95rem;
+  color: #0b1523;
+  line-height: 1;
+}
+
+.leader-eyebrow-text {
   font-family: var(--font-heading);
   font-size: 0.85rem;
   font-weight: 700;
-  color: #0d9488;
-  letter-spacing: 0.14em;
+  color: #0b1523;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.team-eyebrow-line {
+.leader-eyebrow-divider {
   display: inline-block;
-  width: 58px;
-  height: 3px;
-  background-color: #0d9488;
+  width: 60px;
+  height: 1.5px;
+  background-color: #94a3b8;
   border-radius: 2px;
 }
 
-.team-member-name {
+.leader-name {
   font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 3.2vw, 3rem);
+  font-size: clamp(2.4rem, 3.6vw, 3.3rem);
   font-weight: 800;
   color: #061e47;
   letter-spacing: -0.03em;
-  margin: 0 0 0.35rem 0;
+  margin: 0 0 0.4rem 0;
   line-height: 1.15;
 }
 
-.team-member-role {
+.leader-role {
   font-size: clamp(1.15rem, 1.4vw, 1.35rem);
   font-weight: 500;
   color: #64748b;
@@ -2227,14 +2198,14 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.01em;
 }
 
-.team-member-bio {
+.leader-bio-body {
   display: flex;
   flex-direction: column;
   gap: 1.15rem;
 }
 
-.team-member-bio p {
-  font-size: clamp(1.05rem, 1.25vw, 1.18rem);
+.leader-bio-body p {
+  font-size: clamp(1.05rem, 1.25vw, 1.16rem);
   color: #374151;
   line-height: 1.8;
   margin: 0;
@@ -2243,33 +2214,31 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive Breakpoints */
 @media (max-width: 900px) {
-  .team-header-grid {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-  }
-
-  .team-header-divider {
-    display: none;
-  }
-
-  .team-member-card.has-photo {
+  .leader-profile-card {
     grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
   }
 
-  .team-member-photo-wrap {
+  .leader-photo-wrap {
     max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .leader-content-wrap {
+    text-align: left;
   }
 }
 
 @media (max-width: 480px) {
-  .team-member-card {
+  .leader-profile-card {
     padding: 1.75rem 1.25rem;
     border-radius: 18px;
   }
 
-  .team-eyebrow-line {
-    width: 38px;
+  .leader-eyebrow-divider {
+    width: 36px;
   }
 }
 
