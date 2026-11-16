@@ -29,3 +29,6 @@ build/
 *.log
 scratch/
 .vercel
+
+# External Reference Repositories
+ECC/
