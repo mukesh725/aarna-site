@@ -2130,13 +2130,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .team-header-desc {
-  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+  font-size: clamp(1.05rem, 1.25vw, 1.18rem);
   color: #475569;
-  line-height: 1.7;
+  line-height: 1.65;
   margin: 0 auto;
   font-weight: 400;
   text-align: center;
-  max-width: 780px;
+  max-width: 680px;
 }
 
 /* Backward Compatibility for Bar Layout */
@@ -2164,14 +2164,41 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 760px;
 }
 
-.leaders-cards-wrap,
-.team-card-wrap {
+.leaders-cards-wrap {
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
 }
 
-/* Leader Profile Card (Exact Layout from Mockup) */
+.team-card-wrap {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Leader Profile Card (Text-Only Format matching Mockup) */
+.team-card-single,
+.leader-profile-card-textonly {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 26px;
+  padding: clamp(2.25rem, 4.5vw, 3.75rem);
+  box-shadow: 0 14px 34px -10px rgba(6, 30, 71, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
+  display: block !important;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: left;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.team-card-single:hover,
+.leader-profile-card-textonly:hover {
+  box-shadow: 0 20px 42px -10px rgba(6, 30, 71, 0.12), 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+/* Leader Profile Card with Photo (Legacy / Multi-column Layout) */
 .leader-profile-card {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
@@ -2188,13 +2215,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .leader-profile-card:hover {
   box-shadow: 0 20px 42px -10px rgba(6, 30, 71, 0.12), 0 4px 14px rgba(0, 0, 0, 0.04);
-}
-
-.leader-profile-card-textonly {
-  display: block;
-  max-width: 920px;
-  margin: 0 auto;
-  padding: clamp(2.5rem, 5vw, 3.75rem);
 }
 
 .leader-photo-wrap {
