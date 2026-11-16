@@ -496,7 +496,7 @@ function initProductModal() {
    CATALOG VIEWER & DOWNLOAD LOGIC (Opens in New Tab - No Popup Preview)
    ========================================================================== */
 function initCatalogDownload() {
-  const pdfUrl = 'assets/downloads/Aarna_USA_Product_Catalog.pdf';
+  const pdfUrl = 'assets/downloads/Aarna_USA_Product_Catalog.pdf?v=2';
 
   // Global direct new tab opener
   window.downloadCatalogPDF = function() {
