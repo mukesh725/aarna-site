@@ -1953,129 +1953,150 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   ABOUT PAGE SECTIONS (NEW MODERN SPLIT & WHAT WE DO CARD)
+   ABOUT PAGE SECTIONS (IMAGE 1 & IMAGE 2 COMPOSITE LAYOUT)
    ========================================================================== */
-.about-hero-section {
-  padding: clamp(3rem, 5vw, 5.5rem) 0 clamp(3.5rem, 5vw, 5rem);
+
+/* Universal 1600px Max-Width Restriction for About Page */
+.about-hero-banner .container,
+.about-mission-section .container,
+.about-leaders-section .container {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* SECTION 1: ABOUT US HERO BANNER (Image 1 Centered Hero) */
+.about-hero-banner {
+  padding: clamp(4rem, 6.5vw, 6.5rem) 0 clamp(3.5rem, 5.5vw, 5.5rem);
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border-bottom: 1px solid var(--color-border-subtle);
+  text-align: center;
+}
+
+.about-hero-center {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.about-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 4.5vw, 4.4rem);
+  font-weight: 800;
+  color: #061e47;
+  letter-spacing: -0.035em;
+  margin: 0 0 1.25rem 0;
+  line-height: 1.12;
+}
+
+.about-hero-subtitle {
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  color: #475569;
+  line-height: 1.75;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* SECTION 2: OUR MISSION (Image 1 Left Text + Right 3-Image Mosaic Collage) */
+.about-mission-section {
+  padding: clamp(4rem, 6vw, 6.5rem) 0;
   background-color: #ffffff;
 }
 
-.about-hero-section .container,
-.about-leaders-section .container,
-.about-team-section .container {
-  max-width: 1600px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-.about-overview-grid {
+.about-mission-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(0, 1.12fr);
-  gap: clamp(2.5rem, 4.5vw, 5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
   align-items: center;
-  margin-bottom: clamp(2.5rem, 4vw, 4rem);
   width: 100%;
-  max-width: 1600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.about-overview-text {
+.about-mission-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.about-accent-bar {
-  width: 90px;
-  height: 6px;
-  background-color: #3b82f6;
-  border-radius: 6px;
-  margin-bottom: 1.75rem;
-}
-
-.about-main-title {
+.about-mission-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 4.2vw, 4.2rem);
+  font-size: clamp(2.4rem, 3.8vw, 3.6rem);
   font-weight: 800;
   color: #061e47;
   letter-spacing: -0.035em;
   margin: 0 0 1.6rem 0;
-  line-height: 1.12;
-}
-
-.about-main-desc {
-  font-size: clamp(1.18rem, 1.45vw, 1.42rem);
-  color: #374151;
-  line-height: 1.8;
-  margin: 0;
-  font-weight: 400;
-}
-
-.about-overview-img-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  aspect-ratio: 16 / 10.4;
-  border-radius: 26px;
-  overflow: hidden;
-  box-shadow: 0 20px 48px -12px rgba(6, 30, 71, 0.16), 0 4px 14px rgba(0, 0, 0, 0.05);
-  background-color: #f8fafc;
-}
-
-.about-overview-img-wrap img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border-radius: 26px;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* What We Do Banner Card */
-.about-what-card {
-  background-color: #f1f6fe;
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 24px;
-  padding: clamp(2.5rem, 4vw, 3.75rem) clamp(2.5rem, 4.5vw, 4.5rem);
-  display: grid;
-  grid-template-columns: minmax(220px, 340px) 1fr;
-  gap: clamp(2rem, 4.5vw, 4.5rem);
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.about-what-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 3.8vw, 3.4rem);
-  font-weight: 800;
-  color: #061e47;
-  letter-spacing: -0.035em;
-  margin: 0;
   line-height: 1.15;
 }
 
-.about-what-desc {
-  font-size: clamp(1.18rem, 1.45vw, 1.42rem);
+.about-mission-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-mission-desc p {
+  font-size: clamp(1.1rem, 1.3vw, 1.25rem);
   color: #374151;
   line-height: 1.8;
   margin: 0;
   font-weight: 400;
 }
 
-/* ==========================================================================
-   MEET OUR LEADERS SECTION (ABOUT PAGE - IMAGE 1 & IMAGE 2 COMPOSITE LAYOUT)
-   ========================================================================== */
+/* 3-Image Mosaic Collage */
+.about-mosaic-grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.85rem, 1.5vw, 1.25rem);
+  width: 100%;
+}
+
+.about-mosaic-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.85rem, 1.5vw, 1.25rem);
+  width: 100%;
+}
+
+.about-mosaic-bottom {
+  width: 100%;
+}
+
+.about-mosaic-item {
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  box-shadow: 0 10px 26px -8px rgba(6, 30, 71, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.about-mosaic-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -8px rgba(6, 30, 71, 0.16);
+}
+
+.about-mosaic-top .about-mosaic-item {
+  aspect-ratio: 16 / 10.5;
+}
+
+.about-mosaic-bottom .about-mosaic-item {
+  aspect-ratio: 16 / 6.2;
+}
+
+.about-mosaic-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* SECTION 3: MEET OUR LEADERS (Image 1 Centered Header + Image 2 Profile Card) */
 .about-leaders-section {
-  padding: clamp(3.5rem, 5.5vw, 6rem) 0 clamp(4rem, 6.5vw, 7rem);
+  padding: clamp(4rem, 6vw, 6.5rem) 0 clamp(4.5rem, 6.5vw, 7rem);
   background-color: #f8fafc;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
-/* Centered Section Header (From Image 1 Wireframe) */
 .leaders-section-header {
   text-align: center;
   max-width: 840px;
@@ -2100,7 +2121,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
-/* Leader Cards Wrapper */
 .leaders-cards-wrap {
   width: 100%;
   max-width: 1300px;
@@ -2212,8 +2232,46 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
+/* Bottom CTA in Meet Our Leaders (Image 1) */
+.leaders-cta-wrap {
+  text-align: center;
+  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.leaders-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: 1.5px solid #cbd5e1;
+  color: #061e47;
+  background-color: #ffffff;
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.leaders-cta-btn:hover {
+  border-color: #061e47;
+  background-color: #061e47;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
 /* Responsive Breakpoints */
-@media (max-width: 900px) {
+@media (max-width: 992px) {
+  .about-mission-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-mosaic-bottom .about-mosaic-item {
+    aspect-ratio: 16 / 8;
+  }
+
   .leader-profile-card {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -2231,7 +2289,19 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  .about-mosaic-top {
+    grid-template-columns: 1fr;
+  }
+
+  .about-mosaic-top .about-mosaic-item {
+    aspect-ratio: 16 / 9;
+  }
+
+  .about-mosaic-bottom .about-mosaic-item {
+    aspect-ratio: 16 / 9;
+  }
+
   .leader-profile-card {
     padding: 1.75rem 1.25rem;
     border-radius: 18px;

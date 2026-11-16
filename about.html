@@ -90,37 +90,58 @@
   </div>
 
   <main>
-    <!-- ABOUT AARNA SECTION -->
-    <section class="about-hero-section" aria-labelledby="about-heading">
+    <!-- SECTION 1: ABOUT US HERO BANNER (Image 1 Centered Hero) -->
+    <section class="about-hero-banner" aria-labelledby="about-heading">
       <div class="container">
-        
-        <!-- Top Row: About AARNA USA (Text Left, Image Right) -->
-        <div class="about-overview-grid">
-          <div class="about-overview-text">
-            <div class="about-accent-bar" aria-hidden="true"></div>
-            <h1 id="about-heading" class="about-main-title" data-cms-key="about_hero_title">About AARNA USA</h1>
-            <p class="about-main-desc" data-cms-key="about_hero_desc">
-              AARNA USA supplies OTC medicines and medical supplies to healthcare institutions, pharmacies and retailers. Our OTC medicines are available in retail packages and institutional unit-dose formats. We also offer private-label OTC products for businesses seeking products under their own brand.
-            </p>
-          </div>
-
-          <div class="about-overview-img-wrap">
-            <img src="assets/images/about-pharmacy-custom.webp" data-cms-media="about_pharmacy" alt="AARNA USA OTC medicines, unit-dose packaging, and healthcare supplies" width="460" height="280" loading="eager">
-          </div>
-        </div>
-
-        <!-- Bottom Row: What We Do (Light Blue Banner Card) -->
-        <div class="about-what-card">
-          <h2 class="about-what-title" data-cms-key="about_what_title">What We Do</h2>
-          <p class="about-what-desc" data-cms-key="about_what_desc">
-            AARNA USA supplies AARNA-brand OTC medicines and medical supplies, with a primary focus on healthcare institutions. We also serve pharmacies and retailers and offer private-label OTC products for businesses seeking products under their own brand.
+        <div class="about-hero-center">
+          <h1 id="about-heading" class="about-hero-title" data-cms-key="about_hero_title">About Us</h1>
+          <p class="about-hero-subtitle" data-cms-key="about_hero_desc">
+            AARNA USA supplies high-quality OTC medicines and medical supplies to healthcare institutions, pharmacies, and retailers nationwide with precision and dependable service.
           </p>
         </div>
-
       </div>
     </section>
 
-    <!-- MEET OUR LEADERS SECTION (Image 1 Layout with Image 2 Profile Format) -->
+    <!-- SECTION 2: OUR MISSION (Image 1 Left Text + Right 3-Image Mosaic Collage) -->
+    <section class="about-mission-section" aria-labelledby="mission-heading">
+      <div class="container">
+        <div class="about-mission-grid">
+          
+          <!-- Left: Mission Content -->
+          <div class="about-mission-content">
+            <h2 id="mission-heading" class="about-mission-title" data-cms-key="mission_title">Our Mission</h2>
+            <div class="about-mission-desc">
+              <p>
+                AARNA USA is dedicated to delivering reliable, accessible, and high-standard healthcare solutions. We supply AARNA-brand OTC medicines and medical supplies with a primary focus on healthcare institutions, hospital networks, pharmacies, and retail distributors nationwide.
+              </p>
+              <p>
+                Our OTC medicines are available in institutional unit-dose formats and shelf-ready retail packages. In addition, we partner with healthcare organizations and retail partners seeking private-label OTC products under their own brands, guaranteeing strict quality compliance, batch traceability, and steady supply chain execution.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: 3-Image Collage Mosaic (2 top, 1 wide bottom) -->
+          <div class="about-mosaic-grid">
+            <div class="about-mosaic-top">
+              <div class="about-mosaic-item">
+                <img src="assets/images/about-pharmacy-custom.webp" alt="Pharmacy counter and patient healthcare supplies" width="380" height="240" loading="eager">
+              </div>
+              <div class="about-mosaic-item">
+                <img src="assets/images/about-scientist.webp" alt="Quality control laboratory and pharmaceutical research" width="380" height="240" loading="eager">
+              </div>
+            </div>
+            <div class="about-mosaic-bottom">
+              <div class="about-mosaic-item">
+                <img src="assets/images/hero-tablets-bg.webp" alt="Precision pharmaceutical medicines and unit-dose formats" width="780" height="260" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MEET OUR LEADERS (Image 1 Section + Image 2 Profile Layout) -->
     <section class="about-leaders-section" id="meet-our-leaders" aria-labelledby="leaders-heading">
       <div class="container">
         
@@ -159,6 +180,14 @@
               </div>
             </div>
           </article>
+        </div>
+
+        <!-- Bottom CTA from Image 1 ("View the team" / "Connect with Our Team") -->
+        <div class="leaders-cta-wrap">
+          <a href="contact.html" class="leaders-cta-btn">
+            Connect with Our Team
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
         </div>
 
       </div>
