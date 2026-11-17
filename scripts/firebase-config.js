@@ -135,21 +135,17 @@
 
     // Authentication: Login with Email & Password
     login: async function (email, password) {
-      // 1. Instant local authentication for Master Admin
-      if ((email.toLowerCase() === 'admin@aarnaus.com' || email.toLowerCase() === 'admin') && (password === 'aarna2026' || password === 'admin')) {
-        sessionStorage.setItem('aarna_admin_auth', 'authenticated');
-        sessionStorage.setItem('aarna_admin_user', JSON.stringify({
-          email: email,
-          role: 'Superadmin',
-          mode: 'Master Authorization'
-        }));
-        return { user: { email: email, displayName: 'Superadmin' } };
-      }
-
-      // 2. Try Firebase Auth if configured and active
+      // 1. Authenticate via Firebase Auth
       if (this.isConnected && this.auth) {
         try {
-          return await this.auth.signInWithEmailAndPassword(email, password);
+          const userCredential = await this.auth.signInWithEmailAndPassword(email, password);
+          sessionStorage.setItem('aarna_admin_auth', 'authenticated');
+          sessionStorage.setItem('aarna_admin_user', JSON.stringify({
+            email: userCredential.user.email,
+            role: 'Superadmin',
+            uid: userCredential.user.uid
+          }));
+          return userCredential;
         } catch (err) {
           if (err.code === 'auth/configuration-not-found') {
             console.warn('Firebase Email/Password auth not enabled in console.');

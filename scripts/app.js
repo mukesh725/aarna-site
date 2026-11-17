@@ -141,10 +141,10 @@ window.showToast = function(message, type = 'info') {
     ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`
     : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`;
 
-  toast.innerHTML = `
-    ${iconSvg}
-    <span>${message}</span>
-  `;
+  toast.innerHTML = iconSvg;
+  const textSpan = document.createElement('span');
+  textSpan.textContent = message;
+  toast.appendChild(textSpan);
 
   toastStack.appendChild(toast);
 
@@ -474,7 +474,7 @@ function initProductModal() {
       ${metaDetails}
 
       <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
-        <button class="btn btn-secondary" onclick="navigator.clipboard.writeText('${item.ndc}').then(() => window.showToast('NDC copied to clipboard', 'success'))">
+        <button class="btn btn-secondary modal-copy-ndc-btn" data-ndc="${item.ndc}">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           Copy NDC Code
         </button>
@@ -486,6 +486,20 @@ function initProductModal() {
         </a>
       </div>
     `;
+
+    const copyBtn = contentArea.querySelector('.modal-copy-ndc-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const ndcVal = copyBtn.getAttribute('data-ndc');
+        if (ndcVal) {
+          navigator.clipboard.writeText(ndcVal).then(() => {
+            window.showToast('NDC copied to clipboard', 'success');
+          }).catch(() => {
+            window.showToast(`NDC: ${ndcVal}`, 'info');
+          });
+        }
+      });
+    }
 
     modalOverlay.classList.add('open');
     document.body.style.overflow = 'hidden';

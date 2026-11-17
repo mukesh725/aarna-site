@@ -1,11 +1,11 @@
-# robots.txt for https://aarnaus.com
+# robots.txt for https://www.aarnaus.com
 User-agent: *
 Allow: /
 Disallow: /admin.html
-Disallow: /admin
+Disallow: /admin/
 Disallow: /dashboard.html
-Disallow: /dashboard
+Disallow: /dashboard/
 Disallow: /api/
+Disallow: /assets/data/
 
-Sitemap: https://aarnaus.com/sitemap.xml
-
+Sitemap: https://www.aarnaus.com/sitemap.xml

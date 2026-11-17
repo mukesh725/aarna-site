@@ -4,7 +4,7 @@
    Responsive across Mobile, Tablet, Laptop, and Ultra-wide screens
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+/* Google Fonts Outfit preconnected and loaded asynchronously in HTML <head> for zero-waterfall performance */
 
 /* --- CSS VARIABLES & DESIGN TOKENS --- */
 :root {

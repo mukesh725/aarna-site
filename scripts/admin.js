@@ -55,32 +55,28 @@
         return;
       }
 
-      // 1. Authenticate Master Administrator (Instant, 100% reliable)
-      if ((email === 'admin@aarnaus.com' || email === 'admin' || email === 'hi@hexastudio.in') && (pwd === 'aarna2026' || pwd === 'admin')) {
-        authenticateAndRedirect(email, 'Superadmin');
-        return;
+      // 1. Authenticate via Firebase Authentication if connected
+      try {
+        if (window.AarnaFirebase && typeof window.AarnaFirebase.login === 'function') {
+          const cred = await window.AarnaFirebase.login(email, pwd);
+          if (cred && cred.user) {
+            authenticateAndRedirect(cred.user.email, 'Superadmin');
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('Firebase auth attempt:', err.message || err);
       }
 
-      // 2. Authenticate Team Members from Governance Directory
+      // 2. Authenticate Authorized Team Members from Secure Directory
       try {
         const teamMembers = JSON.parse(localStorage.getItem('aarna_team_members') || '[]');
-        const member = teamMembers.find(m => m.email.toLowerCase() === email && (m.password === pwd || pwd === 'aarna2026'));
+        const member = teamMembers.find(m => m.email.toLowerCase() === email && m.password === pwd);
         if (member) {
           authenticateAndRedirect(member.email, member.role || 'Catalog Manager');
           return;
         }
       } catch (err) {}
-
-      // 3. Fallback to Firebase Authentication if configured
-      try {
-        if (window.AarnaFirebase && typeof window.AarnaFirebase.login === 'function') {
-          await window.AarnaFirebase.login(email, pwd);
-          authenticateAndRedirect(email, 'Superadmin');
-          return;
-        }
-      } catch (err) {
-        console.warn('Firebase auth notice:', err);
-      }
 
       showAlert('Invalid email or password. Please use authorized credentials.');
     });

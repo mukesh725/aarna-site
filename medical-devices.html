@@ -3,13 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <title>Medical Supplies | AARNA USA</title>
-  <meta name="description" content="Explore AARNA medical supplies. Find products by type, size, package format or product number.">
+  <title>Medical Supplies &amp; Healthcare Devices | AARNA USA</title>
+  <meta name="description" content="Explore AARNA USA medical supplies: aerosol spacer chambers, alcohol prep pads, insulin pen needles, and safety lancets for healthcare facilities and pharmacies.">
+  <link rel="canonical" href="https://www.aarnaus.com/medical-devices">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.aarnaus.com/medical-devices">
+  <meta property="og:site_name" content="AARNA USA">
+  <meta property="og:title" content="Medical Supplies &amp; Healthcare Devices | AARNA USA">
+  <meta property="og:description" content="Explore AARNA USA medical supplies: aerosol spacer chambers, alcohol prep pads, insulin pen needles, and safety lancets for healthcare facilities and pharmacies.">
+  <meta property="og:image" content="https://www.aarnaus.com/assets/images/card-medical-devices.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.aarnaus.com/medical-devices">
+  <meta name="twitter:title" content="Medical Supplies &amp; Healthcare Devices | AARNA USA">
+  <meta name="twitter:description" content="Explore AARNA USA medical supplies: aerosol spacer chambers, alcohol prep pads, insulin pen needles, and safety lancets for healthcare facilities and pharmacies.">
+  <meta name="twitter:image" content="https://www.aarnaus.com/assets/images/card-medical-devices.webp">
+
   <link rel="icon" type="image/png" href="assets/logos/aarna-logo-clean.png">
-  <link rel="stylesheet" href="css/styles.css?v=3.1">
+
+  <!-- Preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=4.2">
+
+  <!-- Schema.org BreadcrumbList & CollectionPage JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.aarnaus.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Medical Supplies",
+            "item": "https://www.aarnaus.com/medical-devices"
+          }
+        ]
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://www.aarnaus.com/medical-devices#collection",
+        "name": "Medical Supplies & Devices",
+        "url": "https://www.aarnaus.com/medical-devices",
+        "description": "Essential medical devices and institutional supplies including holding chambers, prep pads, needles, and lancets."
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -112,7 +164,7 @@
             <p class="products-hero-desc" data-cms-key="devices_page_desc">Explore AARNA medical supplies. Find products by type, size, package format or product number.</p>
           </div>
           <div class="products-hero-media">
-            <img src="assets/images/card-medical-devices.webp" data-cms-media="devices_hero_img" alt="AARNA medical supplies" class="products-hero-img">
+            <img src="assets/images/card-medical-devices.webp" data-cms-media="devices_hero_img" alt="AARNA medical supplies" class="products-hero-img" width="540" height="340" fetchpriority="high">
           </div>
         </div>
       </div>
@@ -193,7 +245,7 @@
             <div class="order-step-card">
               <div class="step-num-badge">01</div>
               <div class="step-card-text">
-                <h4>Identify your products</h4>
+                <h3 class="order-step-title">Identify your products</h3>
                 <p>Note the product names or NDCs.</p>
               </div>
             </div>
@@ -201,7 +253,7 @@
             <div class="order-step-card">
               <div class="step-num-badge">02</div>
               <div class="step-card-text">
-                <h4>Share your requirements</h4>
+                <h3 class="order-step-title">Share your requirements</h3>
                 <p>Tell us your quantities and delivery needs.</p>
               </div>
             </div>
@@ -209,7 +261,7 @@
             <div class="order-step-card">
               <div class="step-num-badge">03</div>
               <div class="step-card-text">
-                <h4>Confirm the details</h4>
+                <h3 class="order-step-title">Confirm the details</h3>
                 <p>Discuss availability, pricing, and order requirements.</p>
               </div>
             </div>
@@ -282,7 +334,7 @@
       <div class="footer-bottom-bar">
         <span>© 2026 AARNA USA. All rights reserved.</span>
         <div class="footer-bottom-right">
-          <a href="admin.html" class="footer-staff-access" aria-label="Staff Portal Access" title="Staff Portal Access">
+          <a href="admin.html" rel="nofollow" class="footer-staff-access" aria-label="Staff Portal Access" title="Staff Portal Access">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             Staff Login
           </a>

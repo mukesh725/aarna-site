@@ -32,3 +32,12 @@ scratch/
 
 # External Reference Repositories
 ECC/
+
+# Environment Variables & Secrets
+.env
+.env*.local
+.env.*
+*.env
+
+# Dependencies
+node_modules/

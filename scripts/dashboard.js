@@ -7,6 +7,17 @@
 (function () {
   'use strict';
 
+  // Security Helper: Escape HTML to prevent XSS
+  function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
   // State
   let currentView = 'catalogs';
   let currentCatalog = 'institutional';
@@ -578,20 +589,20 @@
         <td>
           <div style="display: flex; align-items: center; gap: 0.65rem;">
             ${getInquiryIcon(inq.type)}
-            <strong style="color: #0f172a; font-size: 0.88rem;">${inq.type || 'Product inquiry'}</strong>
+            <strong style="color: #0f172a; font-size: 0.88rem;">${escapeHtml(inq.type) || 'Product inquiry'}</strong>
           </div>
         </td>
         <td style="color: #475569; font-size: 0.85rem;">
-          ${inq.page || 'Retail Products'}
+          ${escapeHtml(inq.page) || 'Retail Products'}
         </td>
         <td>
           <div style="line-height: 1.25;">
-            <div style="font-weight: 600; color: #0b1523; font-size: 0.85rem;">${inq.name || 'Healthcare Partner'}</div>
-            <div style="color: #64748b; font-size: 0.76rem;">${inq.email || ''}</div>
+            <div style="font-weight: 600; color: #0b1523; font-size: 0.85rem;">${escapeHtml(inq.name) || 'Healthcare Partner'}</div>
+            <div style="color: #64748b; font-size: 0.76rem;">${escapeHtml(inq.email) || ''}</div>
           </div>
         </td>
         <td style="color: #64748b; font-size: 0.82rem;">
-          ${inq.date || 'Recently'}
+          ${escapeHtml(inq.date) || 'Recently'}
         </td>
         <td>
           ${getStatusBadge(inq.status)}
@@ -1715,49 +1726,60 @@
 
     let html = '<div style="display: flex; flex-direction: column; gap: 1rem;">';
     inquiries.forEach(inq => {
+      const safeName = escapeHtml(inq.name) || 'Anonymous Partner';
+      const safeOrg = escapeHtml(inq.organization);
+      const safeType = escapeHtml(inq.type) || 'Product inquiry';
+      const safeEmail = escapeHtml(inq.email) || '—';
+      const rawEmail = encodeURIComponent(inq.email || '');
+      const safePhone = escapeHtml(inq.phone);
+      const safeDate = escapeHtml(inq.date) || 'Recently';
+      const safeProduct = escapeHtml(inq.product);
+      const safeNdc = escapeHtml(inq.ndc);
+      const safeMessage = escapeHtml(inq.message || inq.notes || 'No message provided.');
+
       html += `
         <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: all 0.2s ease;">
           <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.85rem;">
             <div>
               <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.25rem;">
-                <strong style="font-size: 1.05rem; color: #0b1523;">${inq.name || 'Anonymous Partner'}</strong>
-                ${inq.organization && inq.organization !== 'N/A' ? `<span style="font-size: 0.8rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.5rem; border-radius: 6px;">${inq.organization}</span>` : ''}
+                <strong style="font-size: 1.05rem; color: #0b1523;">${safeName}</strong>
+                ${safeOrg && safeOrg !== 'N/A' ? `<span style="font-size: 0.8rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.5rem; border-radius: 6px;">${safeOrg}</span>` : ''}
                 ${getInquiryStatusBadge(inq.status)}
               </div>
               <div style="display: flex; align-items: center; gap: 1rem; font-size: 0.82rem; color: #64748b; flex-wrap: wrap;">
-                <span>Type: <strong style="color: #1e293b;">${inq.type || 'Product inquiry'}</strong></span>
+                <span>Type: <strong style="color: #1e293b;">${safeType}</strong></span>
                 <span>•</span>
-                <span>Email: <a href="mailto:${inq.email}" style="color: #2563eb; font-weight: 600; text-decoration: underline;">${inq.email || '—'}</a></span>
-                ${inq.phone && inq.phone !== 'N/A' ? `<span>•</span><span>Phone: <a href="tel:${inq.phone.replace(/[^0-9]/g, '')}" style="color: #334155; font-weight: 600;">${inq.phone}</a></span>` : ''}
+                <span>Email: <a href="mailto:${rawEmail}" style="color: #2563eb; font-weight: 600; text-decoration: underline;">${safeEmail}</a></span>
+                ${safePhone && safePhone !== 'N/A' ? `<span>•</span><span>Phone: <a href="tel:${safePhone.replace(/[^0-9+]/g, '')}" style="color: #334155; font-weight: 600;">${safePhone}</a></span>` : ''}
                 <span>•</span>
-                <span>Received: ${inq.date || 'Recently'}</span>
+                <span>Received: ${safeDate}</span>
               </div>
             </div>
 
             <!-- Action buttons -->
             <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <a href="mailto:${inq.email}?subject=Re:%20Aarna%20USA%20Inquiry%20-%20${encodeURIComponent(inq.type || 'Product Inquiry')}" class="leaseflow-pill-btn" style="text-decoration: none; padding: 0.4rem 0.85rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.35rem;" title="Reply directly via email">
+              <a href="mailto:${rawEmail}?subject=Re:%20Aarna%20USA%20Inquiry%20-%20${encodeURIComponent(inq.type || 'Product Inquiry')}" class="leaseflow-pill-btn" style="text-decoration: none; padding: 0.4rem 0.85rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.35rem;" title="Reply directly via email">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 <span>Reply Email</span>
               </a>
 
-              <button type="button" class="dash-icon-btn btn-delete-inquiry" data-inq-id="${inq.id}" title="Remove Inquiry" style="color: #ef4444; padding: 0.4rem;">
+              <button type="button" class="dash-icon-btn btn-delete-inquiry" data-inq-id="${escapeHtml(inq.id)}" title="Remove Inquiry" style="color: #ef4444; padding: 0.4rem;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
               </button>
             </div>
           </div>
 
           <!-- Product info banner if inquiry was on a specific NDC/product -->
-          ${inq.product ? `
+          ${safeProduct ? `
             <div style="background: #f0f7ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 0.45rem 0.75rem; margin-bottom: 0.75rem; font-size: 0.82rem; color: #1e3a8a; display: flex; align-items: center; gap: 0.5rem;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path></svg>
-              <span>Catalog Reference: <strong>${inq.product}</strong> ${inq.ndc ? `(NDC: ${inq.ndc})` : ''}</span>
+              <span>Catalog Reference: <strong>${safeProduct}</strong> ${safeNdc ? `(NDC: ${safeNdc})` : ''}</span>
             </div>
           ` : ''}
 
           <!-- Message Body -->
           <div style="background: #fafafa; border-left: 3px solid #253b7f; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #1f2937; line-height: 1.5;">
-            "${inq.message || inq.notes || 'No message provided.'}"
+            "${safeMessage}"
           </div>
         </div>
       `;
