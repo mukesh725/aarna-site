@@ -4,105 +4,218 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / 'assets' / 'data'
 DATA_DIR.mkdir(parents=True, exist_ok=True)
+SCRIPTS_DIR = BASE_DIR / 'scripts'
 
-# Institutional Products (10 items)
+# ==============================================================================
+# 1. INSTITUTIONAL / UNIT DOSE PRODUCTS (22 items from Catalog Pages 4–9)
+# ==============================================================================
 inst_products = [
     {
         "id": "inst-1",
-        "description": "TUSSIN DM SF (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG SYR 40X5ML UD PACK",
-        "category": "Cough & Chest Congestion",
-        "unit": "EA",
-        "packQty": "1",
-        "ndc": "82568-0015-1",
-        "caseSize": "40 cups"
+        "description": "Acetaminophen 500mg Tablets Unit Dose",
+        "category": "Pain Relief & Fever",
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0002-4",
+        "caseSize": "100 tablets/box"
     },
     {
         "id": "inst-2",
-        "description": "TUSSIN DM SF (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG SYR 100X5ML UD PACK",
-        "category": "Cough & Chest Congestion",
-        "unit": "EA",
-        "packQty": "1",
-        "ndc": "82568-0015-2",
-        "caseSize": "100 cups"
+        "description": "Diphenhydramine HCl 25mg Tablets Unit Dose",
+        "category": "Allergy Relief",
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0004-3",
+        "caseSize": "100 tablets/box"
     },
     {
         "id": "inst-3",
-        "description": "TUSSIN SF (GUAIFENESIN) 100MG/5ML ORAL SOL 40X5ML UD PACK",
-        "category": "Cough & Chest Congestion",
-        "unit": "EA",
-        "packQty": "1",
-        "ndc": "82568-0012-1",
-        "caseSize": "40 cups"
+        "description": "Senna 8.6mg Tablets Unit Dose",
+        "category": "Digestive Health",
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0006-4",
+        "caseSize": "100 tablets/box"
     },
     {
         "id": "inst-4",
-        "description": "TUSSIN SF (GUAIFENESIN) 100MG/5ML ORAL SOL 100X5ML UD PACK",
-        "category": "Cough & Chest Congestion",
-        "unit": "EA",
-        "packQty": "1",
-        "ndc": "82568-0012-2",
-        "caseSize": "100 cups"
+        "description": "Meclizine 25mg Tablets Unit Dose",
+        "category": "Digestive Health",
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0143-3",
+        "caseSize": "100 tablets/box"
     },
     {
         "id": "inst-5",
-        "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-50X5ML UD PACK",
+        "description": "Aspirin 81mg Tablets Unit Dose",
         "category": "Pain Relief & Fever",
-        "unit": "EA",
-        "packQty": "1",
-        "ndc": "82568-0011-5",
-        "caseSize": "50 cups"
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0003-3",
+        "caseSize": "100 tablets/box"
     },
     {
         "id": "inst-6",
-        "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-100X5ML UD PACK",
-        "category": "Pain Relief & Fever",
-        "unit": "EA",
-        "packQty": "1",
-        "ndc": "82568-0011-1",
-        "caseSize": "100 cups"
+        "description": "Calcium Chewable Antacid (Peppermint) 500mg Tablets Unit Dose",
+        "category": "Digestive Health",
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0145-3",
+        "caseSize": "100 tablets/box"
     },
     {
         "id": "inst-7",
-        "description": "DIPHENHYDRAMINE HCL 12.5MG/5ML ORAL SOLUTION 40X5 ML UD",
-        "category": "Allergy Relief",
-        "unit": "EA",
-        "packQty": "1",
-        "ndc": "82568-0016-1",
-        "caseSize": "40 cups"
+        "description": "Calcium + Vitamin D 600mg/400IU Tablets Unit Dose",
+        "category": "Vitamins & Supplements",
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0025-2",
+        "caseSize": "100 tablets/box"
     },
     {
         "id": "inst-8",
-        "description": "DIPHENHYDRAMINE HCL 12.5MG/5ML ORAL SOLUTION 100X5 ML UD",
-        "category": "Allergy Relief",
-        "unit": "EA",
-        "packQty": "1",
-        "ndc": "82568-0016-2",
-        "caseSize": "100 cups"
+        "description": "Senna Syrup 8.6mg/5mL Oral Liquid Unit Dose",
+        "category": "Digestive Health",
+        "unit": "BOX",
+        "packQty": "72",
+        "ndc": "82568-0024-5",
+        "caseSize": "72 cups/box"
     },
     {
         "id": "inst-9",
-        "description": "SENNA NATURAL LAXATIVE 8.8 MG SYR 40X5 ML UD PACK",
-        "category": "Digestive Health",
-        "unit": "EA",
-        "packQty": "1",
-        "ndc": "82568-0024-1",
-        "caseSize": "40 cups"
+        "description": "Guaifenesin + Dextromethorphan Sugar Free Oral Liquid Unit Dose 100mg/10mg/10mL",
+        "category": "Cough & Chest Congestion",
+        "unit": "BOX",
+        "packQty": "72",
+        "ndc": "82568-0015-1",
+        "caseSize": "72 cups/box"
     },
     {
         "id": "inst-10",
-        "description": "MULTIVITAMIN/MULTIMINERAL ORAL LIQ 100X15ML UD",
+        "description": "Acetaminophen Oral Liquid (Bubble Gum) 160mg/5mL Unit Dose",
+        "category": "Pain Relief & Fever",
+        "unit": "BOX",
+        "packQty": "72",
+        "ndc": "82568-0008-5",
+        "caseSize": "72 cups/box"
+    },
+    {
+        "id": "inst-11",
+        "description": "Acetaminophen Oral Liquid (Cherry) 500mg/15mL Unit Dose",
+        "category": "Pain Relief & Fever",
+        "unit": "BOX",
+        "packQty": "72",
+        "ndc": "82568-0149-5",
+        "caseSize": "72 cups/box"
+    },
+    {
+        "id": "inst-12",
+        "description": "Ferrous Sulfate Oral Solution 220mg/5mL Unit Dose",
         "category": "Vitamins & Supplements",
-        "unit": "EA",
-        "packQty": "1",
+        "unit": "BOX",
+        "packQty": "72",
+        "ndc": "82568-0072-5",
+        "caseSize": "72 cups/box"
+    },
+    {
+        "id": "inst-13",
+        "description": "Multivitamin Oral Liquid 15mL Unit Dose",
+        "category": "Vitamins & Supplements",
+        "unit": "BOX",
+        "packQty": "72",
         "ndc": "82568-0146-2",
-        "caseSize": "72 cups"
+        "caseSize": "72 cups/box"
+    },
+    {
+        "id": "inst-14",
+        "description": "Vitamin A&D Diaper Rash Ointment & Skin Protectant 5g Unit Dose",
+        "category": "Topical & Skin Care",
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0068-3",
+        "caseSize": "100 packets/box"
+    },
+    {
+        "id": "inst-15",
+        "description": "Calmocare (Zinc Oxide 20.4% + Menthol 0.44%) Ointment 3.5g Unit Dose",
+        "category": "Topical & Skin Care",
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0062-4",
+        "caseSize": "100 packets/box"
+    },
+    {
+        "id": "inst-16",
+        "description": "Hydrocortisone 1% Cream 0.9g Unit Dose",
+        "category": "Topical & Skin Care",
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0060-3",
+        "caseSize": "100 packets/box"
+    },
+    {
+        "id": "inst-17",
+        "description": "Bacitracin Ointment 400IU/g 0.9g Unit Dose",
+        "category": "Topical & Skin Care",
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0147-2",
+        "caseSize": "100 packets/box"
+    },
+    {
+        "id": "inst-18",
+        "description": "Petrolatum Ointment 5g Unit Dose",
+        "category": "Topical & Skin Care",
+        "unit": "BOX",
+        "packQty": "100",
+        "ndc": "82568-0148-5",
+        "caseSize": "100 packets/box"
+    },
+    {
+        "id": "inst-19",
+        "description": "Psyllium Husk Regular Powder 5g Unit Dose",
+        "category": "Digestive Health",
+        "unit": "BOX",
+        "packQty": "30",
+        "ndc": "82568-0029-5",
+        "caseSize": "30 packets/box"
+    },
+    {
+        "id": "inst-20",
+        "description": "Psyllium Husk Orange Flavor Powder 5g Unit Dose",
+        "category": "Digestive Health",
+        "unit": "BOX",
+        "packQty": "30",
+        "ndc": "82568-0030-3",
+        "caseSize": "30 packets/box"
+    },
+    {
+        "id": "inst-21",
+        "description": "Bisacodyl 10mg Suppositories 12ct Unit Dose",
+        "category": "Digestive Health",
+        "unit": "BOX",
+        "packQty": "12",
+        "ndc": "82568-0028-2",
+        "caseSize": "12 suppositories/box"
+    },
+    {
+        "id": "inst-22",
+        "description": "Bisacodyl 10mg Suppositories 50ct Unit Dose",
+        "category": "Digestive Health",
+        "unit": "BOX",
+        "packQty": "50",
+        "ndc": "82568-0028-5",
+        "caseSize": "50 suppositories/box"
     }
 ]
 
 with open(DATA_DIR / 'institutional-products.json', 'w') as f:
     json.dump(inst_products, f, indent=2)
 
-# Durable Medical Devices (23 items)
+# ==============================================================================
+# 2. MEDICAL SUPPLIES & DEVICES (23 items from Catalog Pages 18–20)
+# ==============================================================================
 devices_products = [
     {
         "id": "dev-1",
@@ -293,32 +406,35 @@ devices_products = [
 with open(DATA_DIR / 'medical-devices.json', 'w') as f:
     json.dump(devices_products, f, indent=2)
 
-# Retail Products (71 items)
+# ==============================================================================
+# 3. RETAIL OTC MEDICATIONS (Pages 10–17 + Expanded Product Line)
+# ==============================================================================
 retail_products_raw = [
+    # Page 10: Pain Reliever & Fever Reducer
     ("ACETAMINOPHEN 325 MG 100 CT TABS", "EA", "48", "82568-0001-1", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 325 MG 1000 CT TABS", "EA", "12", "82568-0001-2", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 325 MG 100 CT UD PACK", "EA", "48", "82568-0001-3", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 500 MG 100 CT TABS", "EA", "48", "82568-0002-1", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 500 MG 1000 TABS", "EA", "12", "82568-0002-2", "Pain Relief & Fever"),
-    ("LOW DOSE ASPIRIN 81MG 120 CT TABS", "EA", "48", "82568-0003-1", "Pain Relief & Fever"),
-    ("LOW DOSE ASPIRIN 81 MG 1000 TABS", "EA", "24", "82568-0003-2", "Pain Relief & Fever"),
-    ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-4OZ", "EA", "48", "82568-0007-4", "Pain Relief & Fever"),
-    ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-8 OZ", "EA", "24", "82568-0007-8", "Pain Relief & Fever"),
-    ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-16OZ", "EA", "12", "82568-0007-6", "Pain Relief & Fever"),
+    ("ACETAMINOPHEN 500 MG 100 CT UD PACK", "EA", "48", "82568-0002-3", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-BUBBLE GUM FLAVOR-4OZ", "EA", "48", "82568-0008-4", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-BUBBLE GUM FLAVOR-8OZ", "EA", "24", "82568-0008-8", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-BUBBLE GUM FLAVOR-16OZ", "EA", "12", "82568-0008-6", "Pain Relief & Fever"),
+    ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-4OZ", "EA", "48", "82568-0007-4", "Pain Relief & Fever"),
+    ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-8 OZ", "EA", "24", "82568-0007-8", "Pain Relief & Fever"),
+    ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-16OZ", "EA", "12", "82568-0007-6", "Pain Relief & Fever"),
+
+    # Page 11: Pain Reliever & Fever Reducer
     ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-GRAPE FLAVOR-4OZ", "EA", "48", "82568-0009-4", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-GRAPE FLAVOR-8OZ", "EA", "24", "82568-0009-8", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-GRAPE FLAVOR-16OZ", "EA", "12", "82568-0009-6", "Pain Relief & Fever"),
-    ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-2OZ", "EA", "48", "82568-0010-2", "Pain Relief & Fever"),
-    ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-4OZ", "EA", "48", "82568-0010-4", "Pain Relief & Fever"),
-    ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-8OZ", "EA", "24", "82568-0010-8", "Pain Relief & Fever"),
-    ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-16OZ", "EA", "12", "82568-0010-6", "Pain Relief & Fever"),
-    ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-2OZ", "EA", "48", "82568-0011-2", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-4OZ", "EA", "48", "82568-0011-4", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-8OZ", "EA", "24", "82568-0011-8", "Pain Relief & Fever"),
     ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-16OZ", "EA", "12", "82568-0011-6", "Pain Relief & Fever"),
+    ("LOW DOSE ASPIRIN 81MG 120 CT TABS", "EA", "48", "82568-0003-1", "Pain Relief & Fever"),
+    ("LOW DOSE ASPIRIN 81 MG 1000 TABS", "EA", "24", "82568-0003-2", "Pain Relief & Fever"),
+
+    # Page 12: Allergy Relief
     ("DIPHENHYDRAMINE HCL 25 MG 100 CAPS", "EA", "96", "82568-0004-1", "Allergy Relief"),
     ("DIPHENHYDRAMINE HCL 25 MG 1000 CAPS", "EA", "12", "82568-0004-2", "Allergy Relief"),
     ("DIPHENHYDRAMINE HCL 50 MG 100 CAPS", "EA", "96", "82568-0005-1", "Allergy Relief"),
@@ -326,33 +442,47 @@ retail_products_raw = [
     ("DIPHENHYDRAMINE HCL ORAL SOLUTION 12.5MG/5ML-4OZ", "EA", "48", "82568-0016-4", "Allergy Relief"),
     ("DIPHENHYDRAMINE HCL ORAL SOLUTION 12.5MG/5ML-8OZ", "EA", "24", "82568-0016-8", "Allergy Relief"),
     ("DIPHENHYDRAMINE HCL ORAL SOLUTION 12.5MG/5ML-16OZ", "EA", "12", "82568-0016-6", "Allergy Relief"),
-    ("TUSSIN GUAIFENESIN SUGAR FREE 4 OZ", "EA", "48", "82568-0012-4", "Cough & Congestion"),
-    ("TUSSIN GUAIFENESIN SUGAR FREE 8 OZ", "EA", "24", "82568-0012-8", "Cough & Congestion"),
-    ("TUSSIN GUAIFENESIN SUGAR FREE 16OZ", "EA", "12", "82568-0012-6", "Cough & Congestion"),
+
+    # Page 13: Cough & Chest Congestion
     ("TUSSIN GUAIFENESIN REGULAR 4 OZ", "EA", "48", "82568-0013-4", "Cough & Congestion"),
     ("TUSSIN GUAIFENESIN REGULAR 8 OZ", "EA", "24", "82568-0013-8", "Cough & Congestion"),
     ("TUSSIN GUAIFENESIN REGULAR 16OZ", "EA", "12", "82568-0013-6", "Cough & Congestion"),
+    ("TUSSIN GUAIFENESIN SUGAR FREE 4 OZ", "EA", "48", "82568-0012-4", "Cough & Congestion"),
+    ("TUSSIN GUAIFENESIN SUGAR FREE 8 OZ", "EA", "24", "82568-0012-8", "Cough & Congestion"),
+    ("TUSSIN GUAIFENESIN SUGAR FREE 16OZ", "EA", "12", "82568-0012-6", "Cough & Congestion"),
     ("TUSSIN DM (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 4OZ", "EA", "48", "82568-0014-4", "Cough & Congestion"),
     ("TUSSIN DM (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 8 OZ", "EA", "24", "82568-0014-8", "Cough & Congestion"),
     ("TUSSIN DM (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 16OZ", "EA", "12", "82568-0014-6", "Cough & Congestion"),
     ("TUSSIN DM SUGAR FREE (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 4OZ", "EA", "48", "82568-0015-4", "Cough & Congestion"),
     ("TUSSIN DM SUGAR FREE (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 8 OZ", "EA", "24", "82568-0015-8", "Cough & Congestion"),
     ("TUSSIN DM SUGAR FREE (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 16OZ", "EA", "12", "82568-0015-6", "Cough & Congestion"),
+
+    # Page 14: Infants Gas Relief Drops
+    ("SIMETHICONE INFANT'S GAS RELIEF DROPS -30 ML", "EA", "48", "82568-0017-3", "Digestive Health"),
+    ("SIMETHICONE INFANT'S GAS RELIEF DROPS -4FL.OZ (118 mL)", "EA", "48", "82568-0017-4", "Digestive Health"),
+
+    # Page 15: Constipation Relief
+    ("MAGNESIUM CITRATE LIQUID -LEMON FLAVOR -12 X 10 OZ", "EA", "12 PACK", "82568-0051-1", "Digestive Health"),
+    ("MAGNESIUM CITRATE LIQUID -CHERRY FLAVOR -12 X 10 OZ", "EA", "12 PACK", "82568-0053-1", "Digestive Health"),
+    ("MAGNESIUM CITRATE LIQUID -GRAPE FLAVOR-12 X 10 OZ", "EA", "12 PACK", "82568-0052-1", "Digestive Health"),
+    ("SENNA NATRUAL LAXATIVE SYRUP 8.8MG/5ML-8OZ", "EA", "24", "82568-0024-8", "Digestive Health"),
+    ("SENNA NATRUAL LAXATIVE SYRUP SUGAR FREE 8.8MG/5ML-8OZ", "EA", "24", "82568-0023-8", "Digestive Health"),
     ("SENNA TABLETS 8.6MG 100 CT", "EA", "96", "82568-0006-1", "Digestive Health"),
     ("SENNA TABLETS 8.6 MG 1000 CT", "EA", "24", "82568-0006-2", "Digestive Health"),
     ("SENNA TABLETS 8.6.MG UD PACK- 100CT", "EA", "48", "82568-0006-3", "Digestive Health"),
-    ("SIMETHICONE INFANT'S GAS RELIEF DROPS -30 ML", "EA", "48", "82568-0017-3", "Digestive Health"),
-    ("SIMETHICONE INFANT'S GAS RELIEF DROPS -4FL.OZ (118 mL)", "EA", "48", "82568-0017-4", "Digestive Health"),
-    ("SENNA NATRUAL LAXATIVE SYRUP SUGAR FREE 8.8MG/5ML-8OZ", "EA", "24", "82568-0023-8", "Digestive Health"),
-    ("SENNA NATRUAL LAXATIVE SYRUP 8.8MG/5ML-8OZ", "EA", "24", "82568-0024-8", "Digestive Health"),
-    ("MAGNESIUM CITRATE LIQUID -LEMON FLAVOR -12 X 10 OZ", "EA", "12 PACK", "82568-0051-1", "Digestive Health"),
-    ("MAGNESIUM CITRATE LIQUID -GRAPE FLAVOR-12 X 10 OZ", "EA", "12 PACK", "82568-0052-1", "Digestive Health"),
-    ("MAGNESIUM CITRATE LIQUID -CHERRY FLAVOR -12 X 10 OZ", "EA", "12 PACK", "82568-0053-1", "Digestive Health"),
-    ("PEDIATRIC D-VITE DROPS 50 ML", "EA", "24", "82568-0031-5", "Pediatric Supplements"),
-    ("PEDIATRIC FE-VITE DROPS 50 ML", "EA", "24", "82568-0032-5", "Pediatric Supplements"),
-    ("PEDIATRIC POLY-VITE DROPS 50 ML", "EA", "24", "82568-0033-5", "Pediatric Supplements"),
-    ("PEDIATRIC POLY-VITE WITH IRON 50 ML", "EA", "24", "82568-0034-5", "Pediatric Supplements"),
-    ("PEDIATRIC TRI-VITE DROPS 50 ML", "EA", "24", "82568-0035-5", "Pediatric Supplements"),
+
+    # Pages 16 & 17: Pediatric Drops
+    ("PEDIATRIC FE-VITE (IRON) DROPS 50 ML", "EA", "24", "82568-0032-5", "Pediatric Supplements"),
+    ("PEDIATRIC POLY-VITE (MULTIVITAMIN) DROPS 50 ML", "EA", "24", "82568-0033-5", "Pediatric Supplements"),
+    ("PEDIATRIC POLY-VITE WITH IRON DROPS 50 ML", "EA", "24", "82568-0034-5", "Pediatric Supplements"),
+    ("PEDIATRIC TRI-VITE (VITAMIN A, C & D) DROPS 50 ML", "EA", "24", "82568-0035-5", "Pediatric Supplements"),
+    ("PEDIATRIC D-VITE (VITAMIN D) DROPS 50 ML", "EA", "24", "82568-0031-5", "Pediatric Supplements"),
+
+    # Suppositories & Specialty
+    ("BISACODYL SUPPOSITORIES USP 10MG -12 PACK UD", "EA", "72", "82568-0028-2", "Digestive Health"),
+    ("BISACODYL SUPPOSITORIES USP 10MG -50 PACK UD", "EA", "12", "82568-0028-5", "Digestive Health"),
+
+    # Topical & Extended Lines
     ("ANLIDO™ LIDOCAINE 4% PAIN RELIEVING PATCH 24 HOURS 1CT Inner pack", "EA", "—", "82568-0042-1", "Pain Relief & Fever"),
     ("ANLIDO™ LIDOCAINE 4% PAIN RELIEVING PATCH 24 HOURS 5CT", "EA", "48", "82568-0042-2", "Pain Relief & Fever"),
     ("ANLIDO™ LIDOCAINE 4% PAIN RELIEVING PATCH 24 HOURS 15CT", "EA", "24", "82568-0042-3", "Pain Relief & Fever"),
@@ -364,8 +494,11 @@ retail_products_raw = [
     ("CLOTRIMAZOLE USP 1% SOLUTION 10ML-OTC", "EA", "24", "82568-0161-1", "Topical & Skin Care"),
     ("CLOTRIMAZOLE USP 1% SOLUTION 30ML-OTC", "EA", "24", "82568-0161-3", "Topical & Skin Care"),
     ("FERROUS SULFATE 220MG/5ML LIQUID-16OZ", "EA", "12", "82568-0019-6", "Vitamins & Iron"),
-    ("BISACODYL SUPPOSITORIES USP 10MG -12 PACK UD", "EA", "72", "82568-0028-2", "Digestive Health"),
-    ("BISACODYL SUPPOSITORIES USP 10MG -50 PACK UD", "EA", "12", "82568-0028-5", "Digestive Health")
+    ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-2OZ", "EA", "48", "82568-0010-2", "Pain Relief & Fever"),
+    ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-4OZ", "EA", "48", "82568-0010-4", "Pain Relief & Fever"),
+    ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-8OZ", "EA", "24", "82568-0010-8", "Pain Relief & Fever"),
+    ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-16OZ", "EA", "12", "82568-0010-6", "Pain Relief & Fever"),
+    ("ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-2OZ", "EA", "48", "82568-0011-2", "Pain Relief & Fever")
 ]
 
 retail_products = []
@@ -382,4 +515,22 @@ for idx, (desc, unit, qty, ndc, cat) in enumerate(retail_products_raw):
 with open(DATA_DIR / 'retail-products.json', 'w') as f:
     json.dump(retail_products, f, indent=2)
 
-print(f"Generated {len(inst_products)} institutional, {len(devices_products)} medical devices, {len(retail_products)} retail products.")
+# ==============================================================================
+# 4. WRITE SCRIPTS/PRODUCTS-DATA.JS (window.AARNA_DATA)
+# ==============================================================================
+js_content = f"""// AARNA Products Database - Synchronized with Official Catalog
+window.AARNA_DATA = {{
+  retail: {json.dumps(retail_products, indent=2)},
+  devices: {json.dumps(devices_products, indent=2)},
+  institutional: {json.dumps(inst_products, indent=2)}
+}};
+"""
+
+with open(SCRIPTS_DIR / 'products-data.js', 'w') as f:
+    f.write(js_content)
+
+print(f"Successfully generated:")
+print(f" - {len(inst_products)} Institutional Unit Dose products")
+print(f" - {len(devices_products)} Medical Devices & Supplies")
+print(f" - {len(retail_products)} Retail Products")
+print(f" - scripts/products-data.js successfully written.")

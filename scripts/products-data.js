@@ -1,4 +1,4 @@
-// AARNA Products Database
+// AARNA Products Database - Synchronized with Official Catalog
 window.AARNA_DATA = {
   retail: [
   {
@@ -43,46 +43,14 @@ window.AARNA_DATA = {
   },
   {
     "id": "ret-6",
-    "description": "LOW DOSE ASPIRIN 81MG 120 CT TABS",
+    "description": "ACETAMINOPHEN 500 MG 100 CT UD PACK",
     "category": "Pain Relief & Fever",
     "unit": "EA",
     "caseQty": "48",
-    "ndc": "82568-0003-1"
+    "ndc": "82568-0002-3"
   },
   {
     "id": "ret-7",
-    "description": "LOW DOSE ASPIRIN 81 MG 1000 TABS",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0003-2"
-  },
-  {
-    "id": "ret-8",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-4OZ",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "48",
-    "ndc": "82568-0007-4"
-  },
-  {
-    "id": "ret-9",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-8 OZ",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0007-8"
-  },
-  {
-    "id": "ret-10",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-16OZ",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "12",
-    "ndc": "82568-0007-6"
-  },
-  {
-    "id": "ret-11",
     "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-BUBBLE GUM FLAVOR-4OZ",
     "category": "Pain Relief & Fever",
     "unit": "EA",
@@ -90,7 +58,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0008-4"
   },
   {
-    "id": "ret-12",
+    "id": "ret-8",
     "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-BUBBLE GUM FLAVOR-8OZ",
     "category": "Pain Relief & Fever",
     "unit": "EA",
@@ -98,7 +66,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0008-8"
   },
   {
-    "id": "ret-13",
+    "id": "ret-9",
     "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-BUBBLE GUM FLAVOR-16OZ",
     "category": "Pain Relief & Fever",
     "unit": "EA",
@@ -106,7 +74,31 @@ window.AARNA_DATA = {
     "ndc": "82568-0008-6"
   },
   {
-    "id": "ret-14",
+    "id": "ret-10",
+    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-4OZ",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "48",
+    "ndc": "82568-0007-4"
+  },
+  {
+    "id": "ret-11",
+    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-8 OZ",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0007-8"
+  },
+  {
+    "id": "ret-12",
+    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-CHERRY FLAVOR-16OZ",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "12",
+    "ndc": "82568-0007-6"
+  },
+  {
+    "id": "ret-13",
     "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-GRAPE FLAVOR-4OZ",
     "category": "Pain Relief & Fever",
     "unit": "EA",
@@ -114,7 +106,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0009-4"
   },
   {
-    "id": "ret-15",
+    "id": "ret-14",
     "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-GRAPE FLAVOR-8OZ",
     "category": "Pain Relief & Fever",
     "unit": "EA",
@@ -122,7 +114,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0009-8"
   },
   {
-    "id": "ret-16",
+    "id": "ret-15",
     "description": "ACETAMINOPHEN 160MG PER 5ML ORAL LIQUID-GRAPE FLAVOR-16OZ",
     "category": "Pain Relief & Fever",
     "unit": "EA",
@@ -130,47 +122,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0009-6"
   },
   {
-    "id": "ret-17",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-2OZ",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "48",
-    "ndc": "82568-0010-2"
-  },
-  {
-    "id": "ret-18",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-4OZ",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "48",
-    "ndc": "82568-0010-4"
-  },
-  {
-    "id": "ret-19",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-8OZ",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0010-8"
-  },
-  {
-    "id": "ret-20",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-16OZ",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "12",
-    "ndc": "82568-0010-6"
-  },
-  {
-    "id": "ret-21",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-2OZ",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "48",
-    "ndc": "82568-0011-2"
-  },
-  {
-    "id": "ret-22",
+    "id": "ret-16",
     "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-4OZ",
     "category": "Pain Relief & Fever",
     "unit": "EA",
@@ -178,7 +130,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0011-4"
   },
   {
-    "id": "ret-23",
+    "id": "ret-17",
     "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-8OZ",
     "category": "Pain Relief & Fever",
     "unit": "EA",
@@ -186,7 +138,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0011-8"
   },
   {
-    "id": "ret-24",
+    "id": "ret-18",
     "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-16OZ",
     "category": "Pain Relief & Fever",
     "unit": "EA",
@@ -194,7 +146,23 @@ window.AARNA_DATA = {
     "ndc": "82568-0011-6"
   },
   {
-    "id": "ret-25",
+    "id": "ret-19",
+    "description": "LOW DOSE ASPIRIN 81MG 120 CT TABS",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "48",
+    "ndc": "82568-0003-1"
+  },
+  {
+    "id": "ret-20",
+    "description": "LOW DOSE ASPIRIN 81 MG 1000 TABS",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0003-2"
+  },
+  {
+    "id": "ret-21",
     "description": "DIPHENHYDRAMINE HCL 25 MG 100 CAPS",
     "category": "Allergy Relief",
     "unit": "EA",
@@ -202,7 +170,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0004-1"
   },
   {
-    "id": "ret-26",
+    "id": "ret-22",
     "description": "DIPHENHYDRAMINE HCL 25 MG 1000 CAPS",
     "category": "Allergy Relief",
     "unit": "EA",
@@ -210,7 +178,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0004-2"
   },
   {
-    "id": "ret-27",
+    "id": "ret-23",
     "description": "DIPHENHYDRAMINE HCL 50 MG 100 CAPS",
     "category": "Allergy Relief",
     "unit": "EA",
@@ -218,7 +186,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0005-1"
   },
   {
-    "id": "ret-28",
+    "id": "ret-24",
     "description": "DIPHENHYDRAMINE HCL 50 MG 1000 CAPS",
     "category": "Allergy Relief",
     "unit": "EA",
@@ -226,7 +194,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0005-2"
   },
   {
-    "id": "ret-29",
+    "id": "ret-25",
     "description": "DIPHENHYDRAMINE HCL ORAL SOLUTION 12.5MG/5ML-4OZ",
     "category": "Allergy Relief",
     "unit": "EA",
@@ -234,7 +202,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0016-4"
   },
   {
-    "id": "ret-30",
+    "id": "ret-26",
     "description": "DIPHENHYDRAMINE HCL ORAL SOLUTION 12.5MG/5ML-8OZ",
     "category": "Allergy Relief",
     "unit": "EA",
@@ -242,7 +210,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0016-8"
   },
   {
-    "id": "ret-31",
+    "id": "ret-27",
     "description": "DIPHENHYDRAMINE HCL ORAL SOLUTION 12.5MG/5ML-16OZ",
     "category": "Allergy Relief",
     "unit": "EA",
@@ -250,31 +218,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0016-6"
   },
   {
-    "id": "ret-32",
-    "description": "TUSSIN GUAIFENESIN SUGAR FREE 4 OZ",
-    "category": "Cough & Congestion",
-    "unit": "EA",
-    "caseQty": "48",
-    "ndc": "82568-0012-4"
-  },
-  {
-    "id": "ret-33",
-    "description": "TUSSIN GUAIFENESIN SUGAR FREE 8 OZ",
-    "category": "Cough & Congestion",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0012-8"
-  },
-  {
-    "id": "ret-34",
-    "description": "TUSSIN GUAIFENESIN SUGAR FREE 16OZ",
-    "category": "Cough & Congestion",
-    "unit": "EA",
-    "caseQty": "12",
-    "ndc": "82568-0012-6"
-  },
-  {
-    "id": "ret-35",
+    "id": "ret-28",
     "description": "TUSSIN GUAIFENESIN REGULAR 4 OZ",
     "category": "Cough & Congestion",
     "unit": "EA",
@@ -282,7 +226,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0013-4"
   },
   {
-    "id": "ret-36",
+    "id": "ret-29",
     "description": "TUSSIN GUAIFENESIN REGULAR 8 OZ",
     "category": "Cough & Congestion",
     "unit": "EA",
@@ -290,7 +234,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0013-8"
   },
   {
-    "id": "ret-37",
+    "id": "ret-30",
     "description": "TUSSIN GUAIFENESIN REGULAR 16OZ",
     "category": "Cough & Congestion",
     "unit": "EA",
@@ -298,7 +242,31 @@ window.AARNA_DATA = {
     "ndc": "82568-0013-6"
   },
   {
-    "id": "ret-38",
+    "id": "ret-31",
+    "description": "TUSSIN GUAIFENESIN SUGAR FREE 4 OZ",
+    "category": "Cough & Congestion",
+    "unit": "EA",
+    "caseQty": "48",
+    "ndc": "82568-0012-4"
+  },
+  {
+    "id": "ret-32",
+    "description": "TUSSIN GUAIFENESIN SUGAR FREE 8 OZ",
+    "category": "Cough & Congestion",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0012-8"
+  },
+  {
+    "id": "ret-33",
+    "description": "TUSSIN GUAIFENESIN SUGAR FREE 16OZ",
+    "category": "Cough & Congestion",
+    "unit": "EA",
+    "caseQty": "12",
+    "ndc": "82568-0012-6"
+  },
+  {
+    "id": "ret-34",
     "description": "TUSSIN DM (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 4OZ",
     "category": "Cough & Congestion",
     "unit": "EA",
@@ -306,7 +274,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0014-4"
   },
   {
-    "id": "ret-39",
+    "id": "ret-35",
     "description": "TUSSIN DM (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 8 OZ",
     "category": "Cough & Congestion",
     "unit": "EA",
@@ -314,7 +282,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0014-8"
   },
   {
-    "id": "ret-40",
+    "id": "ret-36",
     "description": "TUSSIN DM (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 16OZ",
     "category": "Cough & Congestion",
     "unit": "EA",
@@ -322,7 +290,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0014-6"
   },
   {
-    "id": "ret-41",
+    "id": "ret-37",
     "description": "TUSSIN DM SUGAR FREE (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 4OZ",
     "category": "Cough & Congestion",
     "unit": "EA",
@@ -330,7 +298,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0015-4"
   },
   {
-    "id": "ret-42",
+    "id": "ret-38",
     "description": "TUSSIN DM SUGAR FREE (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 8 OZ",
     "category": "Cough & Congestion",
     "unit": "EA",
@@ -338,7 +306,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0015-8"
   },
   {
-    "id": "ret-43",
+    "id": "ret-39",
     "description": "TUSSIN DM SUGAR FREE (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG 16OZ",
     "category": "Cough & Congestion",
     "unit": "EA",
@@ -346,31 +314,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0015-6"
   },
   {
-    "id": "ret-44",
-    "description": "SENNA TABLETS 8.6MG 100 CT",
-    "category": "Digestive Health",
-    "unit": "EA",
-    "caseQty": "96",
-    "ndc": "82568-0006-1"
-  },
-  {
-    "id": "ret-45",
-    "description": "SENNA TABLETS 8.6 MG 1000 CT",
-    "category": "Digestive Health",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0006-2"
-  },
-  {
-    "id": "ret-46",
-    "description": "SENNA TABLETS 8.6.MG UD PACK- 100CT",
-    "category": "Digestive Health",
-    "unit": "EA",
-    "caseQty": "48",
-    "ndc": "82568-0006-3"
-  },
-  {
-    "id": "ret-47",
+    "id": "ret-40",
     "description": "SIMETHICONE INFANT'S GAS RELIEF DROPS -30 ML",
     "category": "Digestive Health",
     "unit": "EA",
@@ -378,7 +322,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0017-3"
   },
   {
-    "id": "ret-48",
+    "id": "ret-41",
     "description": "SIMETHICONE INFANT'S GAS RELIEF DROPS -4FL.OZ (118 mL)",
     "category": "Digestive Health",
     "unit": "EA",
@@ -386,23 +330,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0017-4"
   },
   {
-    "id": "ret-49",
-    "description": "SENNA NATRUAL LAXATIVE SYRUP SUGAR FREE 8.8MG/5ML-8OZ",
-    "category": "Digestive Health",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0023-8"
-  },
-  {
-    "id": "ret-50",
-    "description": "SENNA NATRUAL LAXATIVE SYRUP 8.8MG/5ML-8OZ",
-    "category": "Digestive Health",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0024-8"
-  },
-  {
-    "id": "ret-51",
+    "id": "ret-42",
     "description": "MAGNESIUM CITRATE LIQUID -LEMON FLAVOR -12 X 10 OZ",
     "category": "Digestive Health",
     "unit": "EA",
@@ -410,15 +338,7 @@ window.AARNA_DATA = {
     "ndc": "82568-0051-1"
   },
   {
-    "id": "ret-52",
-    "description": "MAGNESIUM CITRATE LIQUID -GRAPE FLAVOR-12 X 10 OZ",
-    "category": "Digestive Health",
-    "unit": "EA",
-    "caseQty": "12 PACK",
-    "ndc": "82568-0052-1"
-  },
-  {
-    "id": "ret-53",
+    "id": "ret-43",
     "description": "MAGNESIUM CITRATE LIQUID -CHERRY FLAVOR -12 X 10 OZ",
     "category": "Digestive Health",
     "unit": "EA",
@@ -426,8 +346,88 @@ window.AARNA_DATA = {
     "ndc": "82568-0053-1"
   },
   {
+    "id": "ret-44",
+    "description": "MAGNESIUM CITRATE LIQUID -GRAPE FLAVOR-12 X 10 OZ",
+    "category": "Digestive Health",
+    "unit": "EA",
+    "caseQty": "12 PACK",
+    "ndc": "82568-0052-1"
+  },
+  {
+    "id": "ret-45",
+    "description": "SENNA NATRUAL LAXATIVE SYRUP 8.8MG/5ML-8OZ",
+    "category": "Digestive Health",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0024-8"
+  },
+  {
+    "id": "ret-46",
+    "description": "SENNA NATRUAL LAXATIVE SYRUP SUGAR FREE 8.8MG/5ML-8OZ",
+    "category": "Digestive Health",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0023-8"
+  },
+  {
+    "id": "ret-47",
+    "description": "SENNA TABLETS 8.6MG 100 CT",
+    "category": "Digestive Health",
+    "unit": "EA",
+    "caseQty": "96",
+    "ndc": "82568-0006-1"
+  },
+  {
+    "id": "ret-48",
+    "description": "SENNA TABLETS 8.6 MG 1000 CT",
+    "category": "Digestive Health",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0006-2"
+  },
+  {
+    "id": "ret-49",
+    "description": "SENNA TABLETS 8.6.MG UD PACK- 100CT",
+    "category": "Digestive Health",
+    "unit": "EA",
+    "caseQty": "48",
+    "ndc": "82568-0006-3"
+  },
+  {
+    "id": "ret-50",
+    "description": "PEDIATRIC FE-VITE (IRON) DROPS 50 ML",
+    "category": "Pediatric Supplements",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0032-5"
+  },
+  {
+    "id": "ret-51",
+    "description": "PEDIATRIC POLY-VITE (MULTIVITAMIN) DROPS 50 ML",
+    "category": "Pediatric Supplements",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0033-5"
+  },
+  {
+    "id": "ret-52",
+    "description": "PEDIATRIC POLY-VITE WITH IRON DROPS 50 ML",
+    "category": "Pediatric Supplements",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0034-5"
+  },
+  {
+    "id": "ret-53",
+    "description": "PEDIATRIC TRI-VITE (VITAMIN A, C & D) DROPS 50 ML",
+    "category": "Pediatric Supplements",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0035-5"
+  },
+  {
     "id": "ret-54",
-    "description": "PEDIATRIC D-VITE DROPS 50 ML",
+    "description": "PEDIATRIC D-VITE (VITAMIN D) DROPS 50 ML",
     "category": "Pediatric Supplements",
     "unit": "EA",
     "caseQty": "24",
@@ -435,126 +435,6 @@ window.AARNA_DATA = {
   },
   {
     "id": "ret-55",
-    "description": "PEDIATRIC FE-VITE DROPS 50 ML",
-    "category": "Pediatric Supplements",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0032-5"
-  },
-  {
-    "id": "ret-56",
-    "description": "PEDIATRIC POLY-VITE DROPS 50 ML",
-    "category": "Pediatric Supplements",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0033-5"
-  },
-  {
-    "id": "ret-57",
-    "description": "PEDIATRIC POLY-VITE WITH IRON 50 ML",
-    "category": "Pediatric Supplements",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0034-5"
-  },
-  {
-    "id": "ret-58",
-    "description": "PEDIATRIC TRI-VITE DROPS 50 ML",
-    "category": "Pediatric Supplements",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0035-5"
-  },
-  {
-    "id": "ret-59",
-    "description": "ANLIDO\u2122 LIDOCAINE 4% PAIN RELIEVING PATCH 24 HOURS 1CT Inner pack",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "\u2014",
-    "ndc": "82568-0042-1"
-  },
-  {
-    "id": "ret-60",
-    "description": "ANLIDO\u2122 LIDOCAINE 4% PAIN RELIEVING PATCH 24 HOURS 5CT",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "48",
-    "ndc": "82568-0042-2"
-  },
-  {
-    "id": "ret-61",
-    "description": "ANLIDO\u2122 LIDOCAINE 4% PAIN RELIEVING PATCH 24 HOURS 15CT",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0042-3"
-  },
-  {
-    "id": "ret-62",
-    "description": "ANLIDO\u2122 LIDOCAINE 4% PAIN RELIEVING PATCH 24 HOURS 30CT",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "caseQty": "10",
-    "ndc": "82568-0042-4"
-  },
-  {
-    "id": "ret-63",
-    "description": "BENZOYL PEROXIDE 5 % TOPICAL WASH 5 OZ",
-    "category": "Topical & Skin Care",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0049-5"
-  },
-  {
-    "id": "ret-64",
-    "description": "BENZOYL PEROXIDE 5% TOPICAL WASH 8 OZ",
-    "category": "Topical & Skin Care",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0049-8"
-  },
-  {
-    "id": "ret-65",
-    "description": "BENZOYL PEROXIDE 10 % TOPICAL WASH 5 OZ",
-    "category": "Topical & Skin Care",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0054-5"
-  },
-  {
-    "id": "ret-66",
-    "description": "BENZOYL PEROXIDE 10 % TOPICAL WASH 8 OZ",
-    "category": "Topical & Skin Care",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0054-8"
-  },
-  {
-    "id": "ret-67",
-    "description": "CLOTRIMAZOLE USP 1% SOLUTION 10ML-OTC",
-    "category": "Topical & Skin Care",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0161-1"
-  },
-  {
-    "id": "ret-68",
-    "description": "CLOTRIMAZOLE USP 1% SOLUTION 30ML-OTC",
-    "category": "Topical & Skin Care",
-    "unit": "EA",
-    "caseQty": "24",
-    "ndc": "82568-0161-3"
-  },
-  {
-    "id": "ret-69",
-    "description": "FERROUS SULFATE 220MG/5ML LIQUID-16OZ",
-    "category": "Vitamins & Iron",
-    "unit": "EA",
-    "caseQty": "12",
-    "ndc": "82568-0019-6"
-  },
-  {
-    "id": "ret-70",
     "description": "BISACODYL SUPPOSITORIES USP 10MG -12 PACK UD",
     "category": "Digestive Health",
     "unit": "EA",
@@ -562,12 +442,140 @@ window.AARNA_DATA = {
     "ndc": "82568-0028-2"
   },
   {
-    "id": "ret-71",
+    "id": "ret-56",
     "description": "BISACODYL SUPPOSITORIES USP 10MG -50 PACK UD",
     "category": "Digestive Health",
     "unit": "EA",
     "caseQty": "12",
     "ndc": "82568-0028-5"
+  },
+  {
+    "id": "ret-57",
+    "description": "ANLIDO\u2122 LIDOCAINE 4% PAIN RELIEVING PATCH 24 HOURS 1CT Inner pack",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "\u2014",
+    "ndc": "82568-0042-1"
+  },
+  {
+    "id": "ret-58",
+    "description": "ANLIDO\u2122 LIDOCAINE 4% PAIN RELIEVING PATCH 24 HOURS 5CT",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "48",
+    "ndc": "82568-0042-2"
+  },
+  {
+    "id": "ret-59",
+    "description": "ANLIDO\u2122 LIDOCAINE 4% PAIN RELIEVING PATCH 24 HOURS 15CT",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0042-3"
+  },
+  {
+    "id": "ret-60",
+    "description": "ANLIDO\u2122 LIDOCAINE 4% PAIN RELIEVING PATCH 24 HOURS 30CT",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "10",
+    "ndc": "82568-0042-4"
+  },
+  {
+    "id": "ret-61",
+    "description": "BENZOYL PEROXIDE 5 % TOPICAL WASH 5 OZ",
+    "category": "Topical & Skin Care",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0049-5"
+  },
+  {
+    "id": "ret-62",
+    "description": "BENZOYL PEROXIDE 5% TOPICAL WASH 8 OZ",
+    "category": "Topical & Skin Care",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0049-8"
+  },
+  {
+    "id": "ret-63",
+    "description": "BENZOYL PEROXIDE 10 % TOPICAL WASH 5 OZ",
+    "category": "Topical & Skin Care",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0054-5"
+  },
+  {
+    "id": "ret-64",
+    "description": "BENZOYL PEROXIDE 10 % TOPICAL WASH 8 OZ",
+    "category": "Topical & Skin Care",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0054-8"
+  },
+  {
+    "id": "ret-65",
+    "description": "CLOTRIMAZOLE USP 1% SOLUTION 10ML-OTC",
+    "category": "Topical & Skin Care",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0161-1"
+  },
+  {
+    "id": "ret-66",
+    "description": "CLOTRIMAZOLE USP 1% SOLUTION 30ML-OTC",
+    "category": "Topical & Skin Care",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0161-3"
+  },
+  {
+    "id": "ret-67",
+    "description": "FERROUS SULFATE 220MG/5ML LIQUID-16OZ",
+    "category": "Vitamins & Iron",
+    "unit": "EA",
+    "caseQty": "12",
+    "ndc": "82568-0019-6"
+  },
+  {
+    "id": "ret-68",
+    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-2OZ",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "48",
+    "ndc": "82568-0010-2"
+  },
+  {
+    "id": "ret-69",
+    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-4OZ",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "48",
+    "ndc": "82568-0010-4"
+  },
+  {
+    "id": "ret-70",
+    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-8OZ",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "24",
+    "ndc": "82568-0010-8"
+  },
+  {
+    "id": "ret-71",
+    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-GRAPE FLAVOR-16OZ",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "12",
+    "ndc": "82568-0010-6"
+  },
+  {
+    "id": "ret-72",
+    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-2OZ",
+    "category": "Pain Relief & Fever",
+    "unit": "EA",
+    "caseQty": "48",
+    "ndc": "82568-0011-2"
   }
 ],
   devices: [
@@ -759,93 +767,201 @@ window.AARNA_DATA = {
   institutional: [
   {
     "id": "inst-1",
-    "description": "TUSSIN DM SF (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG SYR 40X5ML UD PACK",
-    "category": "Cough & Chest Congestion",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0015-1",
-    "caseSize": "40 cups"
+    "description": "Acetaminophen 500mg Tablets Unit Dose",
+    "category": "Pain Relief & Fever",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0002-4",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-2",
-    "description": "TUSSIN DM SF (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG SYR 100X5ML UD PACK",
-    "category": "Cough & Chest Congestion",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0015-2",
-    "caseSize": "100 cups"
+    "description": "Diphenhydramine HCl 25mg Tablets Unit Dose",
+    "category": "Allergy Relief",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0004-3",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-3",
-    "description": "TUSSIN SF (GUAIFENESIN) 100MG/5ML ORAL SOL 40X5ML UD PACK",
-    "category": "Cough & Chest Congestion",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0012-1",
-    "caseSize": "40 cups"
+    "description": "Senna 8.6mg Tablets Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0006-4",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-4",
-    "description": "TUSSIN SF (GUAIFENESIN) 100MG/5ML ORAL SOL 100X5ML UD PACK",
-    "category": "Cough & Chest Congestion",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0012-2",
-    "caseSize": "100 cups"
+    "description": "Meclizine 25mg Tablets Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0143-3",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-5",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-50X5ML UD PACK",
+    "description": "Aspirin 81mg Tablets Unit Dose",
     "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0011-5",
-    "caseSize": "50 cups"
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0003-3",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-6",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-100X5ML UD PACK",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0011-1",
-    "caseSize": "100 cups"
+    "description": "Calcium Chewable Antacid (Peppermint) 500mg Tablets Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0145-3",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-7",
-    "description": "DIPHENHYDRAMINE HCL 12.5MG/5ML ORAL SOLUTION 40X5 ML UD",
-    "category": "Allergy Relief",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0016-1",
-    "caseSize": "40 cups"
+    "description": "Calcium + Vitamin D 600mg/400IU Tablets Unit Dose",
+    "category": "Vitamins & Supplements",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0025-2",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-8",
-    "description": "DIPHENHYDRAMINE HCL 12.5MG/5ML ORAL SOLUTION 100X5 ML UD",
-    "category": "Allergy Relief",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0016-2",
-    "caseSize": "100 cups"
+    "description": "Senna Syrup 8.6mg/5mL Oral Liquid Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "72",
+    "ndc": "82568-0024-5",
+    "caseSize": "72 cups/box"
   },
   {
     "id": "inst-9",
-    "description": "SENNA NATURAL LAXATIVE 8.8 MG SYR 40X5 ML UD PACK",
-    "category": "Digestive Health",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0024-1",
-    "caseSize": "40 cups"
+    "description": "Guaifenesin + Dextromethorphan Sugar Free Oral Liquid Unit Dose 100mg/10mg/10mL",
+    "category": "Cough & Chest Congestion",
+    "unit": "BOX",
+    "packQty": "72",
+    "ndc": "82568-0015-1",
+    "caseSize": "72 cups/box"
   },
   {
     "id": "inst-10",
-    "description": "MULTIVITAMIN/MULTIMINERAL ORAL LIQ 100X15ML UD",
+    "description": "Acetaminophen Oral Liquid (Bubble Gum) 160mg/5mL Unit Dose",
+    "category": "Pain Relief & Fever",
+    "unit": "BOX",
+    "packQty": "72",
+    "ndc": "82568-0008-5",
+    "caseSize": "72 cups/box"
+  },
+  {
+    "id": "inst-11",
+    "description": "Acetaminophen Oral Liquid (Cherry) 500mg/15mL Unit Dose",
+    "category": "Pain Relief & Fever",
+    "unit": "BOX",
+    "packQty": "72",
+    "ndc": "82568-0149-5",
+    "caseSize": "72 cups/box"
+  },
+  {
+    "id": "inst-12",
+    "description": "Ferrous Sulfate Oral Solution 220mg/5mL Unit Dose",
     "category": "Vitamins & Supplements",
-    "unit": "EA",
-    "packQty": "1",
+    "unit": "BOX",
+    "packQty": "72",
+    "ndc": "82568-0072-5",
+    "caseSize": "72 cups/box"
+  },
+  {
+    "id": "inst-13",
+    "description": "Multivitamin Oral Liquid 15mL Unit Dose",
+    "category": "Vitamins & Supplements",
+    "unit": "BOX",
+    "packQty": "72",
     "ndc": "82568-0146-2",
-    "caseSize": "72 cups"
+    "caseSize": "72 cups/box"
+  },
+  {
+    "id": "inst-14",
+    "description": "Vitamin A&D Diaper Rash Ointment & Skin Protectant 5g Unit Dose",
+    "category": "Topical & Skin Care",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0068-3",
+    "caseSize": "100 packets/box"
+  },
+  {
+    "id": "inst-15",
+    "description": "Calmocare (Zinc Oxide 20.4% + Menthol 0.44%) Ointment 3.5g Unit Dose",
+    "category": "Topical & Skin Care",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0062-4",
+    "caseSize": "100 packets/box"
+  },
+  {
+    "id": "inst-16",
+    "description": "Hydrocortisone 1% Cream 0.9g Unit Dose",
+    "category": "Topical & Skin Care",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0060-3",
+    "caseSize": "100 packets/box"
+  },
+  {
+    "id": "inst-17",
+    "description": "Bacitracin Ointment 400IU/g 0.9g Unit Dose",
+    "category": "Topical & Skin Care",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0147-2",
+    "caseSize": "100 packets/box"
+  },
+  {
+    "id": "inst-18",
+    "description": "Petrolatum Ointment 5g Unit Dose",
+    "category": "Topical & Skin Care",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0148-5",
+    "caseSize": "100 packets/box"
+  },
+  {
+    "id": "inst-19",
+    "description": "Psyllium Husk Regular Powder 5g Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "30",
+    "ndc": "82568-0029-5",
+    "caseSize": "30 packets/box"
+  },
+  {
+    "id": "inst-20",
+    "description": "Psyllium Husk Orange Flavor Powder 5g Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "30",
+    "ndc": "82568-0030-3",
+    "caseSize": "30 packets/box"
+  },
+  {
+    "id": "inst-21",
+    "description": "Bisacodyl 10mg Suppositories 12ct Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "12",
+    "ndc": "82568-0028-2",
+    "caseSize": "12 suppositories/box"
+  },
+  {
+    "id": "inst-22",
+    "description": "Bisacodyl 10mg Suppositories 50ct Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "50",
+    "ndc": "82568-0028-5",
+    "caseSize": "50 suppositories/box"
   }
 ]
 };

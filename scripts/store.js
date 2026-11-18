@@ -7,20 +7,23 @@
   'use strict';
 
   const STORAGE_KEYS = {
-    RETAIL: 'aarna_products_retail_v3',
-    DEVICES: 'aarna_products_devices_v3',
-    INSTITUTIONAL: 'aarna_products_institutional_v3',
+    RETAIL: 'aarna_products_retail_v4',
+    DEVICES: 'aarna_products_devices_v4',
+    INSTITUTIONAL: 'aarna_products_institutional_v4',
     CONTENT: 'aarna_site_content_v4',
     MEDIA: 'aarna_site_media_v3',
     INQUIRIES: 'aarna_contact_inquiries',
     AUTH: 'aarna_admin_session'
   };
 
-  // Clear legacy cached content from previous versions so fresh content always renders
+  // Clear legacy cached content and products from previous versions so fresh catalog always renders
   try {
     localStorage.removeItem('aarna_site_content');
     localStorage.removeItem('aarna_site_content_v2');
     localStorage.removeItem('aarna_site_content_v3');
+    localStorage.removeItem('aarna_products_retail_v3');
+    localStorage.removeItem('aarna_products_devices_v3');
+    localStorage.removeItem('aarna_products_institutional_v3');
   } catch (e) {}
 
   // Default content fallback covering all sections of the site

@@ -1,92 +1,200 @@
 [
   {
     "id": "inst-1",
-    "description": "TUSSIN DM SF (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG SYR 40X5ML UD PACK",
-    "category": "Cough & Chest Congestion",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0015-1",
-    "caseSize": "40 cups"
+    "description": "Acetaminophen 500mg Tablets Unit Dose",
+    "category": "Pain Relief & Fever",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0002-4",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-2",
-    "description": "TUSSIN DM SF (DEXTROMETHORPHAN HBR & GUAIFENESIN) 20-200MG SYR 100X5ML UD PACK",
-    "category": "Cough & Chest Congestion",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0015-2",
-    "caseSize": "100 cups"
+    "description": "Diphenhydramine HCl 25mg Tablets Unit Dose",
+    "category": "Allergy Relief",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0004-3",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-3",
-    "description": "TUSSIN SF (GUAIFENESIN) 100MG/5ML ORAL SOL 40X5ML UD PACK",
-    "category": "Cough & Chest Congestion",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0012-1",
-    "caseSize": "40 cups"
+    "description": "Senna 8.6mg Tablets Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0006-4",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-4",
-    "description": "TUSSIN SF (GUAIFENESIN) 100MG/5ML ORAL SOL 100X5ML UD PACK",
-    "category": "Cough & Chest Congestion",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0012-2",
-    "caseSize": "100 cups"
+    "description": "Meclizine 25mg Tablets Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0143-3",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-5",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-50X5ML UD PACK",
+    "description": "Aspirin 81mg Tablets Unit Dose",
     "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0011-5",
-    "caseSize": "50 cups"
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0003-3",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-6",
-    "description": "ACETAMINOPHEN 160MG PER 5ML ORAL SUSPENSION-CHERRY FLAVOR-100X5ML UD PACK",
-    "category": "Pain Relief & Fever",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0011-1",
-    "caseSize": "100 cups"
+    "description": "Calcium Chewable Antacid (Peppermint) 500mg Tablets Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0145-3",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-7",
-    "description": "DIPHENHYDRAMINE HCL 12.5MG/5ML ORAL SOLUTION 40X5 ML UD",
-    "category": "Allergy Relief",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0016-1",
-    "caseSize": "40 cups"
+    "description": "Calcium + Vitamin D 600mg/400IU Tablets Unit Dose",
+    "category": "Vitamins & Supplements",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0025-2",
+    "caseSize": "100 tablets/box"
   },
   {
     "id": "inst-8",
-    "description": "DIPHENHYDRAMINE HCL 12.5MG/5ML ORAL SOLUTION 100X5 ML UD",
-    "category": "Allergy Relief",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0016-2",
-    "caseSize": "100 cups"
+    "description": "Senna Syrup 8.6mg/5mL Oral Liquid Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "72",
+    "ndc": "82568-0024-5",
+    "caseSize": "72 cups/box"
   },
   {
     "id": "inst-9",
-    "description": "SENNA NATURAL LAXATIVE 8.8 MG SYR 40X5 ML UD PACK",
-    "category": "Digestive Health",
-    "unit": "EA",
-    "packQty": "1",
-    "ndc": "82568-0024-1",
-    "caseSize": "40 cups"
+    "description": "Guaifenesin + Dextromethorphan Sugar Free Oral Liquid Unit Dose 100mg/10mg/10mL",
+    "category": "Cough & Chest Congestion",
+    "unit": "BOX",
+    "packQty": "72",
+    "ndc": "82568-0015-1",
+    "caseSize": "72 cups/box"
   },
   {
     "id": "inst-10",
-    "description": "MULTIVITAMIN/MULTIMINERAL ORAL LIQ 100X15ML UD",
+    "description": "Acetaminophen Oral Liquid (Bubble Gum) 160mg/5mL Unit Dose",
+    "category": "Pain Relief & Fever",
+    "unit": "BOX",
+    "packQty": "72",
+    "ndc": "82568-0008-5",
+    "caseSize": "72 cups/box"
+  },
+  {
+    "id": "inst-11",
+    "description": "Acetaminophen Oral Liquid (Cherry) 500mg/15mL Unit Dose",
+    "category": "Pain Relief & Fever",
+    "unit": "BOX",
+    "packQty": "72",
+    "ndc": "82568-0149-5",
+    "caseSize": "72 cups/box"
+  },
+  {
+    "id": "inst-12",
+    "description": "Ferrous Sulfate Oral Solution 220mg/5mL Unit Dose",
     "category": "Vitamins & Supplements",
-    "unit": "EA",
-    "packQty": "1",
+    "unit": "BOX",
+    "packQty": "72",
+    "ndc": "82568-0072-5",
+    "caseSize": "72 cups/box"
+  },
+  {
+    "id": "inst-13",
+    "description": "Multivitamin Oral Liquid 15mL Unit Dose",
+    "category": "Vitamins & Supplements",
+    "unit": "BOX",
+    "packQty": "72",
     "ndc": "82568-0146-2",
-    "caseSize": "72 cups"
+    "caseSize": "72 cups/box"
+  },
+  {
+    "id": "inst-14",
+    "description": "Vitamin A&D Diaper Rash Ointment & Skin Protectant 5g Unit Dose",
+    "category": "Topical & Skin Care",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0068-3",
+    "caseSize": "100 packets/box"
+  },
+  {
+    "id": "inst-15",
+    "description": "Calmocare (Zinc Oxide 20.4% + Menthol 0.44%) Ointment 3.5g Unit Dose",
+    "category": "Topical & Skin Care",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0062-4",
+    "caseSize": "100 packets/box"
+  },
+  {
+    "id": "inst-16",
+    "description": "Hydrocortisone 1% Cream 0.9g Unit Dose",
+    "category": "Topical & Skin Care",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0060-3",
+    "caseSize": "100 packets/box"
+  },
+  {
+    "id": "inst-17",
+    "description": "Bacitracin Ointment 400IU/g 0.9g Unit Dose",
+    "category": "Topical & Skin Care",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0147-2",
+    "caseSize": "100 packets/box"
+  },
+  {
+    "id": "inst-18",
+    "description": "Petrolatum Ointment 5g Unit Dose",
+    "category": "Topical & Skin Care",
+    "unit": "BOX",
+    "packQty": "100",
+    "ndc": "82568-0148-5",
+    "caseSize": "100 packets/box"
+  },
+  {
+    "id": "inst-19",
+    "description": "Psyllium Husk Regular Powder 5g Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "30",
+    "ndc": "82568-0029-5",
+    "caseSize": "30 packets/box"
+  },
+  {
+    "id": "inst-20",
+    "description": "Psyllium Husk Orange Flavor Powder 5g Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "30",
+    "ndc": "82568-0030-3",
+    "caseSize": "30 packets/box"
+  },
+  {
+    "id": "inst-21",
+    "description": "Bisacodyl 10mg Suppositories 12ct Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "12",
+    "ndc": "82568-0028-2",
+    "caseSize": "12 suppositories/box"
+  },
+  {
+    "id": "inst-22",
+    "description": "Bisacodyl 10mg Suppositories 50ct Unit Dose",
+    "category": "Digestive Health",
+    "unit": "BOX",
+    "packQty": "50",
+    "ndc": "82568-0028-5",
+    "caseSize": "50 suppositories/box"
   }
 ]
