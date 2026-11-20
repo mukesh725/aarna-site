@@ -172,69 +172,95 @@
   </div>
 
   <main>
-    <!-- HERO SECTION (Framed Horizon Design) -->
-    <section class="hero-horizon-section" aria-labelledby="hero-heading">
-      <div class="hero-horizon-frame" data-cms-media="hero_bg">
-        <div class="hero-horizon-overlay"></div>
+    <!-- HERO SECTION (2-Column Split Design with Angled Visual Showcase) -->
+    <section class="hero-split-section" aria-labelledby="hero-heading">
+      <div class="hero-split-frame">
+        <div class="hero-split-grid">
 
-        <!-- Centered Main Content -->
-        <div class="hero-horizon-center">
-          <h1 id="hero-heading" class="hero-horizon-title" data-cms-key="hero_home_title">
-            Healthcare Essentials<br>Wherever Care<br>Happens
-          </h1>
-          <p class="hero-horizon-desc" data-cms-key="hero_home_desc">
-            AARNA USA serves healthcare institutions, pharmacies, and retail customers with OTC medicines, institutional
-            unit-dose products, and medical supplies
-          </p>
-          <div class="hero-horizon-cta-wrap">
-            <button class="hero-horizon-cta-btn trigger-catalog-download" id="hero-catalog-btn">
-              <span data-cms-key="hero_catalog_btn">Download our catalog</span>
-              <span class="btn-circle-badge" aria-hidden="true">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="5" x2="12" y2="19"></line>
-                  <polyline points="19 12 12 19 5 12"></polyline>
-                </svg>
-              </span>
-            </button>
-          </div>
-        </div>
+          <!-- Left Column: Content & Actions -->
+          <div class="hero-split-content">
+            <span class="hero-eyebrow-pill">US HEALTHCARE SUPPLY &amp; OTC MEDICINES</span>
 
-        <!-- Bottom Bar inside the Hero Frame -->
-        <div class="hero-horizon-bottom">
-          <!-- Left Links: Browse Products, Private Label, Inquire (Previous Clean Arrow Link Style) -->
-          <div class="hero-horizon-links hero-bottom-left">
-            <a href="#products-showcase" class="hero-horizon-link">
-              Browse Products <span class="arrow-up">↗</span>
-            </a>
-            <a href="#private-label-section" class="hero-horizon-link">
-              Private Label <span class="arrow-up">↗</span>
-            </a>
-            <a href="contact.html" class="hero-horizon-link">
-              Inquire <span class="arrow-up">↗</span>
-            </a>
-          </div>
+            <h1 id="hero-heading" class="hero-split-title" data-cms-key="hero_home_title">
+              Healthcare Essentials<br>Wherever Care Happens
+            </h1>
 
-          <!-- Right Social Proof Badge -->
-          <div class="hero-horizon-proof">
-            <div class="proof-text-block">
-              <span class="proof-line-1" data-cms-key="hero_proof_line1">Supplying 500+ Healthcare Institutions.</span>
-              <span class="proof-line-2" data-cms-key="hero_proof_line2">Get the real results.</span>
+            <p class="hero-split-desc" data-cms-key="hero_home_desc">
+              AARNA USA serves healthcare institutions, pharmacies, and retail customers with OTC medicines, institutional
+              unit-dose products, and medical supplies.
+            </p>
+
+            <div class="hero-split-actions">
+              <button class="hero-cta-primary trigger-catalog-download" id="hero-catalog-btn">
+                <span data-cms-key="hero_catalog_btn">Download our catalog</span>
+                <span class="btn-circle-badge" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                  </svg>
+                </span>
+              </button>
+              <a href="#products-showcase" class="hero-cta-secondary">
+                <span>Browse Products</span>
+                <span class="arrow-up" aria-hidden="true">↗</span>
+              </a>
             </div>
-            <div class="proof-avatar-pill">
-              <div class="avatar-stack">
-                <span class="avatar-circle av-1" title="Clinical Formulation"><img
-                    src="assets/images/cat-allergy-relief.png" alt="Clinical Formulation" width="36" height="36"
-                    loading="lazy" decoding="async"></span>
-                <span class="avatar-circle av-2" title="Research Specialist"><img
-                    src="assets/images/about-scientist.jpg" alt="Research Specialist" width="36" height="36"
-                    loading="lazy" decoding="async"></span>
-                <span class="avatar-circle av-3" title="Institutional Quality"><img
-                    src="assets/images/cat-pain-relief.png" alt="Institutional Quality" width="36" height="36"
-                    loading="lazy" decoding="async"></span>
+
+            <!-- Operational Credentials & Social Proof -->
+            <div class="hero-split-credentials">
+              <div class="hero-cred-item">
+                <span class="hero-cred-val">500+</span>
+                <span class="hero-cred-lbl" data-cms-key="hero_proof_line1">Healthcare Institutions</span>
+              </div>
+              <div class="hero-cred-divider" aria-hidden="true"></div>
+              <div class="hero-cred-item">
+                <span class="hero-cred-val">115+</span>
+                <span class="hero-cred-lbl">Active Product SKUs</span>
+              </div>
+              <div class="hero-cred-divider" aria-hidden="true"></div>
+              <div class="hero-cred-item">
+                <span class="hero-cred-val">100%</span>
+                <span class="hero-cred-lbl">FDA &amp; NDC Compliant</span>
               </div>
             </div>
           </div>
+
+          <!-- Right Column: Angled Hero Image Showcase Card -->
+          <div class="hero-split-media-col">
+            <div class="hero-angled-card">
+              <!-- Top Image with Diagonal Cut -->
+              <div class="hero-angled-image-wrap">
+                <img src="assets/images/bottles-solid-dosage.webp"
+                  alt="AARNA OTC Medicines, Solid Dosage Bottles and Institutional Packaging"
+                  class="hero-angled-img"
+                  width="640" height="420"
+                  loading="eager" decoding="async">
+                <div class="hero-angled-badge">
+                  <span class="hero-pulse-dot" aria-hidden="true"></span>
+                  <span>Clinical Formulations</span>
+                </div>
+              </div>
+
+              <!-- Bottom Content of the Angled Card -->
+              <div class="hero-angled-card-bottom">
+                <div class="hero-angled-info">
+                  <span class="hero-angled-subtag">COMMERCIAL PACKAGING &amp; SUPPLY</span>
+                  <h3 class="hero-angled-heading">Solid Dosages &amp; Unit-Dose Liquids</h3>
+                  <p class="hero-angled-caption">
+                    Pre-filled cups, tamper-evident bottles, and hospital-grade packaging ready for dependable nationwide US distribution.
+                  </p>
+                </div>
+                <div class="hero-angled-footer">
+                  <a href="#private-label-section" class="hero-angled-link">
+                    <span>Explore Packaging Options</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
