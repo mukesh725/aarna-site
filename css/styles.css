@@ -4734,11 +4734,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
-/* 4. Commercial Partnerships & Custom Brand Showcase Section (Editorial Sand Layout) */
+/* 4. Commercial Partnerships & Custom Brand Showcase Section (Editorial Serene Layout) */
 .custom-brand-showcase-section {
-  background-color: #f6f2e9;
-  border-top: 1px solid #e8e0d1;
-  border-bottom: 1px solid #e8e0d1;
+  background-color: #fbfcf9;
+  border-top: 1px solid #edf1eb;
+  border-bottom: 1px solid #edf1eb;
   position: relative;
   overflow: hidden;
 }
@@ -4751,9 +4751,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .brand-eyebrow-pill {
   display: inline-block;
-  background-color: #eee7d8;
-  color: #4a3e2c;
-  border: 1px solid #ded3bf;
+  background-color: #ebf3eb;
+  color: #275236;
+  border: 1px solid #d5e4d5;
   font-family: var(--font-heading);
   font-size: 0.76rem;
   font-weight: 700;
@@ -4776,7 +4776,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .brand-showcase-subtitle {
   font-size: clamp(1rem, 1.15vw, 1.1rem);
-  color: #5a5245;
+  color: #4f5f56;
   line-height: 1.65;
   margin: 0 auto 1.75rem auto;
   max-width: 720px;
@@ -4813,24 +4813,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-brand-primary:hover {
-  background-color: #275236;
-  border-color: #275236;
-  color: #ffffff;
+  background-color: #ffffff;
+  border-color: #121e28;
+  color: #121e28;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(39, 82, 54, 0.2);
+  box-shadow: 0 8px 20px rgba(18, 30, 40, 0.15);
 }
 
 .btn-brand-secondary {
-  background-color: #ebe4d5;
-  color: #3b3224;
-  border: 1.5px solid #dcd1be;
+  background-color: #dbe8db;
+  color: #1b4528;
+  border: 1.5px solid #c4dac4;
 }
 
 .btn-brand-secondary:hover {
-  background-color: #dfd6c4;
-  border-color: #cebe9f;
-  color: #261f14;
+  background-color: #ffffff;
+  border-color: #121e28;
+  color: #121e28;
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(18, 30, 40, 0.12);
 }
 
 /* 5 Micro Capability Tiles */
@@ -4843,29 +4844,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .brand-tile-card {
   background-color: #ffffff;
-  border: 1px solid #e8e1d2;
+  border: 1px solid #e5ede4;
   border-radius: 16px;
   padding: clamp(1.2rem, 1.6vw, 1.5rem) 1rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(50, 40, 30, 0.03);
+  box-shadow: 0 2px 10px rgba(18, 30, 40, 0.03);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
 .brand-tile-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 22px rgba(50, 40, 30, 0.06);
-  border-color: #d4c8b5;
+  box-shadow: 0 10px 22px rgba(18, 30, 40, 0.06);
+  border-color: #c9dec9;
 }
 
 .brand-tile-icon {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background-color: #f2ede2;
-  color: #4a3e2c;
+  background-color: #eef5ee;
+  color: #275236;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4883,7 +4884,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .brand-tile-desc {
   font-size: 0.82rem;
-  color: #5f574a;
+  color: #55675d;
   line-height: 1.5;
   margin: 0;
 }
@@ -4899,19 +4900,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .brand-track-card {
   background-color: #ffffff;
-  border: 1px solid #e8e1d2;
+  border: 1px solid #e2ebe2;
   border-radius: 20px;
   padding: clamp(2rem, 3vw, 2.75rem);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 18px -4px rgba(50, 40, 30, 0.04);
+  box-shadow: 0 4px 18px -4px rgba(18, 30, 40, 0.04);
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .brand-track-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 36px -8px rgba(50, 40, 30, 0.08);
-  border-color: #d4c8b5;
+  box-shadow: 0 16px 36px -8px rgba(18, 30, 40, 0.08);
+  border-color: #c5dac5;
 }
 
 .brand-track-badge {
@@ -4921,9 +4922,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #4a3e2c;
-  background-color: #f2ede2;
-  border: 1px solid #dfd6c4;
+  color: #275236;
+  background-color: #edf4ec;
+  border: 1px solid #d9e7d9;
   padding: 0.3rem 0.8rem;
   border-radius: 9999px;
   margin-bottom: 0.95rem;
@@ -4942,7 +4943,7 @@ h1, h2, h3, h4, h5, h6 {
 .brand-track-desc {
   font-size: clamp(0.94rem, 1.05vw, 1.02rem);
   line-height: 1.7;
-  color: #554d40;
+  color: #4b5c52;
   margin: 0 0 1.5rem 0;
   flex-grow: 1;
 }
@@ -4958,9 +4959,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #3d3528;
-  background-color: #f7f4ed;
-  border: 1px solid #e4dcd0;
+  color: #314a3a;
+  background-color: #f4f8f4;
+  border: 1px solid #dce8dc;
   border-radius: 6px;
   padding: 0.32rem 0.72rem;
 }
@@ -4989,10 +4990,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-track-cta:hover {
-  background-color: #275236;
-  border-color: #275236;
-  color: #ffffff;
+  background-color: #ffffff;
+  border-color: #121e28;
+  color: #121e28;
   transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(18, 30, 40, 0.12);
 }
 
 .brand-track-cta svg {
@@ -5019,10 +5021,10 @@ h1, h2, h3, h4, h5, h6 {
   left: 5%;
   right: 5%;
   height: 100px;
-  border-top: 1.5px dashed #cfc4af;
+  border-top: 1.5px dashed #adc6ad;
   border-radius: 50%;
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0.65;
   z-index: 1;
 }
 
@@ -5058,7 +5060,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-size: clamp(1.85rem, 2.8vw, 2.5rem);
   font-weight: 600;
-  color: #275236;
+  color: #2d6642;
   letter-spacing: -0.025em;
   margin: 0 0 0.65rem 0;
 }
@@ -5066,7 +5068,7 @@ h1, h2, h3, h4, h5, h6 {
 .brand-imagine-desc {
   font-size: clamp(0.95rem, 1.1vw, 1.05rem);
   line-height: 1.65;
-  color: #5a5245;
+  color: #55675d;
   margin: 0;
 }
 
