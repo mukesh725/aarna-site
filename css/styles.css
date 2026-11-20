@@ -550,33 +550,41 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   CLEAN WHITE HERO SECTION (Left Content & Actions, Right Angled Photo & Proof)
+   CLEAN WHITE HERO SECTION (Left Content, Right Full-Bleed Angled Image)
    ========================================================================== */
 .hero-clean-section {
   background-color: #ffffff;
-  padding: clamp(3.5rem, 5.5vw, 5.25rem) 0 clamp(2.5rem, 4vw, 3.5rem);
+  padding: 0;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid #eef2f6;
+  width: 100%;
 }
 
 .hero-clean-container {
   display: grid;
-  grid-template-columns: 1.15fr 0.95fr;
-  gap: clamp(2.5rem, 5vw, 4.5rem);
-  align-items: center;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: stretch;
+  min-height: clamp(520px, 52vw, 640px);
+  width: 100%;
 }
 
 /* Left Content Column */
 .hero-clean-content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
+  padding-left: max(24px, calc((100vw - 1280px) / 2 + 24px));
+  padding-right: clamp(2rem, 4vw, 4rem);
+  padding-top: clamp(3.5rem, 6vw, 5rem);
+  padding-bottom: clamp(3.5rem, 6vw, 5rem);
+  box-sizing: border-box;
 }
 
 .hero-clean-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 4vw, 3.75rem);
+  font-size: clamp(2.4rem, 3.8vw, 3.75rem);
   font-weight: 800;
   color: #0b1523;
   line-height: 1.12;
@@ -589,7 +597,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.68;
   color: #475569;
   margin: 0 0 2rem 0;
-  max-width: 560px;
+  max-width: 540px;
   font-weight: 400;
 }
 
@@ -681,64 +689,122 @@ h1, h2, h3, h4, h5, h6 {
   transform: translate(2px, -2px);
 }
 
-/* Right Media Column: Angled Photo & Supplying Badge */
+/* Right Media Column: Full-Bleed Right Edge with Left Slanted Cut */
 .hero-clean-media-col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: clamp(480px, 48vw, 640px);
 }
 
 .hero-angled-wrapper {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: 540px;
-  margin: 0 auto;
+  height: 100%;
 }
 
 .hero-clean-angled-photo {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: clamp(340px, 40vw, 440px);
-  border-radius: 24px;
+  height: 100%;
   overflow: hidden;
-  clip-path: polygon(24% 0%, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
   background-color: #0b1523;
-  box-shadow: 0 20px 44px -10px rgba(11, 21, 35, 0.15);
 }
 
 .hero-clean-angled-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 35%;
+  object-position: center 30%;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-angled-wrapper:hover .hero-clean-angled-img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
-/* The Supplying Badge (Sketched inside/at bottom of image) */
+/* The Supplying Badge across bottom of image */
 .hero-clean-proof-badge {
   position: absolute;
-  bottom: 24px;
-  left: 54%;
-  transform: translateX(-50%);
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-40%);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
-  background-color: rgba(11, 21, 35, 0.90);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(11, 21, 35, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   color: #ffffff;
   border-radius: 9999px;
-  padding: 0.65rem 0.85rem 0.65rem 1.35rem;
-  box-shadow: 0 16px 36px -6px rgba(11, 21, 35, 0.38);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.7rem 0.95rem 0.7rem 1.45rem;
+  box-shadow: 0 16px 36px -6px rgba(11, 21, 35, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   z-index: 5;
-  width: calc(100% - 60px);
+  width: calc(100% - 90px);
   max-width: 440px;
+}
+
+.hero-clean-proof-badge .proof-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-clean-proof-badge .proof-line-1 {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.25;
+}
+
+.hero-clean-proof-badge .proof-line-2 {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.hero-clean-proof-badge .proof-avatar-pill {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 3px 6px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-clean-proof-badge .avatar-stack {
+  display: flex;
+  align-items: center;
+}
+
+.hero-clean-proof-badge .avatar-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  margin-left: -7px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.hero-clean-proof-badge .avatar-circle:first-child {
+  margin-left: 0;
+}
+
+.hero-clean-proof-badge .avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-clean-proof-badge .proof-text-block {
@@ -4063,11 +4129,29 @@ h1, h2, h3, h4, h5, h6 {
 
   .hero-clean-container {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    min-height: auto;
   }
 
-  .hero-angled-wrapper {
-    max-width: 100%;
+  .hero-clean-content {
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero-clean-media-col {
+    min-height: 380px;
+  }
+
+  .hero-clean-angled-photo {
+    clip-path: polygon(14% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .hero-clean-proof-badge {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 48px);
   }
   
   .about-overview-grid {
