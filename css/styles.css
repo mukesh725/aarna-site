@@ -3454,8 +3454,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Toggle Buttons */
 .inquiry-toggle-group {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
   margin-bottom: 1.25rem;
 }
 
@@ -4518,13 +4518,734 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
+   ENHANCEMENT SECTIONS (Highlights Strip, Gov Programs, Partnerships, How to Order, eMedNY)
+   ========================================================================== */
+
+/* 1. Highlights Strip Section */
+.highlights-strip-section {
+  background-color: #ffffff;
+  border-top: 1px solid var(--color-border-subtle, #edf2f7);
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  padding: 1.75rem 0;
+  box-shadow: 0 4px 16px -4px rgba(11, 21, 35, 0.04);
+}
+
+.highlights-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  padding: 0.65rem 1rem;
+  border-right: 1px solid var(--color-border-subtle, #edf2f7);
+  transition: transform var(--transition-fast, 150ms ease);
+}
+
+.highlight-item:last-child {
+  border-right: none;
+}
+
+.highlight-item-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background-color: #0b1523;
+  color: #ffffff;
+}
+
+.highlight-stat-num {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.highlight-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background-color: #f0fdfa;
+  color: #0d9488;
+  border: 1px solid #ccfbf1;
+}
+
+.highlight-item-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.highlight-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: #061e47;
+  line-height: 1.25;
+}
+
+.highlight-desc {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 0.2rem;
+  line-height: 1.35;
+}
+
+/* 2. Government Programs & Market Access Section */
+.gov-programs-section {
+  background-color: #f8fafc;
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.about-gov-section {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.gov-programs-card {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: clamp(2.25rem, 4.5vw, 3.75rem);
+  box-shadow: var(--shadow-md);
+}
+
+.about-gov-section .gov-programs-card {
+  background-color: #f8fafc;
+}
+
+.gov-programs-header {
+  margin-bottom: 1.5rem;
+}
+
+.gov-badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.gov-pill-badge {
+  display: inline-block;
+  background-color: #f0fdfa;
+  color: #0f766e;
+  border: 1px solid #ccfbf1;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.85rem;
+  border-radius: 9999px;
+}
+
+.gov-badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #cbd5e1;
+}
+
+.gov-meta-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.02em;
+}
+
+.gov-main-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  color: #061e47;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.gov-main-copy {
+  font-size: clamp(1.05rem, 1.25vw, 1.18rem);
+  color: #334155;
+  line-height: 1.8;
+  max-width: 960px;
+  margin: 0 0 2.25rem 0;
+}
+
+.gov-credentials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.gov-cred-item {
+  display: flex;
+  gap: 1.15rem;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  align-items: flex-start;
+  transition: all var(--transition-fast);
+}
+
+.about-gov-section .gov-cred-item {
+  background-color: #ffffff;
+}
+
+.gov-cred-item:hover {
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.gov-cred-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #f0fdfa;
+  color: #0d9488;
+  border: 1px solid #ccfbf1;
+}
+
+.gov-cred-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0b1523;
+  margin: 0 0 0.35rem 0;
+  line-height: 1.3;
+}
+
+.gov-cred-desc {
+  font-size: 0.88rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 3. Who We Serve Intro Paragraph */
+.serve-intro-p {
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  color: #475569;
+  line-height: 1.65;
+  margin-top: 1.25rem;
+  font-weight: 400;
+}
+
+/* 4. Wholesale & Private-Label Dual Partnership Section */
+.partnership-cards-section {
+  background-color: #ffffff;
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.partnership-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.partnership-main-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+  font-weight: 800;
+  color: #061e47;
+  letter-spacing: -0.035em;
+  margin: 0.85rem 0 1rem;
+  line-height: 1.15;
+}
+
+.partnership-subtitle {
+  font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+  color: #475569;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.partnership-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: stretch;
+}
+
+.partner-dual-card {
+  border-radius: 24px;
+  padding: clamp(2.25rem, 3.8vw, 3.25rem);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.wholesale-partner-card {
+  background-color: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  color: #0b1523;
+  box-shadow: 0 12px 32px -8px rgba(11, 21, 35, 0.05);
+}
+
+.privatelabel-partner-card {
+  background-color: #0b1523;
+  border: 1.5px solid #162438;
+  color: #ffffff;
+  box-shadow: 0 16px 40px -8px rgba(11, 21, 35, 0.18);
+}
+
+.partner-dual-card:hover {
+  transform: translateY(-4px);
+}
+
+.wholesale-partner-card:hover {
+  box-shadow: 0 20px 45px -10px rgba(11, 21, 35, 0.1);
+  border-color: #94a3b8;
+}
+
+.privatelabel-partner-card:hover {
+  box-shadow: 0 24px 50px -10px rgba(6, 18, 36, 0.35);
+  border-color: #243b5a;
+}
+
+.partner-card-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.15rem;
+}
+
+.wholesale-partner-card .partner-card-tag {
+  color: #0d9488;
+}
+
+.privatelabel-partner-card .partner-card-tag {
+  color: #38bdf8;
+}
+
+.partner-card-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.2rem 0;
+}
+
+.wholesale-partner-card .partner-card-heading {
+  color: #061e47;
+}
+
+.privatelabel-partner-card .partner-card-heading {
+  color: #ffffff;
+}
+
+.partner-card-body {
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.75;
+  margin: 0 0 1.85rem 0;
+  flex-grow: 1;
+}
+
+.wholesale-partner-card .partner-card-body {
+  color: #334155;
+}
+
+.privatelabel-partner-card .partner-card-body {
+  color: #cbd5e1;
+}
+
+.partner-card-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 2.25rem;
+}
+
+.partner-feat-chip {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+}
+
+.wholesale-partner-card .partner-feat-chip {
+  background-color: #ffffff;
+  color: #0f766e;
+  border: 1px solid #ccfbf1;
+}
+
+.privatelabel-partner-card .partner-feat-chip {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #e0f2fe;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.partner-card-action {
+  margin-top: auto;
+}
+
+.btn-partner-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 50px;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-decoration: none;
+  background-color: #0b1523;
+  color: #ffffff;
+  transition: all var(--transition-fast);
+}
+
+.btn-partner-card:hover {
+  background-color: #050b14;
+  transform: translateY(-1px);
+  color: #ffffff;
+}
+
+.btn-partner-card.btn-partner-dark {
+  background-color: #ffffff;
+  color: #0b1523;
+}
+
+.btn-partner-card.btn-partner-dark:hover {
+  background-color: #f1f5f9;
+  color: #0b1523;
+}
+
+/* 5. Homepage 4-Step How to Order Section */
+.home-how-to-order-section {
+  background-color: #f8fafc;
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.how-to-order-header-block {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.home-order-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+  font-weight: 800;
+  color: #061e47;
+  letter-spacing: -0.035em;
+  margin: 0.85rem 0 0.85rem;
+  line-height: 1.15;
+}
+
+.home-order-subtitle {
+  font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+  color: #475569;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.home-order-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.home-order-step-card {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 1.85rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.home-order-step-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+  border-color: #cbd5e1;
+}
+
+.order-step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background-color: #f0fdfa;
+  color: #0d9488;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  border: 1px solid #ccfbf1;
+}
+
+.order-step-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0b1523;
+  margin: 0 0 0.5rem 0;
+}
+
+.order-step-desc {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.home-order-action-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.btn-home-order-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 52px;
+  padding: 0.9rem 2rem;
+  border-radius: 9999px;
+  background-color: #0b1523;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-home-order-cta:hover {
+  background-color: #050b14;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-home-order-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 52px;
+  padding: 0.9rem 1.85rem;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  color: #0b1523;
+  border: 1.5px solid #cbd5e1;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-home-order-secondary:hover {
+  background-color: #f8fafc;
+  border-color: #0b1523;
+}
+
+/* 6. Four-column how to order grid on product pages */
+.how-to-order-grid-4 {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+/* 7. New York Medicaid (eMedNY) Notice Card */
+.emedny-notice-card {
+  background-color: #f0fdfa;
+  border: 1.5px solid #99f6e4;
+  border-radius: 20px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  margin-top: 1.5rem;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 8px 24px -6px rgba(13, 148, 136, 0.08);
+}
+
+.emedny-card-body {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.emedny-icon-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background-color: #0d9488;
+  color: #ffffff;
+}
+
+.emedny-text-col {
+  flex: 1;
+}
+
+.emedny-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f766e;
+  margin: 0 0 0.35rem 0;
+  letter-spacing: -0.02em;
+}
+
+.emedny-card-desc {
+  font-size: 0.98rem;
+  color: #1e293b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.emedny-card-desc strong {
+  color: #0f766e;
+}
+
+.emedny-action-col {
+  flex-shrink: 0;
+}
+
+.btn-emedny-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background-color: #0d9488;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.85rem 1.45rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+}
+
+.btn-emedny-link:hover {
+  background-color: #0f766e;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.35);
+}
+
+/* --- RESPONSIVE BREAKPOINTS FOR NEW COMPONENTS --- */
+@media (max-width: 1080px) {
+  .highlights-strip-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .highlight-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .gov-credentials-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .home-order-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .how-to-order-grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .emedny-card-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .emedny-action-col {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .partnership-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inquiry-toggle-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .highlights-strip-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .highlight-item {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding: 0.75rem 0.5rem;
+  }
+
+  .highlight-item:last-child {
+    border-bottom: none;
+  }
+
+  .home-order-steps-grid,
+  .how-to-order-grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-order-action-wrap {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-home-order-cta,
+  .btn-home-order-secondary {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
    HIGH-REFRESH-RATE SCROLL RENDERING OPTIMIZATION (content-visibility)
    ========================================================================== */
+.highlights-strip-section,
 .product-showcase-section,
+.gov-programs-section,
+.about-gov-section,
+.partnership-cards-section,
 .categories-strip-section,
 .private-label-section,
 .who-we-serve-section,
 .partners-section,
+.home-how-to-order-section,
 .product-details-cta-section,
 .site-footer {
   content-visibility: auto;

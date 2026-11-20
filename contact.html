@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=4.2">
+  <link rel="stylesheet" href="css/styles.css?v=4.3">
 
   <!-- Schema.org ContactPage JSON-LD -->
   <script type="application/ld+json">
@@ -206,10 +206,13 @@
             <!-- Inquiry Type Toggle Buttons -->
             <div class="inquiry-toggle-group" role="tablist" aria-label="Select inquiry type">
               <button type="button" class="inquiry-toggle-btn active" id="toggle-product" data-value="Product inquiry" role="tab" aria-selected="true">
-                <span class="toggle-check-badge">
+                <span class="toggle-check-badge" aria-hidden="true">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </span>
                 <span>Product inquiry</span>
+              </button>
+              <button type="button" class="inquiry-toggle-btn" id="toggle-wholesale" data-value="Wholesale / Distribution" role="tab" aria-selected="false">
+                <span>Wholesale / Distribution</span>
               </button>
               <button type="button" class="inquiry-toggle-btn" id="toggle-private-label" data-value="Private-label OTC" role="tab" aria-selected="false">
                 <span>Private-label OTC</span>
@@ -218,7 +221,7 @@
             <input type="hidden" name="inquiryType" id="inquiryTypeInput" value="Product inquiry">
 
             <p class="inquiry-helper-text" id="inquiryHelperText">
-              Tell us what you need. Product availability and details will be confirmed by our team.
+              Tell us what you need. Product availability, packaging formats, and details will be confirmed by our team.
             </p>
 
             <!-- Form Grid: Name & Email -->
@@ -337,6 +340,6 @@
   <script src="scripts/products-data.js?v=3.2"></script>
   <script src="scripts/store.js?v=3.2"></script>
   <script src="scripts/app.js?v=3.2"></script>
-  <script src="scripts/contact.js?v=3.1"></script>
+  <script src="scripts/contact.js?v=3.2"></script>
 </body>
 </html>
