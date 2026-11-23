@@ -55,17 +55,10 @@
         return;
       }
 
-      // 1. Authenticate via Firebase Authentication if connected
-      try {
-        if (window.AarnaFirebase && typeof window.AarnaFirebase.login === 'function') {
-          const cred = await window.AarnaFirebase.login(email, pwd);
-          if (cred && cred.user) {
-            authenticateAndRedirect(cred.user.email, 'Superadmin');
-            return;
-          }
-        }
-      } catch (err) {
-        console.warn('Firebase auth attempt:', err.message || err);
+      // 1. Authenticate Master Administrator (Instant, Guaranteed Access)
+      if ((email === 'admin@aarnaus.com' || email === 'admin' || email === 'hi@hexastudio.in') && (pwd === 'aarna2026' || pwd === 'admin')) {
+        authenticateAndRedirect('admin@aarnaus.com', 'Superadmin');
+        return;
       }
 
       // 2. Authenticate Authorized Team Members from Secure Directory
@@ -78,10 +71,17 @@
         }
       } catch (err) {}
 
-      // 3. Authenticate Master Administrator (Portal Admin Fallback)
-      if ((email === 'admin@aarnaus.com' || email === 'admin' || email === 'hi@hexastudio.in') && (pwd === 'aarna2026' || pwd === 'admin')) {
-        authenticateAndRedirect(email, 'Superadmin');
-        return;
+      // 3. Authenticate via Firebase Authentication if connected
+      try {
+        if (window.AarnaFirebase && typeof window.AarnaFirebase.login === 'function') {
+          const cred = await window.AarnaFirebase.login(email, pwd);
+          if (cred && cred.user) {
+            authenticateAndRedirect(cred.user.email, 'Superadmin');
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('Firebase auth attempt:', err.message || err);
       }
 
       showAlert('Invalid email or password. Please use authorized credentials.');
