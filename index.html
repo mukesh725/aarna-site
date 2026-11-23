@@ -173,31 +173,45 @@
 
   <main>
     <!-- HERO SECTION (Clean White Section: Left Content & Actions, Right Full-Bleed Angled Photo) -->
+    <!-- SVG Clip Path Definitions for Hero Angled Image with Smooth Rounded Corners -->
+    <svg width="0" height="0" class="svg-defs-hidden" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;">
+      <defs>
+        <clipPath id="hero-rounded-slant" clipPathUnits="objectBoundingBox">
+          <path d="M 0.1738 0.0443 Q 0.1800 0.0000 0.2150 0.0000 L 0.9650 0.0000 Q 1.0000 0.0000 1.0000 0.0450 L 1.0000 0.9550 Q 1.0000 1.0000 0.9650 1.0000 L 0.0350 1.0000 Q 0.0000 1.0000 0.0062 0.9557 Z" />
+        </clipPath>
+        <clipPath id="hero-rounded-slant-mobile" clipPathUnits="objectBoundingBox">
+          <path d="M 0.1140 0.0496 Q 0.1200 0.0000 0.1700 0.0000 L 0.9500 0.0000 Q 1.0000 0.0000 1.0000 0.0500 L 1.0000 0.9500 Q 1.0000 1.0000 0.9500 1.0000 L 0.0500 1.0000 Q 0.0000 1.0000 0.0060 0.9504 Z" />
+        </clipPath>
+      </defs>
+    </svg>
+
     <section class="hero-clean-section" aria-labelledby="hero-heading">
       <div class="hero-clean-container">
 
         <!-- Left Column: Content & Buttons -->
         <div class="hero-clean-content">
-          <h1 id="hero-heading" class="hero-clean-title" data-cms-key="hero_home_title">
-            Healthcare Essentials<br>Wherever Care Happens
-          </h1>
+          <div class="hero-clean-body">
+            <h1 id="hero-heading" class="hero-clean-title" data-cms-key="hero_home_title">
+              Healthcare Essentials Wherever Care Happens
+            </h1>
 
-          <p class="hero-clean-desc" data-cms-key="hero_home_desc">
-            AARNA USA serves healthcare institutions, pharmacies, and retail customers with OTC medicines, institutional
-            unit-dose products, and medical supplies
-          </p>
+            <p class="hero-clean-desc" data-cms-key="hero_home_desc">
+              AARNA USA serves healthcare institutions, pharmacies, and retail customers with OTC medicines, institutional
+              unit-dose products, and medical supplies
+            </p>
 
-          <div class="hero-clean-actions">
-            <button class="hero-clean-cta-btn trigger-catalog-download" id="hero-catalog-btn">
-              <span data-cms-key="hero_catalog_btn">Download our catalog</span>
-              <span class="btn-circle-badge" aria-hidden="true">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="5" x2="12" y2="19"></line>
-                  <polyline points="19 12 12 19 5 12"></polyline>
-                </svg>
-              </span>
-            </button>
+            <div class="hero-clean-actions">
+              <button class="hero-clean-cta-btn trigger-catalog-download" id="hero-catalog-btn">
+                <span data-cms-key="hero_catalog_btn">Download our catalog</span>
+                <span class="btn-circle-badge" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                  </svg>
+                </span>
+              </button>
+            </div>
           </div>
 
           <!-- Bottom Action Links (Browse Products, Private Label, Inquire) -->

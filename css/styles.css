@@ -133,10 +133,10 @@ ul, ol {
   list-style: none;
 }
 
-/* --- ACCESSIBLE CONTAINER (Full Width, No Max-Width Restriction) --- */
+/* --- ACCESSIBLE CONTAINER (2000px Max-Width Content) --- */
 .container {
   width: 100%;
-  max-width: none;
+  max-width: 2000px;
   margin-left: auto;
   margin-right: auto;
   padding-left: clamp(1.25rem, 4vw, 4.5rem);
@@ -563,23 +563,33 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-clean-container {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1.14fr 0.86fr;
   align-items: stretch;
   min-height: clamp(520px, 52vw, 640px);
   width: 100%;
+  max-width: 2000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Left Content Column */
 .hero-clean-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
-  padding-left: max(24px, calc((100vw - 1280px) / 2 + 24px));
-  padding-right: clamp(2rem, 4vw, 4rem);
-  padding-top: clamp(3.5rem, 6vw, 5rem);
-  padding-bottom: clamp(3.5rem, 6vw, 5rem);
+  padding-left: clamp(1.5rem, 4vw, 4.5rem);
+  padding-right: clamp(1.5rem, 3vw, 3.5rem);
+  padding-top: clamp(3rem, 5vw, 4.5rem);
+  padding-bottom: 42px; /* Directly matches baseline of right-hand proof badge (10px pad + 32px bottom) */
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-clean-body {
+  width: 100%;
+  max-width: none;
 }
 
 .hero-clean-title {
@@ -587,17 +597,20 @@ h1, h2, h3, h4, h5, h6 {
   font-size: clamp(2.4rem, 3.8vw, 3.75rem);
   font-weight: 800;
   color: #0b1523;
-  line-height: 1.12;
+  line-height: 1.14;
   letter-spacing: -0.035em;
   margin: 0 0 1.25rem 0;
+  max-width: none;
+  width: 100%;
 }
 
 .hero-clean-desc {
   font-size: clamp(1.05rem, 1.2vw, 1.18rem);
   line-height: 1.68;
   color: #475569;
-  margin: 0 0 2rem 0;
-  max-width: 540px;
+  margin: 0 0 2.25rem 0;
+  max-width: none;
+  width: 100%;
   font-weight: 400;
 }
 
@@ -655,13 +668,16 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(2px);
 }
 
-/* Bottom Action Links (Browse Products, Private Label, Inquire) */
+/* Bottom Action Links (Browse Products, Private Label, Inquire) - Straight across with Supplying 500+ Badge */
 .hero-clean-links {
   display: flex;
   align-items: center;
-  gap: 1.8rem;
-  margin-top: 2.25rem;
+  gap: 2.2rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  min-height: 48px;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .hero-clean-link {
@@ -689,28 +705,33 @@ h1, h2, h3, h4, h5, h6 {
   transform: translate(2px, -2px);
 }
 
-/* Right Media Column: Full-Bleed Right Edge with Left Slanted Cut */
+/* Right Media Column: Full-Bleed Right Edge with Left Slanted Cut & 10px Gap */
 .hero-clean-media-col {
   position: relative;
   width: 100%;
   height: 100%;
   min-height: clamp(480px, 48vw, 640px);
+  padding: 10px 10px 10px 0;
+  box-sizing: border-box;
+  display: flex;
 }
 
 .hero-angled-wrapper {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
   height: 100%;
+  flex: 1;
+  filter: drop-shadow(0 14px 28px rgba(11, 21, 35, 0.09));
 }
 
 .hero-clean-angled-photo {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+  border-radius: 24px;
+  -webkit-clip-path: url(#hero-rounded-slant);
+  clip-path: url(#hero-rounded-slant);
   background-color: #0b1523;
 }
 
@@ -2034,12 +2055,12 @@ h1, h2, h3, h4, h5, h6 {
    ABOUT PAGE SECTIONS (IMAGE 1 & IMAGE 2 COMPOSITE LAYOUT)
    ========================================================================== */
 
-/* Universal 1600px Max-Width Restriction for About Page */
+/* Universal 2000px Max-Width Restriction for About Page */
 .about-hero-banner .container,
 .about-mission-section .container,
 .about-team-section .container,
 .about-leaders-section .container {
-  max-width: 1600px;
+  max-width: 2000px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -4141,10 +4162,13 @@ h1, h2, h3, h4, h5, h6 {
 
   .hero-clean-media-col {
     min-height: 380px;
+    padding: 10px;
   }
 
   .hero-clean-angled-photo {
-    clip-path: polygon(14% 0%, 100% 0%, 100% 100%, 0% 100%);
+    -webkit-clip-path: url(#hero-rounded-slant-mobile);
+    clip-path: url(#hero-rounded-slant-mobile);
+    border-radius: 20px;
   }
 
   .hero-clean-proof-badge {
@@ -4237,8 +4261,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 1.5rem;
   }
 
+  .hero-clean-media-col {
+    min-height: 280px;
+    padding: 10px;
+  }
+
   .hero-clean-angled-photo {
-    clip-path: polygon(14% 0%, 100% 0%, 100% 100%, 0% 100%);
+    -webkit-clip-path: url(#hero-rounded-slant-mobile);
+    clip-path: url(#hero-rounded-slant-mobile);
+    border-radius: 18px;
     height: 280px;
   }
 
