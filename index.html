@@ -174,14 +174,16 @@
   <main>
     <!-- HERO SECTION (Clean White Section: Left Content & Actions, Right Full-Bleed Angled Photo) -->
     <!-- SVG Clip Path Definitions for Hero Angled Image with Smooth Rounded Corners -->
-    <svg width="0" height="0" class="svg-defs-hidden" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;">
+    <svg width="0" height="0" class="svg-defs-hidden" aria-hidden="true"
+      style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;">
       <defs>
         <clipPath id="hero-rounded-slant" clipPathUnits="objectBoundingBox">
-          <path d="M 0.1738 0.0443 Q 0.1800 0.0000 0.2150 0.0000 L 0.9650 0.0000 Q 1.0000 0.0000 1.0000 0.0450 L 1.0000 0.9550 Q 1.0000 1.0000 0.9650 1.0000 L 0.0350 1.0000 Q 0.0000 1.0000 0.0062 0.9557 Z" />
+          <path
+            d="M 0.1738 0.0443 Q 0.1800 0.0000 0.2150 0.0000 L 0.9650 0.0000 Q 1.0000 0.0000 1.0000 0.0450 L 1.0000 0.9550 Q 1.0000 1.0000 0.9650 1.0000 L 0.0350 1.0000 Q 0.0000 1.0000 0.0062 0.9557 Z" />
         </clipPath>
         <clipPath id="hero-rounded-slant-mobile" clipPathUnits="objectBoundingBox">
-          <!-- Trapezoid: narrower top, wider bottom, with rounded corners -->
-          <path d="M 0.1200 0.0400 Q 0.1250 0.0000 0.1750 0.0000 L 0.8250 0.0000 Q 0.8750 0.0000 0.8800 0.0400 L 1.0000 0.9500 Q 1.0000 1.0000 0.9500 1.0000 L 0.0500 1.0000 Q 0.0000 1.0000 0.0000 0.9500 Z" />
+          <path
+            d="M 0.1140 0.0496 Q 0.1200 0.0000 0.1700 0.0000 L 0.9500 0.0000 Q 1.0000 0.0000 1.0000 0.0500 L 1.0000 0.9500 Q 1.0000 1.0000 0.9500 1.0000 L 0.0500 1.0000 Q 0.0000 1.0000 0.0060 0.9504 Z" />
         </clipPath>
       </defs>
     </svg>
@@ -197,8 +199,7 @@
             </h1>
 
             <p class="hero-clean-desc" data-cms-key="hero_home_desc">
-              AARNA USA serves healthcare institutions, pharmacies, and retail customers with OTC medicines, institutional
-              unit-dose products, and medical supplies
+              AARNA USA serves healthcare institutions, pharmacies, and retail customers with OTC medicines, institutional unit-dose products, and medical supplies
             </p>
 
             <div class="hero-clean-actions">
@@ -232,16 +233,14 @@
           </div>
         </div>
 
-        <!-- Right Column: Angled Photo & Supplying Proof Badge -->
+        <!-- Right Column: Rounded Photo & Supplying Proof Badge -->
         <div class="hero-clean-media-col">
           <div class="hero-angled-wrapper">
             <!-- Rounded Photo Container -->
             <div class="hero-clean-angled-photo">
               <img src="assets/images/hero-pills-floating.webp"
                 alt="AARNA Pharmaceutical Solutions — Essential OTC Medicines, Capsules and Tablets"
-                class="hero-clean-angled-img"
-                width="1024" height="680"
-                loading="eager" decoding="async">
+                class="hero-clean-angled-img" width="1024" height="680" loading="eager" decoding="async">
             </div>
 
             <!-- The Supplying Badge with Avatar Stack -->
@@ -346,7 +345,7 @@
           <article class="modern-prod-card product-showcase-item" data-category="institutional">
             <div class="product-media-card">
               <a href="institutional-products.html" class="media-card-link" aria-label="View Institutional Products">
-                <img src="assets/images/card-institutional.webp" data-cms-media="card_institutional"
+                <img src="assets/images/card-institutional.webp?v=2" data-cms-media="card_institutional"
                   alt="Institutional Products - Pre-filled unit-dose oral liquid cups" class="media-card-img"
                   width="380" height="240" loading="lazy" decoding="async">
               </a>
@@ -513,9 +512,10 @@
     </section>
 
     <!-- SECTION: COMMERCIAL PARTNERSHIPS & PRIVATE LABEL SHOWCASE -->
-    <section class="section-padding custom-brand-showcase-section" id="private-label-section" aria-labelledby="brand-showcase-heading">
+    <section class="section-padding custom-brand-showcase-section" id="private-label-section"
+      aria-labelledby="brand-showcase-heading">
       <div class="container">
-        
+
         <!-- Centered Header Block -->
         <div class="brand-showcase-header">
           <span class="brand-eyebrow-pill">COMMERCIAL PARTNERSHIPS &amp; CONTRACT SUPPLY</span>
@@ -523,16 +523,23 @@
             Powering Healthcare Brands with Custom Supply &amp; Manufacturing
           </h2>
           <p class="brand-showcase-subtitle">
-            We partner with healthcare institutions, pharmacies, wholesalers, and retail distributors to deliver dependable AARNA-brand wholesale supply and turnkey private-label OTC products.
+            We partner with healthcare institutions, pharmacies, wholesalers, and retail distributors to deliver
+            dependable AARNA-brand wholesale supply and turnkey private-label OTC products.
           </p>
           <div class="brand-header-actions">
             <a href="contact.html?inquiry=wholesale" class="btn-brand-pill btn-brand-primary">
               <span>Become a Wholesale Partner</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
             </a>
             <a href="contact.html?inquiry=private-label" class="btn-brand-pill btn-brand-secondary">
               <span>Explore Private-Label</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
             </a>
           </div>
         </div>
@@ -541,7 +548,10 @@
         <div class="brand-tiles-grid">
           <div class="brand-tile-card">
             <div class="brand-tile-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.69 19.3A2 2 0 0 0 6.42 22h11.16a2 2 0 0 0 1.73-2.7L14 9.31V2"></path><line x1="8.5" y1="2" x2="15.5" y2="2"></line></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10 2v7.31L4.69 19.3A2 2 0 0 0 6.42 22h11.16a2 2 0 0 0 1.73-2.7L14 9.31V2"></path>
+                <line x1="8.5" y1="2" x2="15.5" y2="2"></line>
+              </svg>
             </div>
             <h3 class="brand-tile-title">Clinical Formulations</h3>
             <p class="brand-tile-desc">Unit-dose liquids, solid dosage, pediatric supplements, and topical care.</p>
@@ -549,7 +559,13 @@
 
           <div class="brand-tile-card">
             <div class="brand-tile-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                </path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
             </div>
             <h3 class="brand-tile-title">Custom Packaging</h3>
             <p class="brand-tile-desc">Bottles, unit-dose cups, blister packaging, cartons, and tailored design.</p>
@@ -557,7 +573,9 @@
 
           <div class="brand-tile-card">
             <div class="brand-tile-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
             </div>
             <h3 class="brand-tile-title">FDA &amp; NDC Compliance</h3>
             <p class="brand-tile-desc">Labeler code setup, compliant labeling, and regulatory market access.</p>
@@ -565,15 +583,24 @@
 
           <div class="brand-tile-card">
             <div class="brand-tile-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m16 10-4 4-2-2"></path></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="m16 10-4 4-2-2"></path>
+              </svg>
             </div>
             <h3 class="brand-tile-title">Volume Wholesale Pricing</h3>
-            <p class="brand-tile-desc">Competitive commercial pricing for regional distributors, pharmacies, and LTC.</p>
+            <p class="brand-tile-desc">Competitive commercial pricing for regional distributors, pharmacies, and LTC.
+            </p>
           </div>
 
           <div class="brand-tile-card">
             <div class="brand-tile-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
             </div>
             <h3 class="brand-tile-title">Rapid US Fulfillment</h3>
             <p class="brand-tile-desc">Fast turnaround and dependable nationwide shipping from NC and NY.</p>
@@ -582,7 +609,7 @@
 
         <!-- Aligned Dual Partnership Tracks: Wholesale Distribution & Private-Label Contract -->
         <div class="brand-tracks-grid">
-          
+
           <!-- Track 1: Wholesale & Distribution -->
           <div class="brand-track-card">
             <div class="brand-track-header">
@@ -590,7 +617,9 @@
               <h3 class="brand-track-title">Grow Your Business With AARNA USA</h3>
             </div>
             <p class="brand-track-desc">
-              Expand your portfolio with AARNA-brand OTC medicines, institutional products, and healthcare supplies. We work with pharmacies, wholesalers, healthcare organizations, and retail distribution partners to explore product and supply opportunities.
+              Expand your portfolio with AARNA-brand OTC medicines, institutional products, and healthcare supplies. We
+              work with pharmacies, wholesalers, healthcare organizations, and retail distribution partners to explore
+              product and supply opportunities.
             </p>
             <div class="brand-track-tags">
               <span class="brand-track-pill">Regional Distribution</span>
@@ -600,7 +629,10 @@
             <div class="brand-track-footer">
               <a href="contact.html?inquiry=wholesale" class="brand-track-cta">
                 <span>Become a Distribution Partner</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
               </a>
             </div>
           </div>
@@ -612,7 +644,9 @@
               <h3 class="brand-track-title">Your Brand. Our Manufacturing Network.</h3>
             </div>
             <p class="brand-track-desc">
-              Looking to launch or expand an OTC product line? AARNA USA works with manufacturing and packaging partners to explore private-label OTC products for the US market, including product sourcing, packaging options, and project coordination.
+              Looking to launch or expand an OTC product line? AARNA USA works with manufacturing and packaging partners
+              to explore private-label OTC products for the US market, including product sourcing, packaging options,
+              and project coordination.
             </p>
             <div class="brand-track-tags">
               <span class="brand-track-pill">Oral Liquids &amp; Solids</span>
@@ -622,7 +656,10 @@
             <div class="brand-track-footer">
               <a href="contact.html?inquiry=private-label" class="brand-track-cta">
                 <span>Explore Private-Label Opportunities</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
               </a>
             </div>
           </div>
@@ -632,15 +669,18 @@
         <!-- Centerpiece Product Stage ("Imagine your brand here") -->
         <div class="brand-centerpiece-stage">
           <div class="brand-arc-line" aria-hidden="true"></div>
-          
+
           <div class="brand-mockup-wrapper">
-            <img src="assets/images/private-label-blue-card.webp" alt="Your Brand OTC Pharmaceutical Packaging Solutions" class="brand-mockup-img" width="520" height="360" loading="lazy" decoding="async">
+            <img src="assets/images/private-label-blue-card.webp"
+              alt="Your Brand OTC Pharmaceutical Packaging Solutions" class="brand-mockup-img" width="520" height="360"
+              loading="lazy" decoding="async">
           </div>
 
           <div class="brand-imagine-footer">
             <h3 class="brand-imagine-heading">Imagine your brand here</h3>
             <p class="brand-imagine-desc">
-              Looking to launch or expand an OTC product line? AARNA USA coordinates product sourcing, packaging options, and commercial delivery tailored to your brand.
+              Looking to launch or expand an OTC product line? AARNA USA coordinates product sourcing, packaging
+              options, and commercial delivery tailored to your brand.
             </p>
           </div>
         </div>
@@ -782,7 +822,7 @@
 
   <script src="scripts/products-data.js?v=3.2"></script>
   <script src="scripts/store.js?v=3.2"></script>
-  <script src="scripts/app.js?v=4.0"></script>
+  <script src="scripts/app.js?v=5.0"></script>
 </body>
 
 </html>
